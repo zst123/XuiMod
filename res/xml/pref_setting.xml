@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/app_name">
+    <PreferenceCategory android:key="systemui_category" android:title="@string/systemui_title"></PreferenceCategory>
+    
+    <!-- Clock Mods Screen -->
+    <PreferenceScreen android:title="@string/seconds_title" android:key="seconds_screen">
+        <PreferenceCategory android:title="@string/seconds_reminder"></PreferenceCategory><CheckBoxPreference android:key="seconds_enable" android:title="@string/seconds_enable_title" android:summary="@string/seconds_enable_summary"/>
+        <CheckBoxPreference android:key="seconds_bold" android:title="@string/seconds_bold_title" android:summary="@string/seconds_bold_summary" android:dependency="seconds_enable"/>
+        <EditTextPreference android:dependency="seconds_enable" android:summary="@string/seconds_custom_summary" android:title="@string/seconds_custom_title" android:key="seconds_custom" android:dialogTitle="@string/seconds_custom_title" android:dialogMessage="@string/seconds_custom_summary" android:dialogIcon="@drawable/ic_launcher"/>
+        <Preference android:summary="@string/systemui_restart_summary" android:key="seconds_restart" android:title="@string/systemui_restart"/>
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/batterybar_title" android:key="batterybar_screen">
+        <CheckBoxPreference android:key="batterybar_enable" android:title="@string/batterybar_enable_title" />
+        <CheckBoxPreference android:key="batterybar_animate" android:title="@string/batterybar_animate_title" android:summary="@string/batterybar_animate_summary"  android:dependency="batterybar_enable"/>
+        <CheckBoxPreference android:key="batterybar_style" android:title="@string/batterybar_style_title" android:summary="@string/batterybar_style_summary"  android:dependency="batterybar_enable"/>
+        <EditTextPreference android:dependency="batterybar_enable" android:summary="@string/batterybar_color_summary" android:title="@string/batterybar_color_title" android:key="batterybar_color" android:dialogTitle="@string/batterybar_color_title" android:dialogMessage="@string/batterybar_color_dialog" android:dialogIcon="@drawable/ic_launcher" android:defaultValue="FF33B5E5"/>
+        <EditTextPreference android:dependency="batterybar_enable" android:summary="@string/batterybar_height_summary" android:title="@string/batterybar_height_title" android:key="batterybar_height" android:dialogTitle="@string/batterybar_height_title" android:dialogMessage="@string/batterybar_height_dialog" android:dialogIcon="@drawable/ic_launcher" android:defaultValue="2"/>
+        <Preference android:summary="@string/systemui_restart_summary" android:key="batterybar_restart" android:title="@string/systemui_restart"/>
+        
+    </PreferenceScreen>
+    
+        <PreferenceCategory android:key="framework_category" android:title="@string/framework_title"></PreferenceCategory>
+    <!-- Animations Mod Screen -->
+    <PreferenceScreen android:title="@string/anim_title" android:key="anim_screen">
+         <!-- ListView Category -->
+        <PreferenceCategory android:key="listview_title_category" android:title="@string/anim_listview_title"></PreferenceCategory><ListPreference
+        android:key="listview_animation"
+        android:dialogTitle="@string/anim_listview_anim"
+        android:title="@string/anim_listview_anim"
+        android:entries="@array/listview_animation_entries"
+        android:entryValues="@array/listview_animation_values"
+        android:defaultValue="0" android:summary="@string/anim_listview_anim_summary" android:dialogIcon="@drawable/ic_launcher"/>
+       <ListPreference
+        android:key="listview_interpolator"
+        android:dialogTitle="@string/anim_listview_interpolator"
+        android:title="@string/anim_listview_interpolator"
+        android:entries="@array/listview_interpolator_entries"
+        android:entryValues="@array/listview_interpolator_values"
+        android:defaultValue="0" android:summary="@string/anim_listview_interpolator_summary"/>
+        <ListPreference android:key="listview_cache" android:dialogTitle="@string/anim_listview_cache" android:title="@string/anim_listview_cache" android:entries="@array/listview_cache_entries" android:entryValues="@array/listview_cache_values" android:defaultValue="0" android:summary="@string/anim_listview_cache_summary" /><Preference android:title="@string/anim_listview_test" android:summary="@string/anim_listview_test_summary" android:key="listview_testing"/>
+         <!-- Systemwide Anim Category -->
+        <PreferenceCategory android:title="@string/anim_systemwide_title" android:key="system_wide_title_category"></PreferenceCategory>
+        <CheckBoxPreference android:title="@string/xylon_title" android:summary="@string/xylon_summary" android:defaultValue="false" android:key="xylon_anim" />
+		</PreferenceScreen>
+ 	<!-- Framework Mod Category -->
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/other_title" android:key="other_screen">
+        <PreferenceCategory android:key="volume_category" android:title="@string/volume_title"></PreferenceCategory>
+        <EditTextPreference android:dialogIcon="@drawable/ic_launcher" android:dialogTitle="@string/volume_timeout_title" android:dialogMessage="@string/volume_timeout_dialog" android:summary="@string/volume_timeout_summary" android:key="volume_timeout" android:title="@string/volume_timeout_title" android:defaultValue="3000"/>
+        <EditTextPreference android:dialogIcon="@drawable/ic_launcher" android:dialogTitle="@string/volume_alpha_title" android:dialogMessage="@string/volume_alpha_dialog" android:summary="@string/volume_alpha_summary" android:key="volume_alpha" android:title="@string/volume_alpha_title" android:defaultValue="100%"/>
+        <PreferenceCategory android:key="lockscreen_category" android:title="@string/lockscreen_title"></PreferenceCategory>
+        <CheckBoxPreference android:key="lockscreen_volume" android:title="@string/lockscreen_disable_title" android:summary="@string/lockscreen_disable_summary"/>
+        
+     </PreferenceScreen>
+
+</PreferenceScreen> 
