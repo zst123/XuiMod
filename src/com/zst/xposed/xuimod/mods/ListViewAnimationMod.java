@@ -4,7 +4,6 @@ package com.zst.xposed.xuimod.mods;
 import java.lang.reflect.Method;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -68,33 +67,6 @@ public class ListViewAnimationMod {
 			@Override protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
 				final int newState = (Integer) param.args[0];
 				mIsScrolling = newState != OnScrollListener.SCROLL_STATE_IDLE;
-				
-			/*	boolean isScrolled;
-				
-				
-
-				try{
-					AbsListView b ;
-					b.
-						Class<?> clazz = param.thisObject.getClass();
-						Field field;
-						field = clazz.getDeclaredField("mLastScrollState");
-						field.setAccessible(true);
-						int mLastScrollState = (Integer)	 field.get(param.thisObject);
-						
-					//int mLastScrollState = (Integer) Common.getReflection(param.thisObject, "mLastScrollState");
-					isScrolled = (newState != mLastScrollState);
-					
-				}catch(Throwable t){ /* Trouble finding mLastScrollState, change to TRUE anyways
-					isScrolled = true;
-					Log.i("zst123",  t.toString());
-					Log.w("zst123",  "error isScrolled",t);
-				}
-				//final int newState = (Integer) param.args[0];
-				// if (newState != mLastScrollState) 
-				if (isScrolled){
-					
-				} */
 			}			
 		});	
 	}
@@ -102,8 +74,7 @@ public class ListViewAnimationMod {
 	private static void obtainView(){ 
 		XposedBridge.hookAllMethods(AbsListView.class, "obtainView", new XC_MethodHook(){
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-				//if (scrapView != null) {
-				if(mIsScrolling /*&& !mIsWidget*/) {
+				if(mIsScrolling) {
 					AbsListView thix = (AbsListView)param.thisObject;
 					View newResult = setAnimation(thix, (View)param.getResult(),thix.getContext());
 					param.setResult(newResult);
