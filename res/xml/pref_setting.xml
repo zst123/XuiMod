@@ -7,8 +7,8 @@
     <!-- Clock Mods Screen -->
     <PreferenceScreen android:title="@string/seconds_title" android:key="seconds_screen">
         <PreferenceCategory android:title="@string/seconds_reminder"></PreferenceCategory><CheckBoxPreference android:key="seconds_enable" android:title="@string/seconds_enable_title" android:summary="@string/seconds_enable_summary"/>
-        <CheckBoxPreference android:key="seconds_bold" android:title="@string/seconds_bold_title" android:summary="@string/seconds_bold_summary" android:dependency="seconds_enable"/>
-        <EditTextPreference android:dependency="seconds_enable" android:summary="@string/seconds_custom_summary" android:title="@string/seconds_custom_title" android:key="seconds_custom" android:dialogTitle="@string/seconds_custom_title" android:dialogMessage="@string/seconds_custom_summary" android:dialogIcon="@drawable/ic_launcher"/>
+        <CheckBoxPreference android:key="seconds_bold" android:title="@string/seconds_bold_title" android:summary="@string/seconds_bold_summary"/>
+        <EditTextPreference android:summary="@string/seconds_custom_summary" android:title="@string/seconds_custom_title" android:key="seconds_custom" android:dialogTitle="@string/seconds_custom_title" android:dialogMessage="@string/seconds_custom_summary" android:dialogIcon="@drawable/ic_launcher"/>
         <Preference android:summary="@string/systemui_restart_summary" android:key="seconds_restart" android:title="@string/systemui_restart"/>
     </PreferenceScreen>
     <PreferenceScreen android:title="@string/batterybar_title" android:key="batterybar_screen">

@@ -40,11 +40,19 @@ public class SecondsClockMod {
     		protected void afterHookedMethod(MethodHookParam param) throws Throwable {
     			//only the last Clock TextView will be set(statusbar). 
     			//The notification panel and lockscreen also use Clock class. But they are not visible and handler will screw up 
-    			if (thix != null) return; 
+    			if (thix == null){
     			thix = (TextView)param.thisObject; 
     			if(init()){ //init() will return TRUE when setting is enabled.
     				start(); //Start the seconds handler
     			}
+    			}
+    			if (!enabled){
+    				customSettingWhenDisabled();
+    			}else{
+    				tick();
+    			}
+    			//else tick() is to apply our format IMMEDIATELY when the clock refreshes every second
+    			//fixes the skipping bug from 59sec to 01 sec
     		}
     	});
 	}
@@ -53,14 +61,13 @@ public class SecondsClockMod {
 		if (stopForever) return false; //Don't continue
 		pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
 		enabled = pref.getBoolean(Common.KEY_SECONDS_ENABLE,Common.DEFAULT_SECONDS_ENABLE);
-		if(!enabled){ // Disabled, dont change typeface
-			stopForever = true; //Stop forever until systemUI reboots. Prevents reading too much off the disk(every minute which is bad)
-			thix.setTypeface(null,Typeface.NORMAL);
-			return false; 
-		}
 		bold = pref.getBoolean(Common.KEY_SECONDS_BOLD,Common.DEFAULT_SECONDS_BOLD);
 		thix.setTypeface(null, bold ? Typeface.BOLD : Typeface.NORMAL);
-		setFormat();
+		if(!enabled){ 
+			stopForever = true; //Stop forever until systemUI reboots. Prevents reading too much off the disk(every minute which is bad)
+			return false; 
+		}
+		setFormat(true);
 		return enabled;
 	}
 	
@@ -77,8 +84,9 @@ public class SecondsClockMod {
 	    mHandler.postDelayed(mTicker, 800); // Initial wait only. This will never be called again.
 	}
 	
-	private static void setFormat(){
+	private static void setFormat(boolean seconds_enabled){
 		format = pref.getString(Common.KEY_SECONDS_CUSTOM,"");
+		if (!seconds_enabled)return;
 		if (format.equals("")){
 			boolean is24hr =  DateFormat.is24HourFormat(thix.getContext()) ;
 			format = (is24hr ? "kk:mm:ss" /*24 hr*/ : "hh:mm:ss a" /*12 hr*/);
@@ -91,5 +99,10 @@ public class SecondsClockMod {
 		mCalendar = Calendar.getInstance( TimeZone.getDefault());
         thix.setText(DateFormat.format(format, mCalendar));
         thix.invalidate();
-	}	
+	}
+	
+	private static void customSettingWhenDisabled(){ //Change Clock Format even when seconds disabled
+		if (format == null) setFormat(false);
+		if (!format.equals("")) tick(); // If the setting is not empty, then use our custom format
+		}
 }

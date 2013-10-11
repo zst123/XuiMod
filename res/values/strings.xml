@@ -13,7 +13,7 @@
     <string name="seconds_reminder">Restart SystemUI To See Changes</string>
     <string name="seconds_title">Clock Mods</string>
     <string name="seconds_enable_title">Enable Seconds</string>
-    <string name="seconds_enable_summary">Show Seconds in Status Bar Clock</string>
+    <string name="seconds_enable_summary">Refresh Clock every second in Status Bar Clock</string>
     <string name="seconds_bold_title">Bold Clock</string>
     <string name="seconds_bold_summary">Bold the Clock Font</string>
     <string name="seconds_custom_title">Custom Format</string>
@@ -24,7 +24,7 @@
     <string name="anim_listview_title">ListView</string>
     <string name="anim_systemwide_title">System Wide</string>
     <string name="xylon_title">Enable Xylon Animation</string>
-    <string name="xylon_summary">Use Window Transition Animations from Xylon ROM</string>
+    <string name="xylon_summary">Use Window Transition Animations from Xylon ROM\n(Requires reboot)</string>
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>
     <string name="anim_listview_anim_summary">Animation used when scrolling ListViews</string>

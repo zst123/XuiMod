@@ -12,6 +12,7 @@ import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResou
 
 public class XylonAnimMod {
 	public static void handleInitPackageResources(InitPackageResourcesParam resparam){
+		if (!resparam.packageName.equals("android"))return;
 		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
 		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.window_move_from_decor));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.options_panel_enter));
