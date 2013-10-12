@@ -72,6 +72,7 @@ public class VolumePanelAlpha extends DialogPreference implements
 		});
 		
 		final SharedPreferences prefs = getSharedPreferences();
+		
 		int value = prefs.getInt(KEY_VOLUME_ALPHA, DEFAULT_VOLUME_ALPHA);
 		value -= LIMIT_MIN_VOLUME_ALPHA;
 		
@@ -83,8 +84,8 @@ public class VolumePanelAlpha extends DialogPreference implements
 	@Override
 	protected void onDialogClosed(boolean positiveResult) {
 		super.onDialogClosed(positiveResult);
+		
 		if (positiveResult) {
-
 			int realValue = mSeekBar.getProgress() + LIMIT_MIN_VOLUME_ALPHA;
 			Editor editor = getEditor();
 			editor.putInt(KEY_VOLUME_ALPHA, realValue);
@@ -104,18 +105,17 @@ public class VolumePanelAlpha extends DialogPreference implements
 			lp.alpha = (realValue * 0.01f); // Convert Percentage to Decimal
 			window.setAttributes(lp);
 		}
+		
 		mValue.setText(realValue + "%");
 	}
 
 	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
 		// TODO Auto-generated method stub
-
 	}
 }
