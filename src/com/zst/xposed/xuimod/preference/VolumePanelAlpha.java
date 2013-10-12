@@ -2,6 +2,10 @@ package com.zst.xposed.xuimod.preference;
 
 import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
+import static com.zst.xposed.xuimod.Common.KEY_VOLUME_ALPHA;
+import static com.zst.xposed.xuimod.Common.DEFAULT_VOLUME_ALPHA;
+import static com.zst.xposed.xuimod.Common.LIMIT_MAX_VOLUME_ALPHA;
+import static com.zst.xposed.xuimod.Common.LIMIT_MIN_VOLUME_ALPHA;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,6 +16,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -21,7 +26,7 @@ import android.widget.TextView;
 
 public class VolumePanelAlpha extends DialogPreference implements
 		SeekBar.OnSeekBarChangeListener {
-	
+
 	private static final String TAG = VolumePanelAlpha.class.getName();
 
 	private SeekBar mSeekBar;
@@ -46,19 +51,11 @@ public class VolumePanelAlpha extends DialogPreference implements
 	@Override
 	protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
-
-		final SharedPreferences prefs = getSharedPreferences();
+		
 		mValue = (TextView) view.findViewById(R.id.value);
 		mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
-
 		mSeekBar.setOnSeekBarChangeListener(this);
-		int value = prefs.getInt(Common.KEY_VOLUME_ALPHA,
-				Common.DEFAULT_VOLUME_ALPHA);
-
-		mSeekBar.setMax(Common.LIMIT_MAX_VOLUME_ALPHA
-				- Common.LIMIT_MIN_VOLUME_ALPHA);
-		mSeekBar.setProgress(value);
-
+		
 	}
 
 	@Override
@@ -72,31 +69,35 @@ public class VolumePanelAlpha extends DialogPreference implements
 		defaultsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mSeekBar.setProgress(Common.DEFAULT_VOLUME_ALPHA);
-
+				mSeekBar.setProgress(DEFAULT_VOLUME_ALPHA);
 			}
 		});
+		
+		final SharedPreferences prefs = getSharedPreferences();
+		int value = prefs.getInt(KEY_VOLUME_ALPHA, DEFAULT_VOLUME_ALPHA);
+		value -= LIMIT_MIN_VOLUME_ALPHA;
+		
+		mSeekBar.setMax(LIMIT_MAX_VOLUME_ALPHA - LIMIT_MIN_VOLUME_ALPHA);
+		mSeekBar.setProgress(value);
+		
 	}
 
 	@Override
 	protected void onDialogClosed(boolean positiveResult) {
 		super.onDialogClosed(positiveResult);
-
 		if (positiveResult) {
-			Editor editor = getEditor();
-			int realValue = mSeekBar.getProgress()
-					+ Common.LIMIT_MIN_VOLUME_ALPHA;
-			editor.putInt(Common.KEY_VOLUME_ALPHA, realValue);
 
+			int realValue = mSeekBar.getProgress() + LIMIT_MIN_VOLUME_ALPHA;
+			Editor editor = getEditor();
+			editor.putInt(KEY_VOLUME_ALPHA, realValue);
 			editor.commit();
 		}
-		;
 	}
 
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
-		int realValue = progress + Common.LIMIT_MIN_VOLUME_ALPHA;
+		int realValue = progress + LIMIT_MIN_VOLUME_ALPHA;
 
 		Dialog dialog = getDialog();
 		if (dialog != null) {
