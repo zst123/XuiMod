@@ -6,7 +6,6 @@ import com.zst.xposed.xuimod.mods.SecondsClockMod;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
