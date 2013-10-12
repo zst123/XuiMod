@@ -1,6 +1,5 @@
 package com.zst.xposed.xuimod.preference;
 
-import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
 import static com.zst.xposed.xuimod.Common.KEY_VOLUME_ALPHA;
 import static com.zst.xposed.xuimod.Common.DEFAULT_VOLUME_ALPHA;
@@ -16,7 +15,6 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
