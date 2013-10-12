@@ -62,14 +62,12 @@ public class VolumePanelMod {
 	}
 	private static int getAlpha(XSharedPreferences pref){
 		try{
-			String aString = pref.getString(Common.KEY_VOLUME_ALPHA, Common.DEFAULT_VOLUME_ALPHA);
-			aString = aString.replaceAll( "[^\\d]", "" ); //Remove all non-numeric characters
-			int aInteger = Integer.parseInt(aString);
-			if (aInteger > 100) aInteger = 100; // Higher than 100%? Ignore & use 100%
-			if (aInteger < 25) aInteger = 25;  // Lower than 25%? Ignore & use 25%
+			int aInteger = pref.getInt(Common.KEY_VOLUME_ALPHA, Common.DEFAULT_VOLUME_ALPHA);
+			if (aInteger > Common.LIMIT_MAX_VOLUME_ALPHA) aInteger = Common.LIMIT_MAX_VOLUME_ALPHA; // Higher than 100%? Ignore & use 100%
+			if (aInteger < Common.LIMIT_MIN_VOLUME_ALPHA) aInteger = Common.LIMIT_MIN_VOLUME_ALPHA;  // Lower than 25%? Ignore & use 25%
 			return aInteger;
 		}catch(Exception e){ //If alpha string is empty, it throws exception.
-			return Integer.parseInt(Common.DEFAULT_VOLUME_ALPHA);
+			return Common.DEFAULT_VOLUME_ALPHA;
 		}
 	}
 }

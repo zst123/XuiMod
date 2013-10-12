@@ -42,7 +42,7 @@ public class Common {
 	public static final boolean DEFAULT_XYLON_ANIM =false;
 
 	public static final String DEFAULT_VOLUME_TIMEOUT = "3000";
-	public static final String DEFAULT_VOLUME_ALPHA = "100";
+	public static final int DEFAULT_VOLUME_ALPHA = 100;
 	public static final boolean DEFAULT_LOCKSCREEN_VOLUME =false;
 	
 	public static final boolean DEFAULT_BATTERYBAR_ENABLE = false;
@@ -51,7 +51,9 @@ public class Common {
 	public static final String DEFAULT_BATTERYBAR_COLOR ="FF33B5E5";
 	public static final String DEFAULT_BATTERYBAR_HEIGHT ="2";
 
-	//public static final boolean DEFAULT_SIGNATURE_CHECK_DISABLE =false;
+	public static final int LIMIT_MAX_VOLUME_ALPHA = 100;
+	public static final int LIMIT_MIN_VOLUME_ALPHA = 25;
+	
 
 	/* Helper Methods */
 	public static Object getReflection(Object itemToGetObject , String objectName){
