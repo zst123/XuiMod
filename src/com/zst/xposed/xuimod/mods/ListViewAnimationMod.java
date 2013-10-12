@@ -74,9 +74,10 @@ public class ListViewAnimationMod {
 	private static void obtainView(){ 
 		XposedBridge.hookAllMethods(AbsListView.class, "obtainView", new XC_MethodHook(){
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-				if(mIsScrolling) {
+				View v = (View) param.getResult();
+				if(mIsScrolling && v.getAnimation() == null) {
 					AbsListView thix = (AbsListView)param.thisObject;
-					View newResult = setAnimation(thix, (View)param.getResult(),thix.getContext());
+					View newResult = setAnimation(thix,v ,thix.getContext());
 					param.setResult(newResult);
 				}
 				/* In actual ROM, the animation is done before returning view but
