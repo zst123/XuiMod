@@ -99,7 +99,8 @@
     <string name="batterybar_color_summary">Specify Color in #AARRGGBB</string>
     <string name="batterybar_color_dialog">Specify Color in #AARRGGBB.\n(eg. #8800ffff = Cyan with 50% alpha)\nHolo Blue is used if blank or invalid color syntax is used  </string>
     
-    
+   <!-- Other string -->
+   <string name="settings_default">Default value</string>
        
    
     
