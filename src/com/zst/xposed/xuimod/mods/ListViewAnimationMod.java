@@ -1,6 +1,9 @@
 package com.zst.xposed.xuimod.mods;
 
-import java.lang.reflect.Method;
+import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_ANIMATION;
+import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_INTERPOLATOR;
+import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_ANIMATION;
+import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_INTERPOLATOR;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,14 +18,12 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 
 import com.zst.xposed.xuimod.Common;
-import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_ANIMATION;
-import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_ANIMATION;
-import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_INTERPOLATOR;
-import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_INTERPOLATOR;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
+
+import java.lang.reflect.Method;
 
 public class ListViewAnimationMod {
 
