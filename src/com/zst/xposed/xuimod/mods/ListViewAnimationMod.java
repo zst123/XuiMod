@@ -65,7 +65,7 @@ public class ListViewAnimationMod {
 					@Override
 					protected void afterHookedMethod(MethodHookParam param)
 							throws Throwable {
-						mHeight = 0;
+						sHeight = 0;
 						sWidth = 0;
 						// Init-ing new AbsListView so we must reset static
 						// values from previous view
@@ -92,7 +92,7 @@ public class ListViewAnimationMod {
 					protected void afterHookedMethod(MethodHookParam param)
 							throws Throwable {
 						AbsListView abs_list_view = (AbsListView) param.thisObject;
-						mHeight = abs_list_view.getHeight();
+						sHeight = abs_list_view.getHeight();
 						sWidth = abs_list_view.getWidth();
 						// Called when listView changes layout(rotation, first
 						// init)
@@ -177,7 +177,7 @@ public class ListViewAnimationMod {
 			 * XposedHelper.callMethod as I want to control the Throwable myself
 			 */
 		} catch (Throwable e) {
-			scrollY = mvPosition;
+			scrollY = svPosition;
 			/*
 			 * Actual code from source caught an Exception when as
 			 * computeVerticalScrollOffset throws Exception. We catch Throwable
@@ -186,11 +186,11 @@ public class ListViewAnimationMod {
 			 */
 		}
 
-		if (mvPosition < scrollY) {
+		if (svPosition < scrollY) {
 			mDown = true;
 		}
 
-		mvPosition = scrollY;
+		svPosition = scrollY;
 
 		Animation anim = null;
 		switch (mAnim) {
@@ -211,22 +211,22 @@ public class ListViewAnimationMod {
 			anim = new AlphaAnimation(0.0f, 1.0f);
 			break;
 		case ANIMATION_STACK_TOP:
-			anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
+			anim = new TranslateAnimation(0.0f, 0.0f, -sHeight, 0.0f);
 			break;
 		case ANIMATION_STACK_BOTTOM:
-			anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
+			anim = new TranslateAnimation(0.0f, 0.0f, sHeight, 0.0f);
 			break;
 		case ANIMATION_UNFOLD:
 			if (mDown)
-				anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
+				anim = new TranslateAnimation(0.0f, 0.0f, -sHeight, 0.0f);
 			else
-				anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
+				anim = new TranslateAnimation(0.0f, 0.0f, sHeight, 0.0f);
 			break;
 		case ANIMATION_FOLD:
 			if (mDown)
-				anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
+				anim = new TranslateAnimation(0.0f, 0.0f, sHeight, 0.0f);
 			else
-				anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
+				anim = new TranslateAnimation(0.0f, 0.0f, -sHeight, 0.0f);
 			break;
 		case ANIMATION_TRANSLATE_LEFT:
 			anim = new TranslateAnimation(-sWidth, 0.0f, 0.0f, 0.0f);
