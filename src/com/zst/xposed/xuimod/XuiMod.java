@@ -2,6 +2,7 @@ package com.zst.xposed.xuimod;
 
 import com.zst.xposed.xuimod.mods.BatteryBarMod;
 import com.zst.xposed.xuimod.mods.ListViewAnimationMod;
+import com.zst.xposed.xuimod.mods.LockscreenTorchMod;
 import com.zst.xposed.xuimod.mods.LockscreenVolumeMod;
 import com.zst.xposed.xuimod.mods.SecondsClockMod;
 import com.zst.xposed.xuimod.mods.VolumePanelMod;
@@ -30,6 +31,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 		LockscreenVolumeMod.handleLoadPackage(lpparam);
 		ListViewAnimationMod.handleLoadPackage();
 		VolumePanelMod.handleLoadPackage(lpparam);
+		LockscreenTorchMod.handleLoadPackage(lpparam);
 	}
 
 	@Override

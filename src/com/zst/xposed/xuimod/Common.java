@@ -28,11 +28,13 @@ public class Common {
 	public static final String KEY_BATTERYBAR_ENABLE ="batterybar_enable";
 	public static final String KEY_BATTERYBAR_ANIMATE ="batterybar_animate";
 	public static final String KEY_BATTERYBAR_STYLE ="batterybar_style";
-	public static final String KEY_BATTERYBAR_COLOR ="batterybar_color"; //TODO
+	public static final String KEY_BATTERYBAR_COLOR ="batterybar_color";
 	public static final String KEY_BATTERYBAR_HEIGHT ="batterybar_height";
 
-
-	//public static final String KEY_LOCKSCREEN_WAKE ="lockscreen_wake";
+	public static final String KEY_LOCKSCREEN_TORCH_ENABLE ="lockscreen_torch";
+	public static final String KEY_LOCKSCREEN_TORCH_BACK ="lockscreen_torch_back";
+	public static final String KEY_LOCKSCREEN_TORCH_HOME ="lockscreen_torch_home";
+	public static final String KEY_LOCKSCREEN_TORCH_MENU ="lockscreen_torch_menu";
 
 
 	/* Preference default values */
@@ -54,6 +56,11 @@ public class Common {
 	public static final boolean DEFAULT_BATTERYBAR_STYLE = false;
 	public static final String DEFAULT_BATTERYBAR_COLOR ="FF33B5E5";
 	public static final int DEFAULT_BATTERYBAR_HEIGHT = 2;
+	
+	public static final boolean DEFAULT_LOCKSCREEN_TORCH_ENABLE = false;
+	public static final boolean DEFAULT_LOCKSCREEN_TORCH_BACK = false;
+	public static final boolean DEFAULT_LOCKSCREEN_TORCH_HOME = false;
+	public static final boolean DEFAULT_LOCKSCREEN_TORCH_MENU = false;
 	
 	/* Preference limits values */
 	

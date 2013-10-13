@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">XuiMod</string>
+    
+    <!-- Main Screen Category Titles -->
     <string name="systemui_title">SystemUI</string>
     <string name="framework_title">Framework</string>
     
@@ -79,10 +81,15 @@
     <string name="volume_alpha_summary">Change Volume Panel Transparency</string>
     <string name="volume_alpha_dialog" formatted="false">State Volume Panel Transparency Percentage. Non-numeric characters are ignored.\n(Maximum 100% &amp; Minimum 25%)</string>
     
-    <string name="lockscreen_title">Lockscreen</string>
+    <!-- Lockscreen Mods -->
+    <string name="lockscreen_title">Lockscreen Mods</string>
     <string name="lockscreen_disable_title">Disable Volume Keys</string>
     <string name="lockscreen_disable_summary">Prevent Ring Mode from changing in Lock Screen.\n(Also disables media long press)</string>
-    
+    <string name="lockscreen_torch_title">Lockscreen Torch</string>
+    <string name="lockscreen_torch_summary">Hold Hardware Buttons for Torch.\nRelease to switch off.</string>
+    <string name="lockscreen_torch_home_title">Use Home Button</string>
+    <string name="lockscreen_torch_menu_title">Use Menu Button</string>
+    <string name="lockscreen_torch_back_title">Use Back Button</string>
     
      <!-- BatteryBar Pref-->
     <string name="batterybar_title">BatteryBar Mod</string>
