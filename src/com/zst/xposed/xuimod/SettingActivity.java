@@ -57,7 +57,7 @@ public class SettingActivity extends PreferenceActivity implements
 
 		hideUnsuported();
 	}
-	
+
 	private void hideUnsuported(){
 		int deviceKeysMaskId = Resources.getSystem().getIdentifier(
 				"config_deviceHardwareKeys", "integer", "android");
