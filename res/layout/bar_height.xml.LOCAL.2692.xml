@@ -13,18 +13,32 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="60dp">
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:background="#FF33B5E5"
+            
+                android:orientation="vertical" >
+            </View>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingBottom="10dip"
-            android:paddingRight="20dip"
-            android:paddingLeft="20dip"
+            android:paddingEnd="20dip"
+            android:paddingStart="20dip"
             android:paddingTop="10dip" >
 
-            <!--
-               <TextView
+            <TextView
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-               />
-            -->
+                android:layout_height="wrap_content"
+                android:text="@string/batterybar_height_dialog" />
 
             <TextView
                 android:id="@+id/value"
@@ -36,7 +50,7 @@
                 android:id="@+id/seekbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/value"
+                android:layout_below="@+id/text"
                 android:paddingTop="2dip" />
         </RelativeLayout>
     </LinearLayout>

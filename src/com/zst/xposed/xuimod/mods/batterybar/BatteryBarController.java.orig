@@ -16,7 +16,11 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 public class BatteryBarController extends LinearLayout {
+<<<<<<< HEAD
+
+=======
 		
+>>>>>>> upstream/master
 	private static int LAST_BATTERY_LEVEL = 0;
 
 	BatteryBarView mainBar;

@@ -11,6 +11,11 @@
     <PreferenceScreen
         android:key="seconds_screen"
         android:title="@string/seconds_title" >
+<<<<<<< HEAD
+        <PreferenceCategory android:title="@string/seconds_reminder" >
+        </PreferenceCategory>
+=======
+>>>>>>> upstream/master
 
         <CheckBoxPreference
             android:key="seconds_enable"
@@ -31,8 +36,6 @@
 
         <Preference
             android:key="seconds_restart"
-            android:summary="@string/systemui_restart_summary"
-            android:title="@string/systemui_restart" />
             android:summary="@string/systemui_restart_summary"
             android:title="@string/systemui_restart" />
     </PreferenceScreen>
@@ -62,20 +65,23 @@
             android:key="batterybar_color"
             android:summary="@string/batterybar_color_summary"
             android:title="@string/batterybar_color_title" />
-        <com.zst.xposed.xuimod.preference.BarHeight
+<<<<<<< HEAD
+        <!--<EditTextPreference
             android:defaultValue="2"
             android:dependency="batterybar_enable"
             android:dialogIcon="@drawable/ic_launcher"
             android:dialogMessage="@string/batterybar_height_dialog"
             android:dialogTitle="@string/batterybar_height_title"
-            android:persistent="false"
             android:key="batterybar_height"
             android:summary="@string/batterybar_height_summary"
-            android:title="@string/batterybar_height_title" />
-        <Preference
-            android:key="batterybar_restart"
-            android:summary="@string/systemui_restart_summary"
-            android:title="@string/systemui_restart" />
+            android:title="@string/batterybar_height_title" />-->
+=======
+>>>>>>> upstream/master
+        <com.zst.xposed.xuimod.preference.BarHeight
+            android:defaultValue="2"
+            android:dependency="batterybar_enable"
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogMessage="@string/batterybar_height_dialog"
             android:dialogTitle="@string/batterybar_height_title"
             android:persistent="false"
             android:key="batterybar_height"
@@ -152,20 +158,6 @@
         <PreferenceCategory
             android:key="volume_category"
             android:title="@string/volume_title" >
-        </PreferenceCategory>
-
-        <EditTextPreference
-            android:defaultValue="3000"
-            android:dialogIcon="@drawable/ic_launcher"
-            android:dialogMessage="@string/volume_timeout_dialog"
-            android:dialogTitle="@string/volume_timeout_title"
-            android:key="volume_timeout"
-            android:summary="@string/volume_timeout_summary"
-            android:title="@string/volume_timeout_title" />
-
-        <PreferenceCategory
-            android:key="lockscreen_category"
-            android:title="@string/lockscreen_title" >
         </PreferenceCategory>
 
         <EditTextPreference

@@ -95,6 +95,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             filter.addAction(Intent.ACTION_BATTERY_CHANGED);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
             filter.addAction(Intent.ACTION_SCREEN_ON);
+			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
             updateSettings();
         }
@@ -119,7 +120,9 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
                 if (mBatteryCharging && mBatteryLevel < 100) {
                     start();
                 }
-            }
+            } else if (Common.ACTION_SETTINGS_CHANGED.equals(action)) {
+				updateSettings();
+			}
         }
     };
 

@@ -7,6 +7,10 @@ import java.util.TimeZone;
 
 import com.zst.xposed.xuimod.Common;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.text.format.DateFormat;
@@ -51,6 +55,9 @@ public class SecondsClockMod {
     			}else{
     				tick();
     			}
+    			IntentFilter filter = new IntentFilter();
+    			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
+    			thix.getContext().registerReceiver(broadcastReceiver, filter);
     			//else tick() is to apply our format IMMEDIATELY when the clock refreshes every second
     			//fixes the skipping bug from 59sec to 01 sec
     		}
@@ -105,4 +112,21 @@ public class SecondsClockMod {
 		if (format == null) setFormat(false);
 		if (!format.equals("")) tick(); // If the setting is not empty, then use our custom format
 		}
+	
+	private final static BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String action = intent.getAction();
+			if (Common.ACTION_SETTINGS_CHANGED.equals(action)){
+				mHandler = null;
+				mTicker = null;
+				enabled = false;
+				stopForever = false;
+				//Reset all the variables
+				if(init()){
+    				start();
+    			}//init and start
+			}
+		}
+	};
 }
