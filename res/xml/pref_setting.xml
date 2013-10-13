@@ -62,16 +62,16 @@
             android:key="batterybar_color"
             android:summary="@string/batterybar_color_summary"
             android:title="@string/batterybar_color_title" />
-        <EditTextPreference
+        <com.zst.xposed.xuimod.preference.BarHeight
             android:defaultValue="2"
             android:dependency="batterybar_enable"
             android:dialogIcon="@drawable/ic_launcher"
             android:dialogMessage="@string/batterybar_height_dialog"
             android:dialogTitle="@string/batterybar_height_title"
+            android:persistent="false"
             android:key="batterybar_height"
             android:summary="@string/batterybar_height_summary"
             android:title="@string/batterybar_height_title" />
-
         <Preference
             android:key="batterybar_restart"
             android:summary="@string/systemui_restart_summary"
