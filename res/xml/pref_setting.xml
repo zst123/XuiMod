@@ -37,7 +37,7 @@
     <PreferenceScreen
         android:key="batterybar_screen"
         android:title="@string/batterybar_title" >
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="batterybar_enable"
             android:title="@string/batterybar_enable_title" />
         <CheckBoxPreference
