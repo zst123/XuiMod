@@ -11,8 +11,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.res.Resources;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -25,6 +28,11 @@ public class SettingActivity extends PreferenceActivity implements
 	public static final String FIRST_KEY = "first";
 	public static final String PREFERENCE_FILE = Common.MY_PACKAGE_NAME
 			+ "_preferences";
+
+	// https://github.com/CyanogenMod/android_frameworks_base/blob/cm-10.2/core/res/res/values/config.xml#L1230-L1240
+	public static final int KEY_MASK_HOME = 0x01;
+	public static final int KEY_MASK_BACK = 0x02;
+	public static final int KEY_MASK_MENU = 0x04;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +54,50 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("seconds_restart").setOnPreferenceClickListener(this);
 		findPreference("listview_testing").setOnPreferenceClickListener(this);
 		prefs.registerOnSharedPreferenceChangeListener(this);
-		Log.i(TAG, "onCreate");
+
+		hideUnsuported();
 	}
-	
+	private void hideUnsuported(){
+		int deviceKeysMaskId = Resources.getSystem().getIdentifier(
+				"config_deviceHardwareKeys", "integer", "android");
+		int deviceKeysMask = Resources.getSystem().getInteger(deviceKeysMaskId);
+
+		final boolean hasHomeKey = (deviceKeysMask & KEY_MASK_HOME) != 0;
+		final boolean hasMenuKey = (deviceKeysMask & KEY_MASK_MENU) != 0;
+		final boolean hasBackKey = (deviceKeysMask & KEY_MASK_BACK) != 0;
+		//boolean hasBackKey = true;
+		Log.i(TAG, "hasHomeKey:" + hasHomeKey + " hasMenuKey:" + hasMenuKey
+				+ " hasBackKey:" + hasBackKey);
+
+		PreferenceScreen prefScreenLockscreen = (PreferenceScreen) findPreference("lockscreen_screen");
+		PreferenceCategory lockscreenTorchCategory = (PreferenceCategory) prefScreenLockscreen
+				.findPreference("lockscreen_torch_category");
+
+		if (!hasHomeKey && !hasMenuKey && !hasBackKey) {
+			prefScreenLockscreen.removePreference(lockscreenTorchCategory);
+		} else {
+			if (!hasHomeKey) {
+				Preference pref = lockscreenTorchCategory
+						.findPreference("lockscreen_torch_home");
+				lockscreenTorchCategory.removePreference(pref);
+			}
+			if (!hasMenuKey) {
+				Preference pref = lockscreenTorchCategory
+						.findPreference("lockscreen_torch_menu");
+				lockscreenTorchCategory.removePreference(pref);
+			}
+			if (!hasBackKey) {
+				Preference pref = lockscreenTorchCategory
+						.findPreference("lockscreen_torch_back");
+				lockscreenTorchCategory.removePreference(pref);
+			}
+		}
+	}
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences arg0, String key) {
 		Common.settingsChanged(this);
 	}
-	
+
 	@Override
 	public boolean onPreferenceClick(Preference p) {
 		if (p.getKey().equals("seconds_restart")
