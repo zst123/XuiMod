@@ -1,13 +1,13 @@
 package com.zst.xposed.xuimod.preference;
 
+import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
-import static com.zst.xposed.xuimod.Common.KEY_VOLUME_ALPHA;
-import static com.zst.xposed.xuimod.Common.DEFAULT_VOLUME_ALPHA;
-import static com.zst.xposed.xuimod.Common.LIMIT_MAX_VOLUME_ALPHA;
-import static com.zst.xposed.xuimod.Common.LIMIT_MIN_VOLUME_ALPHA;
+import static com.zst.xposed.xuimod.Common.KEY_BATTERYBAR_HEIGHT;
+import static com.zst.xposed.xuimod.Common.DEFAULT_BATTERYBAR_HEIGHT;
+import static com.zst.xposed.xuimod.Common.LIMIT_MAX_BATTERYBAR_HEIGHT;
+import static com.zst.xposed.xuimod.Common.LIMIT_MIN_BATTERYBAR_HEIGHT;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -16,24 +16,23 @@ import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class VolumePanelAlpha extends DialogPreference implements
+public class BarHeight extends DialogPreference implements
 		SeekBar.OnSeekBarChangeListener {
 
-	private static final String TAG = VolumePanelAlpha.class.getName();
-
+	private static final String TAG = BarHeight.class.getName();
+	
+	private View mLine;
 	private SeekBar mSeekBar;
 	private TextView mValue;
 
-	public VolumePanelAlpha(Context context, AttributeSet attrs) {
+	public BarHeight(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		setDialogLayoutResource(R.layout.volume_panel_alpha);
+		setDialogLayoutResource(R.layout.bar_height);
 	}
 
 	@Override
@@ -50,10 +49,10 @@ public class VolumePanelAlpha extends DialogPreference implements
 	protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
 		
+		mLine = (View) view.findViewById(R.id.line);
 		mValue = (TextView) view.findViewById(R.id.value);
 		mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
 		mSeekBar.setOnSeekBarChangeListener(this);
-		
 	}
 
 	@Override
@@ -67,16 +66,16 @@ public class VolumePanelAlpha extends DialogPreference implements
 		defaultsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mSeekBar.setProgress(DEFAULT_VOLUME_ALPHA-LIMIT_MIN_VOLUME_ALPHA);
+				mSeekBar.setProgress(DEFAULT_BATTERYBAR_HEIGHT-LIMIT_MIN_BATTERYBAR_HEIGHT);
 			}
 		});
 		
 		final SharedPreferences prefs = getSharedPreferences();
 		
-		int value = prefs.getInt(KEY_VOLUME_ALPHA, DEFAULT_VOLUME_ALPHA);
-		value -= LIMIT_MIN_VOLUME_ALPHA;
+		int value = prefs.getInt(KEY_BATTERYBAR_HEIGHT, DEFAULT_BATTERYBAR_HEIGHT);
+		value -= LIMIT_MIN_BATTERYBAR_HEIGHT;
 		
-		mSeekBar.setMax(LIMIT_MAX_VOLUME_ALPHA - LIMIT_MIN_VOLUME_ALPHA);
+		mSeekBar.setMax(LIMIT_MAX_BATTERYBAR_HEIGHT - LIMIT_MIN_BATTERYBAR_HEIGHT);
 		mSeekBar.setProgress(value);
 		
 	}
@@ -86,27 +85,21 @@ public class VolumePanelAlpha extends DialogPreference implements
 		super.onDialogClosed(positiveResult);
 		
 		if (positiveResult) {
-			int realValue = mSeekBar.getProgress() + LIMIT_MIN_VOLUME_ALPHA;
+			int realValue = mSeekBar.getProgress() + LIMIT_MIN_BATTERYBAR_HEIGHT;
 			Editor editor = getEditor();
-			editor.putInt(KEY_VOLUME_ALPHA, realValue);
+			editor.putInt(KEY_BATTERYBAR_HEIGHT, realValue);
 			editor.commit();
+			
 		}
 	}
 
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
-		int realValue = progress + LIMIT_MIN_VOLUME_ALPHA;
+		int realValue = progress + LIMIT_MIN_BATTERYBAR_HEIGHT;
 
-		Dialog dialog = getDialog();
-		if (dialog != null) {
-			Window window = dialog.getWindow();
-			WindowManager.LayoutParams lp = window.getAttributes();
-			lp.alpha = (realValue * 0.01f); // Convert Percentage to Decimal
-			window.setAttributes(lp);
-		}
-		
-		mValue.setText(realValue + "%");
+		mLine.setMinimumHeight(realValue);
+		mValue.setText(realValue + "dp");
 	}
 
 	@Override

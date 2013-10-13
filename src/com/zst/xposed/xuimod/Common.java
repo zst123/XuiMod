@@ -2,11 +2,15 @@ package com.zst.xposed.xuimod;
 
 import java.lang.reflect.Field;
 
+import android.content.Context;
+import android.content.Intent;
+
 
 public class Common {
 
 	public static final String MY_PACKAGE_NAME = Common.class.getPackage().getName();
-
+	public static final String ACTION_SETTINGS_CHANGED = "com.zst.xposed.xuimod.SETTINGS_CHANGED";
+	
 	/* Preference keys */
 	public static final String KEY_SECONDS_ENABLE ="seconds_enable";
 	public static final String KEY_SECONDS_BOLD ="seconds_bold";
@@ -49,12 +53,23 @@ public class Common {
 	public static final boolean DEFAULT_BATTERYBAR_ANIMATE = false;
 	public static final boolean DEFAULT_BATTERYBAR_STYLE = false;
 	public static final String DEFAULT_BATTERYBAR_COLOR ="FF33B5E5";
-	public static final String DEFAULT_BATTERYBAR_HEIGHT ="2";
-
+	public static final int DEFAULT_BATTERYBAR_HEIGHT = 2;
+	
+	/* Preference limits values */
+	
 	public static final int LIMIT_MAX_VOLUME_ALPHA = 100;
 	public static final int LIMIT_MIN_VOLUME_ALPHA = 25;
 	
+	public static final int LIMIT_MAX_BATTERYBAR_HEIGHT = 25;
+	public static final int LIMIT_MIN_BATTERYBAR_HEIGHT = 1;
 
+	public static final boolean TEST_FREATURE = true;
+	
+	public static void settingsChanged(Context ctx){
+		Intent i = new Intent(Common.ACTION_SETTINGS_CHANGED);
+		ctx.sendBroadcast(i);
+	}
+	
 	/* Helper Methods */
 	public static Object getReflection(Object itemToGetObject , String objectName){
 		try {

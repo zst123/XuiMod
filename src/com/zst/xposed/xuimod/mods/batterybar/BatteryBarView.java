@@ -36,10 +36,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     LinearLayout mChargerLayout;
     View mCharger;
 
-
-
     boolean vertical = false;
-
 
     public BatteryBarView(Context context) {
     	this(context, null , 0);
