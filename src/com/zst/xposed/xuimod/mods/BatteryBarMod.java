@@ -41,7 +41,7 @@ public class BatteryBarMod {
 		 String s = null;
 		 for (int x = 1; x < 5; x++){ // Continue until we find the system XML
 			 
-			 s = getName(x);
+			 s = layouts[x];
 			 int id = res.getIdentifier(s, "layout", "com.android.systemui");
 			 if (id != 0){
 				 Log.i("test",  s  + " - " + x + " is found. ID="+id);
@@ -51,20 +51,15 @@ public class BatteryBarMod {
 		 }
 		 return s;
 	 }
-	 private static String getName(int i){ 
-		 switch (i){
-		 case 1: // MediaTek Gemini Phones
-			 return "gemini_super_status_bar"; 
-		 case 2: // Samsung TouchWiz ROM
-			 return "tw_status_bar"; 
-		 case 3: // AOSP JellyBean ROM
-			 return "super_status_bar"; 
-		 case 4: // Break Switch to use "status_bar";
-			 break; 
-		 }
-		 return "status_bar"; // AOSP ICS 
-		 //This is last as it's present in JB (and maybe other ROMs) but ISN'T inflated.
-		 //It is only used in ICS
-		 //So we must check others before using this 
-	 }
+	 
+	 final static String[] layouts = {
+			 "gemini_super_status_bar", // MediaTek Gemini Phones
+			 "tw_status_bar", // Samsung TouchWiz ROM
+			 "super_status_bar", // AOSP JellyBean ROM
+			 "status_bar" 
+			 // AOSP ICS
+			 // This is last as it's present in JB (and maybe other ROMs) but ISN'T inflated.
+			 // It is only used in ICS So we must check others before using this
+	 };
+		
 }

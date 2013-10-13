@@ -76,7 +76,14 @@ public class BatteryBarController extends LinearLayout {
 						BatteryManager.EXTRA_STATUS, 0) == BatteryManager.BATTERY_STATUS_CHARGING;
 				LAST_BATTERY_LEVEL = mBatteryLevel;
 			} else if (Common.ACTION_SETTINGS_CHANGED.equals(action)) {
-				updateSettings();
+				XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+				boolean enabled = pref.getBoolean(Common.KEY_BATTERYBAR_ENABLE,
+						Common.DEFAULT_BATTERYBAR_ENABLE);
+				if (enabled){
+					updateSettings();
+				}else{
+					removeBars();
+				}
 			}
 		}
 	};
