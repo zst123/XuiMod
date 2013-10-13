@@ -4,6 +4,7 @@ package com.zst.xposed.xuimod.mods;
 import java.lang.reflect.Method;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -22,6 +23,7 @@ import de.robv.android.xposed.XposedBridge;
 
 public class ListViewAnimationMod {
 	
+	protected static final String TAG = ListViewAnimationMod.class.getSimpleName();
 	static boolean mIsScrolling;
 	static int mWidth, mHeight = 0;
 	static int mvPosition;
@@ -43,9 +45,11 @@ public class ListViewAnimationMod {
 				int cache = Integer.parseInt(pref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
 				// Get our pref value in String and parse to Integer
 				
-				AbsListView item = (AbsListView)param.thisObject; 
-				item.setPersistentDrawingCache(cache);
+				AbsListView abs_list_view = (AbsListView)param.thisObject; 
+				abs_list_view.setPersistentDrawingCache(cache);
 				// Get object & Apply persistent cache value.
+				
+				
 			}			
 		});	
 	}
@@ -53,9 +57,9 @@ public class ListViewAnimationMod {
 	private static void on_Layout() { 
 		XposedBridge.hookAllMethods(AbsListView.class, "onLayout", new XC_MethodHook(){
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-				AbsListView item = (AbsListView)param.thisObject;
-				mHeight = item.getHeight();
-		        mWidth = item.getWidth(); 
+				AbsListView abs_list_view = (AbsListView)param.thisObject;
+				mHeight = abs_list_view.getHeight();
+		        mWidth = abs_list_view.getWidth(); 
 		        // Called when listView changes layout(rotation, first init)
 		        // We then gather size for the below anim codes.
 			} 
@@ -74,8 +78,13 @@ public class ListViewAnimationMod {
 	private static void obtainView(){ 
 		XposedBridge.hookAllMethods(AbsListView.class, "obtainView", new XC_MethodHook(){
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-				if(mIsScrolling) {
-					AbsListView thix = (AbsListView)param.thisObject;
+				AbsListView thix = (AbsListView)param.thisObject;
+				
+				String activity_name = thix.getContext().getClass().getName();
+				Log.i(TAG,"Activity: "+activity_name);
+				// TODO Make GUI for disable.
+				if(mIsScrolling && !activity_name.startsWith("com.quoord.tapatalkpro.activity.forum.ThreadActiv")) {
+					
 					View newResult = setAnimation(thix, (View)param.getResult(),thix.getContext());
 					param.setResult(newResult);
 				}
