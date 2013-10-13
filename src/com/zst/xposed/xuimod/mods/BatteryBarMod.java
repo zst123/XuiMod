@@ -11,7 +11,16 @@ import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResou
 import de.robv.android.xposed.callbacks.XC_LayoutInflated;
 
 public class BatteryBarMod {
-	
+    private static final String[] layouts = {
+		 "gemini_super_status_bar", // MediaTek Gemini Phones
+		 "tw_status_bar", // Samsung TouchWiz ROM
+		 "super_status_bar", // AOSP JellyBean ROM
+		 "status_bar" 
+		 // AOSP ICS
+		 // This is last as it's present in JB (and maybe other ROMs) but ISN'T inflated.
+		 // It is only used in ICS So we must check others before using this
+	 };
+    
 	 public static void initResources( final InitPackageResourcesParam resparam) {
 		 if (!resparam.packageName.equals("com.android.systemui")) return;
 	        try {
@@ -28,40 +37,26 @@ public class BatteryBarMod {
 		 resparam.res.hookLayout("com.android.systemui", "layout", name, new XC_LayoutInflated() {
 			 @Override
 			 public void handleLayoutInflated(LayoutInflatedParam liparam) throws Throwable {
-				 FrameLayout mRootView = (FrameLayout)liparam.view;
-				 BatteryBarController mLayoutClock = new BatteryBarController(liparam.view.getContext());
+				 FrameLayout root_view = (FrameLayout)liparam.view;
+				 BatteryBarController battery_bar = new BatteryBarController(liparam.view.getContext());
 				 LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
-				 mLayoutClock.setLayoutParams(param);
-				 mLayoutClock.setVisibility(View.VISIBLE);
-				 mRootView.addView(mLayoutClock);
+				 battery_bar.setLayoutParams(param);
+				 battery_bar.setVisibility(View.VISIBLE);
+				 root_view.addView(battery_bar);
 			 }
 		 });
 	 }
-	 private static String findXML(XResources res){
-		 String s = null;
-		 for (int x = 1; x < 5; x++){ // Continue until we find the system XML
-			 
-			 s = getName(x);
-			 int id = res.getIdentifier(s, "layout", "com.android.systemui");
-			 if (id != 0){
-				 Log.i("test",  s  + " - " + x + " is found. ID="+id);
-				 break;
-			 }
-			 Log.d("test",  s  + " - " + x + " not found. ID="+id);
-		 }
-		 return s;
-	 }
-	 
-	 private static String getName(int i){ 
-		 String[] layouts = {
-			 "gemini_super_status_bar", // MediaTek Gemini Phones
-			 "tw_status_bar", // Samsung TouchWiz ROM
-			 "super_status_bar", // AOSP JellyBean ROM
-			 "status_bar" 
-			 // AOSP ICS
-			 // This is last as it's present in JB (and maybe other ROMs) but ISN'T inflated.
-			 // It is only used in ICS So we must check others before using this
-		 };
-		 return layouts[i];
-	 }
+
+	private static String findXML(XResources res) {
+		String s = null;
+		// Continue until we find the system XML
+		for (String layout : layouts) {
+			int id = res.getIdentifier(s, "layout", "com.android.systemui");
+			if (id != 0) {
+				s = layout;
+				break;
+			}
+		}
+		return s;
+	}
 }

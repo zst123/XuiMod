@@ -63,6 +63,7 @@
     <string name="listview_cycle_interpolator">Cycle</string>
     <string name="listview_linear_interpolator">Linear</string>
     <!-- ListView cache -->
+    <string name="listview_cache_system">System decide</string>
 	<string name="listview_cache_none">No Cache</string>
  	<string name="listview_cache_anim">Animation Cache</string>
     <string name="listview_cache_scroll">Scrolling Cache</string>

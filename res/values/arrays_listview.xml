@@ -60,6 +60,7 @@
      </string-array> 
      
     <string-array name="listview_cache_entries">
+        <item>@string/listview_cache_system</item>
         <item>@string/listview_cache_none</item>
         <item>@string/listview_cache_anim</item>
         <item>@string/listview_cache_scroll</item>
@@ -67,6 +68,7 @@
     </string-array>
 
     <string-array name="listview_cache_values">
+        <item>-1</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
