@@ -15,6 +15,10 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 
 import com.zst.xposed.xuimod.Common;
+import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_ANIMATION;
+import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_ANIMATION;
+import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_INTERPOLATOR;
+import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_INTERPOLATOR;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
@@ -72,15 +76,14 @@ public class ListViewAnimationMod {
 
 						XSharedPreferences pref = new XSharedPreferences(
 								Common.MY_PACKAGE_NAME);
-						int cache = Integer.parseInt(pref.getString(
+						int cache = Common.getPreferenceInt(pref,
 								Common.KEY_LISTVIEW_CACHE,
-								Common.DEFAULT_LISTVIEW_CACHE));
-						// Get our pref value in String and parse to Integer
-
-						AbsListView abs_list_view = (AbsListView) param.thisObject;
-						abs_list_view.setPersistentDrawingCache(cache);
-						// Get object & Apply persistent cache value.
-
+								Common.DEFAULT_LISTVIEW_CACHE);
+						if (cache != -1) {
+							AbsListView abs_list_view = (AbsListView) param.thisObject;
+							abs_list_view.setPersistentDrawingCache(cache);
+							// Get object & Apply persistent cache value.
+						}
 					}
 				});
 	}
@@ -156,12 +159,12 @@ public class ListViewAnimationMod {
 	private static View setAnimation(Object thisObject, View view,
 			Context mContext) {
 		XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-		int mAnim = Integer.parseInt(pref.getString(
-				Common.KEY_LISTVIEW_ANIMATION,
-				Common.DEFAULT_LISTVIEW_ANIMATION));
+		int mAnim = Common.getPreferenceInt(pref, KEY_LISTVIEW_ANIMATION,
+				DEFAULT_LISTVIEW_ANIMATION);
 
-		if (mAnim == 0)
+		if (mAnim == ANIMATION_NONE) {
 			return view;
+		}
 
 		int scrollY = 0;
 		boolean mDown = false;
@@ -241,9 +244,8 @@ public class ListViewAnimationMod {
 		}
 		anim.setDuration(500);
 
-		int mInterpolator = Integer.parseInt(pref.getString(
-				Common.KEY_LISTVIEW_INTERPOLATOR,
-				Common.DEFAULT_LISTVIEW_INTERPOLATOR));
+		int mInterpolator = Common.getPreferenceInt(pref,
+				KEY_LISTVIEW_INTERPOLATOR, DEFAULT_LISTVIEW_INTERPOLATOR);
 		switch (mInterpolator) {
 		case INTERPOLATOR_ACCELERATE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext,
@@ -287,5 +289,5 @@ public class ListViewAnimationMod {
 		}
 		return view;
 	}
-}
 
+}
