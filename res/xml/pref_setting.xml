@@ -75,7 +75,8 @@
             android:summary="@string/systemui_restart_summary"
             android:title="@string/systemui_restart" />
     </PreferenceScreen>
-
+    
+    <!-- Framework Mod Category -->
     <PreferenceCategory
         android:key="framework_category"
         android:title="@string/framework_title" >
@@ -133,7 +134,44 @@
             android:summary="@string/xylon_summary"
             android:title="@string/xylon_title" />
     </PreferenceScreen>
-    <!-- Framework Mod Category -->
+    <!-- Lockscreen Mod Screen -->
+    <PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:key="lockscreen_screen"
+        android:title="@string/lockscreen_title" >
+
+        <CheckBoxPreference
+            android:key="lockscreen_volume"
+            android:summary="@string/lockscreen_disable_summary"
+            android:title="@string/lockscreen_disable_title" />
+
+        
+        <PreferenceCategory
+            android:key="lockscreen_torch_category"
+            android:title="@string/lockscreen_torch_title" >
+        </PreferenceCategory>
+        <SwitchPreference
+            android:key="lockscreen_torch"
+            android:summary="@string/lockscreen_torch_summary"
+            android:title="@string/lockscreen_torch_title" />
+        
+        <CheckBoxPreference
+            android:key="lockscreen_torch_home"
+            android:title="@string/lockscreen_torch_home_title"
+            android:dependency="lockscreen_torch" />
+        
+        <CheckBoxPreference
+            android:key="lockscreen_torch_menu"
+            android:title="@string/lockscreen_torch_menu_title"
+            android:dependency="lockscreen_torch" />
+        
+        <CheckBoxPreference
+            android:key="lockscreen_torch_back"
+            android:title="@string/lockscreen_torch_back_title"
+            android:dependency="lockscreen_torch" />
+        
+    </PreferenceScreen>
+    <!-- Other Mods Screen -->
     <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:key="other_screen"
@@ -151,17 +189,6 @@
             android:key="volume_timeout"
             android:summary="@string/volume_timeout_summary"
             android:title="@string/volume_timeout_title" />
-
-        <PreferenceCategory
-            android:key="lockscreen_category"
-            android:title="@string/lockscreen_title" >
-        </PreferenceCategory>
-
-        <CheckBoxPreference
-            android:key="lockscreen_volume"
-            android:summary="@string/lockscreen_disable_summary"
-            android:title="@string/lockscreen_disable_title" />
-
         <com.zst.xposed.xuimod.preference.VolumePanelAlpha
             android:dialogMessage="@string/volume_alpha_dialog"
             android:dialogTitle="@string/volume_alpha_title"

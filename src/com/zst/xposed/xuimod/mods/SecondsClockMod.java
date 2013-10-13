@@ -118,14 +118,21 @@ public class SecondsClockMod {
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
 			if (Common.ACTION_SETTINGS_CHANGED.equals(action)){
+				Context ctx = thix.getContext();
 				mHandler = null;
 				mTicker = null;
 				enabled = false;
 				stopForever = false;
+				format = null;
 				//Reset all the variables
-				if(init()){
-    				start();
-    			}//init and start
+				Intent i = new Intent(Intent.ACTION_CONFIGURATION_CHANGED);
+				ctx.sendBroadcast(i);
+				if(init()){ //init() will return TRUE when setting is enabled.
+    				start(); //Start the seconds handler
+    			}
+				/* 
+				 * Broadcast to system that time changed.
+				 */
 			}
 		}
 	};
