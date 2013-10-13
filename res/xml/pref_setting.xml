@@ -11,8 +11,6 @@
     <PreferenceScreen
         android:key="seconds_screen"
         android:title="@string/seconds_title" >
-        <PreferenceCategory android:title="@string/seconds_reminder" >
-        </PreferenceCategory>
 
         <CheckBoxPreference
             android:key="seconds_enable"

@@ -6,13 +6,11 @@ import com.zst.xposed.xuimod.mods.SecondsClockMod;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.util.Log;
@@ -22,7 +20,7 @@ import android.widget.ListView;
 @SuppressLint("WorldReadableFiles")
 @SuppressWarnings("deprecation")
 public class SettingActivity extends PreferenceActivity implements
-		OnPreferenceClickListener {
+		OnPreferenceClickListener, OnSharedPreferenceChangeListener {
 	public static final String TAG = SettingActivity.class.getSimpleName();
 	public static final String FIRST_KEY = "first";
 	public static final String PREFERENCE_FILE = Common.MY_PACKAGE_NAME
@@ -47,9 +45,15 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("batterybar_restart").setOnPreferenceClickListener(this);
 		findPreference("seconds_restart").setOnPreferenceClickListener(this);
 		findPreference("listview_testing").setOnPreferenceClickListener(this);
+		prefs.registerOnSharedPreferenceChangeListener(this);
 		Log.i(TAG, "onCreate");
 	}
-
+	
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences arg0, String key) {
+		Common.settingsChanged(this);
+	}
+	
 	@Override
 	public boolean onPreferenceClick(Preference p) {
 		if (p.getKey().equals("seconds_restart")

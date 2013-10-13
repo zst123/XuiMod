@@ -6,11 +6,10 @@
     <string name="framework_title">Framework</string>
     
     <string name="systemui_restart">Restart SystemUI</string>    
-    <string name="systemui_restart_summary">Restart SystemUI for changes to take effect \n(Requires SU permissions)</string>
+    <string name="systemui_restart_summary">Restart SystemUI if changes did not apply \n(Requires SU permissions)</string>
     <string name="systemui_restart_dialog">Confirm restart SystemUI?</string>    
     
     <!-- Seconds Clock Pref-->
-    <string name="seconds_reminder">Restart SystemUI To See Changes</string>
     <string name="seconds_title">Clock Mods</string>
     <string name="seconds_enable_title">Enable Seconds</string>
     <string name="seconds_enable_summary">Refresh Clock every second in Status Bar Clock</string>
