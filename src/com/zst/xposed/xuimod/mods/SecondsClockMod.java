@@ -118,6 +118,7 @@ public class SecondsClockMod {
 		public void onReceive(Context context, Intent intent) {
 			String action = intent.getAction();
 			if (Common.ACTION_SETTINGS_CHANGED.equals(action)){
+				Context ctx = thix.getContext();
 				mHandler = null;
 				mTicker = null;
 				enabled = false;
@@ -125,11 +126,12 @@ public class SecondsClockMod {
 				format = null;
 				//Reset all the variables
 				Intent i = new Intent(Intent.ACTION_CONFIGURATION_CHANGED);
-				thix.getContext().sendBroadcast(i);
-				/* Broadcast to system that time changed. 
-				 * System will run "updateClock" on receiving (the hooked method above)
-				 * and this simulates restarting SystemUI. "updateClock" also runs 
-				 * init() and start() for us.
+				ctx.sendBroadcast(i);
+				if(init()){ //init() will return TRUE when setting is enabled.
+    				start(); //Start the seconds handler
+    			}
+				/* 
+				 * Broadcast to system that time changed.
 				 */
 			}
 		}
