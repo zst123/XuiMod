@@ -122,10 +122,15 @@ public class SecondsClockMod {
 				mTicker = null;
 				enabled = false;
 				stopForever = false;
+				format = null;
 				//Reset all the variables
-				if(init()){
-    				start();
-    			}//init and start
+				Intent i = new Intent(Intent.ACTION_CONFIGURATION_CHANGED);
+				thix.getContext().sendBroadcast(i);
+				/* Broadcast to system that time changed. 
+				 * System will run "updateClock" on receiving (the hooked method above)
+				 * and this simulates restarting SystemUI. "updateClock" also runs 
+				 * init() and start() for us.
+				 */
 			}
 		}
 	};
