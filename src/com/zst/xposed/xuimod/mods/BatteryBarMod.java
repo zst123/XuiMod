@@ -29,17 +29,17 @@ public class BatteryBarMod {
 			 @Override
 			 public void handleLayoutInflated(LayoutInflatedParam liparam) throws Throwable {
 				 FrameLayout mRootView = (FrameLayout)liparam.view;
-				 BatteryBarController mLayoutClock = new BatteryBarController(liparam.view.getContext());
+				 BatteryBarController battery_bar = new BatteryBarController(liparam.view.getContext());
 				 LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
-				 mLayoutClock.setLayoutParams(param);
-				 mLayoutClock.setVisibility(View.VISIBLE);
-				 mRootView.addView(mLayoutClock);
+				 battery_bar.setLayoutParams(param);
+				 battery_bar.setVisibility(View.VISIBLE);
+				 mRootView.addView(battery_bar);
 			 }
 		 });
 	 }
 	 private static String findXML(XResources res){
 		 String s = null;
-		 for (int x = 1; x < 5; x++){ // Continue until we find the system XML
+		 for (int x = 0; x < layouts.length; x++){ // Continue until we find the system XML
 			 
 			 s = layouts[x];
 			 int id = res.getIdentifier(s, "layout", "com.android.systemui");

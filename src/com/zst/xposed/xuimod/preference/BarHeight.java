@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
@@ -78,8 +79,23 @@ public class BarHeight extends DialogPreference implements
 		mSeekBar.setMax(LIMIT_MAX_BATTERYBAR_HEIGHT - LIMIT_MIN_BATTERYBAR_HEIGHT);
 		mSeekBar.setProgress(value);
 		
+        String colorString = prefs.getString(Common.KEY_BATTERYBAR_COLOR, Common.DEFAULT_BATTERYBAR_COLOR);
+        mLine.setBackgroundColor(parseLineColor(colorString));
 	}
 
+	public int parseLineColor(String colorString) {
+        try{
+        	return Color.parseColor(colorString);
+        }catch(Throwable t){ //Error parsing color, try removing non-numeric characters
+        	 try{
+        		 colorString = colorString.replaceAll( "[^\\d]", "" ); //Remove non-numeric characters
+                 return Color.parseColor("#" + colorString);
+             }catch(Throwable t1){ // Error parsing the string. Use default anyway.
+             	 return 0xFF33B5E5;
+             }
+        }
+	}
+	
 	@Override
 	protected void onDialogClosed(boolean positiveResult) {
 		super.onDialogClosed(positiveResult);
