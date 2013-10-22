@@ -30,6 +30,7 @@ public class Common {
 	public static final String KEY_BATTERYBAR_STYLE ="batterybar_style";
 	public static final String KEY_BATTERYBAR_COLOR ="batterybar_color";
 	public static final String KEY_BATTERYBAR_HEIGHT ="batterybar_height";
+	public static final String KEY_BATTERYBAR_BACKGROUND_COLOR ="batterybar_bg_color";
 
 	public static final String KEY_LOCKSCREEN_TORCH_ENABLE ="lockscreen_torch";
 	public static final String KEY_LOCKSCREEN_TORCH_BACK ="lockscreen_torch_back";

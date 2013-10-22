@@ -34,6 +34,7 @@
             android:summary="@string/systemui_restart_summary"
             android:title="@string/systemui_restart" />
     </PreferenceScreen>
+    <!-- BatteryBar Screen -->
     <PreferenceScreen
         android:key="batterybar_screen"
         android:title="@string/batterybar_title" >
@@ -70,6 +71,16 @@
             android:key="batterybar_height"
             android:summary="@string/batterybar_height_summary"
             android:title="@string/batterybar_height_title" />
+        <EditTextPreference
+            android:defaultValue="00000000"
+            android:dependency="batterybar_enable"
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogMessage="@string/batterybar_bg_color_dialog"
+            android:dialogTitle="@string/batterybar_bg_color_title"
+            android:key="batterybar_bg_color"
+            android:summary="@string/batterybar_bg_color_summary"
+            android:title="@string/batterybar_bg_color_title" />
+        
         <Preference
             android:key="batterybar_restart"
             android:summary="@string/systemui_restart_summary"
@@ -154,6 +165,11 @@
             android:key="lockscreen_torch"
             android:summary="@string/lockscreen_torch_summary"
             android:title="@string/lockscreen_torch_title" />
+        <!-- Lockscreen Torch Buttons -->
+        <PreferenceScreen
+        android:key="lockscreen_torch_buttons_screen"
+        android:title="@string/lockscreen_torch_buttons_title"
+        android:summary="@string/lockscreen_torch_buttons_summary" >
         
         <CheckBoxPreference
             android:key="lockscreen_torch_home"
@@ -169,6 +185,8 @@
             android:key="lockscreen_torch_back"
             android:title="@string/lockscreen_torch_back_title"
             android:dependency="lockscreen_torch" />
+        
+        </PreferenceScreen>
         <ListPreference
             android:defaultValue="0"
             android:dialogIcon="@drawable/ic_launcher"

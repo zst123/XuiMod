@@ -88,6 +88,8 @@
     <!-- Lockscreen Torch -->
     <string name="lockscreen_torch_title">Lockscreen Torch</string>
     <string name="lockscreen_torch_summary">Hold Hardware Buttons for Torch.\nRelease to switch off.</string>
+    <string name="lockscreen_torch_buttons_title">Hardware Button</string>
+    <string name="lockscreen_torch_buttons_summary">Choose the Hardware Buttons to trigger Torch.</string>
     <string name="lockscreen_torch_home_title">Use Home Button</string>
     <string name="lockscreen_torch_menu_title">Use Menu Button</string>
     <string name="lockscreen_torch_back_title">Use Back Button</string>
@@ -109,6 +111,9 @@
     <string name="batterybar_color_title">Bar Color</string>
     <string name="batterybar_color_summary">Specify Color in #AARRGGBB</string>
     <string name="batterybar_color_dialog">Specify Color in #AARRGGBB.\n(eg. #8800ffff = Cyan with 50% alpha)\nHolo Blue is used if blank or invalid color syntax is used  </string>
+    <string name="batterybar_bg_color_title">Background Color</string>
+    <string name="batterybar_bg_color_summary">Specify Background Color in #AARRGGBB</string>
+    <string name="batterybar_bg_color_dialog">Specify Background Color in #AARRGGBB.\nBackground disabled if left blank or invalid color syntax is used.\n</string>
     
    <!-- Other string -->
    <string name="settings_default">Default value</string>
