@@ -20,6 +20,9 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class LockscreenTorchMod {
+	private static final int CM_TORCH = 0;
+	private static final int TESLA_TORCH = 1;
+	private static final int DASHLIGHT_TORCH = 2;
 	
 	private static final int LONGPRESS_TIMEOUT = ViewConfiguration.getLongPressTimeout();
 	private static final int VIBRATE_DURATION = 25;
@@ -139,21 +142,59 @@ public class LockscreenTorchMod {
 	}
     
     private static void toggleTorch(boolean turnOn) {
-    	broadcastToTorch(turnOn);
-        toggleWakelock(turnOn);
+    	XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+		int type = Integer.parseInt(pref.getString(Common.KEY_LOCKSCREEN_TORCH_TYPE, Common.DEFAULT_LOCKSCREEN_TORCH_TYPE));
+		
+		if(type == CM_TORCH){
+			toggleCyanogenmodTorch(turnOn);
+		}else if(type == TESLA_TORCH){
+			toggleTeslaLedTorch(turnOn);
+		}else if(type == DASHLIGHT_TORCH){
+			toggleDashLightTorch(turnOn);
+		}
+		
+		vibrate();
+		toggleWakelock(turnOn);
     }
     
     //TODO: Add more Flashlight apps or implement own flashlight code.
     /* 
 	 * Sends broadcast to default Torch app found in CM, AOKP, etc.
 	 */
-    private static void broadcastToTorch(boolean turnOn) {
+    private static void toggleCyanogenmodTorch(boolean turnOn) {
     	if (isTorchOn != turnOn){
     		Intent intent = new Intent("net.cactii.flash2.TOGGLE_FLASHLIGHT");
     		intent.putExtra("bright", false);
     		sContext.sendBroadcast(intent);
-    		vibrate();
     		isTorchOn = !isTorchOn;	
     	}
     }
+    
+    /* Sends broadcast to TeslaLED */
+    private static void toggleTeslaLedTorch(boolean turnOn) {
+    	Intent i = new Intent("com.teslacoilsw.intent.FLASHLIGHT");
+    	if (turnOn) {
+    		i.putExtra("on", true);
+    		i.putExtra("timeout", 10);
+    		// Turn on & set max time to 10 min (user can't possibly hold for 10 min)
+    	}else{
+    		i.putExtra("off", true);
+    	}
+        sContext.startService(i);
+    	isTorchOn = !isTorchOn;	
+    }
+    
+    /* Sends broadcast to Dashlight Torch  */
+    private static void toggleDashLightTorch(boolean turnOn) {
+    	Intent intent;
+    	if (turnOn){
+    		intent = new Intent("com.spectrl.dashlight.FLASHLIGHT_ON");
+    	}else{
+    		intent = new Intent("com.spectrl.dashlight.FLASHLIGHT_OFF");
+    	}
+    	
+    	sContext.sendBroadcast(intent);
+    	isTorchOn = !isTorchOn;	
+    }
+    
 }

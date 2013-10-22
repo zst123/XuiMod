@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="lockscreen_torch_type_entry">
+        <item>@string/lockscreen_torch_cm_torch</item>
+        <item>@string/lockscreen_torch_tesla_torch</item>
+        <item>@string/lockscreen_torch_dashlight_torch</item>
+    </string-array>
+    
+    <string-array name="lockscreen_torch_type_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
