@@ -33,7 +33,7 @@ public class BarHeight extends DialogPreference implements
 	public BarHeight(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		setDialogLayoutResource(R.layout.bar_height);
+		setDialogLayoutResource(R.layout.pref_bar_height);
 	}
 
 	@Override

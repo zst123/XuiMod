@@ -1,13 +1,13 @@
 package com.zst.xposed.xuimod.preference;
 
+import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
-import static com.zst.xposed.xuimod.Common.KEY_VOLUME_ALPHA;
-import static com.zst.xposed.xuimod.Common.DEFAULT_VOLUME_ALPHA;
-import static com.zst.xposed.xuimod.Common.LIMIT_MAX_VOLUME_ALPHA;
-import static com.zst.xposed.xuimod.Common.LIMIT_MIN_VOLUME_ALPHA;
+import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_DURATION;
+import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_DURATION;
+import static com.zst.xposed.xuimod.Common.LIMIT_MAX_LISTVIEW_DURATION;
+import static com.zst.xposed.xuimod.Common.LIMIT_MIN_LISTVIEW_DURATION;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -16,21 +16,19 @@ import android.os.Bundle;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class VolumePanelAlpha extends DialogPreference implements
-		SeekBar.OnSeekBarChangeListener {
+public class AnimationDuration extends DialogPreference implements SeekBar.OnSeekBarChangeListener {
 
-	private static final String TAG = VolumePanelAlpha.class.getName();
+	@SuppressWarnings("unused")
+	private static final String TAG = AnimationDuration.class.getName();
 
 	private SeekBar mSeekBar;
 	private TextView mValue;
 
-	public VolumePanelAlpha(Context context, AttributeSet attrs) {
+	public AnimationDuration(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
 		setDialogLayoutResource(R.layout.pref_seekbar);
@@ -38,22 +36,20 @@ public class VolumePanelAlpha extends DialogPreference implements
 
 	@Override
 	protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
-		builder.setNeutralButton(R.string.settings_default,
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-					}
-				});
+		builder.setNeutralButton(R.string.settings_default, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+			}
+		});
 	}
 
 	@Override
 	protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
-		
+
 		mValue = (TextView) view.findViewById(R.id.value);
 		mSeekBar = (SeekBar) view.findViewById(R.id.seekbar);
 		mSeekBar.setOnSeekBarChangeListener(this);
-		
 	}
 
 	@Override
@@ -67,46 +63,36 @@ public class VolumePanelAlpha extends DialogPreference implements
 		defaultsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mSeekBar.setProgress(DEFAULT_VOLUME_ALPHA-LIMIT_MIN_VOLUME_ALPHA);
+				mSeekBar.setProgress(DEFAULT_LISTVIEW_DURATION - LIMIT_MIN_LISTVIEW_DURATION);
 			}
 		});
-		
+
 		final SharedPreferences prefs = getSharedPreferences();
-		
-		int value = prefs.getInt(KEY_VOLUME_ALPHA, DEFAULT_VOLUME_ALPHA);
-		value -= LIMIT_MIN_VOLUME_ALPHA;
-		
-		mSeekBar.setMax(LIMIT_MAX_VOLUME_ALPHA - LIMIT_MIN_VOLUME_ALPHA);
+
+		int value = prefs.getInt(Common.KEY_LISTVIEW_DURATION, DEFAULT_LISTVIEW_DURATION);
+		value -= LIMIT_MIN_LISTVIEW_DURATION;
+
+		mSeekBar.setMax(LIMIT_MAX_LISTVIEW_DURATION - LIMIT_MIN_LISTVIEW_DURATION);
 		mSeekBar.setProgress(value);
-		
+
 	}
 
 	@Override
 	protected void onDialogClosed(boolean positiveResult) {
 		super.onDialogClosed(positiveResult);
-		
+
 		if (positiveResult) {
-			int realValue = mSeekBar.getProgress() + LIMIT_MIN_VOLUME_ALPHA;
+			int realValue = mSeekBar.getProgress() + LIMIT_MIN_LISTVIEW_DURATION;
 			Editor editor = getEditor();
-			editor.putInt(KEY_VOLUME_ALPHA, realValue);
+			editor.putInt(KEY_LISTVIEW_DURATION, realValue);
 			editor.commit();
 		}
 	}
 
 	@Override
-	public void onProgressChanged(SeekBar seekBar, int progress,
-			boolean fromUser) {
-		int realValue = progress + LIMIT_MIN_VOLUME_ALPHA;
-
-		Dialog dialog = getDialog();
-		if (dialog != null) {
-			Window window = dialog.getWindow();
-			WindowManager.LayoutParams lp = window.getAttributes();
-			lp.alpha = (realValue * 0.01f); // Convert Percentage to Decimal
-			window.setAttributes(lp);
-		}
-		
-		mValue.setText(realValue + "%");
+	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+		int realValue = progress + LIMIT_MIN_LISTVIEW_DURATION;
+		mValue.setText(realValue + " ms");
 	}
 
 	@Override

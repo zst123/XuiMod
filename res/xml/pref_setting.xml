@@ -120,6 +120,13 @@
             android:key="listview_interpolator"
             android:summary="@string/anim_listview_interpolator_summary"
             android:title="@string/anim_listview_interpolator" />
+        <com.zst.xposed.xuimod.preference.AnimationDuration
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/anim_listview_duration"
+            android:persistent="false"
+            android:summary="@string/anim_listview_duration_summary"
+            android:title="@string/anim_listview_duration" />
+
         <ListPreference
             android:defaultValue="0"
             android:dialogTitle="@string/anim_listview_cache"
@@ -147,7 +154,6 @@
     </PreferenceScreen>
     <!-- Lockscreen Mod Screen -->
     <PreferenceScreen
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:key="lockscreen_screen"
         android:title="@string/lockscreen_title" >
 
@@ -219,7 +225,7 @@
             android:dialogMessage="@string/volume_alpha_dialog"
             android:dialogTitle="@string/volume_alpha_title"
             android:persistent="false"
-            android:dialogLayout="@layout/volume_panel_alpha"
+            android:dialogLayout="@layout/pref_seekbar"
             android:summary="@string/volume_alpha_summary"
             android:title="@string/volume_alpha_title" />
     </PreferenceScreen>
