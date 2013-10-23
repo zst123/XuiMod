@@ -21,17 +21,6 @@ import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 
 public class ListViewAnimationMod {
-	public static final int INTERPOLATOR_NONE = 0;
-	public static final int INTERPOLATOR_ACCELERATE = 1;
-	public static final int INTERPOLATOR_DECELERATE = 2;
-	public static final int INTERPOLATOR_ACCELERATE_DECELERATE = 3;
-	public static final int INTERPOLATOR_ANTICIPATE = 4;
-	public static final int INTERPOLATOR_OVERSHOOT = 5;
-	public static final int INTERPOLATOR_ANTICIPATE_OVERSHOOT = 6;
-	public static final int INTERPOLATOR_BOUNCE = 7;
-	public static final int INTERPOLATOR_CYCLE = 8;
-	public static final int INTERPOLATOR_LINEAR = 9;
-
 	public static final int ANIMATION_NONE = 0;
 	public static final int ANIMATION_WAVE_LEFT = 1;
 	public static final int ANIMATION_WAVE_RIGHT = 2;
@@ -45,11 +34,31 @@ public class ListViewAnimationMod {
 	public static final int ANIMATION_TRANSLATE_RIGHT = 10;
 	public static final int ANIMATION_ROTATE = 11;
 	
+	public static final int INTERPOLATOR_NONE = 0;
+	public static final int INTERPOLATOR_ACCELERATE = 1;
+	public static final int INTERPOLATOR_DECELERATE = 2;
+	public static final int INTERPOLATOR_ACCELERATE_DECELERATE = 3;
+	public static final int INTERPOLATOR_ANTICIPATE = 4;
+	public static final int INTERPOLATOR_OVERSHOOT = 5;
+	public static final int INTERPOLATOR_ANTICIPATE_OVERSHOOT = 6;
+	public static final int INTERPOLATOR_BOUNCE = 7;
+	public static final int INTERPOLATOR_CYCLE = 8;
+	public static final int INTERPOLATOR_LINEAR = 9;
+	
 	static boolean mIsScrolling;
 	static int mWidth, mHeight = 0;
 	static int mvPosition;
+	private static XSharedPreferences mPref;
+	private static int mInterpolator;
+	private static int cache;
+	private static int mAnim;
 
-	public static void handleLoadPackage() {
+	public static void handleLoadPackage(XSharedPreferences pref) {
+		mPref = pref;
+		mInterpolator = Integer.parseInt( mPref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
+		cache = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
+		mAnim = Integer.parseInt( mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
+		// Get our pref value in String and parse to Integer
 		initAbsListView();
 		on_Layout();
 		reportScrollStateChange();
@@ -61,10 +70,6 @@ public class ListViewAnimationMod {
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				mHeight = 0; mWidth = 0;
 				// Init-ing new AbsListView so we must reset static values from previous view
-				
-				XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-				int cache = Integer.parseInt(pref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
-				// Get our pref value in String and parse to Integer
 				
 				AbsListView item = (AbsListView)param.thisObject; 
 				item.setPersistentDrawingCache(cache);
@@ -120,10 +125,7 @@ public class ListViewAnimationMod {
 	 * For more info on animations, you'll have to ask MoKee ROM people who did this
 	 */
 	private static View setAnimation(Object thisObject, View view, Context mContext) {
-		XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-		int mAnim = Integer.parseInt( pref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
-
-		if(mAnim == 0) return view;
+		if(mAnim == ANIMATION_NONE) return view;
 		
 		int scrollY = 0;
 		boolean mDown = false;
@@ -159,9 +161,7 @@ public class ListViewAnimationMod {
 			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f);
 			break;
 		case ANIMATION_SCALE:
-			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f,
-					Animation.RELATIVE_TO_SELF, 0.5f,
-					Animation.RELATIVE_TO_SELF, 0.5f);
+			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 			break;
 		case ANIMATION_ALPHA:
 			anim = new AlphaAnimation(0.0f, 1.0f);
@@ -196,7 +196,7 @@ public class ListViewAnimationMod {
 		}
 		anim.setDuration(500);
 		        	
-		int mInterpolator = Integer.parseInt( pref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
+
 		switch (mInterpolator) {
 		case INTERPOLATOR_ACCELERATE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.accelerate_interpolator));

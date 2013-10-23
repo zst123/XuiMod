@@ -23,20 +23,22 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 	@Override
 	public void initZygote(StartupParam startupParam) throws Throwable {
 		MODULE_PATH = startupParam.modulePath;		
+		pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
 	}
 	
 	@Override
 	public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {		
+		pref.reload();
 		SecondsClockMod.handleLoadPackage(lpparam);
 		LockscreenVolumeMod.handleLoadPackage(lpparam);
-		ListViewAnimationMod.handleLoadPackage();
-		VolumePanelMod.handleLoadPackage(lpparam);
-		LockscreenTorchMod.handleLoadPackage(lpparam);
+		ListViewAnimationMod.handleLoadPackage(pref);
+		VolumePanelMod.handleLoadPackage(lpparam,pref);
+		LockscreenTorchMod.handleLoadPackage(lpparam,pref);
 	}
 
 	@Override
 	public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
-		pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+		pref.reload();
 		if (pref.getBoolean(Common.KEY_XYLON_ANIM, Common.DEFAULT_XYLON_ANIM)) XylonAnimMod.handleInitPackageResources(resparam);
 		if (pref.getBoolean(Common.KEY_BATTERYBAR_ENABLE, Common.DEFAULT_BATTERYBAR_ENABLE)) BatteryBarMod.initResources(resparam);
 	}

@@ -15,11 +15,13 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class VolumePanelMod {
 
-	
-	public static void handleLoadPackage(LoadPackageParam lpparam ) {
+	protected static XSharedPreferences mPref;
+	public static void handleLoadPackage(LoadPackageParam lpparam, XSharedPreferences pref) {
 		if (!lpparam.packageName.equals("android")) return;
+		mPref=pref;
 		VolumePanel_Hook(lpparam);
 	}
+
 	
 	private static void VolumePanel_Hook(final LoadPackageParam lpparam) { 
 		Class<?> hookClass = findClass("android.view.VolumePanel", lpparam.classLoader);
@@ -30,20 +32,20 @@ public class VolumePanelMod {
 		XposedBridge.hookAllMethods(hookClass, "resetTimeout", new XC_MethodReplacement(){ 
 			@Override 
 			protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-				XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+				mPref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
 				Handler h = (Handler) param.thisObject;
 				Dialog mDialog = (Dialog) Common.getReflection(h, "mDialog");
 				Window window = mDialog.getWindow();
 
 				/* Set Transparency */
 		        WindowManager.LayoutParams lp = window.getAttributes();
-		        lp.alpha = (getAlpha(pref) * 0.01f); // Convert Percentage to Decimal
+		        lp.alpha = (getAlpha(mPref) * 0.01f); // Convert Percentage to Decimal
 		        window.setAttributes(lp);
 		        
 		        /* Set Timeout */
 				int MSG_TIMEOUT = 5; // Constant value from source
 				h.removeMessages(MSG_TIMEOUT); // Code from source
-		        h.sendMessageDelayed(h.obtainMessage(MSG_TIMEOUT), getTimeout(pref)); 
+		        h.sendMessageDelayed(h.obtainMessage(MSG_TIMEOUT), getTimeout(mPref)); 
 
 		        return null;
 			}

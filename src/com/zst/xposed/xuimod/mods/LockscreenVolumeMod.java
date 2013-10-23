@@ -14,8 +14,11 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class LockscreenVolumeMod {
 	
-	public static void handleLoadPackage(LoadPackageParam lpparam ) {
+	protected static XSharedPreferences mPref;
+	
+	public static void handleLoadPackage(LoadPackageParam lpparam, XSharedPreferences pref ) {
 		if (!lpparam.packageName.equals("android")) return;
+		mPref = pref;
 		Lockscreen_Volume_Button(lpparam);
 	}
     private static void Lockscreen_Volume_Button(final LoadPackageParam lpparam) { 
@@ -25,8 +28,7 @@ public class LockscreenVolumeMod {
 				KeyEvent event = (KeyEvent)param.args[0];
 				if (!isVolume(event))return; //Key is not a volume key. Let system handle
 				
-				XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-				if (pref.getBoolean(Common.KEY_LOCKSCREEN_VOLUME, Common.DEFAULT_LOCKSCREEN_VOLUME)){
+				if (mPref.getBoolean(Common.KEY_LOCKSCREEN_VOLUME, Common.DEFAULT_LOCKSCREEN_VOLUME)){
 					param.setResult(Boolean.TRUE);
 				} // Change return result to TRUE so system knows we are handling it	
 			}
