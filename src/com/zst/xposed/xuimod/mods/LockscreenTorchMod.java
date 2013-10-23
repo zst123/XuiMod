@@ -34,9 +34,10 @@ public class LockscreenTorchMod {
 
 	private static boolean isKeyDown = false;
 	private static boolean isTorchOn = false;
-	
-	public static void handleLoadPackage(LoadPackageParam lpparam ) {
-	    if (!lpparam.packageName.equals("android")) return;
+	protected static XSharedPreferences mPref;
+	public static void handleLoadPackage(LoadPackageParam lpparam, XSharedPreferences pref) {
+		if (!lpparam.packageName.equals("android")) return;
+		mPref = pref;
 	    hook(lpparam);
 	}
 	
@@ -58,26 +59,25 @@ public class LockscreenTorchMod {
 	}
 	
 	private static boolean keyCodeEnabled(KeyEvent event){
-		XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-		
-		boolean enabled = pref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_ENABLE,
+
+		boolean enabled = mPref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_ENABLE,
 				Common.DEFAULT_LOCKSCREEN_TORCH_ENABLE);
 		if (!enabled){
 			return false;
 		}
 		
 	    if(event.getKeyCode() == KeyEvent.KEYCODE_HOME){
-	    	boolean homeEnable = pref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_HOME,
+	    	boolean homeEnable = mPref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_HOME,
 					Common.DEFAULT_LOCKSCREEN_TORCH_HOME);
 	    	return homeEnable;
 	    	
 	    }else if(event.getKeyCode() == KeyEvent.KEYCODE_MENU){
-	    	boolean menuEnable = pref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_MENU,
+	    	boolean menuEnable = mPref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_MENU,
 					Common.DEFAULT_LOCKSCREEN_TORCH_MENU);
 	    	return menuEnable;
 	    	
 	    }else if(event.getKeyCode() == KeyEvent.KEYCODE_BACK){
-	    	boolean menuEnable = pref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_BACK,
+	    	boolean menuEnable = mPref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_BACK,
 					Common.DEFAULT_LOCKSCREEN_TORCH_BACK);
 	    	return menuEnable;
 	    }
@@ -142,8 +142,7 @@ public class LockscreenTorchMod {
 	}
     
     private static void toggleTorch(boolean turnOn) {
-    	XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-		int type = Integer.parseInt(pref.getString(Common.KEY_LOCKSCREEN_TORCH_TYPE, Common.DEFAULT_LOCKSCREEN_TORCH_TYPE));
+		int type = Integer.parseInt(mPref.getString(Common.KEY_LOCKSCREEN_TORCH_TYPE, Common.DEFAULT_LOCKSCREEN_TORCH_TYPE));
 		
 		if(type == CM_TORCH){
 			toggleCyanogenmodTorch(turnOn);
