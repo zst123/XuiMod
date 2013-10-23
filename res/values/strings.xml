@@ -29,9 +29,11 @@
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>
     <string name="anim_listview_anim_summary">Animation used when scrolling ListViews</string>
-	<string name="anim_listview_interpolator">ListView Interpolator</string>
+    <string name="anim_listview_interpolator">ListView Interpolator</string>
     <string name="anim_listview_interpolator_summary">Interpolator used when scrolling ListViews</string>
-	<string name="anim_listview_test">Test ListView</string>
+    <string name="anim_listview_duration">Animation duration</string>
+    <string name="anim_listview_duration_summary">Change animation duration</string>
+    <string name="anim_listview_test">Test ListView</string>
     <string name="anim_listview_test_summary">Open Test Dialog with a ListView</string>
     <string name="anim_listview_cache">ListView Persistent Cache</string>
     <string name="anim_listview_cache_summary">Type of cache to persist in memory \n(No Cache is Disabled. Just Persisted)</string>

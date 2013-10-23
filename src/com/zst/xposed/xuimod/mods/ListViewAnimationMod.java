@@ -52,11 +52,12 @@ public class ListViewAnimationMod {
 	private static int mInterpolator;
 	private static int cache;
 	private static int mAnim;
+	private static int mDuration;
 
 	public static void handleLoadPackage(XSharedPreferences pref) {
 		mPref = pref;
 		mInterpolator = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
-		
+		mDuration = mPref.getInt(Common.KEY_LISTVIEW_DURATION, Common.DEFAULT_LISTVIEW_DURATION);
 		mAnim = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
 		// Get our pref value in String and parse to Integer
 		initAbsListView();
@@ -190,9 +191,8 @@ public class ListViewAnimationMod {
 			anim = new RotateAnimation(180, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 			break;
 		}
-		anim.setDuration(500);
+		anim.setDuration(mDuration);
 		        	
-
 		switch (mInterpolator) {
 		case INTERPOLATOR_ACCELERATE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.accelerate_interpolator));
