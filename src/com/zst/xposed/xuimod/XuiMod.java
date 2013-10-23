@@ -2,6 +2,7 @@ package com.zst.xposed.xuimod;
 
 import com.zst.xposed.xuimod.mods.BatteryBarMod;
 import com.zst.xposed.xuimod.mods.ListViewAnimationMod;
+import com.zst.xposed.xuimod.mods.ListViewCacheMod;
 import com.zst.xposed.xuimod.mods.LockscreenTorchMod;
 import com.zst.xposed.xuimod.mods.LockscreenVolumeMod;
 import com.zst.xposed.xuimod.mods.SecondsClockMod;
@@ -30,10 +31,11 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 	public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {		
 		pref.reload();
 		SecondsClockMod.handleLoadPackage(lpparam);
-		LockscreenVolumeMod.handleLoadPackage(lpparam);
+		LockscreenVolumeMod.handleLoadPackage(lpparam,pref);
 		ListViewAnimationMod.handleLoadPackage(pref);
 		VolumePanelMod.handleLoadPackage(lpparam,pref);
 		LockscreenTorchMod.handleLoadPackage(lpparam,pref);
+		ListViewCacheMod.handleLoadPackage(pref);
 	}
 
 	@Override
