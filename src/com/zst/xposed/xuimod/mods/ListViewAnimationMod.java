@@ -21,6 +21,29 @@ import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 
 public class ListViewAnimationMod {
+	public static final int INTERPOLATOR_NONE = 0;
+	public static final int INTERPOLATOR_ACCELERATE = 1;
+	public static final int INTERPOLATOR_DECELERATE = 2;
+	public static final int INTERPOLATOR_ACCELERATE_DECELERATE = 3;
+	public static final int INTERPOLATOR_ANTICIPATE = 4;
+	public static final int INTERPOLATOR_OVERSHOOT = 5;
+	public static final int INTERPOLATOR_ANTICIPATE_OVERSHOOT = 6;
+	public static final int INTERPOLATOR_BOUNCE = 7;
+	public static final int INTERPOLATOR_CYCLE = 8;
+	public static final int INTERPOLATOR_LINEAR = 9;
+
+	public static final int ANIMATION_NONE = 0;
+	public static final int ANIMATION_WAVE_LEFT = 1;
+	public static final int ANIMATION_WAVE_RIGHT = 2;
+	public static final int ANIMATION_SCALE = 3;
+	public static final int ANIMATION_ALPHA = 4;
+	public static final int ANIMATION_STACK_TOP = 5;
+	public static final int ANIMATION_STACK_BOTTOM = 6;
+	public static final int ANIMATION_UNFOLD = 7;
+	public static final int ANIMATION_FOLD = 8;
+	public static final int ANIMATION_TRANSLATE_LEFT = 9;
+	public static final int ANIMATION_TRANSLATE_RIGHT = 10;
+	public static final int ANIMATION_ROTATE = 11;
 	
 	static boolean mIsScrolling;
 	static int mWidth, mHeight = 0;
@@ -129,43 +152,45 @@ public class ListViewAnimationMod {
 			
 		Animation anim = null;
 		switch (mAnim) {
-		case 1:
+		case ANIMATION_WAVE_LEFT:
 			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f);
 			break;
-		case 2:
-			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF,1.0f, Animation.RELATIVE_TO_SELF, 1.0f);
+		case ANIMATION_WAVE_RIGHT:
+			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f);
 			break;
-		case 3:
-			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f, Animation.RELATIVE_TO_SELF,0.5f, Animation.RELATIVE_TO_SELF, 0.5f);  
+		case ANIMATION_SCALE:
+			anim = new ScaleAnimation(0.5f, 1.0f, 0.5f, 1.0f,
+					Animation.RELATIVE_TO_SELF, 0.5f,
+					Animation.RELATIVE_TO_SELF, 0.5f);
 			break;
-		case 4:
+		case ANIMATION_ALPHA:
 			anim = new AlphaAnimation(0.0f, 1.0f);
 			break;
-		case 5:
+		case ANIMATION_STACK_TOP:
 			anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
 			break;
-		case 6:
+		case ANIMATION_STACK_BOTTOM:
 			anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
 			break;
-		case 7:
-			if(mDown)
+		case ANIMATION_UNFOLD:
+			if (mDown)
 				anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
 			else
 				anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
 			break;
-		case 8:
-			if(mDown)
+		case ANIMATION_FOLD:
+			if (mDown)
 				anim = new TranslateAnimation(0.0f, 0.0f, mHeight, 0.0f);
 			else
 				anim = new TranslateAnimation(0.0f, 0.0f, -mHeight, 0.0f);
 			break;
-		case 9:
+		case ANIMATION_TRANSLATE_LEFT:
 			anim = new TranslateAnimation(-mWidth, 0.0f, 0.0f, 0.0f);
 			break;
-		case 10:
+		case ANIMATION_TRANSLATE_RIGHT:
 			anim = new TranslateAnimation(mWidth, 0.0f, 0.0f, 0.0f);
 			break;
-		case 11:
+		case ANIMATION_ROTATE:
 			anim = new RotateAnimation(180, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
 			break;
 		}
@@ -173,31 +198,31 @@ public class ListViewAnimationMod {
 		        	
 		int mInterpolator = Integer.parseInt( pref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
 		switch (mInterpolator) {
-		case 1:
+		case INTERPOLATOR_ACCELERATE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.accelerate_interpolator));
 			break;
-		case 2:
+		case INTERPOLATOR_DECELERATE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.decelerate_interpolator));
 			break;
-		case 3:
+		case INTERPOLATOR_ACCELERATE_DECELERATE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.accelerate_decelerate_interpolator));
 			break;
-		case 4:
+		case INTERPOLATOR_ANTICIPATE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.anticipate_interpolator));
 			break;
-		case 5:
+		case INTERPOLATOR_OVERSHOOT:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.overshoot_interpolator));
 			break;
-		case 6:
+		case INTERPOLATOR_ANTICIPATE_OVERSHOOT:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.anticipate_overshoot_interpolator));
 			break;
-		case 7:
+		case INTERPOLATOR_BOUNCE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.bounce_interpolator));
 			break;
-		case 8:
+		case INTERPOLATOR_CYCLE:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.cycle_interpolator));
 			break;
-		case 9:
+		case INTERPOLATOR_LINEAR:
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.linear_interpolator));
 			break;
 		}
@@ -207,38 +232,3 @@ public class ListViewAnimationMod {
 		return view;
 	}
 }
-/*************************************
- *  ListView Animations
- * 0 == None
- * 1 == Wave (Left)
- * 2 == Wave (Right)
- * 3 == Scale
- * 4 == Alpha
- * 5 == Stack (Top)
- * 6 == Stack (Bottom)
- * 7 == Unfold
- * 8 == Fold
- * 9 == Translate (Left)
- * 10 == Translate (Right)
- * 11 == Rotate
- * 
- *************************************
- *
- * ListView Interpolators
- * 0 == None
- * 1 == accelerate_interpolator
- * 2 == decelerate_interpolator
- * 3 == accelerate_decelerate_interpolator
- * 4 == anticipate_interpolator
- * 5 == overshoot_interpolator
- * 6 == anticipate_overshoot_interpolator
- * 7 == bounce_interpolator
- * 8 == cycle_interpolator
- * 9 == linear_interpolator
- * 
- *************************************
- */
-
-        
-        
-        
