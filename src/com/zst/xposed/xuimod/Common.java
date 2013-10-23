@@ -19,6 +19,7 @@ public class Common {
 	public static final String KEY_LISTVIEW_INTERPOLATOR ="listview_interpolator";
 	public static final String KEY_LISTVIEW_ANIMATION ="listview_animation";
 	public static final String KEY_LISTVIEW_CACHE ="listview_cache";
+	public static final String KEY_LISTVIEW_DURATION ="listview_duration";
 	public static final String KEY_XYLON_ANIM ="xylon_anim";
 
 	public static final String KEY_VOLUME_TIMEOUT ="volume_timeout";
@@ -47,6 +48,7 @@ public class Common {
 	public static final String DEFAULT_LISTVIEW_INTERPOLATOR = "0";
 	public static final String DEFAULT_LISTVIEW_ANIMATION = "0";
 	public static final String DEFAULT_LISTVIEW_CACHE = "0";
+	public static final int DEFAULT_LISTVIEW_DURATION = 500;
 	public static final boolean DEFAULT_XYLON_ANIM =false;
 
 	public static final String DEFAULT_VOLUME_TIMEOUT = "3000";
@@ -66,6 +68,9 @@ public class Common {
 	public static final String DEFAULT_LOCKSCREEN_TORCH_TYPE = "0";
 	
 	/* Preference limits values */
+	
+	public static final int LIMIT_MAX_LISTVIEW_DURATION = 2500;
+	public static final int LIMIT_MIN_LISTVIEW_DURATION = 100;
 	
 	public static final int LIMIT_MAX_VOLUME_ALPHA = 100;
 	public static final int LIMIT_MIN_VOLUME_ALPHA = 25;
