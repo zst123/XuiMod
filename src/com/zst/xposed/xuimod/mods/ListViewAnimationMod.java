@@ -55,9 +55,9 @@ public class ListViewAnimationMod {
 
 	public static void handleLoadPackage(XSharedPreferences pref) {
 		mPref = pref;
-		mInterpolator = Integer.parseInt( mPref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
-		cache = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
-		mAnim = Integer.parseInt( mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
+		mInterpolator = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
+		
+		mAnim = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
 		// Get our pref value in String and parse to Integer
 		initAbsListView();
 		on_Layout();
@@ -70,10 +70,6 @@ public class ListViewAnimationMod {
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				mHeight = 0; mWidth = 0;
 				// Init-ing new AbsListView so we must reset static values from previous view
-				
-				AbsListView item = (AbsListView)param.thisObject; 
-				item.setPersistentDrawingCache(cache);
-				// Get object & Apply persistent cache value.
 			}			
 		});	
 	}
