@@ -94,8 +94,8 @@ public class LockscreenTorchMod {
 			break;
 			
 		case KeyEvent.ACTION_UP:
-			toggleTorch(false);
 			isKeyDown = false;
+			toggleTorch(false);
 			break;
 		}
 	}
