@@ -19,7 +19,7 @@ public class ListViewCacheMod {
 		XposedBridge.hookAllMethods(AbsListView.class, "initAbsListView", new XC_MethodHook(){
 			@Override 
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-
+				mPref.reload();
 				AbsListView item = (AbsListView)param.thisObject; 
 				item.setPersistentDrawingCache(cache);
 				// Get object & Apply persistent cache value.

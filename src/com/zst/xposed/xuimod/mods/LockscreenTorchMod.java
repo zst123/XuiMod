@@ -46,6 +46,7 @@ public class LockscreenTorchMod {
 	    XposedBridge.hookAllMethods(hookClass, "dispatchKeyEvent", new XC_MethodHook(){
 		@Override 
 		protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+			mPref.reload();
 			FrameLayout thiss = (FrameLayout)param.thisObject;
 		    sContext = thiss.getContext();
 		    KeyEvent event = (KeyEvent)param.args[0];

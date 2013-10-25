@@ -27,7 +27,7 @@ public class LockscreenVolumeMod {
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				KeyEvent event = (KeyEvent)param.args[0];
 				if (!isVolume(event))return; //Key is not a volume key. Let system handle
-				
+				mPref.reload();
 				if (mPref.getBoolean(Common.KEY_LOCKSCREEN_VOLUME, Common.DEFAULT_LOCKSCREEN_VOLUME)){
 					param.setResult(Boolean.TRUE);
 				} // Change return result to TRUE so system knows we are handling it	
