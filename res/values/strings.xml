@@ -41,7 +41,7 @@
     <string name="anim_listview_cache_summary">Type of cache to persist in memory \n(No Cache is Disabled. Just Persisted)</string>
     <string name="anim_listview_blacklist">Blacklist Apps</string>
     <string name="anim_listview_blacklist_summary">Prevent Apps from animating</string>
-  	<string name="anim_listview_blacklist_help_dialog">To remove an app from the blacklist, tap on the app.\n\nTo add, tap on add and find the app.</string>
+  	<string name="anim_listview_blacklist_help_dialog">To remove an app from the blacklist, tap on the app.\n\nTo add, tap on ADD and find the app.</string>
   	
     <!-- ListView animation -->  
  	<string name="listview_off">Off</string>

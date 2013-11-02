@@ -1,7 +1,4 @@
 /*
- * 
- * 
- *
  * Copyright (C) 2012 The CyanogenMod Project
  * This code has been modified. Portions copyright (C) 2012, ParanoidAndroid Project.
  * This code has been modified further. Portions copyright (C) 2013, XuiMod.
@@ -33,14 +30,11 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-
 import com.zst.xposed.xuimod.R;
 
 public class ApplicationsDialog {
@@ -111,7 +105,6 @@ public class ApplicationsDialog {
         	try{
             	View progressBar = ListViewBlacklist.dialog.findViewById(R.id.progress_bar);
             	progressBar.setVisibility(View.GONE);
-            	ListView listview = (ListView) ListViewBlacklist.dialog.findViewById(R.id.listView1);
             }catch(Exception e){
             	
             }
@@ -175,7 +168,7 @@ public class ApplicationsDialog {
 					update();
 			    }
 
-			    @Override
+				@Override
 			    protected FilterResults performFiltering(CharSequence constraint) {
 			        FilterResults results = new FilterResults();
 			        ArrayList<ResolveInfo> FilteredList= new ArrayList<ResolveInfo>();

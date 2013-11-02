@@ -66,6 +66,11 @@ public class ListViewAnimationMod {
 		XposedBridge.hookAllMethods(AbsListView.class, "initAbsListView", new XC_MethodHook(){
 			@Override 
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+				AbsListView item = (AbsListView)param.thisObject;
+				if (isBlacklisted(item.getContext().getApplicationInfo().packageName)){
+					mAnim = ANIMATION_NONE;
+					return;
+				}
 				mHeight = 0; mWidth = 0;
 				// Init-ing new AbsListView so we must reset static values from previous view
 				mPref.reload();
@@ -73,10 +78,23 @@ public class ListViewAnimationMod {
 				mDuration = mPref.getInt(Common.KEY_LISTVIEW_DURATION, Common.DEFAULT_LISTVIEW_DURATION);
 				mAnim = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
 				cache = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
-				AbsListView item = (AbsListView)param.thisObject;
 				item.setPersistentDrawingCache(cache);
 			}			
 		});	
+	}
+	
+	private static boolean isBlacklisted(String currentPkg){
+		XSharedPreferences listviewPref = new XSharedPreferences(Common.MY_PACKAGE_NAME, Common.LISTVIEW_PREFERENCE_FILENAME);
+		//Get the pref from our custom preference 
+		int size = listviewPref.getInt("items" + "_size", 0);
+		if(size != 0) {
+			for(int i = 0; i < size; i++){
+				String pkg = listviewPref.getString("items" + "_" + i, "");
+				if(pkg.equals(currentPkg))
+					return true;
+			}
+		}
+		return false;
 	}
 	
 	private static void on_Layout() { 
