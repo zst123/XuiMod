@@ -9,6 +9,7 @@ import android.content.Intent;
 public class Common {
 
 	public static final String MY_PACKAGE_NAME = Common.class.getPackage().getName();
+	public static final String LISTVIEW_PREFERENCE_FILENAME = "listview_blacklist";
 	public static final String ACTION_SETTINGS_CHANGED = "com.zst.xposed.xuimod.SETTINGS_CHANGED";
 	
 	/* Preference keys */
@@ -20,6 +21,7 @@ public class Common {
 	public static final String KEY_LISTVIEW_ANIMATION ="listview_animation";
 	public static final String KEY_LISTVIEW_CACHE ="listview_cache";
 	public static final String KEY_LISTVIEW_DURATION ="listview_duration";
+	public static final String KEY_LISTVIEW_BLACKLIST ="listview_blacklist";
 	public static final String KEY_XYLON_ANIM ="xylon_anim";
 
 	public static final String KEY_VOLUME_TIMEOUT ="volume_timeout";

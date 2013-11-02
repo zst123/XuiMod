@@ -140,6 +140,11 @@
             android:key="listview_testing"
             android:summary="@string/anim_listview_test_summary"
             android:title="@string/anim_listview_test" />
+        
+        <Preference
+            android:key="listview_blacklist"
+            android:summary="@string/anim_listview_blacklist_summary"
+            android:title="@string/anim_listview_blacklist" />
    </PreferenceScreen>
    <PreferenceScreen
         android:key="anim_systemwide_screen"

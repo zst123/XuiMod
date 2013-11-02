@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">XuiMod</string>
+    <string name="title_activity_list_view_blacklist">Blacklist (ListView Animation)</string>
     
     <!-- Main Screen Category Titles -->
     <string name="systemui_title">SystemUI</string>
@@ -38,7 +39,10 @@
     <string name="anim_listview_test_summary">Open Test Dialog with a ListView</string>
     <string name="anim_listview_cache">ListView Persistent Cache</string>
     <string name="anim_listview_cache_summary">Type of cache to persist in memory \n(No Cache is Disabled. Just Persisted)</string>
-    
+    <string name="anim_listview_blacklist">Blacklist Apps</string>
+    <string name="anim_listview_blacklist_summary">Prevent Apps from animating</string>
+  	<string name="anim_listview_blacklist_help_dialog">To remove an app from the blacklist, tap on the app.\n\nTo add, tap on add and find the app.</string>
+  	
     <!-- ListView animation -->  
  	<string name="listview_off">Off</string>
  	<string name="listview_wave_left">Wave (Left)</string>
@@ -119,6 +123,9 @@
     
    <!-- Other string -->
    <string name="settings_default">Default value</string>
+   <string name="add">Add</string>
+   <string name="unknown">Unknown</string>
+   <string name="help">Help</string>
        
    
     
