@@ -72,6 +72,9 @@ public class ListViewAnimationMod {
 				mInterpolator = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
 				mDuration = mPref.getInt(Common.KEY_LISTVIEW_DURATION, Common.DEFAULT_LISTVIEW_DURATION);
 				mAnim = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
+				cache = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
+				AbsListView item = (AbsListView)param.thisObject;
+				item.setPersistentDrawingCache(cache);
 			}			
 		});	
 	}
