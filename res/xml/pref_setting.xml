@@ -87,17 +87,17 @@
             android:title="@string/systemui_restart" />
     </PreferenceScreen>
     
-    <!-- Framework Mod Category -->
+    <!-- Animation Mod Category -->
     <PreferenceCategory
-        android:key="framework_category"
-        android:title="@string/framework_title" >
+        android:key="animation_category"
+        android:title="@string/animation_title" >
     </PreferenceCategory>
     <!-- Animations Mod Screen -->
     <PreferenceScreen
-        android:key="anim_screen"
-        android:title="@string/anim_title" >
+        android:key="anim_lv_screen"
+        android:title="@string/anim_listview_title" >
 
-        <!-- ListView Category -->
+        <!-- ListView Screen -->
         <PreferenceCategory
             android:key="listview_title_category"
             android:title="@string/anim_listview_title" >
@@ -140,7 +140,11 @@
             android:key="listview_testing"
             android:summary="@string/anim_listview_test_summary"
             android:title="@string/anim_listview_test" />
-        <!-- Systemwide Anim Category -->
+   </PreferenceScreen>
+   <PreferenceScreen
+        android:key="anim_systemwide_screen"
+        android:title="@string/anim_systemwide_title" >
+        <!-- Systemwide Anim Screen -->
         <PreferenceCategory
             android:key="system_wide_title_category"
             android:title="@string/anim_systemwide_title" >
@@ -152,6 +156,14 @@
             android:summary="@string/xylon_summary"
             android:title="@string/xylon_title" />
     </PreferenceScreen>
+    
+    <!-- Framework Mod Category -->
+    <PreferenceCategory
+        android:key="framework_category"
+        android:title="@string/framework_title" >
+    </PreferenceCategory>
+    
+    
     <!-- Lockscreen Mod Screen -->
     <PreferenceScreen
         android:key="lockscreen_screen"

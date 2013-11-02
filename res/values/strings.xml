@@ -5,6 +5,7 @@
     
     <!-- Main Screen Category Titles -->
     <string name="systemui_title">SystemUI</string>
+    <string name="animation_title">Animation</string>
     <string name="framework_title">Framework</string>
     
     <string name="systemui_restart">Restart SystemUI</string>    
@@ -22,8 +23,8 @@
         
     <!-- Animation Pref-->
     <string name="anim_title">Animation Mods</string>
-    <string name="anim_listview_title">ListView</string>
-    <string name="anim_systemwide_title">System Wide</string>
+    <string name="anim_listview_title">ListView Animation</string>
+    <string name="anim_systemwide_title">System Animation</string>
     <string name="xylon_title">Enable Xylon Animation</string>
     <string name="xylon_summary">Use Window Transition Animations from Xylon ROM\n(Requires reboot)</string>
     <!-- ListView Category in Animation Pref--> 
@@ -37,7 +38,6 @@
     <string name="anim_listview_test_summary">Open Test Dialog with a ListView</string>
     <string name="anim_listview_cache">ListView Persistent Cache</string>
     <string name="anim_listview_cache_summary">Type of cache to persist in memory \n(No Cache is Disabled. Just Persisted)</string>
-    
     
     <!-- ListView animation -->  
  	<string name="listview_off">Off</string>
