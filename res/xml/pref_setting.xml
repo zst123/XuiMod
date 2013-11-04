@@ -155,11 +155,15 @@
             android:title="@string/anim_systemwide_title" >
         </PreferenceCategory>
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="xylon_anim"
-            android:summary="@string/xylon_summary"
-            android:title="@string/xylon_title" />
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/window_transitions_title"
+            android:entries="@array/window_transitions_entries"
+            android:entryValues="@array/window_transitions_values"
+            android:key="window_transitions"
+            android:summary="@string/window_transitions_summary"
+            android:title="@string/window_transitions_title" />
+        
     </PreferenceScreen>
     
     <!-- Framework Mod Category -->

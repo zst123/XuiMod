@@ -1,18 +1,39 @@
 package com.zst.xposed.xuimod.mods;
-/*Animations XML grabbed from Xylon ROMs : http://xylon.androidvenue.com/downloads-2/
- **Inspired by the discontinued mod : http://forum.xda-developers.com/showthread.php?t=2012179 
- ***Xylon Animation Relacement
- */
-import com.zst.xposed.xuimod.R;
-import com.zst.xposed.xuimod.XuiMod;
 
 import android.content.res.XModuleResources;
 import android.content.res.XResources;
+
+import com.zst.xposed.xuimod.Common;
+import com.zst.xposed.xuimod.R;
+import com.zst.xposed.xuimod.XuiMod;
+
+import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 
-public class XylonAnimMod {
-	public static void handleInitPackageResources(InitPackageResourcesParam resparam){
-		if (!resparam.packageName.equals("android"))return;
+public class SystemAnimationMod {
+
+	private static final int NO_ANIMATION = 0;
+	private static final int XYLON_ANIMATION = 1;
+	private static final int TN_ANIMATION = 2;
+	
+	public static void handleInitPackageResources(XSharedPreferences pref, InitPackageResourcesParam resparam){
+		if (!resparam.packageName.equals("android")) return;
+		
+		int transition = Integer.parseInt(pref.getString(Common.KEY_WINDOW_TRANSITIONS, Common.DEFAULT_WINDOW_TRANSITIONS));
+		switch (transition){
+		case NO_ANIMATION:
+			return;
+			
+		case XYLON_ANIMATION:
+			initXylon(resparam);
+		}
+	}
+	
+	/* Animations XML grabbed and slightly modified from Xylon ROMs : http://xylon.androidvenue.com/downloads-2/
+	 * Inspired by the discontinued mod : http://forum.xda-developers.com/showthread.php?t=2012179 
+	 * Xylon Animation Replacement
+	 */
+	private static void initXylon(InitPackageResourcesParam resparam){
 		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
 		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.window_move_from_decor));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.options_panel_enter));

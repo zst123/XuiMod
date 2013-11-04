@@ -26,8 +26,13 @@
     <string name="anim_title">Animation Mods</string>
     <string name="anim_listview_title">ListView Animation</string>
     <string name="anim_systemwide_title">System Animation</string>
-    <string name="xylon_title">Enable Xylon Animation</string>
-    <string name="xylon_summary">Use Window Transition Animations from Xylon ROM\n(Requires reboot)</string>
+    <!-- System Anim Pref -->
+    <string name="window_transitions_title">Window Transitions</string>
+    <string name="window_transitions_summary">Select a custom animation for window transitions\n(Requires reboot to take effect)</string>
+    <string name="window_transitions_default">Default (in ROM)</string>
+    <string name="window_transitions_xylon">Xylon ROM Transitions</string>
+    <string name="window_transitions_tn">TN Transitions</string>
+    
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>
     <string name="anim_listview_anim_summary">Animation used when scrolling ListViews</string>

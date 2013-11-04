@@ -22,7 +22,8 @@ public class Common {
 	public static final String KEY_LISTVIEW_CACHE ="listview_cache";
 	public static final String KEY_LISTVIEW_DURATION ="listview_duration";
 	public static final String KEY_LISTVIEW_BLACKLIST ="listview_blacklist";
-	public static final String KEY_XYLON_ANIM ="xylon_anim";
+	
+	public static final String KEY_WINDOW_TRANSITIONS ="window_transitions";
 
 	public static final String KEY_VOLUME_TIMEOUT ="volume_timeout";
 	public static final String KEY_VOLUME_ALPHA ="volume_alpha";
@@ -51,7 +52,8 @@ public class Common {
 	public static final String DEFAULT_LISTVIEW_ANIMATION = "0";
 	public static final String DEFAULT_LISTVIEW_CACHE = "0";
 	public static final int DEFAULT_LISTVIEW_DURATION = 500;
-	public static final boolean DEFAULT_XYLON_ANIM =false;
+	
+	public static final String DEFAULT_WINDOW_TRANSITIONS = "0";
 
 	public static final String DEFAULT_VOLUME_TIMEOUT = "3000";
 	public static final int DEFAULT_VOLUME_ALPHA = 100;
