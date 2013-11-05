@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.os.Handler;
+import android.text.Html;
 import android.text.format.DateFormat;
 import android.widget.TextView;
 import de.robv.android.xposed.XC_MethodHook;
@@ -41,6 +42,7 @@ public class SecondsClockMod {
 	public static boolean bold = false; //clock bold?
 	public static CharSequence format = null; // Format of Clock
 	public static boolean stopForever = false; // stop until systemui restarts
+	private static boolean allowHtml = false; //Allow HTML tags to be used?
 	
 	static XSharedPreferences pref; 
 	static Calendar mCalendar; 
@@ -85,6 +87,7 @@ public class SecondsClockMod {
 		pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
 		enabled = pref.getBoolean(Common.KEY_SECONDS_ENABLE,Common.DEFAULT_SECONDS_ENABLE);
 		bold = pref.getBoolean(Common.KEY_SECONDS_BOLD,Common.DEFAULT_SECONDS_BOLD);
+		allowHtml = pref.getBoolean(Common.KEY_SECONDS_USE_HTML,Common.DEFAULT_SECONDS_USE_HTML);
 		thix.setTypeface(null, bold ? Typeface.BOLD : Typeface.NORMAL);
 		if(!enabled){ 
 			stopForever = true; //Stop forever until systemUI reboots. Prevents reading too much off the disk(every minute which is bad)
@@ -120,7 +123,12 @@ public class SecondsClockMod {
 	}
 	private static void tick() { // A new second, get the time
 		mCalendar = Calendar.getInstance( TimeZone.getDefault());
-        thix.setText(DateFormat.format(format, mCalendar));
+		CharSequence time = DateFormat.format(format, mCalendar);
+		if (allowHtml){
+			thix.setText(Html.fromHtml(time.toString()));
+		}else{
+			thix.setText(time);
+		}
         thix.invalidate();
 	}
 	

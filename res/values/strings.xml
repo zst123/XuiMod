@@ -19,6 +19,8 @@
     <string name="seconds_enable_summary">Refresh Clock every second in Status Bar Clock</string>
     <string name="seconds_bold_title">Bold Clock</string>
     <string name="seconds_bold_summary">Bold the Clock Font</string>
+    <string name="seconds_use_html_title">Use HTML</string>
+    <string name="seconds_use_html_summary">Parse HTML tags in custom format.</string>
     <string name="seconds_custom_title">Custom Format</string>
     <string name="seconds_custom_summary">Use custom SimpleDateFormat for clock \n(Leave Blank for Default)</string>
         

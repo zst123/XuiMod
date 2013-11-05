@@ -20,7 +20,10 @@
             android:key="seconds_bold"
             android:summary="@string/seconds_bold_summary"
             android:title="@string/seconds_bold_title" />
-
+		<CheckBoxPreference
+            android:key="seconds_use_html"
+            android:summary="@string/seconds_use_html_summary"
+            android:title="@string/seconds_use_html_title" />
         <EditTextPreference
             android:dialogIcon="@drawable/ic_launcher"
             android:dialogMessage="@string/seconds_custom_summary"
