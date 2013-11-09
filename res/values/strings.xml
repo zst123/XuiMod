@@ -34,6 +34,7 @@
     <string name="window_transitions_default">Default (in ROM)</string>
     <string name="window_transitions_xylon">Xylon ROM Transitions</string>
     <string name="window_transitions_tn">TN Transitions</string>
+    <string name="window_transitions_honami">Xperia Z1 Transitions</string>
     
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>

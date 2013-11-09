@@ -6,12 +6,14 @@
         <item>@string/window_transitions_default</item>
         <item>@string/window_transitions_xylon</item>
         <item>@string/window_transitions_tn</item>
+        <item>@string/window_transitions_honami</item>
         </string-array>
     
     <string-array name="window_transitions_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
     
 </resources>

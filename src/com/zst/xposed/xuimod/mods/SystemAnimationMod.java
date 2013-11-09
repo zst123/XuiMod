@@ -31,6 +31,7 @@ public class SystemAnimationMod {
 	private static final int NO_ANIMATION = 0;
 	private static final int XYLON_ANIMATION = 1;
 	private static final int TN_ANIMATION = 2;
+	private static final int Z1_HONAMI_ANIMATION = 3;
 	
 	public static void handleInitPackageResources(XSharedPreferences pref, InitPackageResourcesParam resparam){
 		if (!resparam.packageName.equals("android")) return;
@@ -47,6 +48,11 @@ public class SystemAnimationMod {
 		case TN_ANIMATION:
 			initTonyNoobAnim(resparam);
 			break;
+			
+		case Z1_HONAMI_ANIMATION:
+			initHonamiAnim(resparam);
+			break;
+		
 		}
 	}
 	
@@ -121,5 +127,35 @@ public class SystemAnimationMod {
 		XResources.setSystemWideReplacement("android", "anim", "task_close_exit", modRes.fwd(R.anim.tn_task_close_exit));
 		XResources.setSystemWideReplacement("android", "anim", "task_open_enter", modRes.fwd(R.anim.tn_task_open_enter));
 		XResources.setSystemWideReplacement("android", "anim", "task_open_exit", modRes.fwd(R.anim.tn_task_open_exit));
+	}
+	
+	/* Animations XML grabbed from Sony Xperia Z1(Honami) Framework
+	 * Sony Xperia Z1 (Honami) Animation Replacement
+	 */
+	private static void initHonamiAnim(InitPackageResourcesParam resparam){
+		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
+		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.honami_window_move_from_decor));
+		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.honami_options_panel_enter));
+		XResources.setSystemWideReplacement("android", "anim", "options_panel_exit", modRes.fwd(R.anim.honami_options_panel_exit));
+		XResources.setSystemWideReplacement("android", "anim", "recent_enter", modRes.fwd(R.anim.honami_recent_enter));
+		XResources.setSystemWideReplacement("android", "anim", "recent_exit", modRes.fwd(R.anim.honami_recent_exit));
+		XResources.setSystemWideReplacement("android", "anim", "recents_fade_in", modRes.fwd(R.anim.honami_recents_fade_in));
+		XResources.setSystemWideReplacement("android", "anim", "recents_fade_out", modRes.fwd(R.anim.honami_recents_fade_out));
+		XResources.setSystemWideReplacement("android", "anim", "submenu_enter", modRes.fwd(R.anim.honami_submenu_enter));
+		XResources.setSystemWideReplacement("android", "anim", "submenu_exit", modRes.fwd(R.anim.honami_submenu_exit));
+		XResources.setSystemWideReplacement("android", "anim", "app_starting_exit", modRes.fwd(R.anim.honami_app_starting_exit));
+		XResources.setSystemWideReplacement("android", "anim", "activity_close_enter", modRes.fwd(R.anim.honami_activity_close_enter));
+		XResources.setSystemWideReplacement("android", "anim", "activity_close_exit", modRes.fwd(R.anim.honami_activity_close_exit));
+		XResources.setSystemWideReplacement("android", "anim", "activity_open_enter", modRes.fwd(R.anim.honami_activity_open_enter));
+		XResources.setSystemWideReplacement("android", "anim", "activity_open_exit", modRes.fwd(R.anim.honami_activity_open_exit));
+		XResources.setSystemWideReplacement("android", "anim", "dialog_enter", modRes.fwd(R.anim.honami_dialog_enter));
+		XResources.setSystemWideReplacement("android", "anim", "dialog_exit", modRes.fwd(R.anim.honami_dialog_exit));
+		XResources.setSystemWideReplacement("android", "anim", "toast_exit", modRes.fwd(R.anim.honami_toast_exit)); 
+		XResources.setSystemWideReplacement("android", "anim", "toast_enter", modRes.fwd(R.anim.honami_toast_enter));
+		XResources.setSystemWideReplacement("android", "anim", "lock_screen_exit", modRes.fwd(R.anim.honami_lock_screen_exit));
+		XResources.setSystemWideReplacement("android", "anim", "task_close_enter", modRes.fwd(R.anim.honami_task_close_enter));
+		XResources.setSystemWideReplacement("android", "anim", "task_close_exit", modRes.fwd(R.anim.honami_task_close_exit));
+		XResources.setSystemWideReplacement("android", "anim", "task_open_enter", modRes.fwd(R.anim.honami_task_open_enter));
+		XResources.setSystemWideReplacement("android", "anim", "task_open_exit", modRes.fwd(R.anim.honami_task_open_exit));
 	}
 }
