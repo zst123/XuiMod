@@ -26,6 +26,7 @@ public class Common {
 
 	public static final String MY_PACKAGE_NAME = Common.class.getPackage().getName();
 	public static final String LISTVIEW_PREFERENCE_FILENAME = "listview_blacklist";
+	public static final String ANIM_CONTROLS_PREFERENCE_FILENAME = "animation_controls";
 	public static final String ACTION_SETTINGS_CHANGED = "com.zst.xposed.xuimod.SETTINGS_CHANGED";
 	
 	/* Preference keys */
@@ -58,7 +59,24 @@ public class Common {
 	public static final String KEY_LOCKSCREEN_TORCH_HOME ="lockscreen_torch_home";
 	public static final String KEY_LOCKSCREEN_TORCH_MENU ="lockscreen_torch_menu";
 	public static final String KEY_LOCKSCREEN_TORCH_TYPE ="lockscreen_torch_type";
-
+	
+	public static final String KEY_ANIMATION_CONTROLS_PREF_SCREEN = "animation_controls";
+    public static final String KEY_ANIMATION_CONTROLS_ENABLE = "animation_controls_enable";
+    public static final String KEY_ANIMATION_CONTROLS_DURATION = "animation_controls_duration";
+    public static final String KEY_ANIMATION_CONTROLS_NO_OVERRIDE = "animation_controls_no_override";
+    public static final String[] KEYS_ANIMATION_CONTROLS_ACTIVITY = new String[] {
+    	"activity_open",
+        "activity_close",
+        "task_open",
+        "task_close",
+        "task_to_front",
+        "task_to_back",
+        "wallpaper_open",
+        "wallpaper_close",
+        "wallpaper_intra_open",
+        "wallpaper_intra_close",
+    };
+    
 
 	/* Preference default values */
 	public static final boolean DEFAULT_SECONDS_ENABLE =false;
@@ -89,8 +107,12 @@ public class Common {
 	public static final boolean DEFAULT_LOCKSCREEN_TORCH_MENU = false;
 	public static final String DEFAULT_LOCKSCREEN_TORCH_TYPE = "0";
 	
+    public static final boolean DEFAULT_ANIMATION_CONTROLS_ENABLE = false;
+    public static final boolean DEFAULT_ANIMATION_CONTROLS_NO_OVERRIDE = false;
+    public static final int DEFAULT_ANIMATION_CONTROLS_DURATION = -1;
+    public static final int DEFAULT_ANIMATION_CONTROLS_ACTIVITY = 0;
+
 	/* Preference limits values */
-	
 	public static final int LIMIT_MAX_LISTVIEW_DURATION = 2500;
 	public static final int LIMIT_MIN_LISTVIEW_DURATION = 100;
 	
@@ -100,6 +122,10 @@ public class Common {
 	public static final int LIMIT_MAX_BATTERYBAR_HEIGHT = 25;
 	public static final int LIMIT_MIN_BATTERYBAR_HEIGHT = 1;
 
+    public static final int LIMIT_MAX_ANIMATION_CONTROLS_DURATION = 2000;
+	public static final int LIMIT_MIN_ANIMATION_CONTROLS_DURATION = -1;
+	
+	
 	public static final boolean TEST_FREATURE = true;
 	
 	public static void settingsChanged(Context ctx){

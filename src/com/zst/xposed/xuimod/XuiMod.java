@@ -16,6 +16,7 @@
 
 package com.zst.xposed.xuimod;
 
+import com.zst.xposed.xuimod.mods.AnimationControlsMod;
 import com.zst.xposed.xuimod.mods.BatteryBarMod;
 import com.zst.xposed.xuimod.mods.ListViewAnimationMod;
 import com.zst.xposed.xuimod.mods.LockscreenTorchMod;
@@ -40,6 +41,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 	public void initZygote(StartupParam startupParam) throws Throwable {
 		MODULE_PATH = startupParam.modulePath;		
 		pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+		AnimationControlsMod.initZygote();
 	}
 	
 	@Override
@@ -50,6 +52,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 		ListViewAnimationMod.handleLoadPackage(pref);
 		VolumePanelMod.handleLoadPackage(lpparam,pref);
 		LockscreenTorchMod.handleLoadPackage(lpparam,pref);
+		AnimationControlsMod.handleLoadPackage(lpparam);
 	}
 
 	@Override
