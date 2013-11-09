@@ -19,10 +19,6 @@ package com.zst.xposed.xuimod.preference;
 
 import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
-import static com.zst.xposed.xuimod.Common.KEY_LISTVIEW_DURATION;
-import static com.zst.xposed.xuimod.Common.DEFAULT_LISTVIEW_DURATION;
-import static com.zst.xposed.xuimod.Common.LIMIT_MAX_LISTVIEW_DURATION;
-import static com.zst.xposed.xuimod.Common.LIMIT_MIN_LISTVIEW_DURATION;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -45,6 +41,11 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 	private SeekBar mSeekBar;
 	private TextView mValue;
 
+	private String mKey = "";
+	private int mMin;
+	private int mMax;
+	private int mDefault;
+	
 	public AnimationDuration(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
@@ -80,16 +81,21 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 		defaultsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mSeekBar.setProgress(DEFAULT_LISTVIEW_DURATION - LIMIT_MIN_LISTVIEW_DURATION);
+				mSeekBar.setProgress(mDefault - mMin);
 			}
 		});
 
 		final SharedPreferences prefs = getSharedPreferences();
-
-		int value = prefs.getInt(Common.KEY_LISTVIEW_DURATION, DEFAULT_LISTVIEW_DURATION);
-		value -= LIMIT_MIN_LISTVIEW_DURATION;
-
-		mSeekBar.setMax(LIMIT_MAX_LISTVIEW_DURATION - LIMIT_MIN_LISTVIEW_DURATION);
+		mKey = getKey();
+		if (mKey.equals(Common.KEY_LISTVIEW_DURATION)){
+			mMax = Common.LIMIT_MAX_LISTVIEW_DURATION;
+			mMin = Common.LIMIT_MIN_LISTVIEW_DURATION;
+			mDefault = Common.DEFAULT_LISTVIEW_DURATION;
+		}
+		
+		int value = prefs.getInt(mKey, mDefault);
+		value -= mMin;
+		mSeekBar.setMax(mMax - mMin);
 		mSeekBar.setProgress(value);
 
 	}
@@ -99,16 +105,16 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 		super.onDialogClosed(positiveResult);
 
 		if (positiveResult) {
-			int realValue = mSeekBar.getProgress() + LIMIT_MIN_LISTVIEW_DURATION;
+			int realValue = mSeekBar.getProgress() + mMin;
 			Editor editor = getEditor();
-			editor.putInt(KEY_LISTVIEW_DURATION, realValue);
+			editor.putInt(mKey, realValue);
 			editor.commit();
 		}
 	}
 
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-		int realValue = progress + LIMIT_MIN_LISTVIEW_DURATION;
+		int realValue = progress + mMin;
 		mValue.setText(realValue + " ms");
 	}
 
