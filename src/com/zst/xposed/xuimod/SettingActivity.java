@@ -19,7 +19,7 @@ package com.zst.xposed.xuimod;
 import java.io.DataOutputStream;
 
 import com.zst.xposed.xuimod.mods.SecondsClockMod;
-import com.zst.xposed.xuimod.preference.ListViewBlacklist;
+import com.zst.xposed.xuimod.preference.activity.ListViewBlacklist;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

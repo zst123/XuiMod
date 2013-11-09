@@ -31,11 +31,14 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
 import com.zst.xposed.xuimod.R;
+import com.zst.xposed.xuimod.preference.activity.ListViewBlacklist;
 
 public class ApplicationsDialog {
 

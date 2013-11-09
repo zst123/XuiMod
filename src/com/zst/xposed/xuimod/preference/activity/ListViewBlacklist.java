@@ -15,14 +15,17 @@
  * limitations under the License.
  */
 
-package com.zst.xposed.xuimod.preference;
+package com.zst.xposed.xuimod.preference.activity;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
+import com.zst.xposed.xuimod.preference.ApplicationsDialog;
 import com.zst.xposed.xuimod.preference.ApplicationsDialog.AppAdapter;
 import com.zst.xposed.xuimod.preference.ApplicationsDialog.AppItem;
+
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.Preference;

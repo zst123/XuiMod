@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.zst.xposed.xuimod.preference.ListViewBlacklist"
+            android:name="com.zst.xposed.xuimod.preference.activity.ListViewBlacklist"
             android:label="@string/title_activity_list_view_blacklist" >
         </activity>
     </application>
