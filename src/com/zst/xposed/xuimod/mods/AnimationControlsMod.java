@@ -22,6 +22,7 @@
  * https://github.com/AOKP/packages_apps_ROMControl/commit/d106dda0438885e36555cb5549dd0b289f5a85ec
  * https://github.com/AOKP/frameworks_base/commit/015c9cf00a8e49aea22d70b57b0af87c9134be73
  */
+
 package com.zst.xposed.xuimod.mods;
 
 import static de.robv.android.xposed.XposedHelpers.findClass;
@@ -97,8 +98,7 @@ public class AnimationControlsMod {
     			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
     			mContext.registerReceiver(broadcastReceiver, filter);
 			}
-		});
-	    
+	    });
 	}
 	
 	private static void hookloadAnimation_animAttr(LoadPackageParam o, Class<?> clazz) {
@@ -120,7 +120,7 @@ public class AnimationControlsMod {
 					 */
 				}
 			}
-			});
+		});
 	}
 	
 	private static void hookloadAnimation_mIsResId_mNextAppTransitionType(LoadPackageParam o, Class<?> cls) {
@@ -132,7 +132,6 @@ public class AnimationControlsMod {
 				
 				int type = (Integer) Common.getReflection (param.thisObject,
 						"mNextAppTransitionType");
-				
 				if (type == AppTransitionConstants.NEXT_TRANSIT_TYPE_CUSTOM ||
 					type == AppTransitionConstants.NEXT_TRANSIT_TYPE_SCALE_UP ||
 					type == AppTransitionConstants.NEXT_TRANSIT_TYPE_SCALE_UP) return; 
@@ -206,7 +205,7 @@ public class AnimationControlsMod {
     		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, null);
     		XmlResourceParser parser = modRes.getAnimation(animAttr);
         	anim = (Animation)XposedHelpers.callStaticMethod(AnimationUtils.class, "createAnimationFromXml", mContext, parser) ;
-        	/** Creating XML from a parser instead of ID is hidden in APIs. Using reflection */
+        	/** Creating XML from a parser instead of res ID is hidden in APIs. Using reflection */
         }
         mIsResId = false;
         return anim;
@@ -234,22 +233,17 @@ public class AnimationControlsMod {
 		mEnabled = mPref.getBoolean(Common.KEY_ANIMATION_CONTROLS_ENABLE, Common.DEFAULT_ANIMATION_CONTROLS_ENABLE);
 		if (!mEnabled) return; 
 		/** Return so we do not init unnecessary prefs */
-		
 		mNoOverrides = mPref.getBoolean(Common.KEY_ANIMATION_CONTROLS_NO_OVERRIDE,
 				Common.DEFAULT_ANIMATION_CONTROLS_NO_OVERRIDE);
-		
 		mAnimationDuration = mPref.getInt(Common.KEY_ANIMATION_CONTROLS_DURATION,
-				Common.DEFAULT_ANIMATION_CONTROLS_DURATION);
+				Common.DEFAULT_ANIMATION_CONTROLS_DURATION);	
 		
-		if (mAnimationDuration >= 0){
-			for (int i = 0; i < Common.KEYS_ANIMATION_CONTROLS_ACTIVITY.length; i++) {
-				mActivityAnimations[i] = mPref.getInt(Common.KEYS_ANIMATION_CONTROLS_ACTIVITY[i],
-						Common.DEFAULT_ANIMATION_CONTROLS_ACTIVITY);
-			}
-		}else{ 
-			mActivityAnimations = new int[10];
-			/** Duration is -1 (disabled). So there's no point to replace anim. Reset it all to zero*/
+		for (int i = 0; i < Common.KEYS_ANIMATION_CONTROLS_ACTIVITY.length; i++) {
+			String numb = mPref.getString (Common.KEYS_ANIMATION_CONTROLS_ACTIVITY[i],
+					Common.DEFAULT_ANIMATION_CONTROLS_ACTIVITY);
+			mActivityAnimations[i] = Integer.valueOf(numb);
 		}
+		
 
 	}
 }

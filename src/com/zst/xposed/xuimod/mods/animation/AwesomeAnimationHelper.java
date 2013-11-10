@@ -19,6 +19,8 @@ package com.zst.xposed.xuimod.mods.animation;
 
 import java.util.ArrayList;
 
+import android.content.res.Resources;
+
 import com.zst.xposed.xuimod.R;
 
 public class AwesomeAnimationHelper {
@@ -117,14 +119,12 @@ public class AwesomeAnimationHelper {
                 anim[0] = R.anim.animcontrol_shrink_fade_out_from_bottom_ribbon;
                 anim[1] = R.anim.animcontrol_grow_fade_in_from_bottom_ribbon;
                 break;
-                
         }
         return anim;
     }
 
-    /** 
-     * NOTE: getProperName(Context context, int mAnim) was removed 
-     * since it was unnecessary 
-     */
-
+    public static String getProperName(Resources res, int index) {
+    	String[] str = res.getStringArray(R.array.anim_controls_entries);
+    	return str[index];
+    }
 }

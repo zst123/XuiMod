@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="@string/anim_controls_main_title">
+
+  		<SwitchPreference
+            android:key="animation_controls_enable"
+            android:title="@string/anim_controls_main_title"
+            android:summary="@string/anim_controls_main_summary" />
+  		
+        <CheckBoxPreference
+            android:key="animation_controls_no_override"
+            android:title="@string/anim_controls_no_override_title"
+            android:summary="@string/anim_controls_no_override_summary" />
+
+        <com.zst.xposed.xuimod.preference.AnimationDuration
+            android:key="animation_controls_duration"
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/anim_controls_duration_title"
+            android:title="@string/anim_controls_duration_title" />
+        
+        <ListPreference
+            android:key="activity_open"
+            android:title="@string/activity_open_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="activity_close"
+            android:title="@string/activity_close_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="task_open"
+            android:title="@string/task_open_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="task_close"
+            android:title="@string/task_close_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="task_to_front"
+            android:title="@string/task_move_to_front_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="task_to_back"
+            android:title="@string/task_move_to_back_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="wallpaper_open"
+            android:title="@string/wallpaper_open_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="wallpaper_close"
+            android:title="@string/wallpaper_close_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="wallpaper_intra_open"
+            android:title="@string/wallpaper_intra_open_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+        <ListPreference
+            android:key="wallpaper_intra_close"
+            android:title="@string/wallpaper_intra_close_title" 
+            android:entries="@array/anim_controls_entries" 
+            android:entryValues="@array/anim_controls_values"
+            android:dependency="animation_controls_enable" />
+
+</PreferenceScreen>

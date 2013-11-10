@@ -110,7 +110,7 @@ public class Common {
     public static final boolean DEFAULT_ANIMATION_CONTROLS_ENABLE = false;
     public static final boolean DEFAULT_ANIMATION_CONTROLS_NO_OVERRIDE = false;
     public static final int DEFAULT_ANIMATION_CONTROLS_DURATION = -1;
-    public static final int DEFAULT_ANIMATION_CONTROLS_ACTIVITY = 0;
+    public static final String DEFAULT_ANIMATION_CONTROLS_ACTIVITY = "0";
 
 	/* Preference limits values */
 	public static final int LIMIT_MAX_LISTVIEW_DURATION = 2500;

@@ -91,6 +91,11 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 			mMax = Common.LIMIT_MAX_LISTVIEW_DURATION;
 			mMin = Common.LIMIT_MIN_LISTVIEW_DURATION;
 			mDefault = Common.DEFAULT_LISTVIEW_DURATION;
+			
+		}else if(mKey.equals(Common.KEY_ANIMATION_CONTROLS_DURATION)){
+				mMax = Common.LIMIT_MAX_ANIMATION_CONTROLS_DURATION;
+				mMin = Common.LIMIT_MIN_ANIMATION_CONTROLS_DURATION;
+				mDefault = Common.DEFAULT_ANIMATION_CONTROLS_DURATION;
 		}
 		
 		int value = prefs.getInt(mKey, mDefault);
@@ -116,6 +121,11 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 		int realValue = progress + mMin;
 		mValue.setText(realValue + " ms");
+		if(mKey.equals(Common.KEY_ANIMATION_CONTROLS_DURATION)){
+			if (realValue == -1){
+				mValue.setText(R.string.settings_default);
+			}
+		}
 	}
 
 	@Override

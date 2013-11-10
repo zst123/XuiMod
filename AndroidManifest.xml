@@ -37,6 +37,10 @@
             android:name="com.zst.xposed.xuimod.preference.activity.ListViewBlacklist"
             android:label="@string/title_activity_list_view_blacklist" >
         </activity>
+        <activity
+            android:name="com.zst.xposed.xuimod.preference.activity.AnimControlPreference"
+            android:label="@string/anim_controls_main_title" >
+        </activity>
     </application>
 
 </manifest>

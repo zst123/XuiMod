@@ -19,6 +19,7 @@ package com.zst.xposed.xuimod;
 import java.io.DataOutputStream;
 
 import com.zst.xposed.xuimod.mods.SecondsClockMod;
+import com.zst.xposed.xuimod.preference.activity.AnimControlPreference;
 import com.zst.xposed.xuimod.preference.activity.ListViewBlacklist;
 
 import android.annotation.SuppressLint;
@@ -26,6 +27,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -65,6 +67,18 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("listview_testing").setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
 
+		Preference animation_control = findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN);
+		boolean sdk18 = Build.VERSION.SDK_INT >= 18;
+		String summary = getResources().getString(R.string.anim_controls_main_summary);
+		if (!sdk18) { /* if not Android 4.3, use unsupported summary text */
+			summary = String.format(getResources().getString
+					(R.string.version_unsupported), "4.3", Build.VERSION.RELEASE);
+		}
+		animation_control.setSummary(summary);
+		animation_control.setEnabled(sdk18);
+		animation_control.setOnPreferenceClickListener(this);
+  
+		
 		prefs.registerOnSharedPreferenceChangeListener(this);
 		Log.i(TAG, "onCreate");
 	}
@@ -90,6 +104,10 @@ public class SettingActivity extends PreferenceActivity implements
 		}
 		if (p.getKey().equals(Common.KEY_LISTVIEW_BLACKLIST)) {
 			Intent i = new Intent(this, ListViewBlacklist.class);
+			startActivity(i);
+		}
+		if (p.getKey().equals(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN)) {
+			Intent i = new Intent(this, AnimControlPreference.class);
 			startActivity(i);
 		}
 		return false;

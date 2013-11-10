@@ -28,6 +28,7 @@
     <string name="anim_title">Animation Mods</string>
     <string name="anim_listview_title">ListView Animation</string>
     <string name="anim_systemwide_title">System Animation</string>
+    
     <!-- System Anim Pref -->
     <string name="window_transitions_title">Window Transitions</string>
     <string name="window_transitions_summary">Select a custom animation for window transitions\n(Requires reboot to take effect)</string>
@@ -35,6 +36,40 @@
     <string name="window_transitions_xylon">Xylon ROM Transitions</string>
     <string name="window_transitions_tn">TN Transitions</string>
     <string name="window_transitions_honami">Xperia Z1 Transitions</string>
+    
+    <!-- Animation Controls -->
+    <string name="anim_controls_main_title">Animation Controls</string>
+    <string name="anim_controls_main_summary">Control individual system transitions</string>
+    <string name="anim_controls_no_override_title">Prevent App Overrides</string>
+    <string name="anim_controls_no_override_summary">Prevent apps from overriding transitions.</string>
+    <string name="anim_controls_duration_title">Animation Duration</string>
+    <!-- Animation List -->
+    <string name="activity_open_title">Open In-App Activity Animation</string>
+    <string name="activity_close_title">Close In-App Activity Animation</string>
+    <string name="task_open_title">Launch From In App Animation</string>
+    <string name="task_close_title">Return To Previous Animation</string>
+    <string name="task_move_to_front_title">Move To Front Animation</string>
+    <string name="task_move_to_back_title">Move To Back Animation</string>
+    <string name="wallpaper_open_title">Return To Homescreen Animation</string>
+    <string name="wallpaper_close_title">Launch From Homescreen Animation</string>
+    <string name="wallpaper_intra_open_title">Recents Page Open Animation</string>
+    <string name="wallpaper_intra_close_title">Recents Page Close Animation</string>
+    <!-- Animation Strings -->
+    <string name="animation_default">Default</string>
+    <string name="animation_fade">Fade</string>
+    <string name="animation_slide_right">Slide in right</string>
+    <string name="animation_slide_left">Slide in left</string>
+    <string name="animation_slide_right_no_fade">Slide in right (No fade)</string>
+    <string name="animation_slide_left_no_fade">Slide in left (No fade)</string>
+    <string name="animation_slide_up">Slide in bottom</string>
+    <string name="animation_slide_down">Slide in top</string>
+    <string name="animation_translucent">Translucent</string>
+    <string name="animation_grow_shrink">Grow in (Top)</string>
+    <string name="animation_grow_shrink_center">Grow in (Center)</string>
+    <string name="animation_grow_shrink_bottom">Grow in (Bottom)</string>
+    <string name="animation_grow_shrink_left">Grow in (Left)</string>
+    <string name="animation_grow_shrink_right">Grow in (Right)</string>
+    
     
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>
@@ -130,6 +165,7 @@
     <string name="batterybar_bg_color_dialog">Specify Background Color in #AARRGGBB.\nBackground disabled if left blank or invalid color syntax is used.\n</string>
     
    <!-- Other string -->
+   <string name="version_unsupported">This mod requires Android %1$s and above. You are currently on Android %2$s.</string>
    <string name="settings_default">Default value</string>
    <string name="add">Add</string>
    <string name="unknown">Unknown</string>
