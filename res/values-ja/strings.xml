@@ -19,6 +19,8 @@
     <string name="seconds_enable_summary">ステータスバーの時計を一秒ごとに更新します。</string>
     <string name="seconds_bold_title">時計を太字にする</string>
     <string name="seconds_bold_summary">時計の文字を太字にします。</string>
+    <string name="seconds_use_html_title">HTMLを使う</string>
+    <string name="seconds_use_html_summary">書式の変更でHTMLタグを使えるようにします。</string>
     <string name="seconds_custom_title">書式の変更</string>
     <string name="seconds_custom_summary">時計の書式をSimpleDateFormatで変更します。 \n(空白にすると標準のままになります)</string>
         
@@ -26,10 +28,45 @@
     <string name="anim_title">アニメーション設定</string>
     <string name="anim_listview_title">ListViewアニメーション</string>
     <string name="anim_systemwide_title">システムアニメーション</string>
+    
     <!-- System Anim Pref -->
     <string name="window_transitions_title">ウインドウ切り替え</string>
     <string name="window_transitions_summary">ウインドウ切り替え時のアニメーションを変更します。\n(再起動後に反映されます)</string>
     <string name="window_transitions_default">ROM標準</string>
+    
+    <!-- Animation Controls -->
+    <string name="anim_controls_main_title">アニメーション管理</string>
+    <string name="anim_controls_main_summary">ウインドウ切り替え時のアニメーションを個別に管理します。</string>
+    <string name="anim_controls_no_override_title">アプリの上書きを阻止する</string>
+    <string name="anim_controls_no_override_summary">アプリがアニメーションを上書きしないようにします。</string>
+    <string name="anim_controls_duration_title">アニメーション速度</string>
+    <!-- Animation List -->
+    <string name="activity_open_title">アプリ内アクティビティを開く時</string>
+    <string name="activity_close_title">アプリ内アクティビティを閉じる時</string>
+    <string name="task_open_title">アプリ内で他アプリを起動する時時時</string>
+    <string name="task_close_title">前のアプリに戻る時時</string>
+    <string name="task_move_to_front_title">前面に移動する時</string>
+    <string name="task_move_to_back_title">背面に移動する時</string>
+    <string name="wallpaper_open_title">ホームに戻る時</string>
+    <string name="wallpaper_close_title">ホームでアプリを起動する時</string>
+    <string name="wallpaper_intra_open_title">最近のアプリ画面を開く時</string>
+    <string name="wallpaper_intra_close_title">最近のアプリ画面を閉じる時</string>
+
+    <!-- Animation Strings -->
+    <string name="animation_default">標準</string>
+    <string name="animation_fade">フェード</string>
+    <string name="animation_slide_right">右にスライド</string>
+    <string name="animation_slide_left">左にスライド</string>
+    <string name="animation_slide_right_no_fade">右にスライド (フェード無し)</string>
+    <string name="animation_slide_left_no_fade">左にスライド (フェード無し)</string>
+    <string name="animation_slide_up">下にスライド</string>
+    <string name="animation_slide_down">上にスライド</string>
+    <string name="animation_translucent">半透明</string>
+    <string name="animation_grow_shrink">グローイン (上)</string>
+    <string name="animation_grow_shrink_center">グローイン (中央)</string>
+    <string name="animation_grow_shrink_bottom">グローイン (下)</string>
+    <string name="animation_grow_shrink_left">グローイン (左)</string>
+    <string name="animation_grow_shrink_right">グローイン (右)</string>
     
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListViewアニメーション</string>
@@ -59,7 +96,7 @@
     
     <!-- Other Pref-->
     <string name="other_title">その他の設定</string>
-    
+    <string name="version_unsupported">Android %1$s以降向けの設定です。Android %2$sでは使用できません。</string>
     <string name="volume_title">音量ボタン</string>
     <string name="volume_timeout_title">音量パネル表示時間</string>
     <string name="volume_timeout_summary">音量ボタンで音量を変更した後のパネルの表示時間を変更します。</string>
