@@ -229,13 +229,17 @@ public class AnimationControlsMod {
 	
 	private static void updateSettings(){		
 		mEnabled = mPref.getBoolean(Common.KEY_ANIMATION_CONTROLS_ENABLE, Common.DEFAULT_ANIMATION_CONTROLS_ENABLE);
-		if (!mEnabled) return; 
 		/** Return so we do not init unnecessary prefs */
 		mNoOverrides = mPref.getBoolean(Common.KEY_ANIMATION_CONTROLS_NO_OVERRIDE,
 				Common.DEFAULT_ANIMATION_CONTROLS_NO_OVERRIDE);
 		mAnimationDuration = mPref.getInt(Common.KEY_ANIMATION_CONTROLS_DURATION,
 				Common.DEFAULT_ANIMATION_CONTROLS_DURATION);	
 		
+		if (!mEnabled) {
+			mActivityAnimations = new int[10]; 
+			/** Reset Animations to system default.*/
+			return; 
+		}
 		for (int i = 0; i < Common.KEYS_ANIMATION_CONTROLS_ACTIVITY.length; i++) {
 			String numb = mPref.getString (Common.KEYS_ANIMATION_CONTROLS_ACTIVITY[i],
 					Common.DEFAULT_ANIMATION_CONTROLS_ACTIVITY);
