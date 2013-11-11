@@ -69,6 +69,7 @@ public class ListViewAnimationMod {
 	private static int cache;
 	private static int mAnim;
 	private static int mDuration;
+	private static Method verticalScrollMethod;
 
 	public static void handleLoadPackage(XSharedPreferences pref) {
 		mPref = pref;
@@ -94,9 +95,27 @@ public class ListViewAnimationMod {
 				mDuration = mPref.getInt(Common.KEY_LISTVIEW_DURATION, Common.DEFAULT_LISTVIEW_DURATION);
 				mAnim = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
 				cache = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
+				findMethod_computeVerticalScrollOffset();
 				item.setPersistentDrawingCache(cache);
 			}			
 		});	
+	}
+	
+	private static void findMethod_computeVerticalScrollOffset(){
+		for ( Method m : AbsListView.class.getDeclaredMethods() ) {
+			android.util.Log.e("test", "Declared Method: "+m.getName());
+			if (m.getName().equals("computeVerticalScrollOffset")){
+				verticalScrollMethod = m;
+				verticalScrollMethod.setAccessible(true);
+				android.util.Log.e("test", "FOUND DECLARED");
+				break;
+			}
+		}
+		/** 
+		 * I didn't use 'AbsListView.class.getDeclaredMethod("computeVerticalScrollOffset")'
+		 * OR 'XposedHelper.callMethod' because it throws a MethodNotFoundException
+		 * *for some reason I don't understand* 
+		 */
 	}
 	
 	private static boolean isBlacklisted(String currentPkg){
@@ -166,18 +185,20 @@ public class ListViewAnimationMod {
 		boolean mDown = false;
 		        
 		try {
-			Method showsb = thisObject.getClass().getMethod("computeVerticalScrollOffset");
-			Object result = showsb.invoke( thisObject );	
-			scrollY = (Integer)result;
-			/* Actual non-reflection code is "scrollY = computeVerticalScrollOffset();"
-			 * I didn't use XposedHelper.callMethod as I want to control the Throwable myself
+			if (verticalScrollMethod != null) {
+				scrollY = (Integer)verticalScrollMethod.invoke(thisObject);
+			}else{
+				scrollY = mvPosition;
+			}
+			/* Actual non-reflection code is "scrollY = computeVerticalScrollOffset();" 
+			 * "verticalScrollMethod" is initialized in "findMethod_computeVerticalScrollOffset"
+			 * method above in this class.
 			 */
 		} catch (Throwable e) {
 			scrollY = mvPosition;
-			/* Actual code from source caught an Exception when as computeVerticalScrollOffset
-			 * throws Exception.
-			 * We catch Throwable since we have another possibility that the invoke fails
-			 * and ForceClose the listView.
+			/* There's a possibility "verticalScrollMethod.invoke(thisObject);" 
+			 * might throw a throwable.
+			 * In that case, reset to the previous integer and carry on.
 			 */
 		}
 		
