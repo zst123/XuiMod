@@ -32,6 +32,7 @@ public class SystemAnimationMod {
 	private static final int XYLON_ANIMATION = 1;
 	private static final int TN_ANIMATION = 2;
 	private static final int Z1_HONAMI_ANIMATION = 3;
+	private static final int TOKO_ANIMATION = 4;
 	
 	public static void handleInitPackageResources(XSharedPreferences pref, InitPackageResourcesParam resparam){
 		if (!resparam.packageName.equals("android")) return;
@@ -51,6 +52,10 @@ public class SystemAnimationMod {
 			
 		case Z1_HONAMI_ANIMATION:
 			initHonamiAnim(resparam);
+			break;
+			
+		case TOKO_ANIMATION:
+			initTokoAnim(resparam);
 			break;
 		
 		}
@@ -157,5 +162,32 @@ public class SystemAnimationMod {
 		XResources.setSystemWideReplacement("android", "anim", "task_close_exit", modRes.fwd(R.anim.honami_task_close_exit));
 		XResources.setSystemWideReplacement("android", "anim", "task_open_enter", modRes.fwd(R.anim.honami_task_open_enter));
 		XResources.setSystemWideReplacement("android", "anim", "task_open_exit", modRes.fwd(R.anim.honami_task_open_exit));
+	}
+	
+	private static void initTokoAnim(InitPackageResourcesParam resparam){
+		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
+		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.toko_window_move_from_decor));
+		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.toko_options_panel_enter));
+		XResources.setSystemWideReplacement("android", "anim", "options_panel_exit", modRes.fwd(R.anim.toko_options_panel_exit));
+		XResources.setSystemWideReplacement("android", "anim", "recent_enter", modRes.fwd(R.anim.toko_recent_enter));
+		XResources.setSystemWideReplacement("android", "anim", "recent_exit", modRes.fwd(R.anim.toko_recent_exit));
+		XResources.setSystemWideReplacement("android", "anim", "recents_fade_in", modRes.fwd(R.anim.toko_recents_fade_in));
+		XResources.setSystemWideReplacement("android", "anim", "recents_fade_out", modRes.fwd(R.anim.toko_recents_fade_out));
+		XResources.setSystemWideReplacement("android", "anim", "submenu_enter", modRes.fwd(R.anim.toko_submenu_enter));
+		XResources.setSystemWideReplacement("android", "anim", "submenu_exit", modRes.fwd(R.anim.toko_submenu_exit));
+		XResources.setSystemWideReplacement("android", "anim", "app_starting_exit", modRes.fwd(R.anim.toko_app_starting_exit));
+		XResources.setSystemWideReplacement("android", "anim", "activity_close_enter", modRes.fwd(R.anim.toko_activity_close_enter));
+		XResources.setSystemWideReplacement("android", "anim", "activity_close_exit", modRes.fwd(R.anim.toko_activity_close_exit));
+		XResources.setSystemWideReplacement("android", "anim", "activity_open_enter", modRes.fwd(R.anim.toko_activity_open_enter));
+		XResources.setSystemWideReplacement("android", "anim", "activity_open_exit", modRes.fwd(R.anim.toko_activity_open_exit));
+		XResources.setSystemWideReplacement("android", "anim", "dialog_enter", modRes.fwd(R.anim.toko_dialog_enter));
+		XResources.setSystemWideReplacement("android", "anim", "dialog_exit", modRes.fwd(R.anim.toko_dialog_exit));
+		XResources.setSystemWideReplacement("android", "anim", "toast_exit", modRes.fwd(R.anim.toko_toast_exit)); 
+		XResources.setSystemWideReplacement("android", "anim", "toast_enter", modRes.fwd(R.anim.toko_toast_enter));
+		XResources.setSystemWideReplacement("android", "anim", "lock_screen_exit", modRes.fwd(R.anim.toko_lock_screen_exit));
+		XResources.setSystemWideReplacement("android", "anim", "task_close_enter", modRes.fwd(R.anim.toko_task_close_enter));
+		XResources.setSystemWideReplacement("android", "anim", "task_close_exit", modRes.fwd(R.anim.toko_task_close_exit));
+		XResources.setSystemWideReplacement("android", "anim", "task_open_enter", modRes.fwd(R.anim.toko_task_open_enter));
+		XResources.setSystemWideReplacement("android", "anim", "task_open_exit", modRes.fwd(R.anim.toko_task_open_exit));
 	}
 }
