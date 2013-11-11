@@ -152,7 +152,6 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     };
 
     private void updateSettings() {
-        //ContentResolver resolver = getContext().getContentResolver();
         XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
         String colorString = pref.getString(Common.KEY_BATTERYBAR_COLOR, Common.DEFAULT_BATTERYBAR_COLOR);
         int color = parseStringColor(colorString, 0xFF33B5E5);

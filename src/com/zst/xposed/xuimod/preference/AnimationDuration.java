@@ -35,9 +35,6 @@ import android.widget.TextView;
 
 public class AnimationDuration extends DialogPreference implements SeekBar.OnSeekBarChangeListener {
 
-	@SuppressWarnings("unused")
-	private static final String TAG = AnimationDuration.class.getName();
-
 	private SeekBar mSeekBar;
 	private TextView mValue;
 

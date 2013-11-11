@@ -103,11 +103,9 @@ public class ListViewAnimationMod {
 	
 	private static void findMethod_computeVerticalScrollOffset(){
 		for ( Method m : AbsListView.class.getDeclaredMethods() ) {
-			android.util.Log.e("test", "Declared Method: "+m.getName());
 			if (m.getName().equals("computeVerticalScrollOffset")){
 				verticalScrollMethod = m;
 				verticalScrollMethod.setAccessible(true);
-				android.util.Log.e("test", "FOUND DECLARED");
 				break;
 			}
 		}

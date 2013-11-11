@@ -38,7 +38,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.XModuleResources;
 import android.content.res.XmlResourceParser;
-import android.util.Log;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -93,7 +92,6 @@ public class AnimationControlsMod {
 			@Override 
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				mContext = (Context) param.args[0];
-				Log.e("test", mContext.toString() + "---" + o.packageName);
 				IntentFilter filter = new IntentFilter();
     			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
     			mContext.registerReceiver(broadcastReceiver, filter);

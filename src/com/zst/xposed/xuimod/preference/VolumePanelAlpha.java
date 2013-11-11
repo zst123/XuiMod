@@ -42,8 +42,6 @@ import android.widget.TextView;
 public class VolumePanelAlpha extends DialogPreference implements
 		SeekBar.OnSeekBarChangeListener {
 
-	private static final String TAG = VolumePanelAlpha.class.getName();
-
 	private SeekBar mSeekBar;
 	private TextView mValue;
 

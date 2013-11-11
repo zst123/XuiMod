@@ -20,7 +20,6 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.util.Log;
 
 import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
@@ -52,7 +51,6 @@ public class AnimControlPreference extends PreferenceActivity implements OnShare
     		String summary = AwesomeAnimationHelper.getProperName(getResources(),
     				Integer.valueOf(value));
     		findPreference(key).setSummary(summary);
-    		Log.d("test", "key = "+key+summary+value);
     	}
     	
     	int duration = pref.getInt(Common.KEY_ANIMATION_CONTROLS_DURATION,

@@ -40,8 +40,6 @@ import android.widget.TextView;
 
 public class BarHeight extends DialogPreference implements
 		SeekBar.OnSeekBarChangeListener {
-
-	private static final String TAG = BarHeight.class.getName();
 	
 	private View mLine;
 	private SeekBar mSeekBar;

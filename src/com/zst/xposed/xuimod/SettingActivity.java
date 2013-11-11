@@ -33,7 +33,6 @@ import android.preference.Preference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -41,7 +40,6 @@ import android.widget.ListView;
 @SuppressWarnings("deprecation")
 public class SettingActivity extends PreferenceActivity implements
 		OnPreferenceClickListener, OnSharedPreferenceChangeListener {
-	public static final String TAG = SettingActivity.class.getSimpleName();
 	public static final String FIRST_KEY = "first";
 	public static final String PREFERENCE_FILE = Common.MY_PACKAGE_NAME
 			+ "_preferences";
@@ -51,16 +49,11 @@ public class SettingActivity extends PreferenceActivity implements
 		super.onCreate(savedInstanceState);
 		SharedPreferences prefs = getSharedPreferences(PREFERENCE_FILE,
 				MODE_WORLD_READABLE);
-		// make a new preference so "MODE WORLD READABLE" works
+		// Make a new preference before other prefs are made. So that
+		// the permissions for "MODE WORLD READABLE" is set properly.
 		if (!prefs.contains(FIRST_KEY)) {
 			prefs.edit().putBoolean(FIRST_KEY, false).commit();
 		}
-
-		fixStringInt(prefs, Common.KEY_VOLUME_ALPHA,
-				Common.DEFAULT_VOLUME_ALPHA);
-		fixStringInt(prefs, Common.KEY_BATTERYBAR_HEIGHT,
-				Common.DEFAULT_BATTERYBAR_HEIGHT);
-
 		addPreferencesFromResource(R.xml.pref_setting);
 		findPreference("batterybar_restart").setOnPreferenceClickListener(this);
 		findPreference("seconds_restart").setOnPreferenceClickListener(this);
@@ -77,10 +70,8 @@ public class SettingActivity extends PreferenceActivity implements
 		animation_control.setSummary(summary);
 		animation_control.setEnabled(sdk18);
 		animation_control.setOnPreferenceClickListener(this);
-  
 		
 		prefs.registerOnSharedPreferenceChangeListener(this);
-		Log.i(TAG, "onCreate");
 	}
 	
 	@Override
@@ -161,19 +152,6 @@ public class SettingActivity extends PreferenceActivity implements
 		modeList.setAdapter(modeAdapter);
 		builder.setView(modeList);
 		builder.show();
-	}
-
-	private void fixStringInt(SharedPreferences prefs, String key,
-			int defaultValue) {
-		// workaround. Previosuly, Common.KEY_* is String, but
-		// String doesn't cast to int
-		try {
-			prefs.getInt(key, 0);
-		} catch (Exception e) {
-			String defValueString = String.valueOf(defaultValue);
-			int value = Integer.valueOf(prefs.getString(key, defValueString));
-			prefs.edit().putInt(key, value).commit();
-		}
 	}
 
 }

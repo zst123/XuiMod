@@ -39,8 +39,6 @@ public class BatteryBarMod {
 	 private static void hookLayout(final InitPackageResourcesParam resparam) throws Throwable{
 		 String name = findXML(resparam.res);
 		 if (name == null) return;
-		 //boolean isJellyBean = Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1;
-         //String name = isJellyBean ? "super_status_bar" : "status_bar"; 
 		 resparam.res.hookLayout("com.android.systemui", "layout", name, new XC_LayoutInflated() {
 			 @Override
 			 public void handleLayoutInflated(LayoutInflatedParam liparam) throws Throwable {
