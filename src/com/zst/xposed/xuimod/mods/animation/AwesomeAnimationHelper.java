@@ -18,6 +18,7 @@
 package com.zst.xposed.xuimod.mods.animation;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import android.content.res.Resources;
 
@@ -25,6 +26,7 @@ import com.zst.xposed.xuimod.R;
 
 public class AwesomeAnimationHelper {
 
+	public final static int ANIMATION_RANDOM = -1;
     public final static int ANIMATION_DEFAULT = 0;
     public final static int ANIMATION_FADE = 1;
     public final static int ANIMATION_SLIDE_RIGHT = 2;
@@ -65,6 +67,10 @@ public class AwesomeAnimationHelper {
     }
 
     public static int[] getAnimations(int mAnim) {
+    	if (mAnim == ANIMATION_RANDOM){
+    		mAnim = (new Random()).nextInt(14);
+    		// Random number from 0 to 13
+    	}
         int[] anim = new int[2];
         switch (mAnim) {
             case ANIMATION_FADE:
@@ -125,6 +131,9 @@ public class AwesomeAnimationHelper {
 
     public static String getProperName(Resources res, int index) {
     	String[] str = res.getStringArray(R.array.anim_controls_entries);
+    	if (index == ANIMATION_RANDOM){
+    		index = str.length - 1;
+    	}
     	return str[index];
     }
 }

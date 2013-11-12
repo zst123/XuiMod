@@ -18,6 +18,7 @@
         <item>@string/animation_grow_shrink_bottom</item>
         <item>@string/animation_grow_shrink_left</item>
         <item>@string/animation_grow_shrink_right</item>
+        <item>@string/animation_random</item>
         </string-array>
     
     <string-array name="anim_controls_values">
@@ -35,5 +36,6 @@
         <item>11</item>
         <item>12</item>
         <item>13</item>
+        <item>-1</item>
     </string-array>
 </resources>
