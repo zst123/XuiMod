@@ -172,9 +172,13 @@
    <string name="add">Add</string>
    <string name="unknown">Unknown</string>
    <string name="help">Help</string>
+   <string name="apply">Apply</string> 
+   
+   <!-- Color Picker -->
+   <string name="arrow_symbol">➙</string>
+   <string name="color_hex">Color Hex</string>
        
    
-    
         
    
         

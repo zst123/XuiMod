@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 
 
 public class Common {
@@ -28,6 +29,8 @@ public class Common {
 	public static final String LISTVIEW_PREFERENCE_FILENAME = "listview_blacklist";
 	public static final String ANIM_CONTROLS_PREFERENCE_FILENAME = "animation_controls";
 	public static final String ACTION_SETTINGS_CHANGED = "com.zst.xposed.xuimod.SETTINGS_CHANGED";
+	
+	public static final String COLOR_HOLO_BLUE ="FF33B5E5";
 	
 	/* Preference keys */
 	public static final String KEY_SECONDS_ENABLE ="seconds_enable";
@@ -98,7 +101,7 @@ public class Common {
 	public static final boolean DEFAULT_BATTERYBAR_ENABLE = false;
 	public static final boolean DEFAULT_BATTERYBAR_ANIMATE = false;
 	public static final boolean DEFAULT_BATTERYBAR_STYLE = false;
-	public static final String DEFAULT_BATTERYBAR_COLOR ="FF33B5E5";
+	public static final String DEFAULT_BATTERYBAR_COLOR = COLOR_HOLO_BLUE;
 	public static final int DEFAULT_BATTERYBAR_HEIGHT = 2;
 	
 	public static final boolean DEFAULT_LOCKSCREEN_TORCH_ENABLE = false;
@@ -161,5 +164,17 @@ public class Common {
 			return false;
 		}
 		return true;
+	}
+	
+	public static int parseColorFromString(String str){
+		str.replaceAll("\\s+", ""); 
+		//Remove all spaces
+		if (str.equals("")){
+			str = COLOR_HOLO_BLUE;
+		}
+		if (!str.startsWith("#")){
+			str = "#"+ str;
+		}
+		return Color.parseColor(str);
 	}
 }

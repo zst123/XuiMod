@@ -55,7 +55,7 @@
             android:summary="@string/batterybar_style_summary"
             android:title="@string/batterybar_style_title" />
 
-        <EditTextPreference
+        <com.zst.xposed.xuimod.preference.ColorPicker
             android:defaultValue="FF33B5E5"
             android:dependency="batterybar_enable"
             android:dialogIcon="@drawable/ic_launcher"
@@ -64,6 +64,7 @@
             android:key="batterybar_color"
             android:summary="@string/batterybar_color_summary"
             android:title="@string/batterybar_color_title" />
+        
         <com.zst.xposed.xuimod.preference.BarHeight
             android:defaultValue="2"
             android:dependency="batterybar_enable"
@@ -74,7 +75,8 @@
             android:key="batterybar_height"
             android:summary="@string/batterybar_height_summary"
             android:title="@string/batterybar_height_title" />
-        <EditTextPreference
+        
+        <com.zst.xposed.xuimod.preference.ColorPicker
             android:defaultValue="00000000"
             android:dependency="batterybar_enable"
             android:dialogIcon="@drawable/ic_launcher"
