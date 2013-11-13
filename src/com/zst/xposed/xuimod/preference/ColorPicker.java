@@ -27,12 +27,12 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-public class ColorPicker extends Preference implements OnClickListener {
+public class ColorPicker extends Preference implements OnPreferenceClickListener {
 	
 	SharedPreferences mPref;
 	ImageView mColorBox;
@@ -51,12 +51,12 @@ public class ColorPicker extends Preference implements OnClickListener {
 		mColorBox = (ImageView) view.findViewById(android.R.id.icon);
 		mPref = getPreferenceManager().getSharedPreferences();
 		mRes = getContext().getResources();
-		view.setOnClickListener(this);
+		setOnPreferenceClickListener(this);
 		refreshColorBox();
 	}
 
 	@Override
-	public void onClick(View v) {
+	public boolean onPreferenceClick(Preference arg0) {
 		final ColorSettingsDialog d = new ColorSettingsDialog(getContext(), getColor(), mDefaultColor);
 		final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
 			@Override
@@ -76,6 +76,7 @@ public class ColorPicker extends Preference implements OnClickListener {
 		d.setButton(AlertDialog.BUTTON_NEUTRAL, mRes.getString(R.string.settings_default), listener);
 		d.setButton(AlertDialog.BUTTON_NEGATIVE, mRes.getString(android.R.string.cancel), listener);
 		d.show();
+		return true;
 	}
 		
 	public String getColorString() {
