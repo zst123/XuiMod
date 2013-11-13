@@ -161,10 +161,8 @@
     <string name="batterybar_animate_summary">Show Animation while Charging</string>
     <string name="batterybar_color_title">Bar Color</string>
     <string name="batterybar_color_summary">Specify Color in #AARRGGBB</string>
-    <string name="batterybar_color_dialog">Specify Color in #AARRGGBB.\n(eg. #8800ffff = Cyan with 50% alpha)\nHolo Blue is used if blank or invalid color syntax is used  </string>
     <string name="batterybar_bg_color_title">Background Color</string>
     <string name="batterybar_bg_color_summary">Specify Background Color in #AARRGGBB</string>
-    <string name="batterybar_bg_color_dialog">Specify Background Color in #AARRGGBB.\nBackground disabled if left blank or invalid color syntax is used.\n</string>
     
    <!-- Other string -->
    <string name="version_unsupported">This mod requires Android %1$s and above. You are currently on Android %2$s.</string>

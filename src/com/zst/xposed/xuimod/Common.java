@@ -166,15 +166,19 @@ public class Common {
 		return true;
 	}
 	
-	public static int parseColorFromString(String str){
+	public static int parseColorFromString(String str, String defColorWithoutSymbols){
 		str.replaceAll("\\s+", ""); 
 		//Remove all spaces
 		if (str.equals("")){
-			str = COLOR_HOLO_BLUE;
+			str = defColorWithoutSymbols;
 		}
 		if (!str.startsWith("#")){
 			str = "#"+ str;
 		}
-		return Color.parseColor(str);
+		try{
+			return Color.parseColor(str);
+		}catch(Exception e){
+			return Color.parseColor("#"+defColorWithoutSymbols);
+		}
 	}
 }

@@ -154,7 +154,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     private void updateSettings() {
         XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
         String colorString = pref.getString(Common.KEY_BATTERYBAR_COLOR, Common.DEFAULT_BATTERYBAR_COLOR);
-        int color = parseStringColor(colorString, 0xFF33B5E5);
+        int color = Common.parseColorFromString(colorString, "FF33B5E5");
         
         shouldAnimateCharging = pref.getBoolean(Common.KEY_BATTERYBAR_ANIMATE, Common.DEFAULT_BATTERYBAR_ANIMATE);
         if (mBatteryCharging && mBatteryLevel < 100 && shouldAnimateCharging) {
@@ -166,21 +166,6 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
         mBatteryBar.setBackgroundColor(color);
         mCharger.setBackgroundColor(color);
         updateBatteryBackground(pref);
-    }
-
-    private int parseStringColor(String colorString, int defColor){
-    	int color;
-    	try{
-        	color = Color.parseColor(colorString);
-        }catch(Throwable t){ //Error parsing color, try removing non-numeric characters
-        	 try{
-        		 colorString = colorString.replaceAll( "[^\\d]", "" ); //Remove non-numeric characters
-                 color = Color.parseColor("#" + colorString);
-             }catch(Throwable t1){ // Error parsing the string. Use default anyway.
-             	color = defColor;
-             }
-        }
-    	return color;
     }
     
     private void setProgress(int n) {
@@ -200,7 +185,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 
     public void updateBatteryBackground(XSharedPreferences pref){
         String colorString = pref.getString(Common.KEY_BATTERYBAR_BACKGROUND_COLOR, "");
-        int color = parseStringColor(colorString, 0x00000000);
+        int color = Common.parseColorFromString(colorString, "00000000");
     	mBatteryBarBackground.setBackgroundColor(color);
     }
     

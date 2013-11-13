@@ -131,10 +131,8 @@
     <string name="batterybar_animate_summary">充電しているときにアニメーションします。</string>
     <string name="batterybar_color_title">バーの色</string>
     <string name="batterybar_color_summary">#AARRGGBBで色を指定します。</string>
-    <string name="batterybar_color_dialog">#AARRGGBBで色を指定します。\n(例 #8800ffff = 50%透過したシアン)\n空白にしたり不正な値の場合はHolo Blueになります。  </string>
     <string name="batterybar_bg_color_title">背景色</string>
     <string name="batterybar_bg_color_summary">#AARRGGBBで背景色を指定します。</string>
-    <string name="batterybar_bg_color_dialog">#AARRGGBBで指定します。\n空白にしたり不正な値の場合無効になります。\n</string>
     
    <!-- Other string -->
    <string name="settings_default">初期値に戻す</string>

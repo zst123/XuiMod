@@ -37,9 +37,12 @@ public class ColorPicker extends Preference implements OnClickListener {
 	SharedPreferences mPref;
 	ImageView mColorBox;
 	Resources mRes;
+	String mDefaultColor;
 
 	public ColorPicker(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		
+		mDefaultColor = attrs.getAttributeValue(null, "defaultValue");
 	}
 
 	@Override
@@ -54,7 +57,7 @@ public class ColorPicker extends Preference implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		final ColorSettingsDialog d = new ColorSettingsDialog(getContext(), getColor());
+		final ColorSettingsDialog d = new ColorSettingsDialog(getContext(), getColor(), mDefaultColor);
 		final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -63,7 +66,7 @@ public class ColorPicker extends Preference implements OnClickListener {
 					setColor(d.getColorString());
 					break;
 				case AlertDialog.BUTTON_NEUTRAL:
-					setColor(Common.COLOR_HOLO_BLUE);
+					setColor(mDefaultColor);
 					break;
 				}
 				Common.settingsChanged(getContext());
@@ -80,8 +83,8 @@ public class ColorPicker extends Preference implements OnClickListener {
 	}
 	
 	public int getColor() {
-		String str = mPref.getString(getKey(), Common.COLOR_HOLO_BLUE);
-		return Common.parseColorFromString(str);
+		String str = mPref.getString(getKey(), mDefaultColor);
+		return Common.parseColorFromString(str, mDefaultColor);
 	}
 	
 	private void refreshColorBox(){

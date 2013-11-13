@@ -51,7 +51,8 @@
             android:layout_weight="1"
             android:digits="0123456789ABCDEF"
             android:ems="10"
-            android:inputType="textCapCharacters" />
+            android:inputType="textCapCharacters"
+            android:maxLength="8" />
 
         <Button
             android:id="@+id/color_apply"

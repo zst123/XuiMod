@@ -45,14 +45,14 @@ public class ColorSettingsDialog extends AlertDialog implements
 	private LayoutInflater mInflater;
 	private OnColorChangedListener mListener;
 
-	public ColorSettingsDialog(Context context, int initialColor) {
+	public ColorSettingsDialog(Context context, int initialColor, final String defColor) {
 		super(context);
 		getWindow().setFormat(PixelFormat.RGBA_8888);
 		// To fight color banding.
-		setUp(initialColor);
+		setUp(initialColor, defColor);
 	}
 
-	private void setUp(int color) {
+	private void setUp(int color, final String defColor) {
         mInflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         
@@ -71,7 +71,7 @@ public class ColorSettingsDialog extends AlertDialog implements
         mHexButton.setOnClickListener(new View.OnClickListener(){
         	@Override
         	public void onClick(View v) {
-        		int color = Common.parseColorFromString(mHexColor.getText().toString());
+        		int color = Common.parseColorFromString(mHexColor.getText().toString(), defColor);
         		mColorPicker.setColor(color);
         		colorChange(color);
         	}
