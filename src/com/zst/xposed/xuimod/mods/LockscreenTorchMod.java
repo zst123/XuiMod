@@ -22,6 +22,7 @@ import com.zst.xposed.xuimod.Common;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
@@ -57,8 +58,30 @@ public class LockscreenTorchMod {
 	    hook(lpparam);
 	}
 	
+	private static String getClassStringFromSdk(int sdk){
+		switch(sdk) {
+		case 14:
+		case 15:
+			return "com.android.internal.policy.impl.KeyguardViewBase";
+			/* Ice Cream Sandwich */
+		case 16:
+		case 17:
+		case 18:
+			return "com.android.internal.policy.impl.keyguard.KeyguardViewManager.ViewManagerHost";
+			/* Jelly Bean */
+		case 19:
+			return "com.android.keyguard.KeyguardViewManager.ViewManagerHost";
+			/* KitKat */
+		}
+		return null;
+		
+	}
+	
 	private static void hook(LoadPackageParam o) {
-	    Class<?> hookClass = findClass("com.android.internal.policy.impl.keyguard.KeyguardViewManager.ViewManagerHost", o.classLoader);
+		String cls = getClassStringFromSdk(Build.VERSION.SDK_INT);
+		if (cls == null) return;
+		
+	    Class<?> hookClass = findClass(cls, o.classLoader);
 	    XposedBridge.hookAllMethods(hookClass, "dispatchKeyEvent", new XC_MethodHook(){
 		@Override 
 		protected void afterHookedMethod(MethodHookParam param) throws Throwable {
