@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">XuiMod</string>
-    <string name="title_activity_list_view_blacklist">ブラックリスト(ListViewアニメーション)</string>
+    <string name="title_activity_list_view_blacklist">ブラックリスト</string>
     
     <!-- Main Screen Category Titles -->
     <string name="systemui_title">システムUI</string>
@@ -19,7 +19,7 @@
     <string name="seconds_enable_summary">ステータスバーの時計を一秒ごとに更新します。</string>
     <string name="seconds_bold_title">時計を太字にする</string>
     <string name="seconds_bold_summary">時計の文字を太字にします。</string>
-    <string name="seconds_use_html_title">HTMLを使う</string>
+    <string name="seconds_use_html_title">HTMLタグを使用</string>
     <string name="seconds_use_html_summary">書式の変更でHTMLタグを使えるようにします。</string>
     <string name="seconds_custom_title">書式の変更</string>
     <string name="seconds_custom_summary">時計の書式をSimpleDateFormatで変更します。 \n(空白にすると標準のままになります)</string>
@@ -67,6 +67,7 @@
     <string name="animation_grow_shrink_bottom">グローイン (下)</string>
     <string name="animation_grow_shrink_left">グローイン (左)</string>
     <string name="animation_grow_shrink_right">グローイン (右)</string>
+    <string name="animation_random">ランダム</string>
     
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListViewアニメーション</string>
@@ -121,7 +122,7 @@
     
      <!-- BatteryBar Pref-->
     <string name="batterybar_title">バッテリーバーの設定</string>
-    <string name="batterybar_enable_title">バッテリーバーを有効にする</string>
+    <string name="batterybar_enable_title">バッテリーバー</string>
     <string name="batterybar_style_title">左右対称にする</string>
     <string name="batterybar_style_summary">チェックするとバッテリーバーが左右対称になります。</string>
     <string name="batterybar_height_title">バーの高さ</string>
@@ -139,6 +140,10 @@
    <string name="add">追加</string>
    <string name="unknown">不明</string>
    <string name="help">ヘルプ</string>
+   <string name="apply">適用</string> 
+
+   <!-- Color Picker -->
+   <string name="color_hex">Hex値</string>
        
    
     
