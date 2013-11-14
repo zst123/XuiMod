@@ -24,7 +24,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.graphics.drawable.Animatable;
 import android.os.BatteryManager;
 import android.util.AttributeSet;
@@ -156,16 +155,20 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
         String colorString = pref.getString(Common.KEY_BATTERYBAR_COLOR, Common.DEFAULT_BATTERYBAR_COLOR);
         int color = Common.parseColorFromString(colorString, "FF33B5E5");
         
-        shouldAnimateCharging = pref.getBoolean(Common.KEY_BATTERYBAR_ANIMATE, Common.DEFAULT_BATTERYBAR_ANIMATE);
+        setProgress(mBatteryLevel);
+        mBatteryBar.setBackgroundColor(color);
+        mCharger.setBackgroundColor(color);
+        updateBatteryBackground(pref);
+        
+        boolean oldShouldAnimateCharging = shouldAnimateCharging;
+        shouldAnimateCharging = pref.getBoolean(Common.KEY_BATTERYBAR_ANIMATE,
+        		Common.DEFAULT_BATTERYBAR_ANIMATE);
+        if (oldShouldAnimateCharging == shouldAnimateCharging) return;
         if (mBatteryCharging && mBatteryLevel < 100 && shouldAnimateCharging) {
             start();
         } else {
             stop();
         }
-        setProgress(mBatteryLevel);
-        mBatteryBar.setBackgroundColor(color);
-        mCharger.setBackgroundColor(color);
-        updateBatteryBackground(pref);
     }
     
     private void setProgress(int n) {

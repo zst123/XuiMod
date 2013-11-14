@@ -100,6 +100,8 @@ public class BatteryBarController extends LinearLayout {
 					updateSettings();
 				}else{
 					removeBars();
+					mStyle = -1; 
+					// Reset the style so oldStyle isn't the same
 				}
 			}
 		}
@@ -119,8 +121,7 @@ public class BatteryBarController extends LinearLayout {
 		}
 	}
 
-	public void addBars() {
-		int pixels = getSettingsHeight();
+	public void setHeight(int pixels) {
 
 		ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) getLayoutParams();
 
@@ -130,6 +131,9 @@ public class BatteryBarController extends LinearLayout {
 			params.height = pixels;
 		}
 		setLayoutParams(params);
+	}
+	
+	public void addBar() {	
 		LayoutParams ll = new LinearLayout.LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1);
 
@@ -157,13 +161,11 @@ public class BatteryBarController extends LinearLayout {
 		}
 	}
 
-	public int getSettingsHeight() {
+	public int getSettingsHeight(XSharedPreferences pref) {
 		DisplayMetrics metrics = getContext().getResources()
 				.getDisplayMetrics();
-		XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
 		float dp = (float) pref.getInt(Common.KEY_BATTERYBAR_HEIGHT,
 				Common.DEFAULT_BATTERYBAR_HEIGHT);
-
 		return (int) ((metrics.density * dp) + 0.5);
 	}
 
@@ -172,14 +174,18 @@ public class BatteryBarController extends LinearLayout {
 	}
 
 	public void updateSettings() {
+		int oldStyle = mStyle;
 		XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
 		mStyle = pref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
 				Common.DEFAULT_BATTERYBAR_STYLE) ? STYLE_SYMMETRIC
 				: STYLE_REGULAR;
 		mLocation = 1;
+		setHeight(getSettingsHeight(pref));
+		if (oldStyle == mStyle) return;
+		
 		if (isLocationValid(mLocation)) {
 			removeBars();
-			addBars();
+			addBar();
 			setVisibility(View.VISIBLE);
 		} else {
 			removeBars();
