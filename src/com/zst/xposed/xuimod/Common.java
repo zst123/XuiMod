@@ -64,10 +64,10 @@ public class Common {
 	public static final String KEY_LOCKSCREEN_TORCH_TYPE ="lockscreen_torch_type";
 	
 	public static final String KEY_ANIMATION_CONTROLS_PREF_SCREEN = "animation_controls";
-    public static final String KEY_ANIMATION_CONTROLS_ENABLE = "animation_controls_enable";
-    public static final String KEY_ANIMATION_CONTROLS_DURATION = "animation_controls_duration";
-    public static final String KEY_ANIMATION_CONTROLS_NO_OVERRIDE = "animation_controls_no_override";
-    public static final String[] KEYS_ANIMATION_CONTROLS_ACTIVITY = new String[] {
+	public static final String KEY_ANIMATION_CONTROLS_ENABLE = "animation_controls_enable";
+	public static final String KEY_ANIMATION_CONTROLS_DURATION = "animation_controls_duration";
+	public static final String KEY_ANIMATION_CONTROLS_NO_OVERRIDE = "animation_controls_no_override";
+	public static final String[] KEYS_ANIMATION_CONTROLS_ACTIVITY = new String[] {
     	"activity_open",
         "activity_close",
         "task_open",
@@ -80,10 +80,10 @@ public class Common {
         "wallpaper_intra_close",
     };
     
-    public static final String KEY_ANIMATION_IME_ENTER = "anim_ime_enter";
-    public static final String KEY_ANIMATION_IME_EXIT = "anim_ime_exit";
-    public static final String KEY_ANIMATION_IME_INTEPOLATER = "anim_ime_interpolater";
-    public static final String KEY_ANIMATION_IME_DURATION = "anim_ime_duration";
+	public static final String KEY_ANIMATION_IME_ENTER = "anim_ime_enter";
+	public static final String KEY_ANIMATION_IME_EXIT = "anim_ime_exit";
+	public static final String KEY_ANIMATION_IME_INTEPOLATER = "anim_ime_interpolater";
+	public static final String KEY_ANIMATION_IME_DURATION = "anim_ime_duration";
 
 	/* Preference default values */
 	public static final boolean DEFAULT_SECONDS_ENABLE =false;
@@ -134,7 +134,7 @@ public class Common {
 	public static final int LIMIT_MAX_BATTERYBAR_HEIGHT = 25;
 	public static final int LIMIT_MIN_BATTERYBAR_HEIGHT = 1;
 
-    public static final int LIMIT_MAX_ANIMATION_CONTROLS_DURATION = 2000;
+	public static final int LIMIT_MAX_ANIMATION_CONTROLS_DURATION = 2000;
 	public static final int LIMIT_MIN_ANIMATION_CONTROLS_DURATION = -1;
 	
 	public static final int LIMIT_MAX_ANIMATION_IME_DURATION = 3000;
