@@ -169,6 +169,48 @@
             android:summary="@string/window_transitions_summary"
             android:title="@string/window_transitions_title" />
         
+        <PreferenceCategory
+            android:title="@string/anim_ime_main_title" >
+        </PreferenceCategory>
+        
+	        <ListPreference
+	            android:defaultValue="0"
+	            android:dialogIcon="@drawable/ic_launcher"
+	            android:dialogTitle="@string/anim_ime_enter_title"
+	            android:entries="@array/anim_ime_entries"
+	            android:entryValues="@array/anim_ime_values"
+	            android:key="anim_ime_enter"
+	            android:summary="@string/anim_ime_enter_summary"
+	            android:title="@string/anim_ime_enter_title" />
+	        
+	        <ListPreference
+	            android:defaultValue="0"
+	            android:dialogIcon="@drawable/ic_launcher"
+	            android:dialogTitle="@string/anim_ime_exit_title"
+	            android:entries="@array/anim_ime_entries"
+	            android:entryValues="@array/anim_ime_values"
+	            android:key="anim_ime_exit"
+	            android:summary="@string/anim_ime_exit_summary"
+	            android:title="@string/anim_ime_exit_title" />
+	        
+	        <ListPreference
+	            android:defaultValue="0"
+	            android:dialogIcon="@drawable/ic_launcher"
+	            android:dialogTitle="@string/anim_ime_interpolater_title"
+	            android:entries="@array/listview_interpolator_entries"
+	            android:entryValues="@array/listview_interpolator_values"
+	            android:key="anim_ime_interpolater"
+	            android:title="@string/anim_ime_interpolater_title" />
+	        
+	        <com.zst.xposed.xuimod.preference.AnimationDuration
+	            android:key="anim_ime_duration"
+	            android:dialogLayout="@layout/pref_seekbar"
+	            android:dialogTitle="@string/anim_ime_duration_title"
+	            android:title="@string/anim_ime_duration_title" />
+	        
+	        <com.zst.xposed.xuimod.preference.TestKeyboard
+	            android:key="anim_ime_test"
+	            hint="@string/anim_ime_test_title" />
     </PreferenceScreen>
     
     <!-- Framework Mod Category -->

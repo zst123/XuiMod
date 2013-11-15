@@ -80,6 +80,10 @@ public class Common {
         "wallpaper_intra_close",
     };
     
+    public static final String KEY_ANIMATION_IME_ENTER = "anim_ime_enter";
+    public static final String KEY_ANIMATION_IME_EXIT = "anim_ime_exit";
+    public static final String KEY_ANIMATION_IME_INTEPOLATER = "anim_ime_interpolater";
+    public static final String KEY_ANIMATION_IME_DURATION = "anim_ime_duration";
 
 	/* Preference default values */
 	public static final boolean DEFAULT_SECONDS_ENABLE =false;
@@ -115,6 +119,11 @@ public class Common {
     public static final int DEFAULT_ANIMATION_CONTROLS_DURATION = -1;
     public static final String DEFAULT_ANIMATION_CONTROLS_ACTIVITY = "0";
 
+    public static final String DEFAULT_ANIMATION_IME_ENTER = "0";
+    public static final String DEFAULT_ANIMATION_IME_EXIT = "0";
+    public static final String DEFAULT_ANIMATION_IME_INTEPOLATER = "0";
+    public static final int DEFAULT_ANIMATION_IME_DURATION = 500;
+    
 	/* Preference limits values */
 	public static final int LIMIT_MAX_LISTVIEW_DURATION = 2500;
 	public static final int LIMIT_MIN_LISTVIEW_DURATION = 100;
@@ -128,6 +137,8 @@ public class Common {
     public static final int LIMIT_MAX_ANIMATION_CONTROLS_DURATION = 2000;
 	public static final int LIMIT_MIN_ANIMATION_CONTROLS_DURATION = -1;
 	
+	public static final int LIMIT_MAX_ANIMATION_IME_DURATION = 3000;
+	public static final int LIMIT_MIN_ANIMATION_IME_DURATION = 0;
 	
 	public static final boolean TEST_FREATURE = true;
 	

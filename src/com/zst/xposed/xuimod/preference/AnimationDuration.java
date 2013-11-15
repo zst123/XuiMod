@@ -93,6 +93,11 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 				mMax = Common.LIMIT_MAX_ANIMATION_CONTROLS_DURATION;
 				mMin = Common.LIMIT_MIN_ANIMATION_CONTROLS_DURATION;
 				mDefault = Common.DEFAULT_ANIMATION_CONTROLS_DURATION;
+				
+		}else if(mKey.equals(Common.KEY_ANIMATION_IME_DURATION)){
+			mMax = Common.LIMIT_MAX_ANIMATION_IME_DURATION;
+			mMin = Common.LIMIT_MIN_ANIMATION_IME_DURATION;
+			mDefault = Common.DEFAULT_ANIMATION_IME_DURATION;
 		}
 		
 		int value = prefs.getInt(mKey, mDefault);

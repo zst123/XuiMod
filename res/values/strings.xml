@@ -72,6 +72,18 @@
     <string name="animation_grow_shrink_right">Grow in (Right)</string>
     <string name="animation_random">Random</string>
     
+    <!-- IME Animation -->
+    <string name="anim_ime_main_title">Input Method Editor Animations</string>
+    <string name="anim_ime_enter_title">IME Enter Animation</string>
+    <string name="anim_ime_enter_summary">Shown when opening an Input Method Editor</string>
+    <string name="anim_ime_exit_title">IME Exit Animation</string>
+    <string name="anim_ime_exit_summary">Shown when closing an Input Method Editor</string>
+    <string name="anim_ime_interpolater_title">IME Interpolater</string>
+    <string name="anim_ime_duration_title">IME Animation Duration</string>
+    <string name="anim_ime_test_title">Test IME Animation Here</string>
+    <string name="anim_ime_entries_fancy">Android Fancy IME</string>
+    <string name="anim_ime_entries_tn">TN Fly</string>
+    <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
     
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>

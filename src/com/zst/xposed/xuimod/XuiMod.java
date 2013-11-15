@@ -18,6 +18,7 @@ package com.zst.xposed.xuimod;
 
 import com.zst.xposed.xuimod.mods.AnimationControlsMod;
 import com.zst.xposed.xuimod.mods.BatteryBarMod;
+import com.zst.xposed.xuimod.mods.InputMethodAnimationMod;
 import com.zst.xposed.xuimod.mods.ListViewAnimationMod;
 import com.zst.xposed.xuimod.mods.LockscreenTorchMod;
 import com.zst.xposed.xuimod.mods.LockscreenVolumeMod;
@@ -53,6 +54,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 		VolumePanelMod.handleLoadPackage(lpparam,pref);
 		LockscreenTorchMod.handleLoadPackage(lpparam,pref);
 		AnimationControlsMod.handleLoadPackage(lpparam);
+		InputMethodAnimationMod.handleLoadPackage(lpparam,pref);
 	}
 
 	@Override
