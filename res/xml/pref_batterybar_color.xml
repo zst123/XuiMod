@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/batterybar_color_title" >
+
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="batterybar_color"
+        android:title="@string/batterybar_color_100_title" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="batterybar_color_99"
+        android:title="@string/batterybar_color_99_title" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="batterybar_color_80"
+        android:title="@string/batterybar_color_80_title" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="batterybar_color_60"
+        android:title="@string/batterybar_color_60_title" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="batterybar_color_40"
+        android:title="@string/batterybar_color_40_title" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="batterybar_color_20"
+        android:title="@string/batterybar_color_20_title" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="batterybar_color_charge"
+        android:title="@string/batterybar_color_charge_title" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="00000000"
+        android:key="batterybar_bg_color"
+        android:title="@string/batterybar_bg_color_title" />
+
+</PreferenceScreen>

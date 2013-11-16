@@ -53,7 +53,16 @@ public class Common {
 	public static final String KEY_BATTERYBAR_ENABLE ="batterybar_enable";
 	public static final String KEY_BATTERYBAR_ANIMATE ="batterybar_animate";
 	public static final String KEY_BATTERYBAR_STYLE ="batterybar_style";
-	public static final String KEY_BATTERYBAR_COLOR ="batterybar_color";
+	
+	public static final String KEY_BATTERYBAR_COLOR_100 ="batterybar_color";
+	public static final String KEY_BATTERYBAR_COLOR_99 ="batterybar_color_99";
+	public static final String KEY_BATTERYBAR_COLOR_80 ="batterybar_color_80";
+	public static final String KEY_BATTERYBAR_COLOR_60 ="batterybar_color_60";
+	public static final String KEY_BATTERYBAR_COLOR_40 ="batterybar_color_40";
+	public static final String KEY_BATTERYBAR_COLOR_20 ="batterybar_color_20";
+	public static final String KEY_BATTERYBAR_COLOR_CHARGING ="batterybar_color_charge";
+
+
 	public static final String KEY_BATTERYBAR_HEIGHT ="batterybar_height";
 	public static final String KEY_BATTERYBAR_BACKGROUND_COLOR ="batterybar_bg_color";
 

@@ -138,6 +138,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
                     stop();
                 }
                 setProgress(mBatteryLevel);
+                updateBatteryColor(null);
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 stop();
             } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
@@ -152,12 +153,9 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 
     private void updateSettings() {
         XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-        String colorString = pref.getString(Common.KEY_BATTERYBAR_COLOR, Common.DEFAULT_BATTERYBAR_COLOR);
-        int color = Common.parseColorFromString(colorString, "FF33B5E5");
         
         setProgress(mBatteryLevel);
-        mBatteryBar.setBackgroundColor(color);
-        mCharger.setBackgroundColor(color);
+        updateBatteryColor(pref);
         updateBatteryBackground(pref);
         
         boolean oldShouldAnimateCharging = shouldAnimateCharging;
@@ -186,6 +184,30 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 
     }
 
+    private void updateBatteryColor(XSharedPreferences pref){
+    	if (pref==null) pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+    	
+    	String s = "FF33B5E5";
+    	if (mBatteryCharging){
+            s = pref.getString(Common.KEY_BATTERYBAR_COLOR_CHARGING, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mBatteryLevel <= 20){
+            s = pref.getString(Common.KEY_BATTERYBAR_COLOR_20, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mBatteryLevel <= 40){
+            s = pref.getString(Common.KEY_BATTERYBAR_COLOR_40, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mBatteryLevel <= 60){
+            s = pref.getString(Common.KEY_BATTERYBAR_COLOR_60, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mBatteryLevel <= 80){
+            s = pref.getString(Common.KEY_BATTERYBAR_COLOR_80, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mBatteryLevel <= 99){
+            s = pref.getString(Common.KEY_BATTERYBAR_COLOR_99, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mBatteryLevel == 100){
+            s = pref.getString(Common.KEY_BATTERYBAR_COLOR_100, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}
+    	int color = Common.parseColorFromString(s, "FF33B5E5");
+    	mBatteryBar.setBackgroundColor(color);
+        mCharger.setBackgroundColor(color);
+    }
+    
     public void updateBatteryBackground(XSharedPreferences pref){
         String colorString = pref.getString(Common.KEY_BATTERYBAR_BACKGROUND_COLOR, "");
         int color = Common.parseColorFromString(colorString, "00000000");

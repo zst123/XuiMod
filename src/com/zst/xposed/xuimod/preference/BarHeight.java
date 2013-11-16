@@ -94,7 +94,7 @@ public class BarHeight extends DialogPreference implements
 		mSeekBar.setMax(LIMIT_MAX_BATTERYBAR_HEIGHT - LIMIT_MIN_BATTERYBAR_HEIGHT);
 		mSeekBar.setProgress(value);
 		
-        String colorString = prefs.getString(Common.KEY_BATTERYBAR_COLOR, Common.DEFAULT_BATTERYBAR_COLOR);
+        String colorString = prefs.getString(Common.KEY_BATTERYBAR_COLOR_100, Common.DEFAULT_BATTERYBAR_COLOR);
         mLine.setBackgroundColor(parseLineColor(colorString));
 	}
 

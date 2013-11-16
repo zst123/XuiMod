@@ -171,10 +171,17 @@
     <string name="batterybar_height_dialog">Height of BatteryBar in dp.\n(Non-numeric characters are ignored.)</string>
     <string name="batterybar_animate_title">Animate Charging</string>
     <string name="batterybar_animate_summary">Show Animation while Charging</string>
-    <string name="batterybar_color_title">Bar Color</string>
-    <string name="batterybar_color_summary">Specify Color in #AARRGGBB</string>
+    <string name="batterybar_color_title">BatteryBar Color</string>
+    
+    <string name="batterybar_color_screen_title">Customize Color</string>
+    <string name="batterybar_color_100_title">Color for 100%</string>
+    <string name="batterybar_color_99_title">Color for 99% and below</string>
+    <string name="batterybar_color_80_title">Color for 80% and below</string>
+    <string name="batterybar_color_60_title">Color for 60% and below</string>
+    <string name="batterybar_color_40_title">Color for 40% and below</string>
+    <string name="batterybar_color_20_title">Color for 20% and below</string>
+    <string name="batterybar_color_charge_title">Color for Charging</string>
     <string name="batterybar_bg_color_title">Background Color</string>
-    <string name="batterybar_bg_color_summary">Specify Background Color in #AARRGGBB</string>
     
    <!-- Other string -->
    <string name="version_unsupported">This mod requires Android %1$s and above. You are currently on Android %2$s.</string>
