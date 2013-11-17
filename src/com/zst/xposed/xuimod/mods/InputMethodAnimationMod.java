@@ -102,7 +102,10 @@ public class InputMethodAnimationMod {
 		XposedBridge.hookAllMethods(InputMethodService.class, "onWindowShown", new XC_MethodHook(){
 			@Override 
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {			
-				if (mAnimationEnterIndex == 0) return;
+				if (mAnimationEnterIndex == 0){
+					mWindow.setWindowAnimations(android.R.style.Animation_InputMethod);
+					return;
+				}
 				InputMethodService thiz = (InputMethodService) param.thisObject;
 				Dialog dialog = thiz.getWindow();
 				mWindow = dialog.getWindow();
@@ -112,6 +115,7 @@ public class InputMethodAnimationMod {
 				decor.setVisibility(View.VISIBLE);
 				/* We want our animation to be shown ASAP, set it to visible in advance*/
 				Animation anim = retrieveAnimation(true, mWindow.getContext());
+				if (anim == null) return;
 				mRootView = ((View)mRootField.get(thiz));
 				mRootView.startAnimation(anim);
 				/* Get the view (and cache to static variable) and start animating*/		
@@ -124,17 +128,17 @@ public class InputMethodAnimationMod {
 				new XC_MethodHook(){
 			@Override 
 			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-				if (mAnimationExitIndex == 0) return;
+				if (mAnimationExitIndex == 0){
+					mWindow.setWindowAnimations(android.R.style.Animation_InputMethod);
+					return;
+				}
 				
 				final InputMethodService thiz = (InputMethodService) param.thisObject;
 				final Dialog d = thiz.getWindow();
 				mWindow = d.getWindow();
+				mWindow.setWindowAnimations(-1);
 				
 				final View decor = mWindow.getDecorView();
-				decor.setVisibility(View.VISIBLE);
-				/* This is a "hack" since onWindowHidden is called JUST AFTER the view has 
-				 * been hidden. So we immediately set it to visible before the view can be
-				 * invalidated by the system */
 				Animation anim = retrieveAnimation(false, mWindow.getContext());
 				anim.setAnimationListener(new AnimationListener() {
 					@Override
@@ -148,8 +152,13 @@ public class InputMethodAnimationMod {
 				});
 				/* We need this listener because startAnimation is Async and we need to set
 				 * the visibility to GONE right after the animation */
-				
-				mRootView.startAnimation(anim);
+				if (anim != null){
+					decor.setVisibility(View.VISIBLE);
+					/* This is a "hack" since onWindowHidden is called JUST AFTER the view has 
+					 * been hidden. So we immediately set it to visible before the view can be
+					 * invalidated by the system */
+					mRootView.startAnimation(anim);
+				}
 				/* After all our hard work, animate!! */
 
 			}
@@ -186,6 +195,7 @@ public class InputMethodAnimationMod {
     	int[]animArray = InputMethodAnimationHelper
     			.getAnimationInt(enter ? mAnimationEnterIndex : mAnimationExitIndex);
     	int animInt = enter ? animArray[1] : animArray[0];
+    	if (animInt == 0) return null;
     	
     	XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, null);
 		XmlResourceParser parser = modRes.getAnimation(animInt);
