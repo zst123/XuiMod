@@ -21,6 +21,7 @@ import java.lang.reflect.Field;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
 
 
 public class Common {
@@ -153,9 +154,18 @@ public class Common {
 	
 	public static final boolean TEST_FREATURE = true;
 	
-	public static void settingsChanged(Context ctx){
-		Intent i = new Intent(Common.ACTION_SETTINGS_CHANGED);
-		ctx.sendBroadcast(i);
+	public static void settingsChanged(final Context ctx){
+		final Handler handler = new Handler(ctx.getMainLooper());
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				Intent i = new Intent(Common.ACTION_SETTINGS_CHANGED);
+				ctx.sendBroadcast(i);
+			}
+		}, 1000);
+		/* The 1 second delay is to give enough time for system to write the preferences.
+		 * When the preference is read while it's being written, the hooks might retrieve 
+		 * the wrong value. */
 	}
 	
 	/* Helper Methods */
