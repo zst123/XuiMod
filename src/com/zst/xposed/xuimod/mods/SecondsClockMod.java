@@ -19,6 +19,7 @@ package com.zst.xposed.xuimod.mods;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import com.zst.xposed.xuimod.Common;
@@ -43,6 +44,11 @@ public class SecondsClockMod {
 	public static CharSequence format = null; // Format of Clock
 	public static boolean stopForever = false; // stop until systemui restarts
 	private static boolean allowHtml = false; //Allow HTML tags to be used?
+	
+	private static final int LETTER_DEFAULT = 0;
+	private static final int LETTER_LOWERCASE = 1;
+	private static final int LETTER_UPPERCASE = 2;
+	private static int letterCaseType = LETTER_DEFAULT;
 	
 	static XSharedPreferences pref; 
 	static Calendar mCalendar; 
@@ -88,6 +94,8 @@ public class SecondsClockMod {
 		enabled = pref.getBoolean(Common.KEY_SECONDS_ENABLE,Common.DEFAULT_SECONDS_ENABLE);
 		bold = pref.getBoolean(Common.KEY_SECONDS_BOLD,Common.DEFAULT_SECONDS_BOLD);
 		allowHtml = pref.getBoolean(Common.KEY_SECONDS_USE_HTML,Common.DEFAULT_SECONDS_USE_HTML);
+		letterCaseType = Integer.parseInt( pref.getString(Common.KEY_SECONDS_LETTER_CASE, 
+				Common.DEFAULT_SECONDS_LETTER_CASE) );
 		thix.setTypeface(null, bold ? Typeface.BOLD : Typeface.NORMAL);
 		if(!enabled){ 
 			stopForever = true; //Stop forever until systemUI reboots. Prevents reading too much off the disk(every minute which is bad)
@@ -121,14 +129,17 @@ public class SecondsClockMod {
 	private static void waitOneSecond() { 
 		mHandler.postDelayed(mTicker, 990);//wait 1 sec (slightly less to overlap the lag)	
 	}
+	
 	private static void tick() { // A new second, get the time
 		mCalendar = Calendar.getInstance( TimeZone.getDefault());
 		CharSequence time = DateFormat.format(format, mCalendar);
-		if (allowHtml){
-			thix.setText(Html.fromHtml(time.toString()));
-		}else{
-			thix.setText(time);
+		if (letterCaseType == LETTER_LOWERCASE) {
+			time = time.toString().toLowerCase(Locale.ENGLISH);
+		}else if (letterCaseType == LETTER_UPPERCASE) {
+			time = time.toString().toUpperCase(Locale.ENGLISH);
 		}
+		CharSequence clockText = allowHtml ? ( Html.fromHtml(time.toString()) ) : time;
+		thix.setText(clockText);
         thix.invalidate();
 	}
 	

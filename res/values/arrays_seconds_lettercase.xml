@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Letter case for the clock -->
+    <string-array name="seconds_lettercase_entries">
+        <item>@string/seconds_lettercase_default</item>
+        <item>@string/seconds_lettercase_lowercase</item>
+        <item>@string/seconds_lettercase_uppercase</item>
+    </string-array>
+    
+    <string-array name="seconds_lettercase_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+</resources>

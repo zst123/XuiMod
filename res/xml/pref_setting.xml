@@ -24,6 +24,17 @@
             android:key="seconds_use_html"
             android:summary="@string/seconds_use_html_summary"
             android:title="@string/seconds_use_html_title" />
+
+		<ListPreference
+		    android:defaultValue="0"
+		    android:dialogIcon="@drawable/ic_launcher"
+		    android:dialogTitle="@string/seconds_lettercase_title"
+		    android:entries="@array/seconds_lettercase_entries"
+		    android:entryValues="@array/seconds_lettercase_values"
+		    android:key="seconds_lettercase"
+		    android:summary="@string/seconds_lettercase_summary"
+		    android:title="@string/seconds_lettercase_title" />
+
         <EditTextPreference
             android:dialogIcon="@drawable/ic_launcher"
             android:dialogMessage="@string/seconds_custom_summary"

@@ -21,6 +21,11 @@
     <string name="seconds_bold_summary">Bold the Clock Font</string>
     <string name="seconds_use_html_title">Use HTML</string>
     <string name="seconds_use_html_summary">Parse HTML tags in custom format.</string>
+    <string name="seconds_lettercase_title">Letter Case</string>
+    <string name="seconds_lettercase_summary">Override all the letters with the specified case</string>
+    <string name="seconds_lettercase_default">Default</string>
+    <string name="seconds_lettercase_lowercase">Lowercase</string>
+    <string name="seconds_lettercase_uppercase">Uppercase</string>
     <string name="seconds_custom_title">Custom Format</string>
     <string name="seconds_custom_summary">Use custom SimpleDateFormat for clock \n(Leave Blank for Default)</string>
         

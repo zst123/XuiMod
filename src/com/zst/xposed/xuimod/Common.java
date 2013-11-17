@@ -37,6 +37,7 @@ public class Common {
 	public static final String KEY_SECONDS_BOLD ="seconds_bold";
 	public static final String KEY_SECONDS_CUSTOM ="seconds_custom";
 	public static final String KEY_SECONDS_USE_HTML ="seconds_use_html";
+	public static final String KEY_SECONDS_LETTER_CASE ="seconds_lettercase";
 	
 	public static final String KEY_LISTVIEW_INTERPOLATOR ="listview_interpolator";
 	public static final String KEY_LISTVIEW_ANIMATION ="listview_animation";
@@ -99,6 +100,7 @@ public class Common {
 	public static final boolean DEFAULT_SECONDS_BOLD =false;
 	public static final String DEFAULT_SECONDS_CUSTOM ="";
 	public static final boolean DEFAULT_SECONDS_USE_HTML =false;
+	public static final String DEFAULT_SECONDS_LETTER_CASE = "0";
 	
 	public static final String DEFAULT_LISTVIEW_INTERPOLATOR = "0";
 	public static final String DEFAULT_LISTVIEW_ANIMATION = "0";
