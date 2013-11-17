@@ -20,11 +20,15 @@ package com.zst.xposed.xuimod.mods.batterybar;
 import com.zst.xposed.xuimod.Common;
 
 import de.robv.android.xposed.XSharedPreferences;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Animatable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.BatteryManager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -204,14 +208,38 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             s = pref.getString(Common.KEY_BATTERYBAR_COLOR_100, Common.DEFAULT_BATTERYBAR_COLOR);
     	}
     	int color = Common.parseColorFromString(s, "FF33B5E5");
-    	mBatteryBar.setBackgroundColor(color);
-        mCharger.setBackgroundColor(color);
+		fadeBarColor(color, mBatteryBar);
+		mCharger.setBackgroundColor(color);
+		// No need to fade charger view. Just set it.
+		// charge color is constant & will be hidden when discharging
     }
     
+	private void fadeBarColor(int newColor, final View view) {
+		int oldColor = 0;
+		try {
+			oldColor = ((ColorDrawable) view.getBackground()).getColor();
+		} catch (Exception e) {
+			// NullPointerException if background color not found. Just set new
+			// color and move on.
+			view.setBackgroundColor(newColor);
+			return;
+		}
+		final ValueAnimator anim = ValueAnimator.ofObject(new ArgbEvaluator(), oldColor, newColor);
+		final AnimatorUpdateListener listener = new AnimatorUpdateListener() {
+			@Override
+			public void onAnimationUpdate(ValueAnimator animator) {
+				view.setBackgroundColor((Integer) animator.getAnimatedValue());
+			}
+		};
+		anim.addUpdateListener(listener);
+		anim.setDuration(1000);
+		anim.start();
+	}
+
     public void updateBatteryBackground(XSharedPreferences pref){
         String colorString = pref.getString(Common.KEY_BATTERYBAR_BACKGROUND_COLOR, "");
         int color = Common.parseColorFromString(colorString, "00000000");
-    	mBatteryBarBackground.setBackgroundColor(color);
+        fadeBarColor(color, mBatteryBarBackground);
     }
     
     @Override
