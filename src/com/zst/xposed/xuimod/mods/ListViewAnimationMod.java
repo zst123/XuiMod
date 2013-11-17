@@ -179,32 +179,31 @@ public class ListViewAnimationMod {
 	private static View setAnimation(Object thisObject, View view, Context mContext) {
 		if(mAnim == ANIMATION_NONE) return view;
 		
-		int scrollY = 0;
 		boolean mDown = false;
-		        
-		try {
-			if (verticalScrollMethod != null) {
-				scrollY = (Integer)verticalScrollMethod.invoke(thisObject);
-			}else{
-				scrollY = mvPosition;
-			}
-			/* Actual non-reflection code is "scrollY = computeVerticalScrollOffset();" 
-			 * "verticalScrollMethod" is initialized in "findMethod_computeVerticalScrollOffset"
-			 * method above in this class.
-			 */
-		} catch (Throwable e) {
-			scrollY = mvPosition;
-			/* There's a possibility "verticalScrollMethod.invoke(thisObject);" 
-			 * might throw a throwable.
-			 * In that case, reset to the previous integer and carry on.
-			 */
-		}
-		
-		if(mvPosition < scrollY){
-			mDown = true;
-		}
-		
-		mvPosition = scrollY;
+		if (mAnim == ANIMATION_UNFOLD || mAnim == ANIMATION_FOLD){
+			int scrollY = 0;			
+			try {
+				if (verticalScrollMethod != null) {
+					scrollY = (Integer)verticalScrollMethod.invoke(thisObject);
+				}else{
+					scrollY = mvPosition;
+				}
+				/* Actual non-reflection code is "scrollY = computeVerticalScrollOffset();" 
+				 * "verticalScrollMethod" is initialized in "findMethod_computeVerticalScrollOffset"
+				 * method above in this class.
+				 */
+			} catch (Throwable e) { 
+				scrollY = mvPosition; 
+				/* There's a possibility "verticalScrollMethod.invoke(thisObject);" 
+				 * might throw a throwable.
+				 * In that case, reset to the previous integer and carry on.
+				 */
+			} 
+			if(mvPosition < scrollY){
+				mDown = true;
+			} 
+			mvPosition = scrollY;
+		} 
 			
 		Animation anim = null;
 		switch (mAnim) {
