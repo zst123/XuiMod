@@ -131,16 +131,32 @@ public class SecondsClockMod {
 	}
 	
 	private static void tick() { // A new second, get the time
-		mCalendar = Calendar.getInstance( TimeZone.getDefault());
-		CharSequence time = DateFormat.format(format, mCalendar);
-		if (letterCaseType == LETTER_LOWERCASE) {
-			time = time.toString().toLowerCase(Locale.ENGLISH);
-		}else if (letterCaseType == LETTER_UPPERCASE) {
-			time = time.toString().toUpperCase(Locale.ENGLISH);
-		}
-		CharSequence clockText = allowHtml ? ( Html.fromHtml(time.toString()) ) : time;
-		thix.setText(clockText);
-        thix.invalidate();
+		final Thread thread = new Thread(new Runnable(){
+			@Override
+			public void run() {
+				mCalendar = Calendar.getInstance( TimeZone.getDefault());
+				CharSequence time = DateFormat.format(format, mCalendar);
+				if (letterCaseType == LETTER_LOWERCASE) {
+					time = time.toString().toLowerCase(Locale.ENGLISH);
+				}else if (letterCaseType == LETTER_UPPERCASE) {
+					time = time.toString().toUpperCase(Locale.ENGLISH);
+				}
+	        	CharSequence clockText = allowHtml ? ( Html.fromHtml(time.toString()) ) : time;
+				setClockTextOnHandler(clockText);
+			}
+		});
+		thread.start();	
+	}
+	
+	private static void setClockTextOnHandler(final CharSequence time) {
+		if (mHandler == null) {
+			mHandler = new Handler(thix.getContext().getMainLooper());
+		} 
+		mHandler.post(new Runnable() {
+	        public void run() {
+	    		thix.setText(time);
+	        }
+	    });
 	}
 	
 	private static void customSettingWhenDisabled(){ //Change Clock Format even when seconds disabled
