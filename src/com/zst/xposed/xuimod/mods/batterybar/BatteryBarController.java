@@ -39,10 +39,11 @@ public class BatteryBarController extends LinearLayout {
 	BatteryBarView mainBar;
 	BatteryBarView alternateStyleBar;
 
+	public static final int STYLE_UNKNOWN = -1;
 	public static final int STYLE_REGULAR = 0;
 	public static final int STYLE_SYMMETRIC = 1;
 
-	int mStyle = STYLE_REGULAR;
+	int mStyle = STYLE_UNKNOWN;
 	int mLocation = 0;
 
 	protected final static int CURRENT_LOC = 1;
@@ -100,7 +101,7 @@ public class BatteryBarController extends LinearLayout {
 					updateSettings();
 				}else{
 					removeBars();
-					mStyle = -1; 
+					mStyle = STYLE_UNKNOWN; 
 					// Reset the style so oldStyle isn't the same
 				}
 			}
