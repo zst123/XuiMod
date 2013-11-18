@@ -21,6 +21,11 @@
     <string name="seconds_bold_summary">時計の文字を太字にします。</string>
     <string name="seconds_use_html_title">HTMLタグを使用</string>
     <string name="seconds_use_html_summary">書式の変更でHTMLタグを使えるようにします。</string>
+    <string name="seconds_lettercase_title">大・小文字指定</string>
+    <string name="seconds_lettercase_summary">大・小文字どちらかに統一するようにします。</string>
+    <string name="seconds_lettercase_default">標準</string>
+    <string name="seconds_lettercase_lowercase">小文字</string>
+    <string name="seconds_lettercase_uppercase">大文字</string>
     <string name="seconds_custom_title">書式の変更</string>
     <string name="seconds_custom_summary">時計の書式をSimpleDateFormatで変更します。 \n(空白にすると標準のままになります)</string>
         
@@ -68,6 +73,16 @@
     <string name="animation_grow_shrink_left">グローイン (左)</string>
     <string name="animation_grow_shrink_right">グローイン (右)</string>
     <string name="animation_random">ランダム</string>
+    
+    <!-- IME Animation -->
+    <string name="anim_ime_main_title">IMEアニメーション</string>
+    <string name="anim_ime_enter_title">IME表示アニメ</string>
+    <string name="anim_ime_enter_summary">IMEを開くときのアニメーションを変更します。</string>
+    <string name="anim_ime_exit_title">IME終了アニメ</string>
+    <string name="anim_ime_exit_summary">IMEを閉じるときのアニメーションを変更します。</string>
+    <string name="anim_ime_interpolater_title">IMEアニメ動作</string>
+    <string name="anim_ime_duration_title">IMEアニメ時間</string>
+    <string name="anim_ime_test_title">IMEアニメのテスト</string>
     
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListViewアニメーション</string>
@@ -131,9 +146,16 @@
     <string name="batterybar_animate_title">充電中にアニメーションする</string>
     <string name="batterybar_animate_summary">充電しているときにアニメーションします。</string>
     <string name="batterybar_color_title">バーの色</string>
-    <string name="batterybar_color_summary">#AARRGGBBで色を指定します。</string>
+    
+    <string name="batterybar_color_screen_title">色の編集</string>
+    <string name="batterybar_color_100_title">100%時の色</string>
+    <string name="batterybar_color_99_title">99%以下の時の色</string>
+    <string name="batterybar_color_80_title">80%以下の時の色</string>
+    <string name="batterybar_color_60_title">60%以下の時の色</string>
+    <string name="batterybar_color_40_title">40%以下の時の色</string>
+    <string name="batterybar_color_20_title">20%以下の時の色</string>
+    <string name="batterybar_color_charge_title">充電時の色</string>
     <string name="batterybar_bg_color_title">背景色</string>
-    <string name="batterybar_bg_color_summary">#AARRGGBBで背景色を指定します。</string>
     
    <!-- Other string -->
    <string name="settings_default">初期値に戻す</string>
