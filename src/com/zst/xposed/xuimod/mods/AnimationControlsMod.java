@@ -65,8 +65,15 @@ public class AnimationControlsMod {
 	
 	public static void handleLoadPackage(LoadPackageParam lpparam){
 		mPref.reload();
-		Class<?> appTransition = findClass("com.android.server.wm.AppTransition",
-				lpparam.classLoader);
+		Class<?> appTransition;
+		try{
+			appTransition = findClass("com.android.server.wm.AppTransition",
+					lpparam.classLoader);
+		}catch(Exception e){
+			return;
+			//If can't find the class, return so other mods executed after this
+			//wont be affected.
+		}
 		hookNoOverrideReturnMethods(lpparam, appTransition);
 		hookConstructor(lpparam, appTransition);
 		hookloadAnimation_animAttr(lpparam, appTransition);
