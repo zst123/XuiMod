@@ -69,7 +69,7 @@ public class AnimationControlsMod {
 		try{
 			appTransition = findClass("com.android.server.wm.AppTransition",
 					lpparam.classLoader);
-		}catch(Exception e){
+		}catch(Throwable e){
 			return;
 			//If can't find the class, return so other mods executed after this
 			//wont be affected.
