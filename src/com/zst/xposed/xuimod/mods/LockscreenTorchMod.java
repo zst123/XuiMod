@@ -55,7 +55,10 @@ public class LockscreenTorchMod {
 	public static void handleLoadPackage(LoadPackageParam lpparam, XSharedPreferences pref) {
 		if (!lpparam.packageName.equals("android")) return;
 		mPref = pref;
-	    hook(lpparam);
+		try {
+			hook(lpparam);
+		} catch (Throwable e) {
+		}
 	}
 	
 	private static String getClassStringFromSdk(int sdk){

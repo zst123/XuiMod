@@ -17,8 +17,7 @@
 package com.zst.xposed.xuimod.mods;
 
 import static de.robv.android.xposed.XposedHelpers.findClass;
-
-
+import android.os.Build;
 import android.view.KeyEvent;
 
 import com.zst.xposed.xuimod.Common;
@@ -35,10 +34,33 @@ public class LockscreenVolumeMod {
 	public static void handleLoadPackage(LoadPackageParam lpparam, XSharedPreferences pref ) {
 		if (!lpparam.packageName.equals("android")) return;
 		mPref = pref;
-		Lockscreen_Volume_Button(lpparam);
+		try {
+			Lockscreen_Volume_Button(lpparam);
+		} catch (Throwable t) {
+		}
 	}
+	
+	private static String getClassStringFromSdk(int sdk) {
+		switch (sdk) {
+		case 14:
+		case 15:
+			return "com.android.internal.policy.impl.KeyguardViewBase";
+			/* Ice Cream Sandwich */
+		case 16:
+		case 17:
+		case 18:
+			return "com.android.internal.policy.impl.keyguard.KeyguardViewManager.ViewManagerHost";
+			/* Jelly Bean */
+		case 19:
+			return "com.android.keyguard.KeyguardViewManager.ViewManagerHost";
+			/* KitKat */
+		}
+		return null;
+	}
+
     private static void Lockscreen_Volume_Button(final LoadPackageParam lpparam) { 
-		Class<?> hookClass = findClass("com.android.internal.policy.impl.keyguard.KeyguardViewManager.ViewManagerHost", lpparam.classLoader);
+		String classs = getClassStringFromSdk(Build.VERSION.SDK_INT);
+		Class<?> hookClass = findClass(classs, lpparam.classLoader);
 		XposedBridge.hookAllMethods(hookClass, "dispatchKeyEvent", new XC_MethodHook(){
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				KeyEvent event = (KeyEvent)param.args[0];
