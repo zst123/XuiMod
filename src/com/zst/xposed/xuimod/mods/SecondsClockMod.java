@@ -77,7 +77,7 @@ public class SecondsClockMod {
     			if (!enabled){
     				customSettingWhenDisabled();
     			}else{
-    				tick();
+    				tick(false);
     			}
     			IntentFilter filter = new IntentFilter();
     			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
@@ -110,7 +110,7 @@ public class SecondsClockMod {
 	    mTicker = new Runnable() {
 	        public void run() {
 	        	if (enabled){ // must check if enabled before you update seconds
-	        		tick(); 
+	        		tickOnThread(); 
 	        		waitOneSecond();
 	        	}
 	        }
@@ -130,22 +130,30 @@ public class SecondsClockMod {
 		mHandler.postDelayed(mTicker, 990);//wait 1 sec (slightly less to overlap the lag)	
 	}
 	
-	private static void tick() { // A new second, get the time
+	private static void tickOnThread() { // A new second, get the time
 		final Thread thread = new Thread(new Runnable(){
 			@Override
 			public void run() {
-				mCalendar = Calendar.getInstance( TimeZone.getDefault());
-				CharSequence time = DateFormat.format(format, mCalendar);
-				if (letterCaseType == LETTER_LOWERCASE) {
-					time = time.toString().toLowerCase(Locale.ENGLISH);
-				}else if (letterCaseType == LETTER_UPPERCASE) {
-					time = time.toString().toUpperCase(Locale.ENGLISH);
-				}
-	        	CharSequence clockText = allowHtml ? ( Html.fromHtml(time.toString()) ) : time;
-				setClockTextOnHandler(clockText);
+				tick(true);
 			}
 		});
 		thread.start();	
+	}
+	
+	private static void tick(boolean changeTextWithHandler) { // A new second, get the time
+		mCalendar = Calendar.getInstance(TimeZone.getDefault());
+		CharSequence time = DateFormat.format(format, mCalendar);
+		if (letterCaseType == LETTER_LOWERCASE) {
+			time = time.toString().toLowerCase(Locale.ENGLISH);
+		} else if (letterCaseType == LETTER_UPPERCASE) {
+			time = time.toString().toUpperCase(Locale.ENGLISH);
+		}
+		CharSequence clockText = allowHtml ? (Html.fromHtml(time.toString())) : time;
+		if (changeTextWithHandler){
+			setClockTextOnHandler(clockText);
+		}else{
+			thix.setText(clockText);
+		}
 	}
 	
 	private static void setClockTextOnHandler(final CharSequence time) {
@@ -161,7 +169,7 @@ public class SecondsClockMod {
 	
 	private static void customSettingWhenDisabled(){ //Change Clock Format even when seconds disabled
 		if (format == null) setFormat(false);
-		if (!format.equals("")) tick(); // If the setting is not empty, then use our custom format
+		if (!format.equals("")) tick(false); // If the setting is not empty, then use our custom format
 		}
 	
 	private final static BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
