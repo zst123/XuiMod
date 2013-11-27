@@ -111,8 +111,7 @@ public class InputMethodAnimationMod {
 				mWindow = dialog.getWindow();
 				mWindow.setWindowAnimations(-1); 
 				//Set Animation to nothing
-				View decor = mWindow.getDecorView();
-				decor.setVisibility(View.VISIBLE);
+				dialog.show();
 				/* We want our animation to be shown ASAP, set it to visible in advance*/
 				Animation anim = retrieveAnimation(true, mWindow.getContext());
 				if (anim == null) return;
@@ -138,7 +137,6 @@ public class InputMethodAnimationMod {
 				mWindow = d.getWindow();
 				mWindow.setWindowAnimations(-1);
 				
-				final View decor = mWindow.getDecorView();
 				Animation anim = retrieveAnimation(false, mWindow.getContext());
 				anim.setAnimationListener(new AnimationListener() {
 					@Override
@@ -147,13 +145,13 @@ public class InputMethodAnimationMod {
 					public void onAnimationRepeat(Animation animation) {}
 					@Override	
 					public void onAnimationEnd(Animation animation) {
-						decor.setVisibility(View.GONE);
+						d.hide();
 					}
 				});
 				/* We need this listener because startAnimation is Async and we need to set
 				 * the visibility to GONE right after the animation */
 				if (anim != null){
-					decor.setVisibility(View.VISIBLE);
+					d.show();
 					/* This is a "hack" since onWindowHidden is called JUST AFTER the view has 
 					 * been hidden. So we immediately set it to visible before the view can be
 					 * invalidated by the system */
