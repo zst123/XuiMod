@@ -16,6 +16,7 @@
 
 package com.zst.xposed.xuimod.mods;
 
+import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.mods.batterybar.BatteryBarController;
 
 import android.content.res.XResources;
@@ -23,13 +24,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResourcesParam;
 import de.robv.android.xposed.callbacks.XC_LayoutInflated;
 
 public class BatteryBarMod {
 	
-	 public static void initResources( final InitPackageResourcesParam resparam) {
-		 if (!resparam.packageName.equals("com.android.systemui")) return;
+	 public static void initResources(final XSharedPreferences pref,
+			 final InitPackageResourcesParam resparam) {
+		 
+		 if (!resparam.packageName.equals("com.android.systemui")) {
+			 return;
+		 }
+		 if (!pref.getBoolean(Common.KEY_BATTERYBAR_ENABLE, Common.DEFAULT_BATTERYBAR_ENABLE)) {
+			 return;
+		 }
 	        try {
 	        	hookLayout(resparam);
 	        } catch (Throwable t) {

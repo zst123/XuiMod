@@ -61,7 +61,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 	public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
 		pref.reload();
 		SystemAnimationMod.handleInitPackageResources(pref, resparam);
-		if (pref.getBoolean(Common.KEY_BATTERYBAR_ENABLE, Common.DEFAULT_BATTERYBAR_ENABLE)) BatteryBarMod.initResources(resparam);
+		BatteryBarMod.initResources(pref, resparam);
 	}
 	
 }
