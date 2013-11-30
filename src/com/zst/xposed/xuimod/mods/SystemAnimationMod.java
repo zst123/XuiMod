@@ -37,25 +37,27 @@ public class SystemAnimationMod {
 	public static void handleInitPackageResources(XSharedPreferences pref, InitPackageResourcesParam resparam){
 		if (!resparam.packageName.equals("android")) return;
 		
+		final XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
+		
 		int transition = Integer.parseInt(pref.getString(Common.KEY_WINDOW_TRANSITIONS, Common.DEFAULT_WINDOW_TRANSITIONS));
 		switch (transition){
 		case NO_ANIMATION:
 			return;
 			
 		case XYLON_ANIMATION:
-			initXylon(resparam);
+			initXylon(modRes);
 			break;
 			
 		case TN_ANIMATION:
-			initTonyNoobAnim(resparam);
+			initTonyNoobAnim(modRes);
 			break;
 			
 		case Z1_HONAMI_ANIMATION:
-			initHonamiAnim(resparam);
+			initHonamiAnim(modRes);
 			break;
 			
 		case TOKO_ANIMATION:
-			initTokoAnim(resparam);
+			initTokoAnim(modRes);
 			break;
 		
 		}
@@ -65,8 +67,7 @@ public class SystemAnimationMod {
 	 * Inspired by the discontinued mod : http://forum.xda-developers.com/showthread.php?t=2012179 
 	 * Xylon Animation Replacement
 	 */
-	private static void initXylon(InitPackageResourcesParam resparam){
-		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
+	private static void initXylon(final XModuleResources modRes){
 		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.xylon_window_move_from_decor));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.xylon_options_panel_enter));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_exit", modRes.fwd(R.anim.xylon_options_panel_exit));
@@ -101,8 +102,7 @@ public class SystemAnimationMod {
 	/* Animations XML grabbed and slightly modified from tony-noob's Animation : http://forum.xda-developers.com/showthread.php?t=1342643
 	 * TN Animation Replacement
 	 */
-	private static void initTonyNoobAnim(InitPackageResourcesParam resparam){
-		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
+	private static void initTonyNoobAnim(final XModuleResources modRes){
 		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.tn_window_move_from_decor));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.tn_options_panel_enter));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_exit", modRes.fwd(R.anim.tn_options_panel_exit));
@@ -137,8 +137,7 @@ public class SystemAnimationMod {
 	/* Animations XML grabbed from Sony Xperia Z1(Honami) Framework
 	 * Sony Xperia Z1 (Honami) Animation Replacement
 	 */
-	private static void initHonamiAnim(InitPackageResourcesParam resparam){
-		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
+	private static void initHonamiAnim(final XModuleResources modRes){
 		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.honami_window_move_from_decor));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.honami_options_panel_enter));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_exit", modRes.fwd(R.anim.honami_options_panel_exit));
@@ -164,8 +163,7 @@ public class SystemAnimationMod {
 		XResources.setSystemWideReplacement("android", "anim", "task_open_exit", modRes.fwd(R.anim.honami_task_open_exit));
 	}
 	
-	private static void initTokoAnim(InitPackageResourcesParam resparam){
-		XModuleResources modRes = XModuleResources.createInstance(XuiMod.MODULE_PATH, resparam.res);
+	private static void initTokoAnim(final XModuleResources modRes){
 		XResources.setSystemWideReplacement("android", "anim", "window_move_from_decor", modRes.fwd(R.anim.toko_window_move_from_decor));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_enter", modRes.fwd(R.anim.toko_options_panel_enter));
 		XResources.setSystemWideReplacement("android", "anim", "options_panel_exit", modRes.fwd(R.anim.toko_options_panel_exit));
