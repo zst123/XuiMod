@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/batterybar_color_title" >
+
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="random_color_0"
+        android:title="@string/random_color_1" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="random_color_1"
+        android:title="@string/random_color_2" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="random_color_2"
+        android:title="@string/random_color_3" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="random_color_3"
+        android:title="@string/random_color_4" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="random_color_4"
+        android:title="@string/random_color_5" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="random_color_5"
+        android:title="@string/random_color_6" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="FF33B5E5"
+        android:key="random_color_6"
+        android:title="@string/random_color_7" />
+    <com.zst.xposed.xuimod.preference.ColorPicker
+        defaultValue="00000000"
+        android:key="random_color_7"
+        android:title="@string/random_color_8" />
+
+</PreferenceScreen>

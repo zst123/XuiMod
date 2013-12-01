@@ -88,6 +88,20 @@
             android:title="@string/systemui_restart" />
     </PreferenceScreen>
     
+    <!-- Notification Mods Screen -->
+    <PreferenceScreen
+        android:key="notif_screen"
+        android:title="@string/notif_title" >
+        <CheckBoxPreference
+            android:key="notif_quick_settings_random"
+            android:summary="@string/notif_quick_settings_random_summary"
+            android:title="@string/notif_quick_settings_random_title" />
+        
+        <Preference
+            android:key="notif_choose_color_random"
+            android:title="@string/notif_choose_color_title" />
+    </PreferenceScreen>
+        
     <!-- Animation Mod Category -->
     <PreferenceCategory
         android:key="animation_category"

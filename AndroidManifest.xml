@@ -45,6 +45,10 @@
             android:name="com.zst.xposed.xuimod.preference.activity.AnimControlPreference"
             android:label="@string/anim_controls_main_title" >
         </activity>
+        <activity
+            android:name="com.zst.xposed.xuimod.preference.activity.ChooseRandomColor"
+            android:label="@string/notif_choose_color_title" >
+        </activity>
     </application>
 
 </manifest>

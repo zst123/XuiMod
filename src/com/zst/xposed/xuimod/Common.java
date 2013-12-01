@@ -29,6 +29,7 @@ public class Common {
 	public static final String MY_PACKAGE_NAME = Common.class.getPackage().getName();
 	public static final String LISTVIEW_PREFERENCE_FILENAME = "listview_blacklist";
 	public static final String ANIM_CONTROLS_PREFERENCE_FILENAME = "animation_controls";
+	public static final String RANDOM_COLOR_PREFERENCE_FILENAME = "random_color";
 	public static final String ACTION_SETTINGS_CHANGED = "com.zst.xposed.xuimod.SETTINGS_CHANGED";
 	
 	public static final String COLOR_HOLO_BLUE ="FF33B5E5";
@@ -64,7 +65,6 @@ public class Common {
 	public static final String KEY_BATTERYBAR_COLOR_20 ="batterybar_color_20";
 	public static final String KEY_BATTERYBAR_COLOR_CHARGING ="batterybar_color_charge";
 
-
 	public static final String KEY_BATTERYBAR_HEIGHT ="batterybar_height";
 	public static final String KEY_BATTERYBAR_BACKGROUND_COLOR ="batterybar_bg_color";
 
@@ -95,6 +95,9 @@ public class Common {
 	public static final String KEY_ANIMATION_IME_EXIT = "anim_ime_exit";
 	public static final String KEY_ANIMATION_IME_INTEPOLATER = "anim_ime_interpolater";
 	public static final String KEY_ANIMATION_IME_DURATION = "anim_ime_duration";
+	
+	public static final String KEY_NOTIFICATION_RANDOM_QS_TILE_COLOR = "notif_quick_settings_random";
+	public static final String KEY_NOTIFICATION_CHOOSE_COLOR = "notif_choose_color_random";
 
 	/* Preference default values */
 	public static final boolean DEFAULT_SECONDS_ENABLE =false;
@@ -135,6 +138,8 @@ public class Common {
     public static final String DEFAULT_ANIMATION_IME_EXIT = "0";
     public static final String DEFAULT_ANIMATION_IME_INTEPOLATER = "0";
     public static final int DEFAULT_ANIMATION_IME_DURATION = 500;
+    
+	public static final boolean DEFAULT_NOTIFICATION_RANDOM_QS_TILE_COLOR = false;
     
 	/* Preference limits values */
 	public static final int LIMIT_MAX_LISTVIEW_DURATION = 2500;

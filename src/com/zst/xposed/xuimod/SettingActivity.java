@@ -21,6 +21,7 @@ import java.io.DataOutputStream;
 import com.zst.xposed.xuimod.mods.SecondsClockMod;
 import com.zst.xposed.xuimod.preference.activity.AnimControlPreference;
 import com.zst.xposed.xuimod.preference.activity.BatteryBarColor;
+import com.zst.xposed.xuimod.preference.activity.ChooseRandomColor;
 import com.zst.xposed.xuimod.preference.activity.ListViewBlacklist;
 
 import android.annotation.SuppressLint;
@@ -61,6 +62,7 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("seconds_restart").setOnPreferenceClickListener(this);
 		findPreference("listview_testing").setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
+		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
 
 		Preference animation_control = findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN);
 		boolean sdk18 = Build.VERSION.SDK_INT >= 18;
@@ -105,6 +107,10 @@ public class SettingActivity extends PreferenceActivity implements
 		}
 		if (p.getKey().equals("batterybar_color_screen")){
 			Intent i = new Intent(this, BatteryBarColor.class);
+			startActivity(i);
+		}
+		if (p.getKey().equals(Common.KEY_NOTIFICATION_CHOOSE_COLOR)) {
+			Intent i = new Intent(this, ChooseRandomColor.class);
 			startActivity(i);
 		}
 		return false;

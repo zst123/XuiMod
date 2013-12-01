@@ -28,6 +28,12 @@
     <string name="seconds_lettercase_uppercase">Uppercase</string>
     <string name="seconds_custom_title">Custom Format</string>
     <string name="seconds_custom_summary">Use custom SimpleDateFormat for clock \n(Leave Blank for Default)</string>
+    
+    <!-- Notif Mods -->
+    <string name="notif_title">Notification Mods</string>
+    <string name="notif_quick_settings_random_title">Random Quick Settings Tile Color</string>
+    <string name="notif_quick_settings_random_summary">Randomizes background color of each Quick Settings tile</string>
+    <string name="notif_choose_color_title">Select Random Colors</string>
         
     <!-- Animation Pref-->
     <string name="anim_title">Animation Mods</string>
@@ -187,6 +193,16 @@
     <string name="batterybar_color_20_title">Color for 20% and below</string>
     <string name="batterybar_color_charge_title">Color for Charging</string>
     <string name="batterybar_bg_color_title">Background Color</string>
+    
+    <!-- Random Color -->
+    <string name="random_color_1">Random Color #1</string>
+    <string name="random_color_2">Random Color #2</string>
+    <string name="random_color_3">Random Color #3</string>
+    <string name="random_color_4">Random Color #4</string>
+    <string name="random_color_5">Random Color #5</string>
+    <string name="random_color_6">Random Color #6</string>
+    <string name="random_color_7">Random Color #7</string>
+    <string name="random_color_8">Random Color #8</string>
     
    <!-- Other string -->
    <string name="version_unsupported">This mod requires Android %1$s and above. You are currently on Android %2$s.</string>
