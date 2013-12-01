@@ -32,6 +32,8 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 public class VolumePanelMod {
 
 	protected static XSharedPreferences mPref;
+	static final int MSG_TIMEOUT = 5; // Constant value from source
+	
 	public static void handleLoadPackage(LoadPackageParam lpparam, XSharedPreferences pref) {
 		if (!lpparam.packageName.equals("android")) return;
 		mPref=pref;
@@ -48,18 +50,21 @@ public class VolumePanelMod {
 		XposedBridge.hookAllMethods(hookClass, "resetTimeout", new XC_MethodReplacement(){ 
 			@Override 
 			protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-				mPref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+				mPref.reload();
 				Handler h = (Handler) param.thisObject;
-				Dialog mDialog = (Dialog) Common.getReflection(h, "mDialog");
-				Window window = mDialog.getWindow();
-
-				/* Set Transparency */
-		        WindowManager.LayoutParams lp = window.getAttributes();
-		        lp.alpha = (getAlpha(mPref) * 0.01f); // Convert Percentage to Decimal
-		        window.setAttributes(lp);
+				
+				try {
+					Dialog mDialog = (Dialog) Common.getReflection(h, "mDialog");
+					Window window = mDialog.getWindow();
+					/* Set Transparency */
+					WindowManager.LayoutParams lp = window.getAttributes();
+					lp.alpha = (getAlphaInDecimal(mPref));
+					window.setAttributes(lp);
+				} catch (Throwable t) {
+					// If we cannot find mDialog, nevermind, make the timeout mod continue.
+				}
 		        
 		        /* Set Timeout */
-				int MSG_TIMEOUT = 5; // Constant value from source
 				h.removeMessages(MSG_TIMEOUT); // Code from source
 		        h.sendMessageDelayed(h.obtainMessage(MSG_TIMEOUT), getTimeout(mPref)); 
 
@@ -78,14 +83,9 @@ public class VolumePanelMod {
 			return Integer.parseInt(Common.DEFAULT_VOLUME_TIMEOUT);
 		}
 	}
-	private static int getAlpha(XSharedPreferences pref){
-		try{
-			int aInteger = pref.getInt(Common.KEY_VOLUME_ALPHA, Common.DEFAULT_VOLUME_ALPHA);
-			if (aInteger > Common.LIMIT_MAX_VOLUME_ALPHA) aInteger = Common.LIMIT_MAX_VOLUME_ALPHA; // Higher than 100%? Ignore & use 100%
-			if (aInteger < Common.LIMIT_MIN_VOLUME_ALPHA) aInteger = Common.LIMIT_MIN_VOLUME_ALPHA;  // Lower than 25%? Ignore & use 25%
-			return aInteger;
-		}catch(Exception e){ //If alpha string is empty, it throws exception.
-			return Common.DEFAULT_VOLUME_ALPHA;
-		}
+	
+	private static float getAlphaInDecimal(XSharedPreferences pref) {
+		final int percentage = pref.getInt(Common.KEY_VOLUME_ALPHA, Common.DEFAULT_VOLUME_ALPHA); 
+		return (percentage * 0.01f);
 	}
 }
