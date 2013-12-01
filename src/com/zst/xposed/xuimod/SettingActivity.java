@@ -64,8 +64,10 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
 
+		final boolean sdk17 = Build.VERSION.SDK_INT >= 17;
+		final boolean sdk18 = Build.VERSION.SDK_INT >= 18;
+		
 		Preference animation_control = findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN);
-		boolean sdk18 = Build.VERSION.SDK_INT >= 18;
 		String summary = getResources().getString(R.string.anim_controls_main_summary);
 		if (!sdk18) { /* if not Android 4.3, use unsupported summary text */
 			summary = String.format(getResources().getString
@@ -74,6 +76,15 @@ public class SettingActivity extends PreferenceActivity implements
 		animation_control.setSummary(summary);
 		animation_control.setEnabled(sdk18);
 		animation_control.setOnPreferenceClickListener(this);
+		
+		Preference qs_random_color = findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN);
+		String qs_summary = getResources().getString(R.string.notif_quick_settings_random_summary);
+		if (!sdk17) { /* if not Android 4.2, use unsupported summary text */
+			qs_summary = String.format(getResources().getString
+					(R.string.version_unsupported), "4.2", Build.VERSION.RELEASE);
+		}
+		qs_random_color.setSummary(qs_summary);
+		qs_random_color.setEnabled(sdk17);
 		
 		prefs.registerOnSharedPreferenceChangeListener(this);
 	}
