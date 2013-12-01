@@ -148,6 +148,9 @@
     <!-- Other Pref-->
     <string name="other_title">Other Mods</string>
     
+    <string name="classic_recents_title">Use Classic Recents</string>
+    <string name="classic_recents_summary">Replace Recent Apps with Gingerbread App Switcher</string>
+    
     <string name="volume_title">Volume Buttons</string>
     <string name="volume_timeout_title">Volume Panel Timeout</string>
     <string name="volume_timeout_summary">Change Volume Panel Timeout after adjusting Volume</string>

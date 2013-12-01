@@ -298,6 +298,11 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:key="other_screen"
         android:title="@string/other_title" >
+        <CheckBoxPreference
+            android:key="classic_recents"
+            android:summary="@string/classic_recents_summary"
+            android:title="@string/classic_recents_title" />
+        
         <PreferenceCategory
             android:key="volume_category"
             android:title="@string/volume_title" >

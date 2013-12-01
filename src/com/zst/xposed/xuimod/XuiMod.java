@@ -18,6 +18,7 @@ package com.zst.xposed.xuimod;
 
 import com.zst.xposed.xuimod.mods.AnimationControlsMod;
 import com.zst.xposed.xuimod.mods.BatteryBarMod;
+import com.zst.xposed.xuimod.mods.ClassicRecentsMod;
 import com.zst.xposed.xuimod.mods.InputMethodAnimationMod;
 import com.zst.xposed.xuimod.mods.ListViewAnimationMod;
 import com.zst.xposed.xuimod.mods.LockscreenTorchMod;
@@ -57,6 +58,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 		AnimationControlsMod.handleLoadPackage(lpparam);
 		InputMethodAnimationMod.handleLoadPackage(lpparam,pref);
 		RandomQuickSettingsColorMod.loadPackage(lpparam,pref);
+		ClassicRecentsMod.loadPackage(lpparam,pref);
 	}
 
 	@Override

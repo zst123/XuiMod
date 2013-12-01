@@ -98,6 +98,8 @@ public class Common {
 	
 	public static final String KEY_NOTIFICATION_RANDOM_QS_TILE_COLOR = "notif_quick_settings_random";
 	public static final String KEY_NOTIFICATION_CHOOSE_COLOR = "notif_choose_color_random";
+	
+	public static final String KEY_CLASSIC_RECENTS = "classic_recents";
 
 	/* Preference default values */
 	public static final boolean DEFAULT_SECONDS_ENABLE =false;
@@ -140,6 +142,8 @@ public class Common {
     public static final int DEFAULT_ANIMATION_IME_DURATION = 500;
     
 	public static final boolean DEFAULT_NOTIFICATION_RANDOM_QS_TILE_COLOR = false;
+	
+	public static final boolean DEFAULT_CLASSIC_RECENTS = false;
     
 	/* Preference limits values */
 	public static final int LIMIT_MAX_LISTVIEW_DURATION = 2500;
