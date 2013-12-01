@@ -32,8 +32,9 @@
     <!-- Notif Mods -->
     <string name="notif_title">Notification Mods</string>
     <string name="notif_quick_settings_random_title">Random Quick Settings Tile Color</string>
-    <string name="notif_quick_settings_random_summary">Randomizes background color of each Quick Settings tile</string>
+    <string name="notif_quick_settings_random_summary">Randomizes background color of each Quick Settings tile\n(SystemUI must be restarted for changes to take effect)</string>
     <string name="notif_choose_color_title">Select Random Colors</string>
+    <string name="notif_choose_color_summary">SystemUI must be restarted for colors to take effect</string>
         
     <!-- Animation Pref-->
     <string name="anim_title">Animation Mods</string>

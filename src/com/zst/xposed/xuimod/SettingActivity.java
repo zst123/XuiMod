@@ -60,6 +60,7 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("batterybar_color_screen").setOnPreferenceClickListener(this);
 		findPreference("batterybar_restart").setOnPreferenceClickListener(this);
 		findPreference("seconds_restart").setOnPreferenceClickListener(this);
+		findPreference("notif_restart").setOnPreferenceClickListener(this);
 		findPreference("listview_testing").setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
@@ -96,8 +97,9 @@ public class SettingActivity extends PreferenceActivity implements
 	
 	@Override
 	public boolean onPreferenceClick(Preference p) {
-		if (p.getKey().equals("seconds_restart")
-				|| p.getKey().equals("batterybar_restart")) {
+		if (p.getKey().equals("seconds_restart") ||
+			p.getKey().equals("batterybar_restart") ||
+			p.getKey().equals("notif_restart")) {
 			SecondsClockMod.thix = null;
 			SecondsClockMod.enabled = false;
 			SecondsClockMod.stopForever = false;

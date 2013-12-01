@@ -99,7 +99,13 @@
         
         <Preference
             android:key="notif_choose_color_random"
+            android:summary="@string/notif_choose_color_summary"
             android:title="@string/notif_choose_color_title" />
+        
+        <Preference
+            android:key="notif_restart"
+            android:summary="@string/systemui_restart_summary"
+            android:title="@string/systemui_restart" />
     </PreferenceScreen>
         
     <!-- Animation Mod Category -->
