@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/batterybar_color_title" >
+    android:title="@string/notif_choose_color_title" >
 
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"
