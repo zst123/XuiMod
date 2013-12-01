@@ -78,7 +78,7 @@ public class SettingActivity extends PreferenceActivity implements
 		animation_control.setEnabled(sdk18);
 		animation_control.setOnPreferenceClickListener(this);
 		
-		Preference qs_random_color = findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN);
+		Preference qs_random_color = findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR);
 		String qs_summary = getResources().getString(R.string.notif_quick_settings_random_summary);
 		if (!sdk17) { /* if not Android 4.2, use unsupported summary text */
 			qs_summary = String.format(getResources().getString

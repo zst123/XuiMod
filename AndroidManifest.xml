@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zst.xposed.xuimod"
     android:versionCode="18"
-    android:versionName="1.8" >
+    android:versionName="1.8.1" >
 	
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
     
