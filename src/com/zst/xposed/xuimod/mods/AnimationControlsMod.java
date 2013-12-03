@@ -197,6 +197,10 @@ public class AnimationControlsMod {
                 break;
         }
         
+        if (arrayNumber == -1) {
+        	return null;
+        }
+        
         if (mActivityAnimations[arrayNumber] != 0) {
             mIsResId = true;
             animArray = AwesomeAnimationHelper.getAnimations(mActivityAnimations[arrayNumber]);
