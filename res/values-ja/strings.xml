@@ -28,7 +28,14 @@
     <string name="seconds_lettercase_uppercase">大文字</string>
     <string name="seconds_custom_title">書式の変更</string>
     <string name="seconds_custom_summary">時計の書式をSimpleDateFormatで変更します。 \n(空白にすると標準のままになります)</string>
-        
+    
+    <!-- Notif Mods -->
+    <string name="notif_title">通知領域設定</string>
+    <string name="notif_quick_settings_random_title">クイック設定パネルの色をランダム化</string>
+    <string name="notif_quick_settings_random_summary">クイック設定パネルの色をランダムにします。\n(変更後はSystemUIを再起動してください)</string>
+    <string name="notif_choose_color_title">ランダム化に使う色の選択</string>
+    <string name="notif_choose_color_summary">SystemUIを再起動しないと変更は適用されません。</string>
+    
     <!-- Animation Pref-->
     <string name="anim_title">アニメーション設定</string>
     <string name="anim_listview_title">ListViewアニメーション</string>
@@ -112,6 +119,10 @@
     
     <!-- Other Pref-->
     <string name="other_title">その他の設定</string>
+    
+    <string name="classic_recents_title">昔のアプリ履歴に変更</string>
+    <string name="classic_recents_summary">アプリ履歴をGB時代のものに変更します。</string>
+    
     <string name="version_unsupported">Android %1$s以降向けの設定です。Android %2$sでは使用できません。</string>
     <string name="volume_title">音量ボタン</string>
     <string name="volume_timeout_title">音量パネル表示時間</string>
@@ -156,6 +167,16 @@
     <string name="batterybar_color_20_title">20%以下の時の色</string>
     <string name="batterybar_color_charge_title">充電時の色</string>
     <string name="batterybar_bg_color_title">背景色</string>
+    
+    <!-- Random Color -->
+    <string name="random_color_1">ランダム色#1</string>
+    <string name="random_color_2">ランダム色#2</string>
+    <string name="random_color_3">ランダム色#3</string>
+    <string name="random_color_4">ランダム色#4</string>
+    <string name="random_color_5">ランダム色#5</string>
+    <string name="random_color_6">ランダム色#6</string>
+    <string name="random_color_7">ランダム色#7</string>
+    <string name="random_color_8">ランダム色#8</string>
     
    <!-- Other string -->
    <string name="settings_default">初期値に戻す</string>
