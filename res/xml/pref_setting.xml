@@ -162,8 +162,7 @@
             android:summary="@string/anim_listview_cache_summary"
             android:title="@string/anim_listview_cache" />
 
-        <Preference
-            android:key="listview_testing"
+        <com.zst.xposed.xuimod.preference.TestListView
             android:summary="@string/anim_listview_test_summary"
             android:title="@string/anim_listview_test" />
         
@@ -360,6 +359,10 @@
 	            android:summary="@string/scrolling_velocity_summary"
 	            android:title="@string/scrolling_velocity_title"
 	            android:dependency="scrolling_enabled" />
+        
+        <com.zst.xposed.xuimod.preference.TestListView
+            android:summary="@string/anim_listview_test_summary"
+            android:title="@string/anim_listview_test" />
     </PreferenceScreen>
     
     <!-- Other Mods Screen -->

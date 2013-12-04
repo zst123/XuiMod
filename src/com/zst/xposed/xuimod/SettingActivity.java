@@ -61,7 +61,6 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("batterybar_restart").setOnPreferenceClickListener(this);
 		findPreference("seconds_restart").setOnPreferenceClickListener(this);
 		findPreference("notif_restart").setOnPreferenceClickListener(this);
-		findPreference("listview_testing").setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
 
@@ -104,10 +103,6 @@ public class SettingActivity extends PreferenceActivity implements
 			SecondsClockMod.enabled = false;
 			SecondsClockMod.stopForever = false;
 			dialog_killSystemUI();
-			return true;
-		}
-		if (p.getKey().equals("listview_testing")) {
-			listViewTester();
 			return true;
 		}
 		if (p.getKey().equals(Common.KEY_LISTVIEW_BLACKLIST)) {
@@ -159,24 +154,4 @@ public class SettingActivity extends PreferenceActivity implements
 			e.printStackTrace();
 		}
 	}
-
-	private void listViewTester() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setIcon(R.drawable.ic_launcher);
-		builder.setTitle(R.string.anim_listview_test);
-
-		ListView modeList = new ListView(this);
-		ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, android.R.id.text1);
-		modeAdapter.add("Scroll to see changes.");
-		modeAdapter.add("Press back to exit.");
-
-		for (int x = 1; x < 51; x++) {
-			modeAdapter.add("ListView Item " + x);
-		}
-		modeList.setAdapter(modeAdapter);
-		builder.setView(modeList);
-		builder.show();
-	}
-
 }

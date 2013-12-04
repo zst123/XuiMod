@@ -232,8 +232,9 @@
    <string name="arrow_symbol">➙</string>
    <string name="color_hex">Color Hex</string>
        
-   
-        
+   <!-- Test ListView -->
+   <string name="test_listview_instructions">Scroll to see changes</string>
+   <string name="test_listview_item">ListView Item</string> 
    
         
        
