@@ -168,6 +168,18 @@
     <string name="batterybar_color_charge_title">充電時の色</string>
     <string name="batterybar_bg_color_title">背景色</string>
     
+    <!-- Scrolling Mods -->
+    <string name="scrolling_title">スクロール効果の設定</string>
+    <string name="scrolling_warning">起動中のアプリは終了しないとスクロール設定が反映されません。</string>
+    <string name="scrolling_overscroll_title">オーバースクロール距離</string>
+    <string name="scrolling_overscroll_summary">最後までスクロールしたときのオーバースクロールの距離を変更します。</string>
+    <string name="scrolling_overfling_title">オーバーフリック距離</string>
+    <string name="scrolling_overfling_summary">最後までフリップしたときのオーバースクロールの距離を変更します。</string>
+    <string name="scrolling_friction_title">スクロール摩擦</string>
+    <string name="scrolling_friction_summary">スクロールとフリップに適用する摩擦を設定します。</string>
+    <string name="scrolling_velocity_title">最大フリップ速度</string>
+    <string name="scrolling_velocity_summary">フリップを始める最大速度を設定します。</string>
+    
     <!-- Random Color -->
     <string name="random_color_1">ランダム色#1</string>
     <string name="random_color_2">ランダム色#2</string>
@@ -188,7 +200,9 @@
    <!-- Color Picker -->
    <string name="color_hex">Hex値</string>
        
-   
+   <!-- Test ListView -->
+   <string name="test_listview_instructions">スクロールでテスト</string>
+   <string name="test_listview_item">ListViewアイテム</string> 
     
         
    
