@@ -12,6 +12,10 @@
             android:summary="@string/anim_controls_no_override_summary" />
 
         <com.zst.xposed.xuimod.preference.AnimationDuration
+            minimum="-1"
+            maximum="2000"
+            defaultValue="-1"
+            suffix="ms"
             android:key="animation_controls_duration"
             android:dialogLayout="@layout/pref_seekbar"
             android:dialogTitle="@string/anim_controls_duration_title"

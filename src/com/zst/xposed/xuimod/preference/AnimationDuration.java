@@ -17,7 +17,6 @@
 
 package com.zst.xposed.xuimod.preference;
 
-import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.R;
 
 import android.app.AlertDialog;
@@ -39,6 +38,7 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 	private TextView mValue;
 
 	private String mKey = "";
+	private String mSuffix = "";
 	private int mMin;
 	private int mMax;
 	private int mDefault;
@@ -47,6 +47,10 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 		super(context, attrs);
 
 		setDialogLayoutResource(R.layout.pref_seekbar);
+		mDefault = Integer.parseInt(attrs.getAttributeValue(null, "defaultValue"));
+		mMin = Integer.parseInt(attrs.getAttributeValue(null, "minimum"));
+		mMax = Integer.parseInt(attrs.getAttributeValue(null, "maximum"));
+		mSuffix = attrs.getAttributeValue(null, "suffix");
 	}
 
 	@Override
@@ -84,22 +88,6 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 
 		final SharedPreferences prefs = getSharedPreferences();
 		mKey = getKey();
-		if (mKey.equals(Common.KEY_LISTVIEW_DURATION)){
-			mMax = Common.LIMIT_MAX_LISTVIEW_DURATION;
-			mMin = Common.LIMIT_MIN_LISTVIEW_DURATION;
-			mDefault = Common.DEFAULT_LISTVIEW_DURATION;
-			
-		}else if(mKey.equals(Common.KEY_ANIMATION_CONTROLS_DURATION)){
-				mMax = Common.LIMIT_MAX_ANIMATION_CONTROLS_DURATION;
-				mMin = Common.LIMIT_MIN_ANIMATION_CONTROLS_DURATION;
-				mDefault = Common.DEFAULT_ANIMATION_CONTROLS_DURATION;
-				
-		}else if(mKey.equals(Common.KEY_ANIMATION_IME_DURATION)){
-			mMax = Common.LIMIT_MAX_ANIMATION_IME_DURATION;
-			mMin = Common.LIMIT_MIN_ANIMATION_IME_DURATION;
-			mDefault = Common.DEFAULT_ANIMATION_IME_DURATION;
-		}
-		
 		int value = prefs.getInt(mKey, mDefault);
 		value -= mMin;
 		mSeekBar.setMax(mMax - mMin);
@@ -122,11 +110,9 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 		int realValue = progress + mMin;
-		mValue.setText(realValue + " ms");
-		if(mKey.equals(Common.KEY_ANIMATION_CONTROLS_DURATION)){
-			if (realValue == -1){
-				mValue.setText(R.string.settings_default);
-			}
+		mValue.setText(realValue + mSuffix);
+		if (realValue == -1){
+			mValue.setText(R.string.settings_default);
 		}
 	}
 

@@ -146,20 +146,11 @@ public class Common {
 	public static final boolean DEFAULT_CLASSIC_RECENTS = false;
     
 	/* Preference limits values */
-	public static final int LIMIT_MAX_LISTVIEW_DURATION = 2500;
-	public static final int LIMIT_MIN_LISTVIEW_DURATION = 100;
-	
 	public static final int LIMIT_MAX_VOLUME_ALPHA = 100;
 	public static final int LIMIT_MIN_VOLUME_ALPHA = 25;
 	
 	public static final int LIMIT_MAX_BATTERYBAR_HEIGHT = 25;
 	public static final int LIMIT_MIN_BATTERYBAR_HEIGHT = 1;
-
-	public static final int LIMIT_MAX_ANIMATION_CONTROLS_DURATION = 2000;
-	public static final int LIMIT_MIN_ANIMATION_CONTROLS_DURATION = -1;
-	
-	public static final int LIMIT_MAX_ANIMATION_IME_DURATION = 3000;
-	public static final int LIMIT_MIN_ANIMATION_IME_DURATION = 0;
 	
 	public static final boolean TEST_FREATURE = true;
 	
