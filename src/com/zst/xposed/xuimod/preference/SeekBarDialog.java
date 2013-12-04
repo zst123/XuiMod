@@ -32,7 +32,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-public class AnimationDuration extends DialogPreference implements SeekBar.OnSeekBarChangeListener {
+public class SeekBarDialog extends DialogPreference implements SeekBar.OnSeekBarChangeListener {
 
 	private SeekBar mSeekBar;
 	private TextView mValue;
@@ -43,7 +43,7 @@ public class AnimationDuration extends DialogPreference implements SeekBar.OnSee
 	private int mMax;
 	private int mDefault;
 	
-	public AnimationDuration(Context context, AttributeSet attrs) {
+	public SeekBarDialog(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
 		setDialogLayoutResource(R.layout.pref_seekbar);

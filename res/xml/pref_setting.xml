@@ -141,7 +141,7 @@
             android:key="listview_interpolator"
             android:summary="@string/anim_listview_interpolator_summary"
             android:title="@string/anim_listview_interpolator" />
-        <com.zst.xposed.xuimod.preference.AnimationDuration
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
             minimum="100"
             maximum="2500"
             defaultValue="500"
@@ -228,7 +228,7 @@
 	            android:key="anim_ime_interpolater"
 	            android:title="@string/anim_ime_interpolater_title" />
 	        
-	        <com.zst.xposed.xuimod.preference.AnimationDuration
+	        <com.zst.xposed.xuimod.preference.SeekBarDialog
 	            minimum="0"
             	maximum="3000"
             	defaultValue="500"
