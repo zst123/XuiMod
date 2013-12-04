@@ -24,6 +24,7 @@ import com.zst.xposed.xuimod.mods.ListViewAnimationMod;
 import com.zst.xposed.xuimod.mods.LockscreenTorchMod;
 import com.zst.xposed.xuimod.mods.LockscreenVolumeMod;
 import com.zst.xposed.xuimod.mods.RandomQuickSettingsColorMod;
+import com.zst.xposed.xuimod.mods.ScrollerMod;
 import com.zst.xposed.xuimod.mods.SecondsClockMod;
 import com.zst.xposed.xuimod.mods.SystemAnimationMod;
 import com.zst.xposed.xuimod.mods.VolumePanelMod;
@@ -59,6 +60,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 		InputMethodAnimationMod.handleLoadPackage(lpparam,pref);
 		RandomQuickSettingsColorMod.loadPackage(lpparam,pref);
 		ClassicRecentsMod.loadPackage(lpparam,pref);
+		ScrollerMod.handleLoadPackage(pref);
 	}
 
 	@Override

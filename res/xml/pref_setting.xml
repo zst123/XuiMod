@@ -301,6 +301,67 @@
             android:title="@string/lockscreen_torch_torch_type" />
         
     </PreferenceScreen>
+    
+    <!-- Scroller -->
+    <PreferenceScreen
+        android:key="scrolling_screen"
+        android:title="@string/scrolling_title" >
+        <Preference
+            android:summary="@string/scrolling_warning" />
+            
+        <SwitchPreference
+            android:key="scrolling_enabled"
+            android:title="@string/scrolling_title" />
+        
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+	            minimum="0"
+            	maximum="1500"
+            	defaultValue="0"
+            	suffix="px"
+	            android:key="scrolling_overscroll"
+	            android:dialogLayout="@layout/pref_seekbar"
+	            android:dialogTitle="@string/scrolling_overscroll_title"
+	            android:summary="@string/scrolling_overscroll_summary"
+	            android:title="@string/scrolling_overscroll_title"
+	            android:dependency="scrolling_enabled" />
+        
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+	            minimum="0"
+            	maximum="1500"
+            	defaultValue="6"
+            	suffix="px"
+	            android:key="scrolling_overfling"
+	            android:dialogLayout="@layout/pref_seekbar"
+	            android:dialogTitle="@string/scrolling_overfling_title"
+	            android:summary="@string/scrolling_overfling_summary"
+	            android:title="@string/scrolling_overfling_title"
+	            android:dependency="scrolling_enabled" />
+        
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+	            minimum="1"
+            	maximum="1500"
+            	defaultValue="150"
+            	suffix="units"
+	            android:key="scrolling_friction"
+	            android:dialogLayout="@layout/pref_seekbar"
+	            android:dialogTitle="@string/scrolling_friction_title"
+	            android:summary="@string/scrolling_friction_summary"
+	            android:title="@string/scrolling_friction_title"
+	            android:dependency="scrolling_enabled" />
+        
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+	            minimum="100"
+            	maximum="10000"
+            	defaultValue="8000"
+            	suffix="px per sec"
+	            android:key="scrolling_velocity"
+	            android:dialogLayout="@layout/pref_seekbar"
+	            android:dialogTitle="@string/scrolling_velocity_title"
+	            android:summary="@string/scrolling_velocity_summary"
+	            android:title="@string/scrolling_velocity_title"
+	            android:dependency="scrolling_enabled" />
+    </PreferenceScreen>
+    
     <!-- Other Mods Screen -->
     <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
