@@ -224,6 +224,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 			view.setBackgroundColor(newColor);
 			return;
 		}
+		if (oldColor == newColor) return;
 		final ValueAnimator anim = ValueAnimator.ofObject(new ArgbEvaluator(), oldColor, newColor);
 		final AnimatorUpdateListener listener = new AnimatorUpdateListener() {
 			@Override
