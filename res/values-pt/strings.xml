@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">XuiMod</string>
+    <string name="title_activity_list_view_blacklist">Lista Negra (Animação da ListView)</string>
+    
+    <!-- Main Screen Category Titles -->
+    <string name="systemui_title">SystemUI</string>
+    <string name="animation_title">Animação</string>
+    <string name="framework_title">Framework</string>
+    
+    <string name="systemui_restart">Reiniciar o SystemUI</string>    
+    <string name="systemui_restart_summary">Reinicie o SystemUI se as mudanças não se aplicarem \n(Requer permissão de root)</string>
+    <string name="systemui_restart_dialog">Confirma a reinicialização do SystemUI?</string>    
+    
+    <!-- Seconds Clock Pref-->
+    <string name="seconds_title">Mods do relógio</string>
+    <string name="seconds_enable_title">Habilitar segundos</string>
+    <string name="seconds_enable_summary">Atualizar relógio a cada segundo na barra de status</string>
+    <string name="seconds_bold_title">Relógio em negrito</string>
+    <string name="seconds_bold_summary">Fonte do relógio em negrito</string>
+    <string name="seconds_use_html_title">Usar HTML</string>
+    <string name="seconds_use_html_summary">Parsear tags HTML em formatos personalizados.</string>
+    <string name="seconds_lettercase_title">Letras maiúsculas/minúsculas</string>
+    <string name="seconds_lettercase_summary">Substituir todas as letras em maiúsculas ou minúsculas</string>
+    <string name="seconds_lettercase_default">padrão</string>
+    <string name="seconds_lettercase_lowercase">Minúsculas</string>
+    <string name="seconds_lettercase_uppercase">Maiúsculas</string>
+    <string name="seconds_custom_title">Formato personalizado</string>
+    <string name="seconds_custom_summary">Use um formato personalizado para o relógio \n(Deixe em branco para o padrão)</string>
+    
+    <!-- Notif Mods -->
+    <string name="notif_title">Mods de notificações</string>
+    <string name="notif_quick_settings_random_title">Cores randômicas no painel de configurações rápidas</string>
+    <string name="notif_quick_settings_random_summary">Randomizar cor de fundo para cada painel da configuração rápida\n(O SystemUI precissa ser reiniciado para as mudanças terem efeito)</string>
+    <string name="notif_choose_color_title">Selecionar cores randômicas</string>
+    <string name="notif_choose_color_summary">O SystemUI precisa ser reiniciado para as cores terem efeito</string>
+        
+    <!-- Animation Pref-->
+    <string name="anim_title">Mods de animações</string>
+    <string name="anim_listview_title">Animação da ListView</string>
+    <string name="anim_systemwide_title">Animação do sistema</string>
+    
+    <!-- System Anim Pref -->
+    <string name="window_transitions_title">Transições de janela</string>
+    <string name="window_transitions_summary">Selecione uma animação personalizada para as transições de janelas\n(Requer reinício para ter efeito)</string>
+    <string name="window_transitions_default">Padrão (na ROM)</string>
+    <string name="window_transitions_xylon">Transições da Xylon ROM</string>
+    <string name="window_transitions_tn">Transições TN</string>
+    <string name="window_transitions_honami">Transições do Xperia Z1</string>
+    <string name="window_transitions_toko">Transições da TokoROM</string>
+    
+    <!-- Animation Controls -->
+    <string name="anim_controls_main_title">Controle de animações</string>
+    <string name="anim_controls_main_summary">Controlar individualmente as animações do sistema</string>
+    <string name="anim_controls_no_override_title">Previnir sobreposição de transições</string>
+    <string name="anim_controls_no_override_summary">Previne sobreposição de transições pelos aplicativos</string>
+    <string name="anim_controls_duration_title">Duração da animação</string>
+    <!-- Animation List -->
+    <string name="activity_open_title">Abre a animação da atividade no aplicativo</string>
+    <string name="activity_close_title">Fecha a animação da atividade no aplicativo</string>
+    <string name="task_open_title">Inicia a animação no aplicativo</string>
+    <string name="task_close_title">Retornar à animação anterior</string>
+    <string name="task_move_to_front_title">Mover animação à frente</string>
+    <string name="task_move_to_back_title">Mover animação atrás</string>
+    <string name="wallpaper_open_title">Retornar para a animação do Home</string>
+    <string name="wallpaper_close_title">Iniciar da animação do Home</string>
+    <string name="wallpaper_intra_open_title">Animação de abertura da página de apps recentes</string>
+    <string name="wallpaper_intra_close_title">Animação de fechamento da página de apps recentes</string>
+    <!-- Animation Strings -->
+    <string name="animation_default">Padrão</string>
+    <string name="animation_fade">Desvanecer</string>
+    <string name="animation_slide_right">Deslizar à direita</string>
+    <string name="animation_slide_left">Deslizar à equerda</string>
+    <string name="animation_slide_right_no_fade">Deslizar à direita (sem desvanecer)</string>
+    <string name="animation_slide_left_no_fade">Deslizar à esquerda (sem desvanecer)</string>
+    <string name="animation_slide_up">Deslizar abaixo</string>
+    <string name="animation_slide_down">Deslizar acima</string>
+    <string name="animation_translucent">Translúcido</string>
+    <string name="animation_grow_shrink">Crescer acima</string>
+    <string name="animation_grow_shrink_center">Crescer no centro</string>
+    <string name="animation_grow_shrink_bottom">Crescer abaixo</string>
+    <string name="animation_grow_shrink_left">Crescer à esquerda</string>
+    <string name="animation_grow_shrink_right">Crescer à direita</string>
+    <string name="animation_random">Aleatório</string>
+    
+    <!-- IME Animation -->
+    <string name="anim_ime_main_title">Animações do método de entrada</string>
+    <string name="anim_ime_enter_title">Animação ao entrar</string>
+    <string name="anim_ime_enter_summary">Exibida quando o método de entrada for aberto</string>
+    <string name="anim_ime_exit_title">Animação ao fechar</string>
+    <string name="anim_ime_exit_summary">Exibida quando o método de entrada for fechado</string>
+    <string name="anim_ime_interpolater_title">Interpolação da animação</string>
+    <string name="anim_ime_duration_title">Duração da animação</string>
+    <string name="anim_ime_test_title">Teste a animação aqui</string>
+    <string name="anim_ime_entries_fancy">Android Fancy IME</string>
+    <string name="anim_ime_entries_tn">TN Fly</string>
+    <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
+    
+    <!-- ListView Category in Animation Pref--> 
+    <string name="anim_listview_anim">Animação da ListView</string>
+    <string name="anim_listview_anim_summary">Animação usada ao rolar os ListViews</string>
+    <string name="anim_listview_interpolator">Interpolação do ListView</string>
+    <string name="anim_listview_interpolator_summary">Interpolação usada ao rolar os ListViews</string>
+    <string name="anim_listview_duration">Duração da animação</string>
+    <string name="anim_listview_duration_summary">Altera a duração da animação</string>
+    <string name="anim_listview_test">Testar ListView</string>
+    <string name="anim_listview_test_summary">Abre diálogo de teste do ListView</string>
+    <string name="anim_listview_cache">Cache persistente do ListView</string>
+    <string name="anim_listview_cache_summary">Tipo de cache persistente na memória \n(Sem cache desativa a persistência)</string>
+    <string name="anim_listview_blacklist">Lista negra de Apps</string>
+    <string name="anim_listview_blacklist_summary">Previne animação de aplicativos</string>
+  	<string name="anim_listview_blacklist_help_dialog">Para remover um aplicativo da lista negra, toque no aplicativo.\n\nApara adicionar, toque em Adicionar e escolha o aplicativo.</string>
+  	
+    <!-- ListView animation -->  
+ 	<string name="listview_off">Desligado</string>
+ 	<string name="listview_wave_left">Onda (A esquerda)</string>
+    <string name="listview_wave_right">Onda (A direita)</string>
+    <string name="listview_alpha">Alfa</string>
+    <string name="listview_scale">Escala</string>
+    <string name="listview_stack_top">Empilhar (Acima)</string>
+    <string name="listview_stack_bottom">Empilhar (Abaixo)</string>
+    <string name="listview_unfold">Desdobrar</string>
+    <string name="listview_fold">Dobrar</string>
+    <string name="listview_translate_left">Transformar (A esquerda)</string>
+    <string name="listview_translate_right">Transformar (A direita)</string>
+    <string name="listview_rotate">Rodar</string>
+    
+    
+    <!-- ListView interpolator -->
+    <string name="listview_accelerate_interpolator">Acelerar</string>
+    <string name="listview_decelerate_interpolator">Desacelerar</string>
+    <string name="listview_accelerate_decelerate_interpolator">Acelerar &amp; Desacelerar</string>
+    <string name="listview_anticipate_interpolator">Antecipar</string>
+    <string name="listview_overshoot_interpolator">Ultrapassar</string>
+    <string name="listview_anticipate_overshoot_interpolator">Antecipar &amp; Ultrapassar</string>
+    <string name="listview_bounce_interpolator">Saltar</string>
+    <string name="listview_cycle_interpolator">Ciclo</string>
+    <string name="listview_linear_interpolator">Linear</string>
+    <!-- ListView cache -->
+	<string name="listview_cache_none">Sem Cache</string>
+ 	<string name="listview_cache_anim">Cache da Animação</string>
+    <string name="listview_cache_scroll">Cache de Rolagem</string>
+    <string name="listview_cache_all">Animação &amp; Rolagem</string>
+    
+    
+    
+    <!-- Other Pref-->
+    <string name="other_title">Outros Mods</string>
+    
+    <string name="classic_recents_title">Usar Recentes Clássico</string>
+    <string name="classic_recents_summary">Substituir lista de Aplicativos recentes com o app Switcher do Gingerbread</string>
+    
+    <string name="volume_title">Botões de volume</string>
+    <string name="volume_timeout_title">Tempo do painel de volume</string>
+    <string name="volume_timeout_summary">Altera o tempo em que o painel de volume permanece na tela</string>
+    <string name="volume_timeout_dialog">Tempo do painel de volume em milissegundos. Caracteres não numéricos são ignorados.\n(1000 milissegundos = 1 segundo)</string>
+    <string name="volume_alpha_title">Transparência do painel de volume</string>
+    <string name="volume_alpha_summary">Altera a transparência do painel de volume</string>
+    <string name="volume_alpha_dialog" formatted="false">Define a transparência do painel de volume em porcentagem. Caracteres não numéricos são ignorados.\n(Máximo 100% &amp; Mínimo 25%)</string>
+    
+    <!-- Lockscreen Mods -->
+    <string name="lockscreen_title">Mods da tela de bloqueio</string>
+    <string name="lockscreen_disable_title">Desativar as teclas de volume</string>
+    <string name="lockscreen_disable_summary">Previne a mudança do modo de toque na tela de bloqueio.\n(Também desativa o toque longo para mídia)</string>
+    <!-- Lockscreen Torch -->
+    <string name="lockscreen_torch_title">Lanterna na tela de bloqueio</string>
+    <string name="lockscreen_torch_summary">Segure o botão para ligar.\nSolte para desligar</string>
+    <string name="lockscreen_torch_buttons_title">Botão físico</string>
+    <string name="lockscreen_torch_buttons_summary">Seleciona o botão para ligar a lanterna</string>
+    <string name="lockscreen_torch_home_title">Usar botão Home</string>
+    <string name="lockscreen_torch_menu_title">Usar botão Menu</string>
+    <string name="lockscreen_torch_back_title">Usar botão Voltar</string>
+    <string name="lockscreen_torch_torch_type">Escolha o aplicativo de lanterna</string>
+    <string name="lockscreen_torch_cm_torch">CM Torch</string>
+    <string name="lockscreen_torch_tesla_torch">TeslaLED</string>
+    <string name="lockscreen_torch_dashlight_torch">DashLight</string>
+    
+     <!-- BatteryBar Pref-->
+    <string name="batterybar_title">Mod da barra de bateria</string>
+    <string name="batterybar_enable_title">Habilitar a barra de bateria</string>
+    <string name="batterybar_style_title">Barra simétrica</string>
+    <string name="batterybar_style_summary">Se marcado, a barra de bateria será simétrica ao invés da padrão.</string>
+    <string name="batterybar_height_title">Altura da barra de bateria</string>
+    <string name="batterybar_height_summary">Altura da barra de bateria em dp</string>
+    <string name="batterybar_height_dialog">Altura da barra de bateria em dp.\n(Caracteres não numéricos são ignorados.)</string>
+    <string name="batterybar_animate_title">Animação de carregamento</string>
+    <string name="batterybar_animate_summary">Mostra animação enquanto carrega</string>
+    <string name="batterybar_color_title">Cor da Barra de bateria</string>
+    
+    <string name="batterybar_color_screen_title">Personalize a Cor</string>
+    <string name="batterybar_color_100_title">Cor em 100%</string>
+    <string name="batterybar_color_99_title">Cor em 99% e abaixo</string>
+    <string name="batterybar_color_80_title">Cor em 80% e abaixo</string>
+    <string name="batterybar_color_60_title">Cor em 60% e abaixo</string>
+    <string name="batterybar_color_40_title">Cor em 40% e abaixo</string>
+    <string name="batterybar_color_20_title">Cor em 20% e abaixo</string>
+    <string name="batterybar_color_charge_title">Cor enquanto carregando</string>
+    <string name="batterybar_bg_color_title">Cor de fundo</string>
+    
+    <!-- Scrolling Mods -->
+    <string name="scrolling_title">Mod de rolagem</string>
+    <string name="scrolling_warning">Aplicativos abertos deverão ser reiniciados para surtir efeito.</string>
+    <string name="scrolling_overscroll_title">Distância do Overscroll</string>
+    <string name="scrolling_overscroll_summary">A distância máxima do overscroll ao final da rolagem</string>
+    <string name="scrolling_overfling_title">Distância do Overfling</string>
+    <string name="scrolling_overfling_summary">Distãncia máxima do overscroll quando você ao arremessar a barra rolagem</string>
+    <string name="scrolling_friction_title">Fricção da rolagem</string>
+    <string name="scrolling_friction_summary">Quantidade de fricção aplicada à rolagem e ao arremesso.</string>
+    <string name="scrolling_velocity_title">Velocidade máxima do arremesso</string>
+    <string name="scrolling_velocity_summary">Velocidade máxima no início do arremesso</string>
+    
+    <!-- Random Color -->
+    <string name="random_color_1">Cor aleatória #1</string>
+    <string name="random_color_2">Cor aleatória #2</string>
+    <string name="random_color_3">Cor aleatória #3</string>
+    <string name="random_color_4">Cor aleatória #4</string>
+    <string name="random_color_5">Cor aleatória #5</string>
+    <string name="random_color_6">Cor aleatória #6</string>
+    <string name="random_color_7">Cor aleatória #7</string>
+    <string name="random_color_8">Cor aleatória #8</string>
+    
+   <!-- Other string -->
+   <string name="version_unsupported">Esse mod requer Android %1$s and acima. Você atualmente está usando Android %2$s.</string>
+   <string name="settings_default">Valor padrão</string>
+   <string name="add">Adicionar</string>
+   <string name="unknown">Desconhecido</string>
+   <string name="help">Ajuda</string>
+   <string name="apply">Aplicar</string> 
+   
+   <!-- Color Picker -->
+   <string name="arrow_symbol">➙</string>
+   <string name="color_hex">Cor Hex</string>
+       
+   <!-- Test ListView -->
+   <string name="test_listview_instructions">Role para ver as mudanças</string>
+   <string name="test_listview_item">Item da ListView</string> 
+   
+        
+       
+</resources>
