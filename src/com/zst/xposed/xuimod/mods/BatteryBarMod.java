@@ -56,7 +56,7 @@ public class BatteryBarMod {
 				 LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
 				 battery_bar.setLayoutParams(param);
 				 battery_bar.setVisibility(View.VISIBLE);
-				 mRootView.addView(battery_bar);
+				 mRootView.addView(battery_bar, 0);
 			 }
 		 });
 	 }
@@ -78,6 +78,7 @@ public class BatteryBarMod {
 	 final static String[] layouts = {
 			 "gemini_super_status_bar", // MediaTek Gemini Phones
 			 "tw_status_bar", // Samsung TouchWiz ROM
+			 "zzz_status_bar_gemini_cu", // SGS3 Chinese Clone MT6575
 			 "super_status_bar", // AOSP JellyBean ROM
 			 "status_bar" 
 			 // AOSP ICS
