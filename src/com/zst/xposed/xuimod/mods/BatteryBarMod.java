@@ -56,7 +56,7 @@ public class BatteryBarMod {
 				 LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
 				 battery_bar.setLayoutParams(param);
 				 battery_bar.setVisibility(View.VISIBLE);
-				 mRootView.addView(battery_bar, 0);
+				 mRootView.addView(battery_bar);
 			 }
 		 });
 	 }
