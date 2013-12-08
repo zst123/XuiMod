@@ -65,17 +65,6 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
 
 		final boolean sdk17 = Build.VERSION.SDK_INT >= 17;
-		final boolean sdk18 = Build.VERSION.SDK_INT >= 18;
-		
-		Preference animation_control = findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN);
-		String summary = getResources().getString(R.string.anim_controls_main_summary);
-		if (!sdk18) { /* if not Android 4.3, use unsupported summary text */
-			summary = String.format(getResources().getString
-					(R.string.version_unsupported), "4.3", Build.VERSION.RELEASE);
-		}
-		animation_control.setSummary(summary);
-		animation_control.setEnabled(sdk18);
-		animation_control.setOnPreferenceClickListener(this);
 		
 		Preference qs_random_color = findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR);
 		String qs_summary = getResources().getString(R.string.notif_quick_settings_random_summary);
