@@ -18,7 +18,6 @@ package com.zst.xposed.xuimod;
 
 import java.io.DataOutputStream;
 
-import com.zst.xposed.xuimod.mods.SecondsClockMod;
 import com.zst.xposed.xuimod.preference.activity.AnimControlPreference;
 import com.zst.xposed.xuimod.preference.activity.BatteryBarColor;
 import com.zst.xposed.xuimod.preference.activity.ChooseRandomColor;
@@ -35,27 +34,16 @@ import android.preference.Preference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 @SuppressLint("WorldReadableFiles")
 @SuppressWarnings("deprecation")
 public class SettingActivity extends PreferenceActivity implements
 		OnPreferenceClickListener, OnSharedPreferenceChangeListener {
-	public static final String FIRST_KEY = "first";
-	public static final String PREFERENCE_FILE = Common.MY_PACKAGE_NAME
-			+ "_preferences";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		SharedPreferences prefs = getSharedPreferences(PREFERENCE_FILE,
-				MODE_WORLD_READABLE);
-		// Make a new preference before other prefs are made. So that
-		// the permissions for "MODE WORLD READABLE" is set properly.
-		if (!prefs.contains(FIRST_KEY)) {
-			prefs.edit().putBoolean(FIRST_KEY, false).commit();
-		}
+		getPreferenceManager().setSharedPreferencesMode(PreferenceActivity.MODE_WORLD_READABLE);
 		addPreferencesFromResource(R.xml.pref_setting);
 		findPreference("batterybar_color_screen").setOnPreferenceClickListener(this);
 		findPreference("batterybar_restart").setOnPreferenceClickListener(this);
@@ -66,7 +54,8 @@ public class SettingActivity extends PreferenceActivity implements
 
 		final boolean sdk17 = Build.VERSION.SDK_INT >= 17;
 		
-		Preference qs_random_color = findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR);
+		Preference qs_random_color = findPreference(Common.KEY_NOTIFICATION_RANDOM_QS_TILE_COLOR);
+		Preference select_random_color = findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR);
 		String qs_summary = getResources().getString(R.string.notif_quick_settings_random_summary);
 		if (!sdk17) { /* if not Android 4.2, use unsupported summary text */
 			qs_summary = String.format(getResources().getString
@@ -74,8 +63,10 @@ public class SettingActivity extends PreferenceActivity implements
 		}
 		qs_random_color.setSummary(qs_summary);
 		qs_random_color.setEnabled(sdk17);
+		select_random_color.setSummary(qs_summary);
+		select_random_color.setEnabled(sdk17);
 		
-		prefs.registerOnSharedPreferenceChangeListener(this);
+		getPreferenceManager().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
 	}
 	
 	@Override
@@ -88,9 +79,6 @@ public class SettingActivity extends PreferenceActivity implements
 		if (p.getKey().equals("seconds_restart") ||
 			p.getKey().equals("batterybar_restart") ||
 			p.getKey().equals("notif_restart")) {
-			SecondsClockMod.thix = null;
-			SecondsClockMod.enabled = false;
-			SecondsClockMod.stopForever = false;
 			dialog_killSystemUI();
 			return true;
 		}
