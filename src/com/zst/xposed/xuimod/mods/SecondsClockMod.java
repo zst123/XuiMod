@@ -142,6 +142,7 @@ public class SecondsClockMod {
 	
 	private static void tick(boolean changeTextWithHandler) { // A new second, get the time
 		mCalendar = Calendar.getInstance(TimeZone.getDefault());
+		if (format == null) return;
 		CharSequence time = DateFormat.format(format, mCalendar);
 		if (letterCaseType == LETTER_LOWERCASE) {
 			time = time.toString().toLowerCase(Locale.ENGLISH);
