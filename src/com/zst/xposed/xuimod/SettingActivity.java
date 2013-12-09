@@ -51,6 +51,7 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("notif_restart").setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
+		findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN).setOnPreferenceClickListener(this);
 
 		final boolean sdk17 = Build.VERSION.SDK_INT >= 17;
 		
