@@ -57,7 +57,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     LinearLayout mChargerLayout;
     View mCharger;
 
-
+    static XSharedPreferences mPref;
 
     boolean vertical = false;
 
@@ -142,7 +142,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
                     stop();
                 }
                 setProgress(mBatteryLevel);
-                updateBatteryColor(null);
+                updateBatteryColor();
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 stop();
             } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
@@ -156,11 +156,11 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     };
 
     private void updateSettings() {
-        XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+    	final XSharedPreferences pref = getPref();
         
         setProgress(mBatteryLevel);
-        updateBatteryColor(pref);
-        updateBatteryBackground(pref);
+        updateBatteryColor();
+        updateBatteryBackground();
         
         boolean oldShouldAnimateCharging = shouldAnimateCharging;
         shouldAnimateCharging = pref.getBoolean(Common.KEY_BATTERYBAR_ANIMATE,
@@ -188,8 +188,8 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 
     }
 
-    private void updateBatteryColor(XSharedPreferences pref){
-    	if (pref==null) pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+    private void updateBatteryColor(){
+    	final XSharedPreferences pref = getPref();
     	
     	String s = "FF33B5E5";
     	if (mBatteryCharging){
@@ -237,7 +237,8 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 		anim.start();
 	}
 
-    public void updateBatteryBackground(XSharedPreferences pref){
+    public void updateBatteryBackground(){
+    	final XSharedPreferences pref = getPref();
         String colorString = pref.getString(Common.KEY_BATTERYBAR_BACKGROUND_COLOR, "");
         int color = Common.parseColorFromString(colorString, "00000000");
         fadeBarColor(color, mBatteryBarBackground);
@@ -275,6 +276,17 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     @Override
     public boolean isRunning() {
         return isAnimating;
+    }
+    
+    private XSharedPreferences getPref() {
+    	if (mPref == null) {
+    		mPref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+    		return mPref;
+    	} else {
+    		mPref.reload();
+    		return mPref;
+    	}
+    	
     }
 
 }
