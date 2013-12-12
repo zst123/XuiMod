@@ -213,8 +213,10 @@ public class AnimationControlsMod {
 				}
 				Animation anim = (Animation) animator.getClass().getDeclaredField("animation")
 						.get(animator);
-				XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim));
-				param.setResult(true);
+				if (anim != null) {
+					XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim));
+					param.setResult(true);
+				}
 			}
 		});
 	}
