@@ -119,25 +119,47 @@ public class AnimationControlsMod {
 	}
 	
 	private static void hookloadAnimation_animAttr(LoadPackageParam o, Class<?> clazz) {
-		XposedHelpers.findAndHookMethod(clazz, "loadAnimation",
-				WindowManager.LayoutParams.class, int.class, new XC_MethodHook(){
-			@Override 
-			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-				int animAttr = (Integer) param.args[1];
-				if (animAttr >= 0) {
-					if (!mIsResId) return;
-					
-					if (animAttr != 0) {
-						param.setResult(AnimationUtils.loadAnimation(mContext, animAttr));
-					}else{
-						param.setResult(null);
+		try {
+			XposedHelpers.findAndHookMethod(clazz, "loadAnimation",
+					WindowManager.LayoutParams.class, int.class, new XC_MethodHook() {
+				@Override
+				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+					int animAttr = (Integer) param.args[1];
+					if (animAttr >= 0) {
+						if (!mIsResId) return;
+						
+						if (animAttr != 0) {
+							param.setResult(AnimationUtils
+									.loadAnimation(mContext, animAttr));
+						} else {
+							param.setResult(null);
+						}
+						/* If it equals zero, return null and skip the method since we have
+						 * to skip the getCachedAnimations if mIsResId is true
+						 */
 					}
-					/* If it equals zero, return null and skip the method since we have
-					 * to skip the getCachedAnimations if mIsResId is true
-					 */
 				}
-			}
-		});
+			});
+		} catch (Throwable e) {
+			XposedBridge.hookAllMethods(clazz, "loadAnimation", new XC_MethodHook() {
+				@Override
+				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+					if (param.args.length != 2) return;
+					if (param.args[0] instanceof WindowManager.LayoutParams
+							&& param.args[1] instanceof Integer) {
+						int animAttr = (Integer) param.args[1];
+						if (animAttr >= 0) {
+							if (!mIsResId) return;
+							if (animAttr != 0) {
+								param.setResult(AnimationUtils.loadAnimation(mContext, animAttr));
+							} else {
+								param.setResult(null);
+							}
+						}
+					}
+				}
+			});
+		}
 	}
 	
 	// Checks API level
@@ -214,7 +236,11 @@ public class AnimationControlsMod {
 				Animation anim = (Animation) animator.getClass().getDeclaredField("animation")
 						.get(animator);
 				if (anim != null) {
-					XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim));
+					if ((Build.VERSION.SDK_INT <= 15)) {
+						XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim));
+					} else { // JB
+						XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim), false);
+					}
 					param.setResult(true);
 				}
 			}
