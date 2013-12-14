@@ -35,6 +35,7 @@ import android.content.IntentFilter;
 import android.content.res.XModuleResources;
 import android.content.res.XmlResourceParser;
 import android.inputmethodservice.InputMethodService;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -136,6 +137,14 @@ public class InputMethodAnimationMod {
 				final Dialog d = thiz.getWindow();
 				mWindow = d.getWindow();
 				mWindow.setWindowAnimations(-1);
+
+				final Handler handler = new Handler(thiz.getMainLooper());
+				final Runnable runnable = new Runnable() {
+					@Override
+					public void run() {
+						d.hide();
+					}
+				};
 				
 				Animation anim = retrieveAnimation(false, mWindow.getContext());
 				anim.setAnimationListener(new AnimationListener() {
@@ -145,6 +154,7 @@ public class InputMethodAnimationMod {
 					public void onAnimationRepeat(Animation animation) {}
 					@Override	
 					public void onAnimationEnd(Animation animation) {
+						handler.removeCallbacks(runnable);
 						d.hide();
 					}
 				});
@@ -156,6 +166,9 @@ public class InputMethodAnimationMod {
 					 * been hidden. So we immediately set it to visible before the view can be
 					 * invalidated by the system */
 					mRootView.startAnimation(anim);
+					/* Workaround for keyboard not closing. It will close after twice the duration
+					 * if the animation didn't finish properly and onAnimationEnd wasn't called */
+					handler.postDelayed(runnable, (mDuration * 2));
 				}
 				/* After all our hard work, animate!! */
 
