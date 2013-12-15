@@ -69,7 +69,7 @@ public class ListViewAnimationMod {
 	private static int cache;
 	private static int mAnim;
 	private static int mDuration;
-	private static Method verticalScrollMethod;
+	private static boolean mDown = false;
 
 	public static void handleLoadPackage(XSharedPreferences pref) {
 		mPref = pref;
@@ -95,25 +95,9 @@ public class ListViewAnimationMod {
 				mDuration = mPref.getInt(Common.KEY_LISTVIEW_DURATION, Common.DEFAULT_LISTVIEW_DURATION);
 				mAnim = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
 				cache = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
-				findMethod_computeVerticalScrollOffset();
 				item.setPersistentDrawingCache(cache);
 			}			
 		});	
-	}
-	
-	private static void findMethod_computeVerticalScrollOffset(){
-		for ( Method m : AbsListView.class.getDeclaredMethods() ) {
-			if (m.getName().equals("computeVerticalScrollOffset")){
-				verticalScrollMethod = m;
-				verticalScrollMethod.setAccessible(true);
-				break;
-			}
-		}
-		/** 
-		 * I didn't use 'AbsListView.class.getDeclaredMethod("computeVerticalScrollOffset")'
-		 * OR 'XposedHelper.callMethod' because it throws a MethodNotFoundException
-		 * *for some reason I don't understand* 
-		 */
 	}
 	
 	private static boolean isBlacklisted(String currentPkg){
@@ -147,6 +131,19 @@ public class ListViewAnimationMod {
 			@Override protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
 				final int newState = (Integer) param.args[0];
 				mIsScrolling = newState != OnScrollListener.SCROLL_STATE_IDLE;
+				
+				if (!mIsScrolling) return;
+				
+				final AbsListView lv = (AbsListView) param.thisObject;
+				final int currentPosition = lv.getFirstVisiblePosition();
+				
+				if (currentPosition > mvPosition) {
+					mDown = true;
+				} else if (currentPosition < mvPosition) {
+					mDown = false;
+				}
+				mvPosition = currentPosition;
+				/* Get Direction of Scroll to allow Fold/Unfold animations to animate properly.*/
 			}			
 		});	
 	}
@@ -179,32 +176,6 @@ public class ListViewAnimationMod {
 	private static View setAnimation(Object thisObject, View view, Context mContext) {
 		if(mAnim == ANIMATION_NONE) return view;
 		
-		boolean mDown = false;
-		if (mAnim == ANIMATION_UNFOLD || mAnim == ANIMATION_FOLD){
-			int scrollY = 0;			
-			try {
-				if (verticalScrollMethod != null) {
-					scrollY = (Integer)verticalScrollMethod.invoke(thisObject);
-				}else{
-					scrollY = mvPosition;
-				}
-				/* Actual non-reflection code is "scrollY = computeVerticalScrollOffset();" 
-				 * "verticalScrollMethod" is initialized in "findMethod_computeVerticalScrollOffset"
-				 * method above in this class.
-				 */
-			} catch (Throwable e) { 
-				scrollY = mvPosition; 
-				/* There's a possibility "verticalScrollMethod.invoke(thisObject);" 
-				 * might throw a throwable.
-				 * In that case, reset to the previous integer and carry on.
-				 */
-			} 
-			if(mvPosition < scrollY){
-				mDown = true;
-			} 
-			mvPosition = scrollY;
-		} 
-			
 		Animation anim = null;
 		switch (mAnim) {
 		case ANIMATION_WAVE_LEFT:
