@@ -42,8 +42,6 @@ import android.widget.RelativeLayout;
 public class BatteryBarView extends RelativeLayout implements Animatable {
     // Total animation duration
     private static final int ANIM_DURATION = 1000; // 1 second
-    public static final int STYLE_REGULAR = 0;
-    public static final int STYLE_SYMMETRIC = 1;
     
     private boolean mAttached = false;
     private int mBatteryLevel = 0;
@@ -81,6 +79,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     }
     public BatteryBarView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        mPref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
     }
 
     @Override
@@ -278,15 +277,9 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
         return isAnimating;
     }
     
-    private XSharedPreferences getPref() {
-    	if (mPref == null) {
-    		mPref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-    		return mPref;
-    	} else {
-    		mPref.reload();
-    		return mPref;
-    	}
-    	
-    }
+	private XSharedPreferences getPref() {
+		mPref.reload();
+		return mPref;
+	}
 
 }

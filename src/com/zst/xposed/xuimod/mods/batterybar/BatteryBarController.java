@@ -34,6 +34,7 @@ import android.widget.LinearLayout;
 
 public class BatteryBarController extends LinearLayout {
 		
+	private static XSharedPreferences mPref;
 	private static int LAST_BATTERY_LEVEL = 0;
 
 	BatteryBarView mainBar;
@@ -44,11 +45,6 @@ public class BatteryBarController extends LinearLayout {
 	public static final int STYLE_SYMMETRIC = 1;
 
 	int mStyle = STYLE_UNKNOWN;
-	int mLocation = 0;
-
-	protected final static int CURRENT_LOC = 1;
-	int mLocationToLookFor = 1;
-
 	private int mBatteryLevel = 0;
 	private boolean mBatteryCharging = false;
 
@@ -57,12 +53,11 @@ public class BatteryBarController extends LinearLayout {
 
 	public BatteryBarController(Context context) {
 		this(context, null);
-		mLocationToLookFor = 1;
 	}
 
 	public BatteryBarController(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		mLocationToLookFor = 1;
+		mPref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
 	}
 
 	@Override
@@ -123,7 +118,6 @@ public class BatteryBarController extends LinearLayout {
 	}
 
 	public void setHeight(int pixels) {
-
 		ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) getLayoutParams();
 
 		if (isVertical) {
@@ -176,25 +170,16 @@ public class BatteryBarController extends LinearLayout {
 
 	public void updateSettings() {
 		int oldStyle = mStyle;
-		XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
-		mStyle = pref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
+		mPref.reload();
+		mStyle = mPref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
 				Common.DEFAULT_BATTERYBAR_STYLE) ? STYLE_SYMMETRIC
 				: STYLE_REGULAR;
-		mLocation = 1;
-		setHeight(getSettingsHeight(pref));
+		setHeight(getSettingsHeight(mPref));
+		
 		if (oldStyle == mStyle) return;
 		
-		if (isLocationValid(mLocation)) {
-			removeBars();
-			addBar();
-			setVisibility(View.VISIBLE);
-		} else {
-			removeBars();
-			setVisibility(View.GONE);
-		}
-	}
-
-	protected boolean isLocationValid(int location) {
-		return mLocationToLookFor == location;
+		removeBars();
+		addBar();
+		setVisibility(View.VISIBLE);
 	}
 }
