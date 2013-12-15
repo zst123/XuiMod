@@ -134,24 +134,25 @@ public class BatteryBarController extends LinearLayout {
 
 		mBatteryLevel = LAST_BATTERY_LEVEL;
 		if (mStyle == STYLE_REGULAR) {
-			BatteryBarView bar = new BatteryBarView(getContext(),
+			mainBar = new BatteryBarView(getContext(),
 					mBatteryCharging, mBatteryLevel, isVertical);
+			alternateStyleBar = null;
 
-			addView(bar, ll);
+			addView(mainBar, ll);
 		} else if (mStyle == STYLE_SYMMETRIC) {
-			BatteryBarView bar1 = new BatteryBarView(getContext(),
+			mainBar = new BatteryBarView(getContext(),
 					mBatteryCharging, mBatteryLevel, isVertical);
-			BatteryBarView bar2 = new BatteryBarView(getContext(),
+			alternateStyleBar = new BatteryBarView(getContext(),
 					mBatteryCharging, mBatteryLevel, isVertical);
 
 			if (isVertical) {
-				bar2.setRotation(180);
-				addView(bar2, ll);
-				addView(bar1, ll);
+				alternateStyleBar.setRotation(180);
+				addView(alternateStyleBar, ll);
+				addView(mainBar, ll);
 			} else {
-				bar1.setRotation(180);
-				addView(bar1, ll);
-				addView(bar2, ll);
+				mainBar.setRotation(180);
+				addView(mainBar, ll);
+				addView(alternateStyleBar, ll);
 			}
 		}
 	}
