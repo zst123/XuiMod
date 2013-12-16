@@ -25,6 +25,7 @@ import com.zst.xposed.xuimod.preference.activity.ListViewBlacklist;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,6 +33,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.PackageManager;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 
@@ -49,6 +51,7 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference("batterybar_restart").setOnPreferenceClickListener(this);
 		findPreference("seconds_restart").setOnPreferenceClickListener(this);
 		findPreference("notif_restart").setOnPreferenceClickListener(this);
+		findPreference("toggle_launcher").setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN).setOnPreferenceClickListener(this);
@@ -99,6 +102,9 @@ public class SettingActivity extends PreferenceActivity implements
 			Intent i = new Intent(this, ChooseRandomColor.class);
 			startActivity(i);
 		}
+		if (p.getKey().equals("toggle_launcher")) {
+			showLauncherIconDialog();
+		}
 		return false;
 	}
 
@@ -131,5 +137,33 @@ public class SettingActivity extends PreferenceActivity implements
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void showLauncherIconDialog() {
+		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		dialog.setMessage(R.string.toggle_launcher_msg);
+		dialog.setPositiveButton(R.string.toggle_launcher_show,
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				setLauncherIconVisible(true);
+			}
+		});
+		dialog.setNegativeButton(R.string.toggle_launcher_hide,
+				new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				setLauncherIconVisible(false);
+			}
+		});
+		dialog.show();
+	}
+	
+	// Code modified from kennethso168's Advanced Power Menu
+	private void setLauncherIconVisible(boolean visible) {
+		int state = visible ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+				: PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+		final ComponentName alias = new ComponentName(this, "com.zst.xposed.xuimod.SettingActivity-Alias");
+		getPackageManager().setComponentEnabledSetting(alias, state, PackageManager.DONT_KILL_APP);
 	}
 }

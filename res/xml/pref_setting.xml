@@ -396,5 +396,14 @@
             android:summary="@string/volume_alpha_summary"
             android:title="@string/volume_alpha_title" />
     </PreferenceScreen>
+    
+    <!-- App Options Category -->
+    <PreferenceCategory
+        android:key="options_category"
+        android:title="@string/options_title" >
+        <Preference
+            android:key="toggle_launcher"
+            android:title="@string/toggle_launcher_title" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

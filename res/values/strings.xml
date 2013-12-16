@@ -8,6 +8,7 @@
     <string name="systemui_title">SystemUI</string>
     <string name="animation_title">Animation</string>
     <string name="framework_title">Framework</string>
+    <string name="options_title">App Options</string>
     
     <string name="systemui_restart">Restart SystemUI</string>    
     <string name="systemui_restart_summary">Restart SystemUI if changes did not apply \n(Requires SU permissions)</string>
@@ -221,6 +222,12 @@
     <string name="random_color_6">Random Color #6</string>
     <string name="random_color_7">Random Color #7</string>
     <string name="random_color_8">Random Color #8</string>
+    
+    <!-- Hide Launcher Icon Dialog -->
+    <string name="toggle_launcher_show">Enable Icon</string>
+    <string name="toggle_launcher_hide">Disable Icon</string>
+    <string name="toggle_launcher_title">Toggle Launcher Icon</string>
+    <string name="toggle_launcher_msg">After disabling the launcher icon, you may access XuiMod through the Xposed Installer.\n\nXposed Installer ➙ Modules ➙ XuiMod (Area beside the checkbox).\n\nYou might need to restart the homescreen launcher for this to take effect.</string>
     
    <!-- Other string -->
    <string name="version_unsupported">This mod requires Android %1$s and above. You are currently on Android %2$s.</string>
