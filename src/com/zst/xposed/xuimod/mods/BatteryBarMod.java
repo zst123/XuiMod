@@ -19,6 +19,8 @@ package com.zst.xposed.xuimod.mods;
 import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.mods.batterybar.BatteryBarController;
 
+import android.view.Gravity;
+import android.view.Surface;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -36,6 +38,7 @@ public class BatteryBarMod {
 			return;
 		
 		hookStatusBar(lpp);
+		hookNavigationBar(lpp);
 	}
 	
 	private static void hookStatusBar(final LoadPackageParam lpp) {
@@ -66,5 +69,50 @@ public class BatteryBarMod {
 		} catch (Throwable t) {
 			XposedBridge.log(t);
 		}
+	}
+	
+	private static void hookNavigationBar(final LoadPackageParam lpp) {
+		final Class<?> navBar = XposedHelpers.findClass(
+				"com.android.systemui.statusbar.phone.NavigationBarView", lpp.classLoader);
+		XposedBridge.hookAllMethods(navBar, "onFinishInflate", new XC_MethodHook() {
+			@Override
+			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+				final LinearLayout thizz = (LinearLayout) param.thisObject;
+				final View[] rotated_views = (View[]) navBar.getDeclaredField("mRotatedViews").get(
+						thizz);
+				
+				final FrameLayout portrait = (FrameLayout) rotated_views[Surface.ROTATION_0];
+				final FrameLayout landscape = (FrameLayout) rotated_views[Surface.ROTATION_90];
+				
+				/* Portrait Top */
+				BatteryBarController portrait_topbar = new BatteryBarController(thizz.getContext());
+				portrait_topbar.setLayoutParams(new LinearLayout.LayoutParams(
+						LinearLayout.LayoutParams.MATCH_PARENT, 1));
+				portrait_topbar.setVisibility(View.VISIBLE);
+				portrait.addView(portrait_topbar);
+				
+				/* Landscape Top */
+				BatteryBarController landscape_top_bar = new BatteryBarController(thizz
+						.getContext());
+				landscape_top_bar.setLayoutParams(new LinearLayout.LayoutParams(1,
+						LinearLayout.LayoutParams.MATCH_PARENT));
+				landscape_top_bar.setVisibility(View.VISIBLE);
+				landscape.addView(landscape_top_bar);
+				
+				/* Portrait Bottom */
+				BatteryBarController portrait_bottom_bar = new BatteryBarController(thizz
+						.getContext());
+				portrait_bottom_bar.setVisibility(View.VISIBLE);
+				portrait.addView(portrait_bottom_bar, new FrameLayout.LayoutParams(
+						FrameLayout.LayoutParams.MATCH_PARENT, 1, Gravity.BOTTOM));
+				
+				/* Landscape Bottom */
+				BatteryBarController landscape_bottom_bar = new BatteryBarController(thizz
+						.getContext());
+				landscape_bottom_bar.setVisibility(View.VISIBLE);
+				landscape.addView(landscape_bottom_bar, new FrameLayout.LayoutParams(1,
+						FrameLayout.LayoutParams.MATCH_PARENT, Gravity.RIGHT));
+			}
+		});
 	}
 }
