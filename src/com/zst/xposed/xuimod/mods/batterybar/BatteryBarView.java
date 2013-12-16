@@ -61,6 +61,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 
     boolean vertical = false;
 
+    boolean mSymmetric;
 
     public BatteryBarView(Context context) {
     	this(context, null , 0);
@@ -167,6 +168,9 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     private void updateSettings() {
     	final XSharedPreferences pref = getPref();
         
+    	mSymmetric = pref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
+    			Common.DEFAULT_BATTERYBAR_STYLE);
+    	
         setProgress(mBatteryLevel);
         updateBatteryColor();
         updateBatteryBackground();
@@ -188,11 +192,17 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
         if (vertical) {
             int w = (int) (((display.getHeight() / 100.0) * n) + 0.5);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mBatteryBarLayout.getLayoutParams();
+            if (mSymmetric) {
+            	w = (int) (w * 0.5);
+            }
             params.height = w;
             mBatteryBarLayout.setLayoutParams(params);
         } else {
         	int w = (int) (((display.getWidth() / 100.0) * n) + 0.5);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mBatteryBarLayout.getLayoutParams();
+            if (mSymmetric) {
+            	w = (int) (w * 0.5);
+            }
             params.width = w;
             mBatteryBarLayout.setLayoutParams(params);
         }
@@ -263,7 +273,11 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     			.getDefaultDisplay();
         
         if (vertical) {
-            TranslateAnimation a = new TranslateAnimation(getX(), getX(), display.getHeight(),
+        	int height = display.getHeight();
+        	if (mSymmetric) {
+        		height = (int) (height * 0.5);
+            }
+            TranslateAnimation a = new TranslateAnimation(getX(), getX(), height,
                     mBatteryBarLayout.getHeight());
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
@@ -271,7 +285,11 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             mChargerLayout.startAnimation(a);
             mChargerLayout.setVisibility(View.VISIBLE);
         } else {
-            TranslateAnimation a = new TranslateAnimation(display.getWidth(), mBatteryBarLayout.getWidth(),
+        	int width = display.getWidth();
+        	if (mSymmetric) {
+        		width = (int) (width * 0.5);
+            }
+            TranslateAnimation a = new TranslateAnimation(width, mBatteryBarLayout.getWidth(),
                     getTop(), getTop());
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
