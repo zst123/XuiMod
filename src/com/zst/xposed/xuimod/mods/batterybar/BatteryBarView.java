@@ -32,7 +32,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.BatteryManager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -122,6 +124,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             filter.addAction(Intent.ACTION_BATTERY_CHANGED);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
             filter.addAction(Intent.ACTION_SCREEN_ON);
+            filter.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
 			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
             updateSettings();
@@ -142,6 +145,13 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
                 }
                 setProgress(mBatteryLevel);
                 updateBatteryColor();
+            } else if (Intent.ACTION_CONFIGURATION_CHANGED.equals(action)) {
+            	// Reset the length to the new width on screen rotate
+            	setProgress(mBatteryLevel);
+            	stop();
+            	if (mBatteryCharging && mBatteryLevel < 100) {
+                    start();
+                }
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 stop();
             } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
@@ -173,13 +183,15 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     }
     
     private void setProgress(int n) {
+    	Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
+    			.getDefaultDisplay();
         if (vertical) {
-            int w = (int) (((getHeight() / 100.0) * n) + 0.5);
+            int w = (int) (((display.getHeight() / 100.0) * n) + 0.5);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mBatteryBarLayout.getLayoutParams();
             params.height = w;
             mBatteryBarLayout.setLayoutParams(params);
         } else {
-            int w = (int) (((getWidth() / 100.0) * n) + 0.5);
+        	int w = (int) (((display.getWidth() / 100.0) * n) + 0.5);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mBatteryBarLayout.getLayoutParams();
             params.width = w;
             mBatteryBarLayout.setLayoutParams(params);
@@ -247,8 +259,11 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     public void start() {
         if (!shouldAnimateCharging)  return;
 
+        Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
+    			.getDefaultDisplay();
+        
         if (vertical) {
-            TranslateAnimation a = new TranslateAnimation(getX(), getX(), getHeight(),
+            TranslateAnimation a = new TranslateAnimation(getX(), getX(), display.getHeight(),
                     mBatteryBarLayout.getHeight());
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
@@ -256,7 +271,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             mChargerLayout.startAnimation(a);
             mChargerLayout.setVisibility(View.VISIBLE);
         } else {
-            TranslateAnimation a = new TranslateAnimation(getWidth(), mBatteryBarLayout.getWidth(),
+            TranslateAnimation a = new TranslateAnimation(display.getWidth(), mBatteryBarLayout.getWidth(),
                     getTop(), getTop());
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
