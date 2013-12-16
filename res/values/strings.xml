@@ -189,6 +189,8 @@
     <string name="batterybar_color_title">BatteryBar Color</string>
     
     <string name="batterybar_color_screen_title">Customize Color</string>
+    <string name="batterybar_color_allow_multi_title">Use Multiple Color</string>
+    <string name="batterybar_color_allow_multi_summary">Allows the battery bar to change the color according to the battery level</string>
     <string name="batterybar_color_100_title">Color for 100%</string>
     <string name="batterybar_color_99_title">Color for 99% and below</string>
     <string name="batterybar_color_80_title">Color for 80% and below</string>

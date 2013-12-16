@@ -2,6 +2,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/batterybar_color_title" >
 
+    <CheckBoxPreference
+        android:key="batterybar_color_allow_multi"
+        android:summary="@string/batterybar_color_allow_multi_summary"
+        android:title="@string/batterybar_color_allow_multi_title" />
+    
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"
         android:key="batterybar_color"
@@ -9,22 +14,27 @@
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"
         android:key="batterybar_color_99"
+        android:dependency="batterybar_color_allow_multi"
         android:title="@string/batterybar_color_99_title" />
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"
         android:key="batterybar_color_80"
+        android:dependency="batterybar_color_allow_multi"
         android:title="@string/batterybar_color_80_title" />
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"
         android:key="batterybar_color_60"
+        android:dependency="batterybar_color_allow_multi"
         android:title="@string/batterybar_color_60_title" />
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"
         android:key="batterybar_color_40"
+        android:dependency="batterybar_color_allow_multi"
         android:title="@string/batterybar_color_40_title" />
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"
         android:key="batterybar_color_20"
+        android:dependency="batterybar_color_allow_multi"
         android:title="@string/batterybar_color_20_title" />
     <com.zst.xposed.xuimod.preference.ColorPicker
         defaultValue="FF33B5E5"

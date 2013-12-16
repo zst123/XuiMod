@@ -61,6 +61,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 
     boolean vertical = false;
 
+    boolean mSingleBatteryColor;
     boolean mSymmetric;
 
     public BatteryBarView(Context context) {
@@ -168,6 +169,9 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     private void updateSettings() {
     	final XSharedPreferences pref = getPref();
         
+    	mSingleBatteryColor = !pref.getBoolean(Common.KEY_BATTERYBAR_ALLOW_MULTI_COLOR,
+    			Common.DEFAULT_BATTERYBAR_ALLOW_MULTI_COLOR);
+    	
     	mSymmetric = pref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
     			Common.DEFAULT_BATTERYBAR_STYLE);
     	
@@ -215,6 +219,8 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     	String s = "FF33B5E5";
     	if (mBatteryCharging){
             s = pref.getString(Common.KEY_BATTERYBAR_COLOR_CHARGING, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mSingleBatteryColor){
+    		s = pref.getString(Common.KEY_BATTERYBAR_COLOR_100, Common.DEFAULT_BATTERYBAR_COLOR);
     	}else if(mBatteryLevel <= 20){
             s = pref.getString(Common.KEY_BATTERYBAR_COLOR_20, Common.DEFAULT_BATTERYBAR_COLOR);
     	}else if(mBatteryLevel <= 40){
