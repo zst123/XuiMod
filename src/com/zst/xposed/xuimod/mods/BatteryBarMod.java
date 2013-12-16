@@ -32,13 +32,28 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class BatteryBarMod {
 	
+	static boolean mStatusBarEnabled;
+	static boolean mNavBarTopEnabled;
+	static boolean mNavBarBottomEnabled;
+	
 	public static void handleLoadPackage(final LoadPackageParam lpp, final XSharedPreferences pref) {
 		if (!lpp.packageName.equals("com.android.systemui")) return;
 		if (!pref.getBoolean(Common.KEY_BATTERYBAR_ENABLE, Common.DEFAULT_BATTERYBAR_ENABLE))
 			return;
+
+		mStatusBarEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[0],
+				Common.DEFAULT_BATTERYBAR_POSITION_STATBAR);
+		mNavBarTopEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[1],
+				Common.DEFAULT_BATTERYBAR_POSITION_NAVBAR);
+		mNavBarBottomEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[2],
+				Common.DEFAULT_BATTERYBAR_POSITION_NAVBAR);
 		
-		hookStatusBar(lpp);
-		hookNavigationBar(lpp);
+		if (mStatusBarEnabled) {
+			hookStatusBar(lpp);
+		}
+		if (mNavBarTopEnabled || mNavBarBottomEnabled) {
+			hookNavigationBar(lpp);
+		}
 	}
 	
 	private static void hookStatusBar(final LoadPackageParam lpp) {
@@ -84,6 +99,7 @@ public class BatteryBarMod {
 				final FrameLayout portrait = (FrameLayout) rotated_views[Surface.ROTATION_0];
 				final FrameLayout landscape = (FrameLayout) rotated_views[Surface.ROTATION_90];
 				
+				if (mNavBarTopEnabled) {
 				/* Portrait Top */
 				BatteryBarController portrait_topbar = new BatteryBarController(thizz.getContext());
 				portrait_topbar.setLayoutParams(new LinearLayout.LayoutParams(
@@ -98,7 +114,9 @@ public class BatteryBarMod {
 						LinearLayout.LayoutParams.MATCH_PARENT));
 				landscape_top_bar.setVisibility(View.VISIBLE);
 				landscape.addView(landscape_top_bar);
+				}
 				
+				if (mNavBarBottomEnabled) {
 				/* Portrait Bottom */
 				BatteryBarController portrait_bottom_bar = new BatteryBarController(thizz
 						.getContext());
@@ -112,6 +130,7 @@ public class BatteryBarMod {
 				landscape_bottom_bar.setVisibility(View.VISIBLE);
 				landscape.addView(landscape_bottom_bar, new FrameLayout.LayoutParams(1,
 						FrameLayout.LayoutParams.MATCH_PARENT, Gravity.RIGHT));
+				}
 			}
 		});
 	}

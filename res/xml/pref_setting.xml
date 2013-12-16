@@ -85,6 +85,26 @@
             android:key="batterybar_color_screen"
             android:title="@string/batterybar_color_screen_title" />
         
+        <!-- BatteryBar Position -->
+        <PreferenceScreen
+            android:dependency="batterybar_enable"
+        	android:key="batterybar_position_screen"
+        	android:title="@string/batterybar_position_title"
+        	android:summary="@string/batterybar_position_summary" >
+        	<CheckBoxPreference
+        	    android:defaultValue="true"
+            	android:key="batterybar_position_sb"
+            	android:title="@string/batterybar_position_sb" />
+        	
+        	<CheckBoxPreference
+            	android:key="batterybar_position_nbt"
+            	android:title="@string/batterybar_position_nbt" />
+        	
+        	<CheckBoxPreference
+            	android:key="batterybar_position_nbb"
+            	android:title="@string/batterybar_position_nbb" />
+        </PreferenceScreen>
+        
         <Preference
             android:key="batterybar_restart"
             android:summary="@string/systemui_restart_summary"
