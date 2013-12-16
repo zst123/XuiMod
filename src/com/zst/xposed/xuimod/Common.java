@@ -73,6 +73,8 @@ public class Common {
 	public static final String KEY_LOCKSCREEN_TORCH_BACK ="lockscreen_torch_back";
 	public static final String KEY_LOCKSCREEN_TORCH_HOME ="lockscreen_torch_home";
 	public static final String KEY_LOCKSCREEN_TORCH_MENU ="lockscreen_torch_menu";
+	public static final String KEY_LOCKSCREEN_TORCH_VOLUME_UP ="lockscreen_torch_volup";
+	public static final String KEY_LOCKSCREEN_TORCH_VOLUME_DOWN ="lockscreen_torch_voldown";
 	public static final String KEY_LOCKSCREEN_TORCH_TYPE ="lockscreen_torch_type";
 	
 	public static final String KEY_ANIMATION_CONTROLS_PREF_SCREEN = "animation_controls";
@@ -137,6 +139,7 @@ public class Common {
 	public static final boolean DEFAULT_LOCKSCREEN_TORCH_BACK = false;
 	public static final boolean DEFAULT_LOCKSCREEN_TORCH_HOME = false;
 	public static final boolean DEFAULT_LOCKSCREEN_TORCH_MENU = false;
+	public static final boolean DEFAULT_LOCKSCREEN_TORCH_VOLUME = false;
 	public static final String DEFAULT_LOCKSCREEN_TORCH_TYPE = "0";
 	
     public static final boolean DEFAULT_ANIMATION_CONTROLS_ENABLE = false;

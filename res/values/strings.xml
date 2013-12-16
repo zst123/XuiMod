@@ -172,6 +172,9 @@
     <string name="lockscreen_torch_home_title">Use Home Button</string>
     <string name="lockscreen_torch_menu_title">Use Menu Button</string>
     <string name="lockscreen_torch_back_title">Use Back Button</string>
+    <string name="lockscreen_torch_volup_title">Use Volume Up</string>
+    <string name="lockscreen_torch_voldown_title">Use Volume Down</string>
+    
     <string name="lockscreen_torch_torch_type">Choose Torch App</string>
     <string name="lockscreen_torch_cm_torch">CM Torch</string>
     <string name="lockscreen_torch_tesla_torch">TeslaLED</string>

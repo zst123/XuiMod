@@ -289,6 +289,15 @@
             android:title="@string/lockscreen_torch_back_title"
             android:dependency="lockscreen_torch" />
         
+        <CheckBoxPreference
+            android:key="lockscreen_torch_volup"
+            android:title="@string/lockscreen_torch_volup_title"
+            android:dependency="lockscreen_torch" />
+        
+        <CheckBoxPreference
+            android:key="lockscreen_torch_voldown"
+            android:title="@string/lockscreen_torch_voldown_title"
+            android:dependency="lockscreen_torch" />
         </PreferenceScreen>
         <ListPreference
             android:defaultValue="0"
