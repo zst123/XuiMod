@@ -52,6 +52,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 	public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {		
 		pref.reload();
 		SecondsClockMod.handleLoadPackage(lpparam);
+		BatteryBarMod.handleLoadPackage(lpparam,pref);
 		LockscreenVolumeMod.handleLoadPackage(lpparam,pref);
 		ListViewAnimationMod.handleLoadPackage(pref);
 		VolumePanelMod.handleLoadPackage(lpparam,pref);
@@ -67,7 +68,6 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 	public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
 		pref.reload();
 		SystemAnimationMod.handleInitPackageResources(pref, resparam);
-		BatteryBarMod.initResources(pref, resparam);
 	}
 	
 }
