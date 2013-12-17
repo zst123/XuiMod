@@ -129,6 +129,7 @@ public class BatteryBarController extends LinearLayout {
 	}
 	
 	public void addBar() {	
+		setOrientation(LinearLayout.HORIZONTAL);
 		LayoutParams ll = new LinearLayout.LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1);
 
@@ -146,6 +147,7 @@ public class BatteryBarController extends LinearLayout {
 					mBatteryCharging, mBatteryLevel, isVertical);
 
 			if (isVertical) {
+				setOrientation(LinearLayout.VERTICAL);
 				alternateStyleBar.setRotation(180);
 				addView(alternateStyleBar, ll);
 				addView(mainBar, ll);
