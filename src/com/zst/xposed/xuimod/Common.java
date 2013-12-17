@@ -115,6 +115,7 @@ public class Common {
 	public static final String KEY_SCROLLING_VELOCITY = "scrolling_velocity";
 
 	public static final String KEY_SCROLLING_GLOW_ENABLE = "scrolling_glow_enabled";
+	public static final String KEY_SCROLLING_GLOW_DISABLE = "scrolling_glow_effect_disabled";
 	public static final String KEY_SCROLLING_GLOW_GLOW = "scrolling_glow_glow";
 	public static final String KEY_SCROLLING_GLOW_EDGE = "scrolling_glow_edge";
 
@@ -173,6 +174,7 @@ public class Common {
 	public static final int DEFAULT_SCROLLING_VELOCITY = 8000;
 	
 	public static final boolean DEFAULT_SCROLLING_GLOW_ENABLE = false;
+	public static final boolean DEFAULT_SCROLLING_GLOW_DISABLE = false;
 	public static final String DEFAULT_SCROLLING_GLOW_GLOW = COLOR_HOLO_BLUE;
 	public static final String DEFAULT_SCROLLING_GLOW_EDGE = COLOR_HOLO_BLUE;
 	

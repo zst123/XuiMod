@@ -411,6 +411,12 @@
         		android:key="scrolling_glow_enabled"
         		android:title="@string/scrolling_glow_title" />
             
+            <CheckBoxPreference
+        		android:key="scrolling_glow_effect_disabled"
+        		android:dependency="scrolling_glow_enabled"
+        		android:summary="@string/scrolling_glow_effect_disable_summary"
+        		android:title="@string/scrolling_glow_effect_disable_title" />
+            
             <com.zst.xposed.xuimod.preference.ColorPicker
         		hideAlpha="true"
         		defaultValue="FF33B5E5"

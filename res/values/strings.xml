@@ -229,6 +229,8 @@
     <string name="scrolling_glow_edge_summary">Color of the scroller edge when reaching an end</string>
     <string name="scrolling_glow_glow_title">Glow Color</string>
     <string name="scrolling_glow_glow_summary">Color of the edge glow when overscrolling</string>
+    <string name="scrolling_glow_effect_disable_title">Disable Effect</string>
+    <string name="scrolling_glow_effect_disable_summary">Disable the overscroll glow &amp; ignores the specified color settings.</string>
     
     <!-- Random Color -->
     <string name="random_color_1">Random Color #1</string>

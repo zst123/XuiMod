@@ -2,6 +2,7 @@ package com.zst.xposed.xuimod.mods;
 
 import com.zst.xposed.xuimod.Common;
 
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -31,6 +32,15 @@ public class EdgeEffectMod {
 				
 				final Drawable edge = (Drawable) Common.getReflection(param.thisObject, "mEdge");
 				final Drawable glow = (Drawable) Common.getReflection(param.thisObject, "mGlow");
+				
+				if (mPref.getBoolean(Common.KEY_SCROLLING_GLOW_DISABLE,
+						Common.DEFAULT_SCROLLING_GLOW_DISABLE)) {
+					//Disable glow by setting transparent color
+					final Drawable transparent = new ColorDrawable(Color.TRANSPARENT);
+					Common.setReflection(param.thisObject, "mEdge", transparent);
+					Common.setReflection(param.thisObject, "mGlow", transparent);
+					return;
+				}
 				
 				final String str_edge = mPref.getString(Common.KEY_SCROLLING_GLOW_EDGE,
 						Common.DEFAULT_SCROLLING_GLOW_EDGE);
