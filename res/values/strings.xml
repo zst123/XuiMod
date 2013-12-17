@@ -223,6 +223,13 @@
     <string name="scrolling_velocity_title">Max Fling Velocity</string>
     <string name="scrolling_velocity_summary">The maximum velocity to start a fling</string>
     
+    <string name="scrolling_glow_title">Overscroll Effect</string>
+    <string name="scrolling_glow_summary">Customize the edge effect when overscrolling</string>
+    <string name="scrolling_glow_edge_title">Edge Color</string>
+    <string name="scrolling_glow_edge_summary">Color of the scroller edge when reaching an end</string>
+    <string name="scrolling_glow_glow_title">Glow Color</string>
+    <string name="scrolling_glow_glow_summary">Color of the edge glow when overscrolling</string>
+    
     <!-- Random Color -->
     <string name="random_color_1">Random Color #1</string>
     <string name="random_color_2">Random Color #2</string>

@@ -402,6 +402,35 @@
             	android:title="@string/anim_listview_test" />
         </PreferenceScreen>
         
+        <PreferenceScreen
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:key="scrolling_glow_screen"
+            android:summary="@string/scrolling_glow_summary"
+            android:title="@string/scrolling_glow_title" >
+            <SwitchPreference
+        		android:key="scrolling_glow_enabled"
+        		android:title="@string/scrolling_glow_title" />
+            
+            <com.zst.xposed.xuimod.preference.ColorPicker
+        		hideAlpha="true"
+        		defaultValue="FF33B5E5"
+        		android:dependency="scrolling_glow_enabled"
+        		android:key="scrolling_glow_glow"
+        		android:summary="@string/scrolling_glow_glow_summary"
+        		android:title="@string/scrolling_glow_glow_title" />
+            
+            <com.zst.xposed.xuimod.preference.ColorPicker
+        		hideAlpha="true"
+        		defaultValue="FF33B5E5"
+        		android:dependency="scrolling_glow_enabled"
+        		android:key="scrolling_glow_edge"
+        		android:summary="@string/scrolling_glow_edge_summary"
+        		android:title="@string/scrolling_glow_edge_title" />
+
+            <com.zst.xposed.xuimod.preference.TestListView
+            	android:summary="@string/anim_listview_test_summary"
+            	android:title="@string/anim_listview_test" />
+        </PreferenceScreen>        
     </PreferenceScreen>
 
     <!-- Other Mods Screen -->

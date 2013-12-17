@@ -113,7 +113,11 @@ public class Common {
 	public static final String KEY_SCROLLING_OVERFLING = "scrolling_overfling";
 	public static final String KEY_SCROLLING_FRICTION = "scrolling_friction";
 	public static final String KEY_SCROLLING_VELOCITY = "scrolling_velocity";
-	
+
+	public static final String KEY_SCROLLING_GLOW_ENABLE = "scrolling_glow_enabled";
+	public static final String KEY_SCROLLING_GLOW_GLOW = "scrolling_glow_glow";
+	public static final String KEY_SCROLLING_GLOW_EDGE = "scrolling_glow_edge";
+
 	/* Preference default values */
 	public static final boolean DEFAULT_SECONDS_ENABLE = false;
 	public static final boolean DEFAULT_SECONDS_BOLD = false;
@@ -167,6 +171,10 @@ public class Common {
 	public static final int DEFAULT_SCROLLING_OVERFLING = 6;
 	public static final int DEFAULT_SCROLLING_FRICTION = 150;
 	public static final int DEFAULT_SCROLLING_VELOCITY = 8000;
+	
+	public static final boolean DEFAULT_SCROLLING_GLOW_ENABLE = false;
+	public static final String DEFAULT_SCROLLING_GLOW_GLOW = COLOR_HOLO_BLUE;
+	public static final String DEFAULT_SCROLLING_GLOW_EDGE = COLOR_HOLO_BLUE;
 	
 	/* Preference limits values */
 	public static final int LIMIT_MAX_VOLUME_ALPHA = 100;
