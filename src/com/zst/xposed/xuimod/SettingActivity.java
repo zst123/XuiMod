@@ -111,14 +111,14 @@ public class SettingActivity extends PreferenceActivity implements
 	private void dialog_killSystemUI() {
 		new AlertDialog.Builder(this)
 				.setMessage(R.string.systemui_restart_dialog)
-				.setPositiveButton("YES",
+				.setPositiveButton(android.R.string.yes,
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
 								killPackage("com.android.systemui");
 							}
-						}).setNegativeButton("NO", null).show();
+						}).setNegativeButton(android.R.string.no, null).show();
 	}
 
 	// TODO Don't run shell on UI thread
