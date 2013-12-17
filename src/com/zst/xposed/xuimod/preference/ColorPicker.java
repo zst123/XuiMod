@@ -38,11 +38,15 @@ public class ColorPicker extends Preference implements OnPreferenceClickListener
 	ImageView mColorBox;
 	Resources mRes;
 	String mDefaultColor;
+	boolean mHideAlpha;
 
 	public ColorPicker(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		
 		mDefaultColor = attrs.getAttributeValue(null, "defaultValue");
+		if (attrs.getAttributeValue(null, "hideAlpha") != null) {
+			mHideAlpha = true;
+		}
 	}
 
 	@Override
@@ -58,6 +62,7 @@ public class ColorPicker extends Preference implements OnPreferenceClickListener
 	@Override
 	public boolean onPreferenceClick(Preference arg0) {
 		final ColorSettingsDialog d = new ColorSettingsDialog(getContext(), getColor(), mDefaultColor);
+		d.setAlphaSliderVisible(!mHideAlpha);
 		final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
