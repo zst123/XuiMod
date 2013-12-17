@@ -87,14 +87,20 @@ public class BatteryBarMod {
 	}
 	
 	private static void hookNavigationBar(final LoadPackageParam lpp) {
-		final Class<?> navBar = XposedHelpers.findClass(
-				"com.android.systemui.statusbar.phone.NavigationBarView", lpp.classLoader);
+		Class<?> navBar;
+		try {
+			navBar = XposedHelpers.findClass(
+					"com.android.systemui.statusbar.phone.NavigationBarView", lpp.classLoader);
+		} catch (Throwable t) {
+			navBar = XposedHelpers.findClass(
+					"com.android.systemui.statusbar.NavigationBarView", lpp.classLoader);
+		}
 		XposedBridge.hookAllMethods(navBar, "onFinishInflate", new XC_MethodHook() {
 			@Override
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				final LinearLayout thizz = (LinearLayout) param.thisObject;
-				final View[] rotated_views = (View[]) navBar.getDeclaredField("mRotatedViews").get(
-						thizz);
+				final View[] rotated_views = (View[]) param.thisObject.getClass()
+						.getDeclaredField("mRotatedViews").get(thizz);
 				
 				final FrameLayout portrait = (FrameLayout) rotated_views[Surface.ROTATION_0];
 				final FrameLayout landscape = (FrameLayout) rotated_views[Surface.ROTATION_90];
