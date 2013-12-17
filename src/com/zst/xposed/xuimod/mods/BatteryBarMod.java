@@ -73,14 +73,14 @@ public class BatteryBarMod {
 		try {
 			final Class<?> phoneStatusBar = XposedHelpers.findClass(
 					"com.android.systemui.statusbar.phone.PhoneStatusBarView", lpp.classLoader);
-			XposedBridge.hookAllMethods(phoneStatusBar, "onFinishInflate", hook);
+			XposedBridge.hookAllMethods(phoneStatusBar, "onAttachedToWindow", hook);
 		} catch (Throwable t) {
 			XposedBridge.log(t);
 		}
 		try {
 			final Class<?> tabletStatusBar = XposedHelpers.findClass(
 					"com.android.systemui.statusbar.tablet.TabletStatusBarView", lpp.classLoader);
-			XposedBridge.hookAllMethods(tabletStatusBar, "onFinishInflate", hook);
+			XposedBridge.hookAllMethods(tabletStatusBar, "onAttachedToWindow", hook);
 		} catch (Throwable t) {
 			XposedBridge.log(t);
 		}
