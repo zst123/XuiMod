@@ -346,6 +346,7 @@
         <PreferenceScreen
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:key="scrolling_config_screen"
+            android:summary="@string/scrolling_config_summary"
             android:title="@string/scrolling_config_title" >
             <SwitchPreference
                 android:key="scrolling_enabled"
@@ -395,11 +396,11 @@
                 android:key="scrolling_velocity"
                 android:summary="@string/scrolling_velocity_summary"
                 android:title="@string/scrolling_velocity_title" />
+            
+            <com.zst.xposed.xuimod.preference.TestListView
+            	android:summary="@string/anim_listview_test_summary"
+            	android:title="@string/anim_listview_test" />
         </PreferenceScreen>
-
-        <com.zst.xposed.xuimod.preference.TestListView
-            android:summary="@string/anim_listview_test_summary"
-            android:title="@string/anim_listview_test" />
         
     </PreferenceScreen>
 

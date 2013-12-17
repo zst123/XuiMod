@@ -212,6 +212,7 @@
     <!-- Scrolling Mods -->
     <string name="scrolling_title">Scrolling Mod</string>
     <string name="scrolling_config_title">Scroll Configurations</string>
+    <string name="scrolling_config_summary">Customize how scrolling behaves and feels</string>
     <string name="scrolling_warning">Already opened apps might need a restart for scrolling settings to take effect.</string>
     <string name="scrolling_overscroll_title">Overscroll Distance</string>
     <string name="scrolling_overscroll_summary">The maximum overscroll distance when at the end of a scroller</string>
