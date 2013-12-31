@@ -8,6 +8,7 @@
     <string name="systemui_title">SystemUI</string>
     <string name="animation_title">Animação</string>
     <string name="framework_title">Framework</string>
+    <string name="options_title">Opções de aplicativos</string>
     
     <string name="systemui_restart">Reiniciar o SystemUI</string>    
     <string name="systemui_restart_summary">Reinicie o SystemUI se as mudanças não se aplicarem \n(Requer permissão de root)</string>
@@ -30,7 +31,7 @@
     <string name="seconds_custom_summary">Use um formato personalizado para o relógio \n(Deixe em branco para o padrão)</string>
     
     <!-- Notif Mods -->
-    <string name="notif_title">Mods de notificações</string>
+    <string name="notif_title">Mods das notificações</string>
     <string name="notif_quick_settings_random_title">Cores randômicas no painel de configurações rápidas</string>
     <string name="notif_quick_settings_random_summary">Randomizar cor de fundo para cada painel da configuração rápida\n(O SystemUI precissa ser reiniciado para as mudanças terem efeito)</string>
     <string name="notif_choose_color_title">Selecionar cores randômicas</string>
@@ -38,8 +39,8 @@
         
     <!-- Animation Pref-->
     <string name="anim_title">Mods de animações</string>
-    <string name="anim_listview_title">Animação da ListView</string>
-    <string name="anim_systemwide_title">Animação do sistema</string>
+    <string name="anim_listview_title">Animações da ListView</string>
+    <string name="anim_systemwide_title">Animações do sistema</string>
     
     <!-- System Anim Pref -->
     <string name="window_transitions_title">Transições de janela</string>
@@ -171,13 +172,16 @@
     <string name="lockscreen_torch_home_title">Usar botão Home</string>
     <string name="lockscreen_torch_menu_title">Usar botão Menu</string>
     <string name="lockscreen_torch_back_title">Usar botão Voltar</string>
+    <string name="lockscreen_torch_volup_title">Usar Volume+</string>
+    <string name="lockscreen_torch_voldown_title">Usar Volume-</string>
+
     <string name="lockscreen_torch_torch_type">Escolha o aplicativo de lanterna</string>
     <string name="lockscreen_torch_cm_torch">CM Torch</string>
     <string name="lockscreen_torch_tesla_torch">TeslaLED</string>
     <string name="lockscreen_torch_dashlight_torch">DashLight</string>
     
      <!-- BatteryBar Pref-->
-    <string name="batterybar_title">Mod da barra de bateria</string>
+    <string name="batterybar_title">Mods da barra de bateria</string>
     <string name="batterybar_enable_title">Habilitar a barra de bateria</string>
     <string name="batterybar_style_title">Barra simétrica</string>
     <string name="batterybar_style_summary">Se marcado, a barra de bateria será simétrica ao invés da padrão.</string>
@@ -188,7 +192,9 @@
     <string name="batterybar_animate_summary">Mostra animação enquanto carrega</string>
     <string name="batterybar_color_title">Cor da Barra de bateria</string>
     
-    <string name="batterybar_color_screen_title">Personalize a Cor</string>
+    <string name="batterybar_color_screen_title">Personalizar a Cor</string>
+    <string name="batterybar_color_allow_multi_title">Usar cores múltiplas</string>
+    <string name="batterybar_color_allow_multi_summary">Permite que a barra da bateria altere a cor de acordo com o nível de bateria</string>
     <string name="batterybar_color_100_title">Cor em 100%</string>
     <string name="batterybar_color_99_title">Cor em 99% e abaixo</string>
     <string name="batterybar_color_80_title">Cor em 80% e abaixo</string>
@@ -198,8 +204,15 @@
     <string name="batterybar_color_charge_title">Cor enquanto carregando</string>
     <string name="batterybar_bg_color_title">Cor de fundo</string>
     
+    <string name="batterybar_position_title">Posição da barra de bateria</string>
+    <string name="batterybar_position_summary">Altere aqui onde a barra de bateria é mostrada\n(Requer que a SystemUI seja reiniciada)</string>
+    <string name="batterybar_position_sb">barra de status</string>
+    <string name="batterybar_position_nbt">Barra de navegação (Acíma)</string>
+    <string name="batterybar_position_nbb">Barra de navegação (Abaixo)</string>
     <!-- Scrolling Mods -->
-    <string name="scrolling_title">Mod de rolagem</string>
+    <string name="scrolling_title">Mods de rolagem</string>
+    <string name="scrolling_config_title">Configurações de rolagem</string>
+    <string name="scrolling_config_summary">Personaliza como a barra de rolagem comporta-se ao rolar</string>
     <string name="scrolling_warning">Aplicativos abertos deverão ser reiniciados para surtir efeito.</string>
     <string name="scrolling_overscroll_title">Distância do Overscroll</string>
     <string name="scrolling_overscroll_summary">A distância máxima do overscroll ao final da rolagem</string>
@@ -210,6 +223,15 @@
     <string name="scrolling_velocity_title">Velocidade máxima do arremesso</string>
     <string name="scrolling_velocity_summary">Velocidade máxima no início do arremesso</string>
     
+    <string name="scrolling_glow_title">Efeito de rolar barra de rolagem</string>
+    <string name="scrolling_glow_summary">Personaliza o efeito na borda enquanto rolar a barra de rolagem</string>
+    <string name="scrolling_glow_edge_title">Cor da borda</string>
+    <string name="scrolling_glow_edge_summary">Cor da barra de rolagem chegando ao fim</string>
+    <string name="scrolling_glow_glow_title">Brilho de cor</string>
+    <string name="scrolling_glow_glow_summary">A cor da borda irá brilhar enquanto rolar a barra de rolagem</string>
+    <string name="scrolling_glow_effect_disable_title">Desabilitar efeito</string>
+    <string name="scrolling_glow_effect_disable_summary">Desabilita o brilho da barra de rolagem &amp; ignora a cor especificada nas configurações</string>
+    
     <!-- Random Color -->
     <string name="random_color_1">Cor aleatória #1</string>
     <string name="random_color_2">Cor aleatória #2</string>
@@ -219,6 +241,12 @@
     <string name="random_color_6">Cor aleatória #6</string>
     <string name="random_color_7">Cor aleatória #7</string>
     <string name="random_color_8">Cor aleatória #8</string>
+    
+    <!-- Hide Launcher Icon Dialog -->
+    <string name="toggle_launcher_show">Habilitar ícone</string>
+    <string name="toggle_launcher_hide">Desabilitar ícone</string>
+    <string name="toggle_launcher_title">Alternar ícone do Launcher</string>
+    <string name="toggle_launcher_msg">Depois de desabilitar o ícone do Launcher, você precisa acessar o XuiMod através do Instalador do Xposed.\n\nInstalador do Xposed ➙ Módulos ➙ XuiMod (Area ao lado da caixa de seleção).\n\nVocê pode precisar reiniciar o seu Launcher para isso ter efeito.</string>
     
    <!-- Other string -->
    <string name="version_unsupported">Esse mod requer Android %1$s and acima. Você atualmente está usando Android %2$s.</string>
