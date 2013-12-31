@@ -123,6 +123,12 @@ public class LockscreenTorchMod {
 	    	boolean menuEnable = mPref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_BACK,
 					Common.DEFAULT_LOCKSCREEN_TORCH_BACK);
 	    	return menuEnable;
+	    }else if(event.getKeyCode() == KeyEvent.KEYCODE_VOLUME_UP){
+	    	return mPref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_VOLUME_UP,
+					Common.DEFAULT_LOCKSCREEN_TORCH_VOLUME);
+	    }else if(event.getKeyCode() == KeyEvent.KEYCODE_VOLUME_DOWN){
+	    	return mPref.getBoolean(Common.KEY_LOCKSCREEN_TORCH_VOLUME_DOWN,
+					Common.DEFAULT_LOCKSCREEN_TORCH_VOLUME);
 	    }
 		return false;	
 	}

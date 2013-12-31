@@ -61,7 +61,7 @@ public class LockscreenVolumeMod {
     private static void Lockscreen_Volume_Button(final LoadPackageParam lpparam) { 
 		String classs = getClassStringFromSdk(Build.VERSION.SDK_INT);
 		Class<?> hookClass = findClass(classs, lpparam.classLoader);
-		XposedBridge.hookAllMethods(hookClass, "dispatchKeyEvent", new XC_MethodHook(){
+		XposedBridge.hookAllMethods(hookClass, "dispatchKeyEvent", new XC_MethodHook(XC_MethodHook.PRIORITY_HIGHEST){
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				KeyEvent event = (KeyEvent)param.args[0];
 				if (!isVolume(event))return; //Key is not a volume key. Let system handle

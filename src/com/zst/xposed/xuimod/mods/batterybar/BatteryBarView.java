@@ -32,7 +32,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.BatteryManager;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
@@ -42,8 +44,6 @@ import android.widget.RelativeLayout;
 public class BatteryBarView extends RelativeLayout implements Animatable {
     // Total animation duration
     private static final int ANIM_DURATION = 1000; // 1 second
-    public static final int STYLE_REGULAR = 0;
-    public static final int STYLE_SYMMETRIC = 1;
     
     private boolean mAttached = false;
     private int mBatteryLevel = 0;
@@ -57,10 +57,12 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     LinearLayout mChargerLayout;
     View mCharger;
 
-
+    static XSharedPreferences mPref;
 
     boolean vertical = false;
 
+    boolean mSingleBatteryColor;
+    boolean mSymmetric;
 
     public BatteryBarView(Context context) {
     	this(context, null , 0);
@@ -81,6 +83,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     }
     public BatteryBarView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        mPref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
     }
 
     @Override
@@ -123,6 +126,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             filter.addAction(Intent.ACTION_BATTERY_CHANGED);
             filter.addAction(Intent.ACTION_SCREEN_OFF);
             filter.addAction(Intent.ACTION_SCREEN_ON);
+            filter.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
 			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
             updateSettings();
@@ -142,7 +146,14 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
                     stop();
                 }
                 setProgress(mBatteryLevel);
-                updateBatteryColor(null);
+                updateBatteryColor();
+            } else if (Intent.ACTION_CONFIGURATION_CHANGED.equals(action)) {
+            	// Reset the length to the new width on screen rotate
+            	setProgress(mBatteryLevel);
+            	stop();
+            	if (mBatteryCharging && mBatteryLevel < 100) {
+                    start();
+                }
             } else if (Intent.ACTION_SCREEN_OFF.equals(action)) {
                 stop();
             } else if (Intent.ACTION_SCREEN_ON.equals(action)) {
@@ -156,11 +167,17 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     };
 
     private void updateSettings() {
-        XSharedPreferences pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+    	final XSharedPreferences pref = getPref();
         
+    	mSingleBatteryColor = !pref.getBoolean(Common.KEY_BATTERYBAR_ALLOW_MULTI_COLOR,
+    			Common.DEFAULT_BATTERYBAR_ALLOW_MULTI_COLOR);
+    	
+    	mSymmetric = pref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
+    			Common.DEFAULT_BATTERYBAR_STYLE);
+    	
         setProgress(mBatteryLevel);
-        updateBatteryColor(pref);
-        updateBatteryBackground(pref);
+        updateBatteryColor();
+        updateBatteryBackground();
         
         boolean oldShouldAnimateCharging = shouldAnimateCharging;
         shouldAnimateCharging = pref.getBoolean(Common.KEY_BATTERYBAR_ANIMATE,
@@ -174,26 +191,36 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     }
     
     private void setProgress(int n) {
+    	Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
+    			.getDefaultDisplay();
         if (vertical) {
-            int w = (int) (((getHeight() / 100.0) * n) + 0.5);
+            int w = (int) (((display.getHeight() / 100.0) * n) + 0.5);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mBatteryBarLayout.getLayoutParams();
+            if (mSymmetric) {
+            	w = (int) (w * 0.5);
+            }
             params.height = w;
             mBatteryBarLayout.setLayoutParams(params);
         } else {
-            int w = (int) (((getWidth() / 100.0) * n) + 0.5);
+        	int w = (int) (((display.getWidth() / 100.0) * n) + 0.5);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mBatteryBarLayout.getLayoutParams();
+            if (mSymmetric) {
+            	w = (int) (w * 0.5);
+            }
             params.width = w;
             mBatteryBarLayout.setLayoutParams(params);
         }
 
     }
 
-    private void updateBatteryColor(XSharedPreferences pref){
-    	if (pref==null) pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+    private void updateBatteryColor(){
+    	final XSharedPreferences pref = getPref();
     	
     	String s = "FF33B5E5";
     	if (mBatteryCharging){
             s = pref.getString(Common.KEY_BATTERYBAR_COLOR_CHARGING, Common.DEFAULT_BATTERYBAR_COLOR);
+    	}else if(mSingleBatteryColor){
+    		s = pref.getString(Common.KEY_BATTERYBAR_COLOR_100, Common.DEFAULT_BATTERYBAR_COLOR);
     	}else if(mBatteryLevel <= 20){
             s = pref.getString(Common.KEY_BATTERYBAR_COLOR_20, Common.DEFAULT_BATTERYBAR_COLOR);
     	}else if(mBatteryLevel <= 40){
@@ -224,6 +251,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 			view.setBackgroundColor(newColor);
 			return;
 		}
+		if (oldColor == newColor) return;
 		final ValueAnimator anim = ValueAnimator.ofObject(new ArgbEvaluator(), oldColor, newColor);
 		final AnimatorUpdateListener listener = new AnimatorUpdateListener() {
 			@Override
@@ -236,7 +264,8 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 		anim.start();
 	}
 
-    public void updateBatteryBackground(XSharedPreferences pref){
+    public void updateBatteryBackground(){
+    	final XSharedPreferences pref = getPref();
         String colorString = pref.getString(Common.KEY_BATTERYBAR_BACKGROUND_COLOR, "");
         int color = Common.parseColorFromString(colorString, "00000000");
         fadeBarColor(color, mBatteryBarBackground);
@@ -246,8 +275,15 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     public void start() {
         if (!shouldAnimateCharging)  return;
 
+        Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
+    			.getDefaultDisplay();
+        
         if (vertical) {
-            TranslateAnimation a = new TranslateAnimation(getX(), getX(), getHeight(),
+        	int height = display.getHeight();
+        	if (mSymmetric) {
+        		height = (int) (height * 0.5);
+            }
+            TranslateAnimation a = new TranslateAnimation(getX(), getX(), height,
                     mBatteryBarLayout.getHeight());
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
@@ -255,7 +291,11 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             mChargerLayout.startAnimation(a);
             mChargerLayout.setVisibility(View.VISIBLE);
         } else {
-            TranslateAnimation a = new TranslateAnimation(getWidth(), mBatteryBarLayout.getWidth(),
+        	int width = display.getWidth();
+        	if (mSymmetric) {
+        		width = (int) (width * 0.5);
+            }
+            TranslateAnimation a = new TranslateAnimation(width, mBatteryBarLayout.getWidth(),
                     getTop(), getTop());
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
@@ -275,5 +315,10 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     public boolean isRunning() {
         return isAnimating;
     }
+    
+	private XSharedPreferences getPref() {
+		mPref.reload();
+		return mPref;
+	}
 
 }

@@ -38,6 +38,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.XModuleResources;
 import android.content.res.XmlResourceParser;
+import android.os.Build;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -67,8 +68,15 @@ public class AnimationControlsMod {
 		mPref.reload();
 		Class<?> appTransition;
 		try{
-			appTransition = findClass("com.android.server.wm.AppTransition",
-					lpparam.classLoader);
+			if (Build.VERSION.SDK_INT >= 18) {
+				//Android 4.3 onwards
+				appTransition = findClass("com.android.server.wm.AppTransition",
+						lpparam.classLoader);
+			} else {
+				//Android 4.2 and below
+				appTransition = findClass("com.android.server.wm.WindowManagerService",
+						lpparam.classLoader);
+			}
 		}catch(Throwable e){
 			return;
 			//If can't find the class, return so other mods executed after this
@@ -89,8 +97,12 @@ public class AnimationControlsMod {
 					param.setResult(null);
 			}
 		};
-	    XposedBridge.hookAllMethods(hookClass, "overridePendingAppTransitionScaleUp", checkNoOverrideAndReturn);
-	    XposedBridge.hookAllMethods(hookClass, "overridePendingAppTransitionThumb", checkNoOverrideAndReturn);
+		try {
+			XposedBridge.hookAllMethods(hookClass, "overridePendingAppTransitionScaleUp", checkNoOverrideAndReturn);
+			XposedBridge.hookAllMethods(hookClass, "overridePendingAppTransitionThumb", checkNoOverrideAndReturn);
+		} catch (Throwable t){
+			// Method not found, user is on ICS
+		}
 	    XposedBridge.hookAllMethods(hookClass, "overridePendingAppTransition", checkNoOverrideAndReturn);
 	}
 	
@@ -107,28 +119,136 @@ public class AnimationControlsMod {
 	}
 	
 	private static void hookloadAnimation_animAttr(LoadPackageParam o, Class<?> clazz) {
-		XposedHelpers.findAndHookMethod(clazz, "loadAnimation",
-				WindowManager.LayoutParams.class, int.class, new XC_MethodHook(){
-			@Override 
-			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-				int animAttr = (Integer) param.args[1];
-				if (animAttr >= 0) {
-					if (!mIsResId) return;
-					
-					if (animAttr != 0) {
-						param.setResult(AnimationUtils.loadAnimation(mContext, animAttr));
-					}else{
-						param.setResult(null);
+		try {
+			XposedHelpers.findAndHookMethod(clazz, "loadAnimation",
+					WindowManager.LayoutParams.class, int.class, new XC_MethodHook() {
+				@Override
+				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+					int animAttr = (Integer) param.args[1];
+					if (animAttr >= 0) {
+						if (!mIsResId) return;
+						
+						if (animAttr != 0) {
+							param.setResult(AnimationUtils
+									.loadAnimation(mContext, animAttr));
+						} else {
+							param.setResult(null);
+						}
+						/* If it equals zero, return null and skip the method since we have
+						 * to skip the getCachedAnimations if mIsResId is true
+						 */
 					}
-					/* If it equals zero, return null and skip the method since we have
-					 * to skip the getCachedAnimations if mIsResId is true
-					 */
+				}
+			});
+		} catch (Throwable e) {
+			XposedBridge.hookAllMethods(clazz, "loadAnimation", new XC_MethodHook() {
+				@Override
+				protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+					if (param.args.length != 2) return;
+					if (param.args[0] instanceof WindowManager.LayoutParams
+							&& param.args[1] instanceof Integer) {
+						int animAttr = (Integer) param.args[1];
+						if (animAttr >= 0) {
+							if (!mIsResId) return;
+							if (animAttr != 0) {
+								param.setResult(AnimationUtils.loadAnimation(mContext, animAttr));
+							} else {
+								param.setResult(null);
+							}
+						}
+					}
+				}
+			});
+		}
+	}
+	
+	// Checks API level
+	private static void hookloadAnimation_mIsResId_mNextAppTransitionType(LoadPackageParam o, Class<?> cls) {
+		if (Build.VERSION.SDK_INT >= 18) {
+			hookNewLoadAnimation(o, cls);
+		} else {
+			hookOldApplyAnimationLocked(o, cls);
+		}
+	}
+	
+	// Android 4.2 and below
+	private static void hookOldApplyAnimationLocked(LoadPackageParam o, final Class<?> cls) {
+		Class<?> appWindowToken = findClass("com.android.server.wm.AppWindowToken", o.classLoader);
+		XposedHelpers.findAndHookMethod(cls, "applyAnimationLocked", appWindowToken,
+				WindowManager.LayoutParams.class, int.class, boolean.class, new XC_MethodHook() {
+			@Override
+			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+				boolean displayFrozen = (Boolean) cls.getDeclaredField("mDisplayFrozen")
+						.get(param.thisObject);
+				boolean displayEnabled = (Boolean) cls.getDeclaredField("mDisplayEnabled")
+						.get(param.thisObject);
+				Object policy = cls.getDeclaredField("mPolicy").get(param.thisObject);
+				boolean screenOn = (Boolean) XposedHelpers.callMethod(policy, "isScreenOnFully");
+				
+				if ((!displayFrozen && displayEnabled && screenOn) == false) {
+					return;
+				}
+				
+				final Object window_token = param.args[0];
+				final WindowManager.LayoutParams lp = (WindowManager.LayoutParams) param.args[1];
+				final int transit = (Integer) param.args[2];
+				final boolean enter = (Boolean) param.args[3];
+				
+				if ((Build.VERSION.SDK_INT <= 15)) { // ICS
+					String nextAppTransitionPackage = (String) Common.getReflection(
+							param.thisObject, "mNextAppTransitionPackage");
+					if (nextAppTransitionPackage == null) {
+						Animation anim = retrieveAnimation(lp, transit, enter);
+						if (anim != null) {
+							XposedHelpers.callMethod(window_token, "setAnimation", applyDuration(anim));
+							param.setResult(true);
+						}
+					}
+				} else { // JB 4.1/4.2
+					int type = (Integer) Common.getReflection(param.thisObject,
+							"mNextAppTransitionType");
+					if (type == AppTransitionConstants.NEXT_TRANSIT_TYPE_CUSTOM ||
+						type == AppTransitionConstants.NEXT_TRANSIT_TYPE_SCALE_UP ||
+						type == AppTransitionConstants.NEXT_TRANSIT_TYPE_SCALE_UP)
+						return;
+					Animation result = retrieveAnimation(lp, transit, enter);
+					Object appAnimator = window_token.getClass().getDeclaredField("mAppAnimator")
+							.get(window_token);
+					if (result != null) {
+						XposedHelpers.callMethod(appAnimator, "setAnimation",
+								applyDuration(result), false);
+						param.setResult(true);
+					}
+				}
+			}
+			
+			@Override
+			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+				// To set duration for default animation also.
+				Object animator;
+				if ((Build.VERSION.SDK_INT <= 15)) { // ICS
+					animator = param.args[0];
+				} else { // JB
+					final Object window_token = param.args[0];
+					animator = window_token.getClass().getDeclaredField("mAppAnimator")
+							.get(window_token);
+				}
+				Animation anim = (Animation) animator.getClass().getDeclaredField("animation")
+						.get(animator);
+				if (anim != null) {
+					if ((Build.VERSION.SDK_INT <= 15)) {
+						XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim));
+					} else { // JB
+						XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim), false);
+					}
+					param.setResult(true);
 				}
 			}
 		});
 	}
 	
-	private static void hookloadAnimation_mIsResId_mNextAppTransitionType(LoadPackageParam o, Class<?> cls) {
+	// Android 4.3 onwards only
+	private static void hookNewLoadAnimation(LoadPackageParam o, Class<?> cls) {
 		XposedHelpers.findAndHookMethod(cls, "loadAnimation", WindowManager.LayoutParams.class,
 				int.class, boolean.class, int.class, int.class, new XC_MethodHook(){
 			@Override 

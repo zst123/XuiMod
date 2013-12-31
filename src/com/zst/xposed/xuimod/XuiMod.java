@@ -19,6 +19,7 @@ package com.zst.xposed.xuimod;
 import com.zst.xposed.xuimod.mods.AnimationControlsMod;
 import com.zst.xposed.xuimod.mods.BatteryBarMod;
 import com.zst.xposed.xuimod.mods.ClassicRecentsMod;
+import com.zst.xposed.xuimod.mods.EdgeEffectMod;
 import com.zst.xposed.xuimod.mods.InputMethodAnimationMod;
 import com.zst.xposed.xuimod.mods.ListViewAnimationMod;
 import com.zst.xposed.xuimod.mods.LockscreenTorchMod;
@@ -52,6 +53,7 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 	public void handleLoadPackage(LoadPackageParam lpparam) throws Throwable {		
 		pref.reload();
 		SecondsClockMod.handleLoadPackage(lpparam);
+		BatteryBarMod.handleLoadPackage(lpparam,pref);
 		LockscreenVolumeMod.handleLoadPackage(lpparam,pref);
 		ListViewAnimationMod.handleLoadPackage(pref);
 		VolumePanelMod.handleLoadPackage(lpparam,pref);
@@ -61,13 +63,13 @@ public class XuiMod implements IXposedHookZygoteInit,IXposedHookLoadPackage,IXpo
 		RandomQuickSettingsColorMod.loadPackage(lpparam,pref);
 		ClassicRecentsMod.loadPackage(lpparam,pref);
 		ScrollerMod.handleLoadPackage(pref);
+		EdgeEffectMod.handleLoadPackage(lpparam, pref);
 	}
 
 	@Override
 	public void handleInitPackageResources(InitPackageResourcesParam resparam) throws Throwable {
 		pref.reload();
 		SystemAnimationMod.handleInitPackageResources(pref, resparam);
-		BatteryBarMod.initResources(pref, resparam);
 	}
 	
 }

@@ -87,7 +87,7 @@ public class ColorSettingsDialog extends AlertDialog implements
 	
 	private void colorChange(int color){
 		mNewColor.setColor(color);
-		mHexColor.setText(Integer.toHexString(color).toUpperCase(Locale.ENGLISH));
+		mHexColor.setText((String.format("%08X", (0xFFFFFFFF & color))).toUpperCase(Locale.ENGLISH));
 		if (mListener != null) {
 			mListener.onColorChanged(color);
 		}
@@ -98,7 +98,7 @@ public class ColorSettingsDialog extends AlertDialog implements
 	}
 
 	public String getColorString() {
-		return Integer.toHexString(mColorPicker.getColor());
+		return String.format("%08X", (0xFFFFFFFF & mColorPicker.getColor()));
 	}
 
 	public int getColor() {

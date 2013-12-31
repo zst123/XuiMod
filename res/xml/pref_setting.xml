@@ -11,29 +11,30 @@
     <PreferenceScreen
         android:key="seconds_screen"
         android:title="@string/seconds_title" >
-
         <CheckBoxPreference
             android:key="seconds_enable"
             android:summary="@string/seconds_enable_summary"
             android:title="@string/seconds_enable_title" />
+        
         <CheckBoxPreference
             android:key="seconds_bold"
             android:summary="@string/seconds_bold_summary"
             android:title="@string/seconds_bold_title" />
-		<CheckBoxPreference
+        
+        <CheckBoxPreference
             android:key="seconds_use_html"
             android:summary="@string/seconds_use_html_summary"
             android:title="@string/seconds_use_html_title" />
 
-		<ListPreference
-		    android:defaultValue="0"
-		    android:dialogIcon="@drawable/ic_launcher"
-		    android:dialogTitle="@string/seconds_lettercase_title"
-		    android:entries="@array/seconds_lettercase_entries"
-		    android:entryValues="@array/seconds_lettercase_values"
-		    android:key="seconds_lettercase"
-		    android:summary="@string/seconds_lettercase_summary"
-		    android:title="@string/seconds_lettercase_title" />
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogTitle="@string/seconds_lettercase_title"
+            android:entries="@array/seconds_lettercase_entries"
+            android:entryValues="@array/seconds_lettercase_values"
+            android:key="seconds_lettercase"
+            android:summary="@string/seconds_lettercase_summary"
+            android:title="@string/seconds_lettercase_title" />
 
         <EditTextPreference
             android:dialogIcon="@drawable/ic_launcher"
@@ -55,39 +56,61 @@
         <SwitchPreference
             android:key="batterybar_enable"
             android:title="@string/batterybar_enable_title" />
+
         <CheckBoxPreference
             android:dependency="batterybar_enable"
             android:key="batterybar_animate"
             android:summary="@string/batterybar_animate_summary"
             android:title="@string/batterybar_animate_title" />
+        
         <CheckBoxPreference
             android:dependency="batterybar_enable"
             android:key="batterybar_style"
             android:summary="@string/batterybar_style_summary"
             android:title="@string/batterybar_style_title" />
-        
+
         <com.zst.xposed.xuimod.preference.BarHeight
             android:defaultValue="2"
             android:dependency="batterybar_enable"
             android:dialogIcon="@drawable/ic_launcher"
             android:dialogMessage="@string/batterybar_height_dialog"
             android:dialogTitle="@string/batterybar_height_title"
-            android:persistent="false"
             android:key="batterybar_height"
+            android:persistent="false"
             android:summary="@string/batterybar_height_summary"
             android:title="@string/batterybar_height_title" />
-        
+
         <Preference
+            android:dependency="batterybar_enable"
             android:key="batterybar_color_screen"
-            android:dependency="batterybar_enable" 
             android:title="@string/batterybar_color_screen_title" />
+        
+        <!-- BatteryBar Position -->
+        <PreferenceScreen
+            android:dependency="batterybar_enable"
+        	android:key="batterybar_position_screen"
+        	android:title="@string/batterybar_position_title"
+        	android:summary="@string/batterybar_position_summary" >
+        	<CheckBoxPreference
+        	    android:defaultValue="true"
+            	android:key="batterybar_position_sb"
+            	android:title="@string/batterybar_position_sb" />
+        	
+        	<CheckBoxPreference
+            	android:key="batterybar_position_nbt"
+            	android:title="@string/batterybar_position_nbt" />
+        	
+        	<CheckBoxPreference
+            	android:key="batterybar_position_nbb"
+            	android:title="@string/batterybar_position_nbb" />
+        </PreferenceScreen>
         
         <Preference
             android:key="batterybar_restart"
             android:summary="@string/systemui_restart_summary"
             android:title="@string/systemui_restart" />
     </PreferenceScreen>
-    
+
     <!-- Notification Mods Screen -->
     <PreferenceScreen
         android:key="notif_screen"
@@ -96,23 +119,23 @@
             android:key="notif_quick_settings_random"
             android:summary="@string/notif_quick_settings_random_summary"
             android:title="@string/notif_quick_settings_random_title" />
-        
+
         <Preference
             android:key="notif_choose_color_random"
             android:summary="@string/notif_choose_color_summary"
             android:title="@string/notif_choose_color_title" />
-        
         <Preference
             android:key="notif_restart"
             android:summary="@string/systemui_restart_summary"
             android:title="@string/systemui_restart" />
     </PreferenceScreen>
-        
+
     <!-- Animation Mod Category -->
     <PreferenceCategory
         android:key="animation_category"
         android:title="@string/animation_title" >
     </PreferenceCategory>
+    
     <!-- Animations Mod Screen -->
     <PreferenceScreen
         android:key="anim_lv_screen"
@@ -133,6 +156,7 @@
             android:key="listview_animation"
             android:summary="@string/anim_listview_anim_summary"
             android:title="@string/anim_listview_anim" />
+        
         <ListPreference
             android:defaultValue="0"
             android:dialogTitle="@string/anim_listview_interpolator"
@@ -141,14 +165,15 @@
             android:key="listview_interpolator"
             android:summary="@string/anim_listview_interpolator_summary"
             android:title="@string/anim_listview_interpolator" />
+
         <com.zst.xposed.xuimod.preference.SeekBarDialog
-            minimum="100"
-            maximum="2500"
             defaultValue="500"
+            maximum="2500"
+            minimum="100"
             suffix="ms"
-            android:key="listview_duration"
             android:dialogLayout="@layout/pref_seekbar"
             android:dialogTitle="@string/anim_listview_duration"
+            android:key="listview_duration"
             android:persistent="false"
             android:summary="@string/anim_listview_duration_summary"
             android:title="@string/anim_listview_duration" />
@@ -165,15 +190,17 @@
         <com.zst.xposed.xuimod.preference.TestListView
             android:summary="@string/anim_listview_test_summary"
             android:title="@string/anim_listview_test" />
-        
+
         <Preference
             android:key="listview_blacklist"
             android:summary="@string/anim_listview_blacklist_summary"
             android:title="@string/anim_listview_blacklist" />
-   </PreferenceScreen>
-   <PreferenceScreen
+    </PreferenceScreen>
+    
+    <PreferenceScreen
         android:key="anim_systemwide_screen"
         android:title="@string/anim_systemwide_title" >
+
         <!-- Systemwide Anim Screen -->
         <PreferenceCategory
             android:key="system_wide_title_category"
@@ -184,7 +211,7 @@
             android:key="animation_controls"
             android:summary="@string/anim_controls_main_summary"
             android:title="@string/anim_controls_main_title" />
-        
+
         <ListPreference
             android:defaultValue="0"
             android:dialogTitle="@string/window_transitions_title"
@@ -193,103 +220,111 @@
             android:key="window_transitions"
             android:summary="@string/window_transitions_summary"
             android:title="@string/window_transitions_title" />
-        
-        <PreferenceCategory
+
+        <PreferenceCategory 
             android:title="@string/anim_ime_main_title" >
         </PreferenceCategory>
+
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogTitle="@string/anim_ime_enter_title"
+            android:entries="@array/anim_ime_entries"
+            android:entryValues="@array/anim_ime_values"
+            android:key="anim_ime_enter"
+            android:summary="@string/anim_ime_enter_summary"
+            android:title="@string/anim_ime_enter_title" />
         
-	        <ListPreference
-	            android:defaultValue="0"
-	            android:dialogIcon="@drawable/ic_launcher"
-	            android:dialogTitle="@string/anim_ime_enter_title"
-	            android:entries="@array/anim_ime_entries"
-	            android:entryValues="@array/anim_ime_values"
-	            android:key="anim_ime_enter"
-	            android:summary="@string/anim_ime_enter_summary"
-	            android:title="@string/anim_ime_enter_title" />
-	        
-	        <ListPreference
-	            android:defaultValue="0"
-	            android:dialogIcon="@drawable/ic_launcher"
-	            android:dialogTitle="@string/anim_ime_exit_title"
-	            android:entries="@array/anim_ime_entries"
-	            android:entryValues="@array/anim_ime_values"
-	            android:key="anim_ime_exit"
-	            android:summary="@string/anim_ime_exit_summary"
-	            android:title="@string/anim_ime_exit_title" />
-	        
-	        <ListPreference
-	            android:defaultValue="0"
-	            android:dialogIcon="@drawable/ic_launcher"
-	            android:dialogTitle="@string/anim_ime_interpolater_title"
-	            android:entries="@array/listview_interpolator_entries"
-	            android:entryValues="@array/listview_interpolator_values"
-	            android:key="anim_ime_interpolater"
-	            android:title="@string/anim_ime_interpolater_title" />
-	        
-	        <com.zst.xposed.xuimod.preference.SeekBarDialog
-	            minimum="0"
-            	maximum="3000"
-            	defaultValue="500"
-            	suffix="ms"
-	            android:key="anim_ime_duration"
-	            android:dialogLayout="@layout/pref_seekbar"
-	            android:dialogTitle="@string/anim_ime_duration_title"
-	            android:title="@string/anim_ime_duration_title" />
-	        
-	        <com.zst.xposed.xuimod.preference.TestKeyboard
-	            android:key="anim_ime_test"
-	            hint="@string/anim_ime_test_title" />
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogTitle="@string/anim_ime_exit_title"
+            android:entries="@array/anim_ime_entries"
+            android:entryValues="@array/anim_ime_values"
+            android:key="anim_ime_exit"
+            android:summary="@string/anim_ime_exit_summary"
+            android:title="@string/anim_ime_exit_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogTitle="@string/anim_ime_interpolater_title"
+            android:entries="@array/listview_interpolator_entries"
+            android:entryValues="@array/listview_interpolator_values"
+            android:key="anim_ime_interpolater"
+            android:title="@string/anim_ime_interpolater_title" />
+
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+            defaultValue="500"
+            maximum="3000"
+            minimum="0"
+            suffix="ms"
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/anim_ime_duration_title"
+            android:key="anim_ime_duration"
+            android:title="@string/anim_ime_duration_title" />
+
+        <com.zst.xposed.xuimod.preference.TestKeyboard
+            hint="@string/anim_ime_test_title"
+            android:key="anim_ime_test" />
     </PreferenceScreen>
-    
+
     <!-- Framework Mod Category -->
     <PreferenceCategory
         android:key="framework_category"
         android:title="@string/framework_title" >
     </PreferenceCategory>
-    
-    
+
     <!-- Lockscreen Mod Screen -->
     <PreferenceScreen
         android:key="lockscreen_screen"
         android:title="@string/lockscreen_title" >
-
+        
         <CheckBoxPreference
             android:key="lockscreen_volume"
             android:summary="@string/lockscreen_disable_summary"
             android:title="@string/lockscreen_disable_title" />
 
-        
         <PreferenceCategory
             android:key="lockscreen_torch_category"
             android:title="@string/lockscreen_torch_title" >
         </PreferenceCategory>
+
         <SwitchPreference
             android:key="lockscreen_torch"
             android:summary="@string/lockscreen_torch_summary"
             android:title="@string/lockscreen_torch_title" />
         <!-- Lockscreen Torch Buttons -->
         <PreferenceScreen
-        android:key="lockscreen_torch_buttons_screen"
-        android:title="@string/lockscreen_torch_buttons_title"
-        android:summary="@string/lockscreen_torch_buttons_summary" >
-        
-        <CheckBoxPreference
-            android:key="lockscreen_torch_home"
-            android:title="@string/lockscreen_torch_home_title"
-            android:dependency="lockscreen_torch" />
-        
-        <CheckBoxPreference
-            android:key="lockscreen_torch_menu"
-            android:title="@string/lockscreen_torch_menu_title"
-            android:dependency="lockscreen_torch" />
-        
-        <CheckBoxPreference
-            android:key="lockscreen_torch_back"
-            android:title="@string/lockscreen_torch_back_title"
-            android:dependency="lockscreen_torch" />
-        
+            android:key="lockscreen_torch_buttons_screen"
+            android:summary="@string/lockscreen_torch_buttons_summary"
+            android:title="@string/lockscreen_torch_buttons_title" >
+            <CheckBoxPreference
+                android:dependency="lockscreen_torch"
+                android:key="lockscreen_torch_home"
+                android:title="@string/lockscreen_torch_home_title" />
+            
+            <CheckBoxPreference
+                android:dependency="lockscreen_torch"
+                android:key="lockscreen_torch_menu"
+                android:title="@string/lockscreen_torch_menu_title" />
+            
+            <CheckBoxPreference
+                android:dependency="lockscreen_torch"
+                android:key="lockscreen_torch_back"
+                android:title="@string/lockscreen_torch_back_title" />
+            
+            <CheckBoxPreference
+                android:dependency="lockscreen_torch"
+                android:key="lockscreen_torch_volup"
+                android:title="@string/lockscreen_torch_volup_title" />
+            
+            <CheckBoxPreference
+                android:dependency="lockscreen_torch"
+                android:key="lockscreen_torch_voldown"
+                android:title="@string/lockscreen_torch_voldown_title" />
         </PreferenceScreen>
+
         <ListPreference
             android:defaultValue="0"
             android:dialogIcon="@drawable/ic_launcher"
@@ -298,73 +333,112 @@
             android:entryValues="@array/lockscreen_torch_type_value"
             android:key="lockscreen_torch_type"
             android:title="@string/lockscreen_torch_torch_type" />
-        
     </PreferenceScreen>
-    
+
     <!-- Scroller -->
     <PreferenceScreen
         android:key="scrolling_screen"
         android:title="@string/scrolling_title" >
-        <Preference
+        
+        <Preference 
             android:summary="@string/scrolling_warning" />
+
+        <PreferenceScreen
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:key="scrolling_config_screen"
+            android:summary="@string/scrolling_config_summary"
+            android:title="@string/scrolling_config_title" >
+            <SwitchPreference
+                android:key="scrolling_enabled"
+                android:title="@string/scrolling_config_title" />
+
+            <com.zst.xposed.xuimod.preference.SeekBarDialog
+                defaultValue="0"
+                maximum="1500"
+                minimum="0"
+                suffix="px"
+                android:dependency="scrolling_enabled"
+                android:dialogLayout="@layout/pref_seekbar"
+                android:dialogTitle="@string/scrolling_overscroll_title"
+                android:key="scrolling_overscroll"
+                android:summary="@string/scrolling_overscroll_summary"
+                android:title="@string/scrolling_overscroll_title" />
+            <com.zst.xposed.xuimod.preference.SeekBarDialog
+                defaultValue="6"
+                maximum="1500"
+                minimum="0"
+                suffix="px"
+                android:dependency="scrolling_enabled"
+                android:dialogLayout="@layout/pref_seekbar"
+                android:dialogTitle="@string/scrolling_overfling_title"
+                android:key="scrolling_overfling"
+                android:summary="@string/scrolling_overfling_summary"
+                android:title="@string/scrolling_overfling_title" />
+            <com.zst.xposed.xuimod.preference.SeekBarDialog
+                defaultValue="150"
+                maximum="1500"
+                minimum="1"
+                suffix="units"
+                android:dependency="scrolling_enabled"
+                android:dialogLayout="@layout/pref_seekbar"
+                android:dialogTitle="@string/scrolling_friction_title"
+                android:key="scrolling_friction"
+                android:summary="@string/scrolling_friction_summary"
+                android:title="@string/scrolling_friction_title" />
+            <com.zst.xposed.xuimod.preference.SeekBarDialog
+                defaultValue="8000"
+                maximum="10000"
+                minimum="100"
+                suffix="px per sec"
+                android:dependency="scrolling_enabled"
+                android:dialogLayout="@layout/pref_seekbar"
+                android:dialogTitle="@string/scrolling_velocity_title"
+                android:key="scrolling_velocity"
+                android:summary="@string/scrolling_velocity_summary"
+                android:title="@string/scrolling_velocity_title" />
             
-        <SwitchPreference
-            android:key="scrolling_enabled"
-            android:title="@string/scrolling_title" />
+            <com.zst.xposed.xuimod.preference.TestListView
+            	android:summary="@string/anim_listview_test_summary"
+            	android:title="@string/anim_listview_test" />
+        </PreferenceScreen>
         
-        <com.zst.xposed.xuimod.preference.SeekBarDialog
-	            minimum="0"
-            	maximum="1500"
-            	defaultValue="0"
-            	suffix="px"
-	            android:key="scrolling_overscroll"
-	            android:dialogLayout="@layout/pref_seekbar"
-	            android:dialogTitle="@string/scrolling_overscroll_title"
-	            android:summary="@string/scrolling_overscroll_summary"
-	            android:title="@string/scrolling_overscroll_title"
-	            android:dependency="scrolling_enabled" />
-        
-        <com.zst.xposed.xuimod.preference.SeekBarDialog
-	            minimum="0"
-            	maximum="1500"
-            	defaultValue="6"
-            	suffix="px"
-	            android:key="scrolling_overfling"
-	            android:dialogLayout="@layout/pref_seekbar"
-	            android:dialogTitle="@string/scrolling_overfling_title"
-	            android:summary="@string/scrolling_overfling_summary"
-	            android:title="@string/scrolling_overfling_title"
-	            android:dependency="scrolling_enabled" />
-        
-        <com.zst.xposed.xuimod.preference.SeekBarDialog
-	            minimum="1"
-            	maximum="1500"
-            	defaultValue="150"
-            	suffix="units"
-	            android:key="scrolling_friction"
-	            android:dialogLayout="@layout/pref_seekbar"
-	            android:dialogTitle="@string/scrolling_friction_title"
-	            android:summary="@string/scrolling_friction_summary"
-	            android:title="@string/scrolling_friction_title"
-	            android:dependency="scrolling_enabled" />
-        
-        <com.zst.xposed.xuimod.preference.SeekBarDialog
-	            minimum="100"
-            	maximum="10000"
-            	defaultValue="8000"
-            	suffix="px per sec"
-	            android:key="scrolling_velocity"
-	            android:dialogLayout="@layout/pref_seekbar"
-	            android:dialogTitle="@string/scrolling_velocity_title"
-	            android:summary="@string/scrolling_velocity_summary"
-	            android:title="@string/scrolling_velocity_title"
-	            android:dependency="scrolling_enabled" />
-        
-        <com.zst.xposed.xuimod.preference.TestListView
-            android:summary="@string/anim_listview_test_summary"
-            android:title="@string/anim_listview_test" />
+        <PreferenceScreen
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:key="scrolling_glow_screen"
+            android:summary="@string/scrolling_glow_summary"
+            android:title="@string/scrolling_glow_title" >
+            <SwitchPreference
+        		android:key="scrolling_glow_enabled"
+        		android:title="@string/scrolling_glow_title" />
+            
+            <CheckBoxPreference
+        		android:key="scrolling_glow_effect_disabled"
+        		android:dependency="scrolling_glow_enabled"
+        		android:summary="@string/scrolling_glow_effect_disable_summary"
+        		android:title="@string/scrolling_glow_effect_disable_title" />
+            
+            <com.zst.xposed.xuimod.preference.ColorPicker
+        		hideAlpha="true"
+        		defaultValue="FF33B5E5"
+        		android:dependency="scrolling_glow_enabled"
+        		android:key="scrolling_glow_glow"
+        		android:summary="@string/scrolling_glow_glow_summary"
+        		android:title="@string/scrolling_glow_glow_title" />
+            
+            <com.zst.xposed.xuimod.preference.ColorPicker
+        		hideAlpha="true"
+        		defaultValue="FF33B5E5"
+        		android:dependency="scrolling_glow_enabled"
+        		android:key="scrolling_glow_edge"
+        		android:summary="@string/scrolling_glow_edge_summary"
+        		android:title="@string/scrolling_glow_edge_title" />
+
+            <com.zst.xposed.xuimod.preference.TestListView
+            	android:summary="@string/anim_listview_test_summary"
+            	android:title="@string/anim_listview_test" />
+        </PreferenceScreen>        
     </PreferenceScreen>
-    
+
     <!-- Other Mods Screen -->
     <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -374,7 +448,7 @@
             android:key="classic_recents"
             android:summary="@string/classic_recents_summary"
             android:title="@string/classic_recents_title" />
-        
+
         <PreferenceCategory
             android:key="volume_category"
             android:title="@string/volume_title" >
@@ -388,13 +462,23 @@
             android:key="volume_timeout"
             android:summary="@string/volume_timeout_summary"
             android:title="@string/volume_timeout_title" />
+
         <com.zst.xposed.xuimod.preference.VolumePanelAlpha
+            android:dialogLayout="@layout/pref_seekbar"
             android:dialogMessage="@string/volume_alpha_dialog"
             android:dialogTitle="@string/volume_alpha_title"
             android:persistent="false"
-            android:dialogLayout="@layout/pref_seekbar"
             android:summary="@string/volume_alpha_summary"
             android:title="@string/volume_alpha_title" />
     </PreferenceScreen>
+
+    <!-- App Options Category -->
+    <PreferenceCategory
+        android:key="options_category"
+        android:title="@string/options_title" >
+        <Preference
+            android:key="toggle_launcher"
+            android:title="@string/toggle_launcher_title" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

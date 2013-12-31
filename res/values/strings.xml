@@ -8,6 +8,7 @@
     <string name="systemui_title">SystemUI</string>
     <string name="animation_title">Animation</string>
     <string name="framework_title">Framework</string>
+    <string name="options_title">App Options</string>
     
     <string name="systemui_restart">Restart SystemUI</string>    
     <string name="systemui_restart_summary">Restart SystemUI if changes did not apply \n(Requires SU permissions)</string>
@@ -171,6 +172,9 @@
     <string name="lockscreen_torch_home_title">Use Home Button</string>
     <string name="lockscreen_torch_menu_title">Use Menu Button</string>
     <string name="lockscreen_torch_back_title">Use Back Button</string>
+    <string name="lockscreen_torch_volup_title">Use Volume Up</string>
+    <string name="lockscreen_torch_voldown_title">Use Volume Down</string>
+    
     <string name="lockscreen_torch_torch_type">Choose Torch App</string>
     <string name="lockscreen_torch_cm_torch">CM Torch</string>
     <string name="lockscreen_torch_tesla_torch">TeslaLED</string>
@@ -189,6 +193,8 @@
     <string name="batterybar_color_title">BatteryBar Color</string>
     
     <string name="batterybar_color_screen_title">Customize Color</string>
+    <string name="batterybar_color_allow_multi_title">Use Multiple Color</string>
+    <string name="batterybar_color_allow_multi_summary">Allows the battery bar to change the color according to the battery level</string>
     <string name="batterybar_color_100_title">Color for 100%</string>
     <string name="batterybar_color_99_title">Color for 99% and below</string>
     <string name="batterybar_color_80_title">Color for 80% and below</string>
@@ -198,8 +204,15 @@
     <string name="batterybar_color_charge_title">Color for Charging</string>
     <string name="batterybar_bg_color_title">Background Color</string>
     
+    <string name="batterybar_position_title">BatteryBar Position</string>
+    <string name="batterybar_position_summary">Change where the BatteryBar is shown\n(Requires SystemUI restart)</string>
+    <string name="batterybar_position_sb">Status Bar</string>
+    <string name="batterybar_position_nbt">Navigation Bar (Top)</string>
+    <string name="batterybar_position_nbb">Navigation Bar (Bottom)</string>
     <!-- Scrolling Mods -->
     <string name="scrolling_title">Scrolling Mod</string>
+    <string name="scrolling_config_title">Scroll Configurations</string>
+    <string name="scrolling_config_summary">Customize how scrolling behaves and feels</string>
     <string name="scrolling_warning">Already opened apps might need a restart for scrolling settings to take effect.</string>
     <string name="scrolling_overscroll_title">Overscroll Distance</string>
     <string name="scrolling_overscroll_summary">The maximum overscroll distance when at the end of a scroller</string>
@@ -210,6 +223,15 @@
     <string name="scrolling_velocity_title">Max Fling Velocity</string>
     <string name="scrolling_velocity_summary">The maximum velocity to start a fling</string>
     
+    <string name="scrolling_glow_title">Overscroll Effect</string>
+    <string name="scrolling_glow_summary">Customize the edge effect when overscrolling</string>
+    <string name="scrolling_glow_edge_title">Edge Color</string>
+    <string name="scrolling_glow_edge_summary">Color of the scroller edge when reaching an end</string>
+    <string name="scrolling_glow_glow_title">Glow Color</string>
+    <string name="scrolling_glow_glow_summary">Color of the edge glow when overscrolling</string>
+    <string name="scrolling_glow_effect_disable_title">Disable Effect</string>
+    <string name="scrolling_glow_effect_disable_summary">Disable the overscroll glow &amp; ignores the specified color settings.</string>
+    
     <!-- Random Color -->
     <string name="random_color_1">Random Color #1</string>
     <string name="random_color_2">Random Color #2</string>
@@ -219,6 +241,12 @@
     <string name="random_color_6">Random Color #6</string>
     <string name="random_color_7">Random Color #7</string>
     <string name="random_color_8">Random Color #8</string>
+    
+    <!-- Hide Launcher Icon Dialog -->
+    <string name="toggle_launcher_show">Enable Icon</string>
+    <string name="toggle_launcher_hide">Disable Icon</string>
+    <string name="toggle_launcher_title">Toggle Launcher Icon</string>
+    <string name="toggle_launcher_msg">After disabling the launcher icon, you may access XuiMod through the Xposed Installer.\n\nXposed Installer ➙ Modules ➙ XuiMod (Area beside the checkbox).\n\nYou might need to restart the homescreen launcher for this to take effect.</string>
     
    <!-- Other string -->
    <string name="version_unsupported">This mod requires Android %1$s and above. You are currently on Android %2$s.</string>
