@@ -23,6 +23,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
@@ -49,6 +50,8 @@ public class ListViewAnimationMod {
 	public static final int ANIMATION_TRANSLATE_LEFT = 9;
 	public static final int ANIMATION_TRANSLATE_RIGHT = 10;
 	public static final int ANIMATION_ROTATE = 11;
+	public static final int ANIMATION_GOOGLE_NOW_LEFT = 12;
+	public static final int ANIMATION_GOOGLE_NOW_RIGHT = 13;
 	
 	public static final int INTERPOLATOR_NONE = 0;
 	public static final int INTERPOLATOR_ACCELERATE = 1;
@@ -216,6 +219,38 @@ public class ListViewAnimationMod {
 			break;
 		case ANIMATION_ROTATE:
 			anim = new RotateAnimation(180, 0.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+			break;
+		case ANIMATION_GOOGLE_NOW_LEFT:
+			AnimationSet animation_set = new AnimationSet(true);
+			TranslateAnimation a = new TranslateAnimation(
+					Animation.RELATIVE_TO_SELF, 0.0f,
+					Animation.RELATIVE_TO_SELF, 0.0f,
+					Animation.RELATIVE_TO_SELF, (mDown ? 1.0f : -1.0f),
+					Animation.RELATIVE_TO_SELF, 0.0f);
+			AlphaAnimation b = new AlphaAnimation(0.0f, 1.0f);
+			RotateAnimation c = new RotateAnimation((mDown ? 25 : -25), 0, 0, 0);
+			
+			animation_set.addAnimation(a);
+			animation_set.addAnimation(b);
+			animation_set.addAnimation(c);
+			
+			anim = animation_set;
+			break;
+		case ANIMATION_GOOGLE_NOW_RIGHT:
+			AnimationSet animation_set_2 = new AnimationSet(true);
+			TranslateAnimation a2 = new TranslateAnimation(
+					Animation.RELATIVE_TO_SELF, 0.0f,
+					Animation.RELATIVE_TO_SELF, 0.0f,
+					Animation.RELATIVE_TO_SELF, (mDown ? 1.0f : -1.0f),
+					Animation.RELATIVE_TO_SELF, 0.0f);
+			AlphaAnimation b2 = new AlphaAnimation(0.0f, 1.0f);
+			RotateAnimation c2 = new RotateAnimation((mDown ? -25 : 25), 0, mWidth, 0);
+			
+			animation_set_2.addAnimation(a2);
+			animation_set_2.addAnimation(b2);
+			animation_set_2.addAnimation(c2);
+			
+			anim = animation_set_2;
 			break;
 		}
 		anim.setDuration(mDuration);

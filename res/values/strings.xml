@@ -126,6 +126,8 @@
     <string name="listview_translate_left">Translate (Left)</string>
     <string name="listview_translate_right">Translate (Right)</string>
     <string name="listview_rotate">Rotate</string>
+    <string name="listview_googlenow_left">Google Now (Left)</string>
+    <string name="listview_googlenow_right">Google Now (Right)</string>
     
     
     <!-- ListView interpolator -->

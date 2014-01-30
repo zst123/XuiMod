@@ -14,6 +14,8 @@
         <item>@string/listview_translate_left</item>
         <item>@string/listview_translate_right</item>
         <item>@string/listview_rotate</item>
+        <item>@string/listview_googlenow_left</item>
+        <item>@string/listview_googlenow_right</item>
         </string-array>
     
     <string-array name="listview_animation_values">
@@ -29,7 +31,8 @@
         <item>9</item>
         <item>10</item>
         <item>11</item>
-        
+        <item>12</item>
+        <item>13</item>
     </string-array>
 
     <!-- Listview Interpolator -->
