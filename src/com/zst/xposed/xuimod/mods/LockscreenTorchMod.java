@@ -53,7 +53,10 @@ public class LockscreenTorchMod {
 	private static boolean isTorchOn = false;
 	protected static XSharedPreferences mPref;
 	public static void handleLoadPackage(LoadPackageParam lpparam, XSharedPreferences pref) {
-		if (!lpparam.packageName.equals("android")) return;
+		if (!lpparam.packageName.equals("android") &&
+			!lpparam.packageName.equals("com.android.keyguard")) return;
+		// with kitkat, lockscreen is in a different package name (com.android.keyguard)
+
 		mPref = pref;
 		try {
 			hook(lpparam);
