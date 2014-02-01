@@ -17,8 +17,6 @@
 
 package com.zst.xposed.xuimod.mods;
 
-import java.lang.reflect.Method;
-
 import android.content.Context;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -67,6 +65,7 @@ public class ListViewAnimationMod {
 	static boolean mIsScrolling;
 	static int mWidth, mHeight = 0;
 	static int mvPosition;
+	static int mvViewPosition;
 	private static XSharedPreferences mPref;
 	private static int mInterpolator;
 	private static int cache;
@@ -144,6 +143,12 @@ public class ListViewAnimationMod {
 					mDown = true;
 				} else if (currentPosition < mvPosition) {
 					mDown = false;
+				} else if (currentPosition == mvPosition) {
+					// if the view position is the same, we need to be more precise and use pixels
+					final int current_view_position = lv.getChildAt(0).getBottom() + lv.getChildAt(0).getTop();
+					// add top and bottom together to get more precise comparison
+					mDown = mvViewPosition < current_view_position;
+					mvViewPosition = current_view_position;
 				}
 				mvPosition = currentPosition;
 				/* Get Direction of Scroll to allow Fold/Unfold animations to animate properly.*/
