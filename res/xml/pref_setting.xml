@@ -220,11 +220,11 @@
             android:key="window_transitions"
             android:summary="@string/window_transitions_summary"
             android:title="@string/window_transitions_title" />
-
-        <PreferenceCategory 
-            android:title="@string/anim_ime_main_title" >
-        </PreferenceCategory>
-
+    </PreferenceScreen>
+    
+    <PreferenceScreen
+        android:key="anim_ime_screen"
+        android:title="@string/anim_ime_main_title" >
         <ListPreference
             android:defaultValue="0"
             android:dialogIcon="@drawable/ic_launcher"

@@ -86,7 +86,7 @@
     <string name="animation_random">Random</string>
     
     <!-- IME Animation -->
-    <string name="anim_ime_main_title">Input Method Editor Animations</string>
+    <string name="anim_ime_main_title">IME Animations</string>
     <string name="anim_ime_enter_title">IME Enter Animation</string>
     <string name="anim_ime_enter_summary">Shown when opening an Input Method Editor</string>
     <string name="anim_ime_exit_title">IME Exit Animation</string>
