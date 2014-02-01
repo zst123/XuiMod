@@ -98,6 +98,21 @@
     <string name="anim_ime_entries_tn">TN Fly</string>
     <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
     
+    <!-- Toast Animation -->
+    <string name="anim_toast_main_title">Toast Animation</string>
+    <string name="anim_toast_enter_title">Toast Enter Animation</string>
+    <string name="anim_toast_enter_summary">Shown when a toast appears</string>
+    <string name="anim_toast_exit_title">Toast Exit Animation</string>
+    <string name="anim_toast_exit_summary">Shown when toast disappears</string>
+    <string name="anim_toast_interpolater_title">Toast Interpolater</string>
+    <string name="anim_toast_duration_title">Toast Animation Duration</string>
+    <string name="anim_toast_test_title">Test Toast Animation</string>
+    <string name="anim_toast_entries_none">No Animation</string>
+    <string name="anim_toast_entries_toko">TokoROM Toast</string>
+    <string name="anim_toast_entries_tn">TN Toast</string>
+    <string name="anim_toast_entries_xylon">Xylon Toast</string>
+    <string name="anim_toast_entries_z1">Xperia Z1 Toast</string>
+    
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>
     <string name="anim_listview_anim_summary">Animation used when scrolling ListViews</string>

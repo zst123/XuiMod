@@ -36,6 +36,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageManager;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.widget.Toast;
 
 @SuppressLint("WorldReadableFiles")
 @SuppressWarnings("deprecation")
@@ -55,6 +56,7 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference(Common.KEY_LISTVIEW_BLACKLIST).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN).setOnPreferenceClickListener(this);
+		findPreference(Common.KEY_ANIMATION_TOAST_TEST).setOnPreferenceClickListener(this);
 
 		final boolean sdk17 = Build.VERSION.SDK_INT >= 17;
 		
@@ -104,6 +106,9 @@ public class SettingActivity extends PreferenceActivity implements
 		}
 		if (p.getKey().equals("toggle_launcher")) {
 			showLauncherIconDialog();
+		}
+		if (p.getKey().equals(Common.KEY_ANIMATION_TOAST_TEST)) {
+			Toast.makeText(this, R.string.anim_toast_test_title, Toast.LENGTH_SHORT).show();
 		}
 		return false;
 	}

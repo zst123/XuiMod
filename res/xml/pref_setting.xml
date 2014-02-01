@@ -222,6 +222,7 @@
             android:title="@string/window_transitions_title" />
     </PreferenceScreen>
     
+    <!-- IME Animations -->
     <PreferenceScreen
         android:key="anim_ime_screen"
         android:title="@string/anim_ime_main_title" >
@@ -267,6 +268,56 @@
         <com.zst.xposed.xuimod.preference.TestKeyboard
             hint="@string/anim_ime_test_title"
             android:key="anim_ime_test" />
+    </PreferenceScreen>
+    
+    <!-- Toast Animations -->
+    <PreferenceScreen
+        android:key="anim_toast_screen"
+        android:title="@string/anim_toast_main_title" >
+        <SwitchPreference
+            android:key="anim_toast_enable"
+            android:title="@string/anim_toast_main_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_toast_enter_title"
+            android:entries="@array/anim_toast_entries"
+            android:entryValues="@array/anim_toast_values"
+            android:key="anim_toast_enter"
+            android:summary="@string/anim_toast_enter_summary"
+            android:title="@string/anim_toast_enter_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_toast_exit_title"
+            android:entries="@array/anim_toast_entries"
+            android:entryValues="@array/anim_toast_values"
+            android:key="anim_toast_exit"
+            android:summary="@string/anim_toast_exit_summary"
+            android:title="@string/anim_toast_exit_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogIcon="@drawable/ic_launcher"
+            android:dialogTitle="@string/anim_toast_interpolater_title"
+            android:entries="@array/listview_interpolator_entries"
+            android:entryValues="@array/listview_interpolator_values"
+            android:key="anim_toast_interpolater"
+            android:title="@string/anim_toast_interpolater_title" />
+
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+            defaultValue="500"
+            maximum="1500"
+            minimum="100"
+            suffix="ms"
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/anim_toast_duration_title"
+            android:key="anim_toast_duration"
+            android:title="@string/anim_toast_duration_title" />
+
+        <Preference
+            android:key="anim_toast_test"
+            android:title="@string/anim_toast_test_title" />
     </PreferenceScreen>
 
     <!-- Framework Mod Category -->
