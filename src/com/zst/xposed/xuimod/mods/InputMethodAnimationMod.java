@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 
 import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.XuiMod;
+import com.zst.xposed.xuimod.mods.animation.AwesomeAnimationHelper;
 import com.zst.xposed.xuimod.mods.animation.InputMethodAnimationHelper;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -213,7 +214,7 @@ public class InputMethodAnimationMod {
 		Animation anim = (Animation) XposedHelpers.callStaticMethod(AnimationUtils.class,
 				"createAnimationFromXml", ctx, parser);
     	/** Creating XML from a parser instead of res ID is hidden in APIs. Using reflection */
-		Interpolator intplr= InputMethodAnimationHelper.getInterpolator(ctx, mInterpolaterIndex);
+		Interpolator intplr= AwesomeAnimationHelper.getInterpolator(ctx, mInterpolaterIndex);
 		if (intplr != null) anim.setInterpolator(intplr);
 		anim.setDuration(mDuration);
 
