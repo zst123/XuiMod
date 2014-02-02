@@ -8,18 +8,18 @@
     <string name="systemui_title">SystemUI</string>
     <string name="animation_title">Animation</string>
     <string name="framework_title">Framework</string>
-    <string name="options_title">Options de l'application</string>
+    <string name="options_title">Options de l\'application</string>
     
     <string name="systemui_restart">Redémarrer SystemUI</string>    
-    <string name="systemui_restart_summary">Redémarrer SystemUI si les modifications ne s'appliquent pas \n(Requiert autorisations SU)</string>
+    <string name="systemui_restart_summary">Redémarrer SystemUI si les modifications ne s\'appliquent pas \n(Requiert autorisations SU)</string>
     <string name="systemui_restart_dialog">Confirmer redémarrage SystemUI?</string>    
     
     <!-- Seconds Clock Pref-->
     <string name="seconds_title">Mods horloge</string>
     <string name="seconds_enable_title">Activer les secondes</string>
-    <string name="seconds_enable_summary">Actualise l'heure chaque seconde dans la barre d'état</string>
+    <string name="seconds_enable_summary">Actualise l\'heure chaque seconde dans la barre d\'état</string>
     <string name="seconds_bold_title">Horloge en gras</string>
-    <string name="seconds_bold_summary">Police de l'horlorge en gras</string>
+    <string name="seconds_bold_summary">Police de l\'horlorge en gras</string>
     <string name="seconds_use_html_title">Utiliser HTML</string>
     <string name="seconds_use_html_summary">Analyse les balises HTML au format personnalisé</string>
     <string name="seconds_lettercase_title">Style</string>
@@ -28,7 +28,7 @@
     <string name="seconds_lettercase_lowercase">Minuscules</string>
     <string name="seconds_lettercase_uppercase">Majuscules</string>
     <string name="seconds_custom_title">Format</string>
-    <string name="seconds_custom_summary">Utiliser un format personnalisé pour l'horloge \n(Laisser vide par défaut)</string>
+    <string name="seconds_custom_summary">Utiliser un format personnalisé pour l\'horloge \n(Laisser vide par défaut)</string>
     
     <!-- Notif Mods -->
     <string name="notif_title">Mods notification</string>
@@ -54,19 +54,19 @@
     <!-- Animation Controls -->
     <string name="anim_controls_main_title">Contrôle des animations</string>
     <string name="anim_controls_main_summary">Contrôle individuel des transitions du système</string>
-    <string name="anim_controls_no_override_title">Empêcher les applications d'outrepasser</string>
-    <string name="anim_controls_no_override_summary">Empêcher les applications d'outrepasser les transitions</string>
-    <string name="anim_controls_duration_title">Durée de l'animation</string>
+    <string name="anim_controls_no_override_title">Empêcher les applications d\'outrepasser</string>
+    <string name="anim_controls_no_override_summary">Empêcher les applications d\'outrepasser les transitions</string>
+    <string name="anim_controls_duration_title">Durée de l\'animation</string>
     <!-- Animation List -->
-    <string name="activity_open_title">Ouvrir l'activité d'animation dans l'application</string>
-    <string name="activity_close_title">Fermer l'activité d'animation dans l'application</string>
-    <string name="task_open_title">Lancer l'animation depuis l'application</string>
-    <string name="task_close_title">Retourner à l'animation précédente</string>
-    <string name="task_move_to_front_title">Avancer au début de l'Animation</string>
-    <string name="task_move_to_back_title">Avancer à la fin de l'animation</string>
-    <string name="wallpaper_open_title">Retour à l'animation de l'écran d'accueil</string>
-    <string name="wallpaper_close_title">Lancer l'animation de l'écran d'accueil</string>
-    <string name="wallpaper_intra_open_title">Animation d'ouverture de la fenêtre des applications récentes</string>
+    <string name="activity_open_title">Ouvrir l\'activité d\'animation dans l\'application</string>
+    <string name="activity_close_title">Fermer l\'activité d\'animation dans l\'application</string>
+    <string name="task_open_title">Lancer l\'animation depuis l\'application</string>
+    <string name="task_close_title">Retourner à l\'animation précédente</string>
+    <string name="task_move_to_front_title">Avancer au début de l\'Animation</string>
+    <string name="task_move_to_back_title">Avancer à la fin de l\'animation</string>
+    <string name="wallpaper_open_title">Retour à l\'animation de l\'écran d\'accueil</string>
+    <string name="wallpaper_close_title">Lancer l\'animation de l\'écran d\'accueil</string>
+    <string name="wallpaper_intra_open_title">Animation d\'ouverture de la fenêtre des applications récentes</string>
     <string name="wallpaper_intra_close_title">Animation de fermeture de la fenêtre des applications récentes</string>
     <!-- Animation Strings -->
     <string name="animation_default">Par défaut</string>
@@ -87,13 +87,13 @@
     
     <!-- IME Animation -->
     <string name="anim_ime_main_title">Animation du clavier</string>
-    <string name="anim_ime_enter_title">Animation à l'ouverture du clavier</string>
-    <string name="anim_ime_enter_summary">Visible lors de l'ouverture du clavier</string>
+    <string name="anim_ime_enter_title">Animation à l\'ouverture du clavier</string>
+    <string name="anim_ime_enter_summary">Visible lors de l\'ouverture du clavier</string>
     <string name="anim_ime_exit_title">Animation à la fermeture du clavier</string>
     <string name="anim_ime_exit_summary">Visible lors de la fermeture du claver</string>
     <string name="anim_ime_interpolater_title">Interpolation du clavier</string>
-    <string name="anim_ime_duration_title">Durée de l'animation du clavier</string>
-    <string name="anim_ime_test_title">Essai de l'animation du clavier ici</string>
+    <string name="anim_ime_duration_title">Durée de l\'animation du clavier</string>
+    <string name="anim_ime_test_title">Essai de l\'animation du clavier ici</string>
     <string name="anim_ime_entries_fancy">Android Fancy IME</string>
     <string name="anim_ime_entries_tn">TN Fly</string>
     <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
@@ -103,15 +103,15 @@
     <string name="anim_listview_anim_summary">Animation utilisé lors du défilement des listes</string>
     <string name="anim_listview_interpolator">Interpolation des listes</string>
     <string name="anim_listview_interpolator_summary">Interpolateur utilisé lors du défilement des listes</string>
-    <string name="anim_listview_duration">Durée de l'animation</string>
-    <string name="anim_listview_duration_summary">Modifier la durée de l'animation</string>
+    <string name="anim_listview_duration">Durée de l\'animation</string>
+    <string name="anim_listview_duration_summary">Modifier la durée de l\'animation</string>
     <string name="anim_listview_test">Essai du défilement</string>
-    <string name="anim_listview_test_summary">Ouvre une fenêtre d'essai des listes</string>
+    <string name="anim_listview_test_summary">Ouvre une fenêtre d\'essai des listes</string>
     <string name="anim_listview_cache">Cache persistant des listes</string>
     <string name="anim_listview_cache_summary">Type de cache persistant en mémoire \n(Cache non désactivé)</string>
     <string name="anim_listview_blacklist">Liste Noire des applications</string>
-    <string name="anim_listview_blacklist_summary">Empêcher les applications d'animation</string>
-  	<string name="anim_listview_blacklist_help_dialog">Pour supprimer une application de la liste noire, appuyez sur l'application.\n\nPour ajouter, appuyez sur Ajouter et sélectionnez l'application.</string>
+    <string name="anim_listview_blacklist_summary">Empêcher les applications d\'animation</string>
+  	<string name="anim_listview_blacklist_help_dialog">Pour supprimer une application de la liste noire, appuyez sur l\'application.\n\nPour ajouter, appuyez sur Ajouter et sélectionnez l\'application.</string>
   	
     <!-- ListView animation -->  
  	<string name="listview_off">Désactivé</string>
@@ -142,7 +142,7 @@
     <string name="listview_linear_interpolator">Linéaire</string>
     <!-- ListView cache -->
 	<string name="listview_cache_none">Pas de cache</string>
- 	<string name="listview_cache_anim">Cache d'animation</string>
+ 	<string name="listview_cache_anim">Cache d\'animation</string>
     <string name="listview_cache_scroll">Cache de défilement</string>
     <string name="listview_cache_all">Animation &amp; Défilement</string>
     
@@ -156,7 +156,7 @@
     
     <string name="volume_title">Boutons Volume</string>
     <string name="volume_timeout_title">Extinction Panneau Volume</string>
-    <string name="volume_timeout_summary">Modifier le temps d'extinction du panneau volume</string>
+    <string name="volume_timeout_summary">Modifier le temps d\'extinction du panneau volume</string>
     <string name="volume_timeout_dialog">Extinction du panneau volume en millisecondes. Les caractères non numériques sont ignorés.\n(1000 millisecondes = 1 seconde)</string>
     <string name="volume_alpha_title">Tranparence Panneau Volume</string>
     <string name="volume_alpha_summary">Modifier la transparence du panneau volume</string>
@@ -167,8 +167,8 @@
     <string name="lockscreen_disable_title">Désactiver les touches de volume</string>
     <string name="lockscreen_disable_summary">Empêche de changer le mode de sonnerie.\n(désactive aussi les médias appui long)</string>
     <!-- Lockscreen Torch -->
-    <string name="lockscreen_torch_title">Torche à l'écran de verrouillage</string>
-    <string name="lockscreen_torch_summary">Maintenir le bouton physique pour allumer la torche.\nRelâcher pour l'éteindre.</string>
+    <string name="lockscreen_torch_title">Torche à l\'écran de verrouillage</string>
+    <string name="lockscreen_torch_summary">Maintenir le bouton physique pour allumer la torche.\nRelâcher pour l\'éteindre.</string>
     <string name="lockscreen_torch_buttons_title">Boutons physiques</string>
     <string name="lockscreen_torch_buttons_summary">Sélectionner les boutons physiques pour déclencher la torche</string>
     <string name="lockscreen_torch_home_title">Bouton Accueil</string>
@@ -191,7 +191,7 @@
     <string name="batterybar_height_summary">Épaisseur de la barre de batterie en dp</string>
     <string name="batterybar_height_dialog">Épaisseur de la barre de batterie en dp\n(Les caractères non numériques sont ignorés.)</string>
     <string name="batterybar_animate_title">Animation de charge</string>
-    <string name="batterybar_animate_summary">Afficher l'animation de chargement</string>
+    <string name="batterybar_animate_summary">Afficher l\'animation de chargement</string>
     <string name="batterybar_color_title">Couleur de la barre de batterie</string>
     
     <string name="batterybar_color_screen_title">Personnaliser la couleur</string>
@@ -207,17 +207,17 @@
     <string name="batterybar_bg_color_title">Couleur du fond</string>
     
     <string name="batterybar_position_title">Position de barre de batterie</string>
-    <string name="batterybar_position_summary">Change le lieu d'affichage de la barre de batterie\n(Nécessite un redémarrage de SystemUI)</string>
-    <string name="batterybar_position_sb">Barre d'état</string>
+    <string name="batterybar_position_summary">Change le lieu d\'affichage de la barre de batterie\n(Nécessite un redémarrage de SystemUI)</string>
+    <string name="batterybar_position_sb">Barre d\'état</string>
     <string name="batterybar_position_nbt">Barre de navigation (Haut)</string>
     <string name="batterybar_position_nbb">Barre de navigation (Bas)</string>
     <!-- Scrolling Mods -->
     <string name="scrolling_title">Mod de défilement</string>
     <string name="scrolling_config_title">Configurations du défilement</string>
     <string name="scrolling_config_summary">Personnaliser la manière dont se comporte le défilement</string>
-    <string name="scrolling_warning">Les applications déjà ouvertes pourraient avoir besoin d'un redémarrage pour que les paramètres prennent effet.</string>
+    <string name="scrolling_warning">Les applications déjà ouvertes pourraient avoir besoin d\'un redémarrage pour que les paramètres prennent effet.</string>
     <string name="scrolling_overscroll_title">Distance du défilement prolongé</string>
-    <string name="scrolling_overscroll_summary">La distance maximale du défilement prolongé à l'extrémité d'une barre de défilement</string>
+    <string name="scrolling_overscroll_summary">La distance maximale du défilement prolongé à l\'extrémité d\'une barre de défilement</string>
     <string name="scrolling_overfling_title">Distance du jeté prolongé</string>
     <string name="scrolling_overfling_summary">La distance maximale du défilement prolongé quand vous jetez la barre de défilement</string>
     <string name="scrolling_friction_title">Sensibilité du défilement</string>
@@ -226,12 +226,12 @@
     <string name="scrolling_velocity_summary">La vitesse maximale au début du défilement</string>
     
     <string name="scrolling_glow_title">Effet du défilement prolongé</string>
-    <string name="scrolling_glow_summary">Personnaliser l'effet de bord</string>
+    <string name="scrolling_glow_summary">Personnaliser l\'effet de bord</string>
     <string name="scrolling_glow_edge_title">Couleur du bord</string>
     <string name="scrolling_glow_edge_summary">Couleur du bord de la barre de défilement</string>
     <string name="scrolling_glow_glow_title">Couleur de la lueur</string>
     <string name="scrolling_glow_glow_summary">Couleur de la lueur du bord</string>
-    <string name="scrolling_glow_effect_disable_title">Désactiver l'effet</string>
+    <string name="scrolling_glow_effect_disable_title">Désactiver l\'effet</string>
     <string name="scrolling_glow_effect_disable_summary">Désactive la lueur de la barre de défilement &amp; ignore les paramètres de couleur spécifiés</string>
     
     <!-- Random Color -->
@@ -245,10 +245,10 @@
     <string name="random_color_8">Couleur aléatoire #8</string>
     
     <!-- Hide Launcher Icon Dialog -->
-    <string name="toggle_launcher_show">Afficher l'icône</string>
-    <string name="toggle_launcher_hide">Masquer l'icône</string>
-    <string name="toggle_launcher_title">Interrupteur de l'icône de lancement</string>
-    <string name="toggle_launcher_msg">Après avoir masqué l'icône de lancement, vous devez accéder à XuiMod via Xposed Installer.\n\nXposed Installer ➙ Modules ➙ XuiMod (Zone à côté de la case à cocher).\n\nVous pouvez avoir besoin de redémarrer votre lanceur pour que cela prenne effet.</string>
+    <string name="toggle_launcher_show">Afficher l\'icône</string>
+    <string name="toggle_launcher_hide">Masquer l\'icône</string>
+    <string name="toggle_launcher_title">Interrupteur de l\'icône de lancement</string>
+    <string name="toggle_launcher_msg">Après avoir masqué l\'icône de lancement, vous devez accéder à XuiMod via Xposed Installer.\n\nXposed Installer ➙ Modules ➙ XuiMod (Zone à côté de la case à cocher).\n\nVous pouvez avoir besoin de redémarrer votre lanceur pour que cela prenne effet.</string>
     
    <!-- Other string -->
    <string name="version_unsupported">Ce mod nécessite Android %1$s et au-dessus. Vous êtes actuellement sur Android %2$s</string>
