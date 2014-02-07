@@ -31,7 +31,7 @@ import android.content.res.XModuleResources;
 import android.content.res.XmlResourceParser;
 import android.os.Handler;
 import android.os.PowerManager;
-import android.util.Log;
+import android.util.AndroidRuntimeException;
 import android.view.View;
 import android.view.ViewManager;
 import android.view.WindowManager;
@@ -140,6 +140,11 @@ public class ToastAnimationMod {
 						public void run() {
 							try {
 								view.findViewById(ID_TOAST).startAnimation(anim);
+							} catch (AndroidRuntimeException wte) {
+								// catch runtime exceptions so we don't crash the system.
+								// eg. sometimes, this method is called from a new thread instead
+								// of the ui thread & throws CalledFromWrongThreadException
+								removeViewSafely(wm, view);
 							} catch (NullPointerException e) {
 								// view might be null if developer calls toast.show() on the
 								// same reference toast without calling toast.hide();
