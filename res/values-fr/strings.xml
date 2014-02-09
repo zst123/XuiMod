@@ -118,7 +118,7 @@
  	<string name="listview_wave_left">Vague (Gauche)</string>
     <string name="listview_wave_right">Vague (Droite)</string>
     <string name="listview_alpha">Transparent</string>
-    <string name="listview_scale">Escalader</string>
+    <string name="listview_scale">Réduire</string>
     <string name="listview_stack_top">Empiler (Haut)</string>
     <string name="listview_stack_bottom">Empiler (Bas)</string>
     <string name="listview_unfold">Déplier</string>
