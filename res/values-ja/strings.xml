@@ -8,6 +8,7 @@
     <string name="systemui_title">システムUI</string>
     <string name="animation_title">アニメーション</string>
     <string name="framework_title">フレームワーク</string>
+    <string name="options_title">アプリ設定</string>
     
     <string name="systemui_restart">システムUIの再起動</string>    
     <string name="systemui_restart_summary">変更を適用するためシステムUIを再起動します。\n(SU権限が必要です)</string>
@@ -91,6 +92,17 @@
     <string name="anim_ime_duration_title">IMEアニメ時間</string>
     <string name="anim_ime_test_title">IMEアニメのテスト</string>
     
+    <!-- Toast Animation -->
+    <string name="anim_toast_main_title">トーストアニメーション</string>
+    <string name="anim_toast_enter_title">トースト表示アニメ</string>
+    <string name="anim_toast_enter_summary">トーストが出た時のアニメを変更します。</string>
+    <string name="anim_toast_exit_title">トースト表示終了アニメ</string>
+    <string name="anim_toast_exit_summary">トーストが非表示になる時のアニメを変更します。</string>
+    <string name="anim_toast_interpolater_title">トーストアニメ動作</string>
+    <string name="anim_toast_duration_title">トーストアニメ時間</string>
+    <string name="anim_toast_test_title">トーストアニメのテスト</string>
+    <string name="anim_toast_entries_none">アニメなし</string>
+    
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListViewアニメーション</string>
     <string name="anim_listview_anim_summary">リストをスクロールするときのアニメーションを変更します。</string>
@@ -98,20 +110,20 @@
     <string name="anim_listview_interpolator_summary">リストをスクロールするときのアニメーションの動作を変更します。</string>
     <string name="anim_listview_duration">アニメーション時間</string>
     <string name="anim_listview_duration_summary">アニメーション時間を変更します。</string>
-    <string name="anim_listview_test">ListViewをテスト</string>
+    <string name="anim_listview_test">ListViewのテスト</string>
     <string name="anim_listview_test_summary">テスト用のリストを表示します。</string>
     <string name="anim_listview_cache">ListView永続キャッシュ</string>
     <string name="anim_listview_cache_summary">メモリにキャッシュする形式を選択します。 \n(キャッシュを無効にするのではなく残すようにするだけです)</string>
     <string name="anim_listview_blacklist">アプリの除外</string>
     <string name="anim_listview_blacklist_summary">アニメーションさせないアプリを選択します。</string>
-  	<string name="anim_listview_blacklist_help_dialog">ブラックリストから削除するにはアプリをタップしてください。\n\n追加するには「追加」をタップしてアプリを探してください。</string>
+    <string name="anim_listview_blacklist_help_dialog">ブラックリストから削除するにはアプリをタップしてください。\n\n追加するには「追加」をタップしてアプリを探してください。</string>
   	
     <!-- ListView animation -->  
- 	<string name="listview_off">オフ</string>
+    <string name="listview_off">オフ</string>
     
     <!-- ListView cache -->
-	<string name="listview_cache_none">永続キャッシュ無し</string>
- 	<string name="listview_cache_anim">アニメーション</string>
+    <string name="listview_cache_none">永続キャッシュ無し</string>
+    <string name="listview_cache_anim">アニメーション</string>
     <string name="listview_cache_scroll">スクロール</string>
     <string name="listview_cache_all">アニメーション &amp; スクロール</string>
     
@@ -144,6 +156,8 @@
     <string name="lockscreen_torch_home_title">ホームボタン</string>
     <string name="lockscreen_torch_menu_title">メニューボタン</string>
     <string name="lockscreen_torch_back_title">バックボタン</string>
+    <string name="lockscreen_torch_volup_title">音量上ボタン</string>
+    <string name="lockscreen_torch_voldown_title">音量下ボタン</string>
     <string name="lockscreen_torch_torch_type">トーチアプリの選択</string>
     
      <!-- BatteryBar Pref-->
@@ -168,17 +182,33 @@
     <string name="batterybar_color_charge_title">充電時の色</string>
     <string name="batterybar_bg_color_title">背景色</string>
     
+    <string name="batterybar_position_title">バッテリーバーの位置</string>
+    <string name="batterybar_position_summary">バッテリーバーの表示位置を変更します。\n(要SystemUIの再起動)</string>
+    <string name="batterybar_position_sb">ステータスバー</string>
+    <string name="batterybar_position_nbt">ナビバー(上)</string>
+    <string name="batterybar_position_nbb">ナビバー(下)</string>
     <!-- Scrolling Mods -->
     <string name="scrolling_title">スクロール効果の設定</string>
+    <string name="scrolling_config_title">スクロール設定</string>
+    <string name="scrolling_config_summary">スクロールの動作を変更します。</string>
     <string name="scrolling_warning">起動中のアプリは終了しないとスクロール設定が反映されません。</string>
     <string name="scrolling_overscroll_title">オーバースクロール距離</string>
-    <string name="scrolling_overscroll_summary">最後までスクロールしたときのオーバースクロールの距離を変更します。</string>
+    <string name="scrolling_overscroll_summary">端までスクロールしたときのオーバースクロールの距離を変更します。</string>
     <string name="scrolling_overfling_title">オーバーフリック距離</string>
-    <string name="scrolling_overfling_summary">最後までフリップしたときのオーバースクロールの距離を変更します。</string>
+    <string name="scrolling_overfling_summary">端までフリップしたときのオーバースクロールの距離を変更します。</string>
     <string name="scrolling_friction_title">スクロール摩擦</string>
     <string name="scrolling_friction_summary">スクロールとフリップに適用する摩擦を設定します。</string>
     <string name="scrolling_velocity_title">最大フリップ速度</string>
     <string name="scrolling_velocity_summary">フリップを始める最大速度を設定します。</string>
+    
+    <string name="scrolling_glow_title">オーバースクロール効果</string>
+    <string name="scrolling_glow_summary">端までスクロールした時の効果を変更します。</string>
+    <string name="scrolling_glow_edge_title">端の色</string>
+    <string name="scrolling_glow_edge_summary">最後までスクロールした時の端の色を設定します。</string>
+    <string name="scrolling_glow_glow_title">グロー色</string>
+    <string name="scrolling_glow_glow_summary">最後までスクロールした時のグラデーションの色を設定します。</string>
+    <string name="scrolling_glow_effect_disable_title">効果を無効化</string>
+    <string name="scrolling_glow_effect_disable_summary">オーバースクロール時のグロー色と指定した色設定を無視します。</string>
     
     <!-- Random Color -->
     <string name="random_color_1">ランダム色#1</string>
@@ -190,7 +220,14 @@
     <string name="random_color_7">ランダム色#7</string>
     <string name="random_color_8">ランダム色#8</string>
     
+    <!-- Hide Launcher Icon Dialog -->
+    <string name="toggle_launcher_show">アイコンを表示</string>
+    <string name="toggle_launcher_hide">アイコンを非表示</string>
+    <string name="toggle_launcher_title">ホームアプリアイコンの切り替え</string>
+    <string name="toggle_launcher_msg">ホームアプリアイコンを非表示にしたあとはXposedインストーラからXuiModにアクセスできます。\n\nXposedインストーラ ➙ モジュール➙ XuiMod (チェックボックスの横をタップ)\n\nhんこうを反映させるにはホームアプリを再起動してください。</string>
+    
    <!-- Other string -->
+   <string name="version_unsupported">Android %1$s以降でないと動作しません。お使いの端末のバージョンはAndroid %2$sです。</string>
    <string name="settings_default">初期値に戻す</string>
    <string name="add">追加</string>
    <string name="unknown">不明</string>
