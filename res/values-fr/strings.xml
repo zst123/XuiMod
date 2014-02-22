@@ -3,18 +3,17 @@
 
     <string name="app_name">XuiMod</string>
     <string name="title_activity_list_view_blacklist">Liste noire (Animation ListView)</string>
-    
+
     <!-- Main Screen Category Titles -->
     <string name="systemui_title">SystemUI</string>
     <string name="animation_title">Animation</string>
     <string name="framework_title">Framework</string>
     <string name="options_title">Options de l\'application</string>
-    
-    <string name="systemui_restart">Redémarrer SystemUI</string>    
+    <string name="systemui_restart">Redémarrer SystemUI</string>
     <string name="systemui_restart_summary">Redémarrer SystemUI si les modifications ne s\'appliquent pas \n(Requiert autorisations SU)</string>
-    <string name="systemui_restart_dialog">Confirmer redémarrage SystemUI?</string>    
-    
-    <!-- Seconds Clock Pref-->
+    <string name="systemui_restart_dialog">Confirmer redémarrage SystemUI?</string>
+
+    <!-- Seconds Clock Pref -->
     <string name="seconds_title">Mods horloge</string>
     <string name="seconds_enable_title">Activer les secondes</string>
     <string name="seconds_enable_summary">Actualise l\'heure chaque seconde dans la barre d\'état</string>
@@ -29,19 +28,19 @@
     <string name="seconds_lettercase_uppercase">Majuscules</string>
     <string name="seconds_custom_title">Format</string>
     <string name="seconds_custom_summary">Utiliser un format personnalisé pour l\'horloge \n(Laisser vide par défaut)</string>
-    
+
     <!-- Notif Mods -->
     <string name="notif_title">Mods notification</string>
     <string name="notif_quick_settings_random_title">Couleur aléatoire aux tuiles des raccourcis rapides</string>
     <string name="notif_quick_settings_random_summary">Rend aléatoire la couleur du fond de chaque tuile des raccourcis rapides\n(SystemUI doit être redémarré pour que les modifications prennent effet)</string>
     <string name="notif_choose_color_title">Sélectionner une couleur aléatoire</string>
     <string name="notif_choose_color_summary">SystemUI doit être redémarré pour que les couleurs prennent effet</string>
-        
-    <!-- Animation Pref-->
+
+    <!-- Animation Pref -->
     <string name="anim_title">Mods animation</string>
     <string name="anim_listview_title">Animation des listes</string>
     <string name="anim_systemwide_title">Animation système</string>
-    
+
     <!-- System Anim Pref -->
     <string name="window_transitions_title">Transition des fenêtres</string>
     <string name="window_transitions_summary">Sélectionner une animation personnalisée pour les transitions des fenêtres \n(Nécessite un redémarrage pour prendre effet)</string>
@@ -50,7 +49,7 @@
     <string name="window_transitions_tn">Transitions TN</string>
     <string name="window_transitions_honami">Transitions Xperia Z1</string>
     <string name="window_transitions_toko">Transitions TokoROM</string>
-    
+
     <!-- Animation Controls -->
     <string name="anim_controls_main_title">Contrôle des animations</string>
     <string name="anim_controls_main_summary">Contrôle individuel des transitions du système</string>
@@ -84,7 +83,7 @@
     <string name="animation_grow_shrink_left">Croître (Gauche)</string>
     <string name="animation_grow_shrink_right">Croître (droite)</string>
     <string name="animation_random">Aléatoire</string>
-    
+
     <!-- IME Animation -->
     <string name="anim_ime_main_title">Animation du clavier</string>
     <string name="anim_ime_enter_title">Animation à l\'ouverture du clavier</string>
@@ -97,8 +96,8 @@
     <string name="anim_ime_entries_fancy">Android Fancy IME</string>
     <string name="anim_ime_entries_tn">TN Fly</string>
     <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
-    
-    <!-- ListView Category in Animation Pref--> 
+
+    <!-- ListView Category in Animation Pref -->
     <string name="anim_listview_anim">Animation des listes</string>
     <string name="anim_listview_anim_summary">Animation utilisé lors du défilement des listes</string>
     <string name="anim_listview_interpolator">Interpolation des listes</string>
@@ -111,11 +110,11 @@
     <string name="anim_listview_cache_summary">Type de cache persistant en mémoire \n(Cache non désactivé)</string>
     <string name="anim_listview_blacklist">Liste Noire des applications</string>
     <string name="anim_listview_blacklist_summary">Empêcher les applications d\'animation</string>
-  	<string name="anim_listview_blacklist_help_dialog">Pour supprimer une application de la liste noire, appuyez sur l\'application.\n\nPour ajouter, appuyez sur Ajouter et sélectionnez l\'application.</string>
-  	
-    <!-- ListView animation -->  
- 	<string name="listview_off">Désactivé</string>
- 	<string name="listview_wave_left">Vague (Gauche)</string>
+    <string name="anim_listview_blacklist_help_dialog">Pour supprimer une application de la liste noire, appuyez sur l\'application.\n\nPour ajouter, appuyez sur Ajouter et sélectionnez l\'application.</string>
+
+    <!-- ListView animation -->
+    <string name="listview_off">Désactivé</string>
+    <string name="listview_wave_left">Vague (Gauche)</string>
     <string name="listview_wave_right">Vague (Droite)</string>
     <string name="listview_alpha">Transparent</string>
     <string name="listview_scale">Réduire</string>
@@ -126,10 +125,9 @@
     <string name="listview_translate_left">Traduire (Gauche)</string>
     <string name="listview_translate_right">Traduire (Droite)</string>
     <string name="listview_rotate">Tourner</string>
-	<string name="listview_googlenow_left">Google Now (Gauche)</string>
-	<string name="listview_googlenow_right">Google Now (Droite)</string>
-    
-    
+    <string name="listview_googlenow_left">Google Now (Gauche)</string>
+    <string name="listview_googlenow_right">Google Now (Droite)</string>
+
     <!-- ListView interpolator -->
     <string name="listview_accelerate_interpolator">Accélérer</string>
     <string name="listview_decelerate_interpolator">Décélérer</string>
@@ -141,19 +139,15 @@
     <string name="listview_cycle_interpolator">Cycle</string>
     <string name="listview_linear_interpolator">Linéaire</string>
     <!-- ListView cache -->
-	<string name="listview_cache_none">Pas de cache</string>
- 	<string name="listview_cache_anim">Cache d\'animation</string>
+    <string name="listview_cache_none">Pas de cache</string>
+    <string name="listview_cache_anim">Cache d\'animation</string>
     <string name="listview_cache_scroll">Cache de défilement</string>
     <string name="listview_cache_all">Animation &amp; Défilement</string>
-    
-    
-    
-    <!-- Other Pref-->
+
+    <!-- Other Pref -->
     <string name="other_title">Divers Mods</string>
-    
     <string name="classic_recents_title">Utiliser classique Récent</string>
     <string name="classic_recents_summary">Remplace Recent Apps par Gingerbread App Switcher</string>
-    
     <string name="volume_title">Boutons Volume</string>
     <string name="volume_timeout_title">Extinction Panneau Volume</string>
     <string name="volume_timeout_summary">Modifier le temps d\'extinction du panneau volume</string>
@@ -161,7 +155,7 @@
     <string name="volume_alpha_title">Tranparence Panneau Volume</string>
     <string name="volume_alpha_summary">Modifier la transparence du panneau volume</string>
     <string name="volume_alpha_dialog" formatted="false">Transparence du panneau volume en pourcentage. Les caractères non numériques sont ignorés.\n(Maximum 100% &amp; Minimum 25%)</string>
-    
+
     <!-- Lockscreen Mods -->
     <string name="lockscreen_title">Mods écran de verrouillage</string>
     <string name="lockscreen_disable_title">Désactiver les touches de volume</string>
@@ -176,13 +170,12 @@
     <string name="lockscreen_torch_back_title">Bouton Retour</string>
     <string name="lockscreen_torch_volup_title">Utiliser volume haut</string>
     <string name="lockscreen_torch_voldown_title">Utiliser volume bas</string>
-    
     <string name="lockscreen_torch_torch_type">Sélectionner app torche</string>
     <string name="lockscreen_torch_cm_torch">CM Torch</string>
     <string name="lockscreen_torch_tesla_torch">TeslaLED</string>
     <string name="lockscreen_torch_dashlight_torch">DashLight</string>
-    
-     <!-- BatteryBar Pref-->
+
+    <!-- BatteryBar Pref -->
     <string name="batterybar_title">Mods barre de batterie</string>
     <string name="batterybar_enable_title">Activer la barre de batterie</string>
     <string name="batterybar_style_title">Barre symétrique</string>
@@ -193,7 +186,6 @@
     <string name="batterybar_animate_title">Animation de charge</string>
     <string name="batterybar_animate_summary">Afficher l\'animation de chargement</string>
     <string name="batterybar_color_title">Couleur de la barre de batterie</string>
-    
     <string name="batterybar_color_screen_title">Personnaliser la couleur</string>
     <string name="batterybar_color_allow_multi_title">Utiliser plusieurs couleurs</string>
     <string name="batterybar_color_allow_multi_summary">Permet le changement de couleur de la barre de batterie en fonction du niveau de la batterie</string>
@@ -205,7 +197,6 @@
     <string name="batterybar_color_20_title">Couleur pour 20% et moins</string>
     <string name="batterybar_color_charge_title">Couleur de charge</string>
     <string name="batterybar_bg_color_title">Couleur du fond</string>
-    
     <string name="batterybar_position_title">Position de barre de batterie</string>
     <string name="batterybar_position_summary">Change le lieu d\'affichage de la barre de batterie\n(Nécessite un redémarrage de SystemUI)</string>
     <string name="batterybar_position_sb">Barre d\'état</string>
@@ -224,7 +215,6 @@
     <string name="scrolling_friction_summary">La valeur de la sensibilité appliquée lors du défilement</string>
     <string name="scrolling_velocity_title">Vitesse maximale du défilement</string>
     <string name="scrolling_velocity_summary">La vitesse maximale au début du défilement</string>
-    
     <string name="scrolling_glow_title">Effet du défilement prolongé</string>
     <string name="scrolling_glow_summary">Personnaliser l\'effet de bord</string>
     <string name="scrolling_glow_edge_title">Couleur du bord</string>
@@ -233,7 +223,7 @@
     <string name="scrolling_glow_glow_summary">Couleur de la lueur du bord</string>
     <string name="scrolling_glow_effect_disable_title">Désactiver l\'effet</string>
     <string name="scrolling_glow_effect_disable_summary">Désactive la lueur de la barre de défilement &amp; ignore les paramètres de couleur spécifiés</string>
-    
+
     <!-- Random Color -->
     <string name="random_color_1">Couleur aléatoire #1</string>
     <string name="random_color_2">Couleur aléatoire #2</string>
@@ -243,29 +233,27 @@
     <string name="random_color_6">Couleur aléatoire #6</string>
     <string name="random_color_7">Couleur aléatoire #7</string>
     <string name="random_color_8">Couleur aléatoire #8</string>
-    
+
     <!-- Hide Launcher Icon Dialog -->
     <string name="toggle_launcher_show">Afficher l\'icône</string>
     <string name="toggle_launcher_hide">Masquer l\'icône</string>
     <string name="toggle_launcher_title">Interrupteur de l\'icône de lancement</string>
     <string name="toggle_launcher_msg">Après avoir masqué l\'icône de lancement, vous devez accéder à XuiMod via Xposed Installer.\n\nXposed Installer ➙ Modules ➙ XuiMod (Zone à côté de la case à cocher).\n\nVous pouvez avoir besoin de redémarrer votre lanceur pour que cela prenne effet.</string>
-    
-   <!-- Other string -->
-   <string name="version_unsupported">Ce mod nécessite Android %1$s et au-dessus. Vous êtes actuellement sur Android %2$s</string>
-   <string name="settings_default">Valeur par défaut</string>
-   <string name="add">Ajouter</string>
-   <string name="unknown">Inconnu</string>
-   <string name="help">Aide</string>
-   <string name="apply">Appliquer</string> 
-   
-   <!-- Color Picker -->
-   <string name="arrow_symbol">➙</string>
-   <string name="color_hex">Couleur Hex</string>
-       
-   <!-- Test ListView -->
-   <string name="test_listview_instructions">Faites défiler pour voir les changements</string>
-   <string name="test_listview_item">Élément ListView</string> 
-   
-        
-       
+
+    <!-- Other string -->
+    <string name="version_unsupported">Ce mod nécessite Android %1$s et au-dessus. Vous êtes actuellement sur Android %2$s</string>
+    <string name="settings_default">Valeur par défaut</string>
+    <string name="add">Ajouter</string>
+    <string name="unknown">Inconnu</string>
+    <string name="help">Aide</string>
+    <string name="apply">Appliquer</string>
+
+    <!-- Color Picker -->
+    <string name="arrow_symbol">➙</string>
+    <string name="color_hex">Couleur Hex</string>
+
+    <!-- Test ListView -->
+    <string name="test_listview_instructions">Faites défiler pour voir les changements</string>
+    <string name="test_listview_item">Élément ListView</string>
+
 </resources>
