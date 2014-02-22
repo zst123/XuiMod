@@ -19,6 +19,7 @@ package com.zst.xposed.xuimod.mods;
 import com.zst.xposed.xuimod.Common;
 import com.zst.xposed.xuimod.mods.batterybar.BatteryBarController;
 
+import android.os.Build;
 import android.view.Gravity;
 import android.view.Surface;
 import android.view.View;
@@ -78,9 +79,12 @@ public class BatteryBarMod {
 			XposedBridge.log(t);
 		}
 		try {
-			final Class<?> tabletStatusBar = XposedHelpers.findClass(
-					"com.android.systemui.statusbar.tablet.TabletStatusBarView", lpp.classLoader);
-			XposedBridge.hookAllMethods(tabletStatusBar, "onAttachedToWindow", hook);
+			if (Build.VERSION.SDK_INT < 19) {
+				// Google removed tablet layouts in kitkat. 
+				final Class<?> tabletStatusBar = XposedHelpers.findClass(
+						"com.android.systemui.statusbar.tablet.TabletStatusBarView", lpp.classLoader);
+				XposedBridge.hookAllMethods(tabletStatusBar, "onAttachedToWindow", hook);
+			}
 		} catch (Throwable t) {
 			XposedBridge.log(t);
 		}
