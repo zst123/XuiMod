@@ -319,6 +319,82 @@
             android:key="anim_toast_test"
             android:title="@string/anim_toast_test_title" />
     </PreferenceScreen>
+    
+    <!-- Ticker Animations -->
+    <PreferenceScreen
+        android:key="anim_ticker_screen"
+        android:title="@string/anim_ticker_main_title" >
+        <SwitchPreference
+            android:key="anim_ticker_enable"
+            android:title="@string/anim_ticker_main_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_ticker_main_enter_title"
+            android:entries="@array/anim_ticker_entries"
+            android:entryValues="@array/anim_ticker_values"
+            android:key="anim_ticker_main_enter"
+            android:summary="@string/anim_ticker_main_enter_summary"
+            android:title="@string/anim_ticker_main_enter_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_ticker_main_exit_title"
+            android:entries="@array/anim_ticker_entries"
+            android:entryValues="@array/anim_ticker_values"
+            android:key="anim_ticker_main_exit"
+            android:summary="@string/anim_ticker_main_exit_summary"
+            android:title="@string/anim_ticker_main_exit_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_ticker_main_interpolater_title"
+            android:entries="@array/listview_interpolator_entries"
+            android:entryValues="@array/listview_interpolator_values"
+            android:key="anim_ticker_main_interpolater"
+            android:title="@string/anim_ticker_main_interpolater_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_ticker_switcher_enter_title"
+            android:entries="@array/anim_ticker_entries"
+            android:entryValues="@array/anim_ticker_values"
+            android:key="anim_ticker_switcher_enter"
+            android:summary="@string/anim_ticker_switcher_enter_summary"
+            android:title="@string/anim_ticker_switcher_enter_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_ticker_switcher_exit_title"
+            android:entries="@array/anim_ticker_entries"
+            android:entryValues="@array/anim_ticker_values"
+            android:key="anim_ticker_switcher_exit"
+            android:summary="@string/anim_ticker_switcher_exit_summary"
+            android:title="@string/anim_ticker_switcher_exit_title" />
+        
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="@string/anim_ticker_switcher_interpolater_title"
+            android:entries="@array/listview_interpolator_entries"
+            android:entryValues="@array/listview_interpolator_values"
+            android:key="anim_ticker_switcher_interpolater"
+            android:title="@string/anim_ticker_switcher_interpolater_title" />
+
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+            defaultValue="500"
+            maximum="1500"
+            minimum="100"
+            suffix="ms"
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/anim_ticker_duration_title"
+            android:key="anim_ticker_duration"
+            android:title="@string/anim_ticker_duration_title" />
+
+        <Preference
+            android:key="anim_ticker_test"
+            android:title="@string/anim_ticker_test_title" 
+            android:summary="@string/anim_ticker_test_summary"/>
+    </PreferenceScreen>v
 
     <!-- Framework Mod Category -->
     <PreferenceCategory

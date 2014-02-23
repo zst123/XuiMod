@@ -113,6 +113,22 @@
     <string name="anim_toast_entries_xylon">Xylon Toast</string>
     <string name="anim_toast_entries_z1">Xperia Z1 Toast</string>
     
+    <!-- Ticker Animation -->
+    <string name="anim_ticker_main_title">Ticker Animation</string>
+    <string name="anim_ticker_main_enter_title">Ticker Main Enter Animation</string>
+    <string name="anim_ticker_main_enter_summary">Shown when the first notification appears</string>
+    <string name="anim_ticker_main_exit_title">Ticker Main Exit Animation</string>
+    <string name="anim_ticker_main_exit_summary">Shown when the final notification hides</string>
+    <string name="anim_ticker_main_interpolater_title">Ticker Main Interpolater</string>
+    <string name="anim_ticker_switcher_enter_title">Ticker Switching Enter Animation</string>
+    <string name="anim_ticker_switcher_enter_summary">Shown when the next consecutive notification appears</string>
+    <string name="anim_ticker_switcher_exit_title">Ticker Switching Exit Animation</string>
+    <string name="anim_ticker_switcher_exit_summary">Shown when the next consecutive notification hides</string>
+    <string name="anim_ticker_switcher_interpolater_title">Ticker Switching Interpolater</string>
+    <string name="anim_ticker_duration_title">Ticker Animation Duration</string>
+    <string name="anim_ticker_test_title">Test Ticker Animation</string>
+    <string name="anim_ticker_test_summary">Send 3 notifications to see animations (Clear it by swiping it away)</string>
+    
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListView Animation</string>
     <string name="anim_listview_anim_summary">Animation used when scrolling ListViews</string>

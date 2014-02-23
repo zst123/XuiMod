@@ -110,6 +110,16 @@ public class Common {
 	public static final String KEY_ANIMATION_TOAST_DURATION = "anim_toast_duration";
 	public static final String KEY_ANIMATION_TOAST_TEST = "anim_toast_test";
 	
+	public static final String KEY_ANIMATION_TICKER_ENABLED = "anim_ticker_enable";
+	public static final String KEY_ANIMATION_TICKER_MAIN_ENTER = "anim_ticker_main_enter";
+	public static final String KEY_ANIMATION_TICKER_MAIN_EXIT = "anim_ticker_main_exit";
+	public static final String KEY_ANIMATION_TICKER_MAIN_INTEPOLATER = "anim_ticker_main_interpolater";
+	public static final String KEY_ANIMATION_TICKER_SWITCHER_ENTER = "anim_ticker_switcher_enter";
+	public static final String KEY_ANIMATION_TICKER_SWITCHER_EXIT = "anim_ticker_switcher_exit";
+	public static final String KEY_ANIMATION_TICKER_SWITCHER_INTEPOLATER = "anim_ticker_switcher_interpolater";
+	public static final String KEY_ANIMATION_TICKER_DURATION = "anim_ticker_duration";
+	public static final String KEY_ANIMATION_TICKER_TEST = "anim_ticker_test";
+	
 	public static final String KEY_NOTIFICATION_RANDOM_QS_TILE_COLOR = "notif_quick_settings_random";
 	public static final String KEY_NOTIFICATION_CHOOSE_COLOR = "notif_choose_color_random";
 	
@@ -175,6 +185,15 @@ public class Common {
 	public static final String DEFAULT_ANIMATION_TOAST_EXIT = "0";
 	public static final String DEFAULT_ANIMATION_TOAST_INTEPOLATER = "0";
 	public static final int DEFAULT_ANIMATION_TOAST_DURATION = 500;
+	
+	public static final boolean DEFAULT_ANIMATION_TICKER_ENABLED = false;
+	public static final String DEFAULT_ANIMATION_TICKER_MAIN_ENTER = "0";
+	public static final String DEFAULT_ANIMATION_TICKER_MAIN_EXIT = "0";
+	public static final String DEFAULT_ANIMATION_TICKER_MAIN_INTEPOLATER = "0";
+	public static final String DEFAULT_ANIMATION_TICKER_SWITCHER_ENTER = "0";
+	public static final String DEFAULT_ANIMATION_TICKER_SWITCHER_EXIT = "0";
+	public static final String DEFAULT_ANIMATION_TICKER_SWITCHER_INTEPOLATER = "0";
+	public static final int DEFAULT_ANIMATION_TICKER_DURATION = 500;
 	
 	public static final boolean DEFAULT_NOTIFICATION_RANDOM_QS_TILE_COLOR = false;
 	

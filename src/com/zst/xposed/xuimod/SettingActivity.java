@@ -25,6 +25,8 @@ import com.zst.xposed.xuimod.preference.activity.ListViewBlacklist;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -57,6 +59,7 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference(Common.KEY_NOTIFICATION_CHOOSE_COLOR).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_ANIMATION_TOAST_TEST).setOnPreferenceClickListener(this);
+		findPreference(Common.KEY_ANIMATION_TICKER_TEST).setOnPreferenceClickListener(this);
 
 		final boolean sdk17 = Build.VERSION.SDK_INT >= 17;
 		
@@ -109,6 +112,21 @@ public class SettingActivity extends PreferenceActivity implements
 		}
 		if (p.getKey().equals(Common.KEY_ANIMATION_TOAST_TEST)) {
 			Toast.makeText(this, R.string.anim_toast_test_title, Toast.LENGTH_SHORT).show();
+		}
+		if (p.getKey().equals(Common.KEY_ANIMATION_TICKER_TEST)) {
+			final NotificationManager notificationManager = (NotificationManager)
+					getSystemService(NOTIFICATION_SERVICE);
+			final String title = getResources().getText(R.string.anim_ticker_test_title)
+					.toString();
+			for (int x = 1; x <= 3; x++) {
+				notificationManager.cancel(x);
+				Notification.Builder nb = new Notification.Builder(this)
+					.setTicker(title + " - " + x)
+					.setContentTitle(title + " - " + x)
+					.setSmallIcon(R.drawable.ic_launcher)
+					.setAutoCancel(true);
+				notificationManager.notify(x, nb.getNotification());
+			}
 		}
 		return false;
 	}
