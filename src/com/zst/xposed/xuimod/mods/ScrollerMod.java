@@ -49,6 +49,7 @@ public class ScrollerMod {
 	public static void handleLoadPackage(XSharedPreferences pref) {
 		mPref = pref;
 		hookViewConfiguration(ViewConfiguration.class);
+		hookScrollbarNoFading(ViewConfiguration.class);
 		hookOverscrollDistance(ViewConfiguration.class);
 		hookOverflingDistance(ViewConfiguration.class);
 		hookMaxFlingVelocity(ViewConfiguration.class);
@@ -148,6 +149,17 @@ public class ScrollerMod {
 					final int scaled_dist = (int) (mDensity * overfling + 0.5f);
 					param.setResult(scaled_dist);
 				}
+			}
+		});
+	}
+	
+	private static void hookScrollbarNoFading(final Class<?> clazz) {
+		XposedBridge.hookAllMethods(clazz, "isScrollbarFadingEnabled", new XC_MethodHook() {
+			@Override
+			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+				if (!isEnabled()) return;
+				param.setResult(!mPref.getBoolean(Common.KEY_SCROLLING_NO_FADING,
+						Common.DEFAULT_SCROLLING_NO_FADING));
 			}
 		});
 	}
