@@ -193,8 +193,6 @@
     <string name="batterybar_color_title">Cor da Barra de bateria</string>
     
     <string name="batterybar_color_screen_title">Personalizar a Cor</string>
-    <string name="batterybar_color_allow_multi_title">Usar cores múltiplas</string>
-    <string name="batterybar_color_allow_multi_summary">Permite que a barra da bateria altere a cor de acordo com o nível de bateria</string>
     <string name="batterybar_color_100_title">Cor em 100%</string>
     <string name="batterybar_color_99_title">Cor em 99% e abaixo</string>
     <string name="batterybar_color_80_title">Cor em 80% e abaixo</string>

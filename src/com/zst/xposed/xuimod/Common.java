@@ -29,6 +29,8 @@ public class Common {
 	public static final String LISTVIEW_PREFERENCE_FILENAME = "listview_blacklist";
 	public static final String ANIM_CONTROLS_PREFERENCE_FILENAME = "animation_controls";
 	public static final String RANDOM_COLOR_PREFERENCE_FILENAME = "random_color";
+	
+	public static final String ACTION_TINTED_STATUSBAR_COLOR_CHANGE = "com.mohammadag.colouredstatusbar.ChangeStatusBarColor";
 	public static final String ACTION_SETTINGS_CHANGED = "com.zst.xposed.xuimod.SETTINGS_CHANGED";
 	
 	public static final String COLOR_HOLO_BLUE = "FF33B5E5";
@@ -62,7 +64,6 @@ public class Common {
 		"batterybar_position_sbb",
 	};
 	
-	public static final String KEY_BATTERYBAR_ALLOW_MULTI_COLOR = "batterybar_color_allow_multi";
 	public static final String KEY_BATTERYBAR_COLOR_100 = "batterybar_color";
 	public static final String KEY_BATTERYBAR_COLOR_99 = "batterybar_color_99";
 	public static final String KEY_BATTERYBAR_COLOR_80 = "batterybar_color_80";
@@ -71,6 +72,7 @@ public class Common {
 	public static final String KEY_BATTERYBAR_COLOR_20 = "batterybar_color_20";
 	public static final String KEY_BATTERYBAR_COLOR_CHARGING = "batterybar_color_charge";
 	
+	public static final String KEY_BATTERYBAR_COLOR_MODE = "batterybar_color_mode";
 	public static final String KEY_BATTERYBAR_HEIGHT = "batterybar_height";
 	public static final String KEY_BATTERYBAR_BACKGROUND_COLOR = "batterybar_bg_color";
 	
@@ -159,7 +161,7 @@ public class Common {
 	public static final boolean DEFAULT_BATTERYBAR_ENABLE = false;
 	public static final boolean DEFAULT_BATTERYBAR_ANIMATE = false;
 	public static final boolean DEFAULT_BATTERYBAR_STYLE = false;
-	public static final boolean DEFAULT_BATTERYBAR_ALLOW_MULTI_COLOR = false;
+	public static final String DEFAULT_BATTERYBAR_COLOR_MODE = "0";
 	public static final String DEFAULT_BATTERYBAR_COLOR = COLOR_HOLO_BLUE;
 	public static final int DEFAULT_BATTERYBAR_HEIGHT = 2;
 	public static final boolean DEFAULT_BATTERYBAR_POSITION_STATBAR = true;

@@ -166,8 +166,6 @@ Suelte para apagar."</string>
     <string name="batterybar_animate_summary">Ver animacion cuando esta cargando</string>
     <string name="batterybar_color_title">Color barra bateria</string>
     <string name="batterybar_color_screen_title">Personalizar color</string>
-    <string name="batterybar_color_allow_multi_title">Usar multiple Color</string>
-    <string name="batterybar_color_allow_multi_summary">Permite que la barra de la batería pueda cambiar el color de acuerdo con el nivel de la batería</string>
     <string name="batterybar_color_100_title">Color de 100%</string>
     <string name="batterybar_color_99_title">Color de 99% y por debajo</string>
     <string name="batterybar_color_80_title">Color de 80% y por debajo</string>

@@ -187,8 +187,6 @@
     <string name="batterybar_animate_summary">Afficher l\'animation de chargement</string>
     <string name="batterybar_color_title">Couleur de la barre de batterie</string>
     <string name="batterybar_color_screen_title">Personnaliser la couleur</string>
-    <string name="batterybar_color_allow_multi_title">Utiliser plusieurs couleurs</string>
-    <string name="batterybar_color_allow_multi_summary">Permet le changement de couleur de la barre de batterie en fonction du niveau de la batterie</string>
     <string name="batterybar_color_100_title">Couleur pour 100%</string>
     <string name="batterybar_color_99_title">Couleur pour 99% et moins</string>
     <string name="batterybar_color_80_title">Couleur pour 80% et moins</string>

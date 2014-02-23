@@ -229,8 +229,12 @@
     <string name="batterybar_color_title">BatteryBar Color</string>
     
     <string name="batterybar_color_screen_title">Customize Color</string>
-    <string name="batterybar_color_allow_multi_title">Use Multiple Color</string>
-    <string name="batterybar_color_allow_multi_summary">Allows the battery bar to change the color according to the battery level</string>
+    <string name="batterybar_color_color_mode_title">Color Mode</string>
+    <string name="batterybar_color_color_mode_summary">Choose method to determine bar color</string>
+    <string name="batterybar_color_color_0">Single Color\n(Use Color for 100% only)</string>
+    <string name="batterybar_color_color_1">Multiple Color\n(Use all Color Pickers)</string>
+    <string name="batterybar_color_color_2">Tinted StatusBar Tint Color (StatusBar Icon)</string>
+    <string name="batterybar_color_color_3">Tinted StatusBar Tint Color (NavBar Icon Tint)</string>
     <string name="batterybar_color_100_title">Color for 100%</string>
     <string name="batterybar_color_99_title">Color for 99% and below</string>
     <string name="batterybar_color_80_title">Color for 80% and below</string>

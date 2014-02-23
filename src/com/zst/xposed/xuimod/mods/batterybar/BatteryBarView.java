@@ -45,6 +45,11 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     // Total animation duration
     private static final int ANIM_DURATION = 1000; // 1 second
     
+    public static final int MODE_COLOR_SINGLE = 0;
+    public static final int MODE_COLOR_MULTIPLE = 1;
+    public static final int MODE_COLOR_TSB_SB = 2; //Tinted StatusBar - StatusBar Icon
+    public static final int MODE_COLOR_TSB_NB = 3; //Tinted StatusBar - NavBar Icon
+    
     private boolean mAttached = false;
     private int mBatteryLevel = 0;
     private boolean mBatteryCharging = false;
@@ -61,7 +66,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
 
     boolean vertical = false;
 
-    boolean mSingleBatteryColor;
+    int mBatteryColorMode;
     boolean mSymmetric;
 
     public BatteryBarView(Context context) {
@@ -127,7 +132,8 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             filter.addAction(Intent.ACTION_SCREEN_OFF);
             filter.addAction(Intent.ACTION_SCREEN_ON);
             filter.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
-			filter.addAction(Common.ACTION_SETTINGS_CHANGED);
+            filter.addAction(Common.ACTION_SETTINGS_CHANGED);
+            filter.addAction(Common.ACTION_TINTED_STATUSBAR_COLOR_CHANGE);
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
             updateSettings();
         }
@@ -162,6 +168,18 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
                 }
             } else if (Common.ACTION_SETTINGS_CHANGED.equals(action)) {
 				updateSettings();
+            } else if (Common.ACTION_TINTED_STATUSBAR_COLOR_CHANGE.equals(action)) {
+            	int color = -1;
+				if (mBatteryColorMode == MODE_COLOR_TSB_SB) {
+					color = intent.getExtras().getInt("status_bar_icons_color");
+				}
+				if (mBatteryColorMode == MODE_COLOR_TSB_NB) {
+					color = intent.getExtras().getInt("navigation_bar_icon_tint");
+				}
+				if (color != -1) {
+					fadeBarColor(color, mBatteryBar);
+					mCharger.setBackgroundColor(color);
+				}
 			}
         }
     };
@@ -169,8 +187,8 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     private void updateSettings() {
     	final XSharedPreferences pref = getPref();
         
-    	mSingleBatteryColor = !pref.getBoolean(Common.KEY_BATTERYBAR_ALLOW_MULTI_COLOR,
-    			Common.DEFAULT_BATTERYBAR_ALLOW_MULTI_COLOR);
+    	mBatteryColorMode = Integer.parseInt(pref.getString(Common.KEY_BATTERYBAR_COLOR_MODE,
+    			Common.DEFAULT_BATTERYBAR_COLOR_MODE));
     	
     	mSymmetric = pref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
     			Common.DEFAULT_BATTERYBAR_STYLE);
@@ -214,12 +232,17 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     }
 
     private void updateBatteryColor(){
+    	if (mBatteryColorMode == MODE_COLOR_TSB_SB ||
+    		mBatteryColorMode == MODE_COLOR_TSB_NB) {
+    		return;
+    	}
+    	
     	final XSharedPreferences pref = getPref();
     	
     	String s = "FF33B5E5";
     	if (mBatteryCharging){
             s = pref.getString(Common.KEY_BATTERYBAR_COLOR_CHARGING, Common.DEFAULT_BATTERYBAR_COLOR);
-    	}else if(mSingleBatteryColor){
+    	}else if(mBatteryColorMode == MODE_COLOR_SINGLE){
     		s = pref.getString(Common.KEY_BATTERYBAR_COLOR_100, Common.DEFAULT_BATTERYBAR_COLOR);
     	}else if(mBatteryLevel <= 20){
             s = pref.getString(Common.KEY_BATTERYBAR_COLOR_20, Common.DEFAULT_BATTERYBAR_COLOR);
