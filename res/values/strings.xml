@@ -12,7 +12,8 @@
     
     <string name="systemui_restart">Restart SystemUI</string>    
     <string name="systemui_restart_summary">Restart SystemUI if changes did not apply \n(Requires SU permissions)</string>
-    <string name="systemui_restart_dialog">Confirm restart SystemUI?</string>    
+    <string name="systemui_restart_dialog">Confirm restart SystemUI?</string>
+    <string name="systemui_restart_required">Toggling this requires SystemUI to be restarted to take effect.\n\nRestart SystemUI?</string>
     
     <!-- Seconds Clock Pref-->
     <string name="seconds_title">Clock Mods</string>

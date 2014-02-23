@@ -36,6 +36,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageManager;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.widget.Toast;
@@ -60,6 +61,17 @@ public class SettingActivity extends PreferenceActivity implements
 		findPreference(Common.KEY_ANIMATION_CONTROLS_PREF_SCREEN).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_ANIMATION_TOAST_TEST).setOnPreferenceClickListener(this);
 		findPreference(Common.KEY_ANIMATION_TICKER_TEST).setOnPreferenceClickListener(this);
+		
+		OnPreferenceChangeListener sysui_restart_listener = new OnPreferenceChangeListener(){
+			@Override
+			public boolean onPreferenceChange(Preference preference, Object newValue) {
+				dialog_killSystemUI(R.string.systemui_restart_required);
+				return true;
+			}
+		};
+		findPreference(Common.KEY_BATTERYBAR_ENABLE).setOnPreferenceChangeListener(sysui_restart_listener);
+		findPreference(Common.KEY_ANIMATION_TICKER_ENABLED).setOnPreferenceChangeListener(sysui_restart_listener);
+		findPreference(Common.KEY_NOTIFICATION_RANDOM_QS_TILE_COLOR).setOnPreferenceChangeListener(sysui_restart_listener);
 
 		final boolean sdk17 = Build.VERSION.SDK_INT >= 17;
 		
@@ -88,7 +100,7 @@ public class SettingActivity extends PreferenceActivity implements
 		if (p.getKey().equals("seconds_restart") ||
 			p.getKey().equals("batterybar_restart") ||
 			p.getKey().equals("notif_restart")) {
-			dialog_killSystemUI();
+			dialog_killSystemUI(R.string.systemui_restart_dialog);
 			return true;
 		}
 		if (p.getKey().equals(Common.KEY_LISTVIEW_BLACKLIST)) {
@@ -131,9 +143,9 @@ public class SettingActivity extends PreferenceActivity implements
 		return false;
 	}
 
-	private void dialog_killSystemUI() {
+	private void dialog_killSystemUI(int message_id) {
 		new AlertDialog.Builder(this)
-				.setMessage(R.string.systemui_restart_dialog)
+				.setMessage(message_id)
 				.setPositiveButton(android.R.string.yes,
 						new DialogInterface.OnClickListener() {
 							@Override
