@@ -34,7 +34,10 @@ import com.zst.xposed.xuimod.Common;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.view.View;
 import android.view.ViewConfiguration;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
@@ -49,6 +52,7 @@ public class ScrollerMod {
 	public static void handleLoadPackage(XSharedPreferences pref) {
 		mPref = pref;
 		hookViewConfiguration(ViewConfiguration.class);
+		hookScrollbarNoFading(ViewConfiguration.class);
 		hookOverscrollDistance(ViewConfiguration.class);
 		hookOverflingDistance(ViewConfiguration.class);
 		hookMaxFlingVelocity(ViewConfiguration.class);
@@ -150,6 +154,27 @@ public class ScrollerMod {
 				}
 			}
 		});
+	}
+	
+	private static void hookScrollbarNoFading(final Class<?> clazz) {
+		XposedBridge.hookAllConstructors(View.class, new XC_MethodHook() {
+			@Override
+			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+				if (!(param.thisObject instanceof ScrollView) &&
+						!(param.thisObject instanceof ListView)) {
+						// If we set scrollbar for non-scrollable views, we will bootloop
+						return;
+				}
+				
+				if (!isEnabled()) return;
+				if (!mPref.getBoolean(Common.KEY_SCROLLING_NO_FADING,
+						Common.DEFAULT_SCROLLING_NO_FADING)) return;
+				
+				
+				((View) param.thisObject).setScrollbarFadingEnabled(false);
+			}
+		});
+		
 	}
 	
 	private static boolean isEnabled() {

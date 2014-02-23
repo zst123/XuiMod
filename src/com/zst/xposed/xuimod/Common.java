@@ -130,6 +130,7 @@ public class Common {
 	public static final String KEY_CLASSIC_RECENTS = "classic_recents";
 	
 	public static final String KEY_SCROLLING_ENABLE = "scrolling_enabled";
+	public static final String KEY_SCROLLING_NO_FADING = "scrolling_no_fading";
 	public static final String KEY_SCROLLING_OVERSCROLL = "scrolling_overscroll";
 	public static final String KEY_SCROLLING_OVERFLING = "scrolling_overfling";
 	public static final String KEY_SCROLLING_FRICTION = "scrolling_friction";
@@ -205,6 +206,7 @@ public class Common {
 	public static final boolean DEFAULT_CLASSIC_RECENTS = false;
 	
 	public static final boolean DEFAULT_SCROLLING_ENABLE = false;
+	public static final boolean DEFAULT_SCROLLING_NO_FADING = false;
 	public static final int DEFAULT_SCROLLING_OVERSCROLL = 0;
 	public static final int DEFAULT_SCROLLING_OVERFLING = 6;
 	public static final int DEFAULT_SCROLLING_FRICTION = 150;
