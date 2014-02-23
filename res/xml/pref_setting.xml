@@ -264,6 +264,17 @@
             android:dialogTitle="@string/anim_ime_duration_title"
             android:key="anim_ime_duration"
             android:title="@string/anim_ime_duration_title" />
+        
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+            defaultValue="0"
+            maximum="1000"
+            minimum="0"
+            suffix="ms"
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/anim_ime_delay_title"
+            android:key="anim_ime_delay"
+            android:summary="@string/anim_ime_delay_summary"
+            android:title="@string/anim_ime_delay_title" />
 
         <com.zst.xposed.xuimod.preference.TestKeyboard
             hint="@string/anim_ime_test_title"

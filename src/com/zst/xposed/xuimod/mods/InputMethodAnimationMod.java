@@ -52,6 +52,7 @@ public class InputMethodAnimationMod {
 	
 	/* Cached preference variables */
 	static XSharedPreferences mPref;
+	static int mDelay;
 	static int mDuration;
 	static int mAnimationEnterIndex;
 	static int mAnimationExitIndex;
@@ -117,6 +118,7 @@ public class InputMethodAnimationMod {
 				/* We want our animation to be shown ASAP, set it to visible in advance*/
 				Animation anim = retrieveAnimation(true, mWindow.getContext());
 				if (anim == null) return;
+				anim.setStartOffset(mDelay);
 				mRootView = ((View)mRootField.get(thiz));
 				mRootView.startAnimation(anim);
 				/* Get the view (and cache to static variable) and start animating*/		
@@ -195,6 +197,8 @@ public class InputMethodAnimationMod {
 		mPref.reload();
 		mDuration = mPref.getInt(Common.KEY_ANIMATION_IME_DURATION,
 				Common.DEFAULT_ANIMATION_IME_DURATION);
+		mDelay = mPref.getInt(Common.KEY_ANIMATION_IME_DELAY,
+				Common.DEFAULT_ANIMATION_IME_DELAY);
 		mInterpolaterIndex = Integer.parseInt(mPref.getString(Common.KEY_ANIMATION_IME_INTEPOLATER,
 				Common.DEFAULT_ANIMATION_IME_INTEPOLATER));
 		mAnimationEnterIndex = Integer.parseInt(mPref.getString(Common.KEY_ANIMATION_IME_ENTER,

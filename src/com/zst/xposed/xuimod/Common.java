@@ -102,6 +102,7 @@ public class Common {
 	public static final String KEY_ANIMATION_IME_EXIT = "anim_ime_exit";
 	public static final String KEY_ANIMATION_IME_INTEPOLATER = "anim_ime_interpolater";
 	public static final String KEY_ANIMATION_IME_DURATION = "anim_ime_duration";
+	public static final String KEY_ANIMATION_IME_DELAY = "anim_ime_delay";
 	
 	public static final String KEY_ANIMATION_TOAST_ENABLED = "anim_toast_enable";
 	public static final String KEY_ANIMATION_TOAST_ENTER = "anim_toast_enter";
@@ -179,6 +180,7 @@ public class Common {
 	public static final String DEFAULT_ANIMATION_IME_EXIT = "0";
 	public static final String DEFAULT_ANIMATION_IME_INTEPOLATER = "0";
 	public static final int DEFAULT_ANIMATION_IME_DURATION = 500;
+	public static final int DEFAULT_ANIMATION_IME_DELAY = 0;
 	
 	public static final boolean DEFAULT_ANIMATION_TOAST_ENABLED = false;
 	public static final String DEFAULT_ANIMATION_TOAST_ENTER = "0";

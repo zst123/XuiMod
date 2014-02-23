@@ -94,6 +94,8 @@
     <string name="anim_ime_exit_summary">Shown when closing an Input Method Editor</string>
     <string name="anim_ime_interpolater_title">IME Interpolater</string>
     <string name="anim_ime_duration_title">IME Animation Duration</string>
+    <string name="anim_ime_delay_title">IME Animation Delay</string>
+    <string name="anim_ime_delay_summary">Delay the enter animation (May improve animation lag)</string>
     <string name="anim_ime_test_title">Test IME Animation Here</string>
     <string name="anim_ime_entries_fancy">Android Fancy IME</string>
     <string name="anim_ime_entries_tn">TN Fly</string>
