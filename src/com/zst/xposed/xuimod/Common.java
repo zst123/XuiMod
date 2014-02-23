@@ -59,6 +59,7 @@ public class Common {
 		"batterybar_position_sb",
 		"batterybar_position_nbt",
 		"batterybar_position_nbb",
+		"batterybar_position_sbb",
 	};
 	
 	public static final String KEY_BATTERYBAR_ALLOW_MULTI_COLOR = "batterybar_color_allow_multi";

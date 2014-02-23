@@ -33,7 +33,8 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class BatteryBarMod {
 	
-	static boolean mStatusBarEnabled;
+	static boolean mStatusBarTopEnabled;
+	static boolean mStatusBarBottomEnabled;
 	static boolean mNavBarTopEnabled;
 	static boolean mNavBarBottomEnabled;
 	
@@ -42,14 +43,16 @@ public class BatteryBarMod {
 		if (!pref.getBoolean(Common.KEY_BATTERYBAR_ENABLE, Common.DEFAULT_BATTERYBAR_ENABLE))
 			return;
 
-		mStatusBarEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[0],
+		mStatusBarTopEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[0],
 				Common.DEFAULT_BATTERYBAR_POSITION_STATBAR);
+		mStatusBarBottomEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[3],
+				Common.DEFAULT_BATTERYBAR_POSITION_NAVBAR);
 		mNavBarTopEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[1],
 				Common.DEFAULT_BATTERYBAR_POSITION_NAVBAR);
 		mNavBarBottomEnabled = pref.getBoolean(Common.KEYS_BATTERYBAR_POSITION[2],
 				Common.DEFAULT_BATTERYBAR_POSITION_NAVBAR);
 		
-		if (mStatusBarEnabled) {
+		if (mStatusBarTopEnabled || mStatusBarBottomEnabled) {
 			hookStatusBar(lpp);
 		}
 		if (mNavBarTopEnabled || mNavBarBottomEnabled) {
@@ -64,10 +67,22 @@ public class BatteryBarMod {
 				FrameLayout root = (FrameLayout) param.thisObject;
 				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 						LinearLayout.LayoutParams.MATCH_PARENT, 1);
-				BatteryBarController battery_bar = new BatteryBarController(root.getContext());
-				battery_bar.setLayoutParams(params);
-				battery_bar.setVisibility(View.VISIBLE);
-				root.addView(battery_bar);
+				
+				if (mStatusBarTopEnabled) {
+					BatteryBarController battery_bar = new BatteryBarController(root.getContext());
+					battery_bar.setLayoutParams(params);
+					battery_bar.setVisibility(View.VISIBLE);
+					root.addView(battery_bar);
+				}
+				if (mStatusBarBottomEnabled) {
+					FrameLayout.LayoutParams root_param = new FrameLayout.LayoutParams(
+							FrameLayout.LayoutParams.WRAP_CONTENT,
+							FrameLayout.LayoutParams.WRAP_CONTENT, Gravity.BOTTOM);
+					BatteryBarController battery_bar = new BatteryBarController(root.getContext());
+					battery_bar.setLayoutParams(params);
+					battery_bar.setVisibility(View.VISIBLE);
+					root.addView(battery_bar, root_param);
+				}
 			}
 		};
 		

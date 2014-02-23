@@ -242,7 +242,8 @@
     
     <string name="batterybar_position_title">BatteryBar Position</string>
     <string name="batterybar_position_summary">Change where the BatteryBar is shown\n(Requires SystemUI restart)</string>
-    <string name="batterybar_position_sb">Status Bar</string>
+    <string name="batterybar_position_sb">Status Bar (Top)</string>
+    <string name="batterybar_position_sbb">Status Bar (Bottom)</string>
     <string name="batterybar_position_nbt">Navigation Bar (Top)</string>
     <string name="batterybar_position_nbb">Navigation Bar (Bottom)</string>
     <!-- Scrolling Mods -->

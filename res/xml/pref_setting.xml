@@ -97,6 +97,10 @@
             	android:title="@string/batterybar_position_sb" />
         	
         	<CheckBoxPreference
+            	android:key="batterybar_position_sbb"
+            	android:title="@string/batterybar_position_sbb" />
+        	
+        	<CheckBoxPreference
             	android:key="batterybar_position_nbt"
             	android:title="@string/batterybar_position_nbt" />
         	
