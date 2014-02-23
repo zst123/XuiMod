@@ -135,7 +135,6 @@
     <string name="classic_recents_title">昔のアプリ履歴に変更</string>
     <string name="classic_recents_summary">アプリ履歴をGB時代のものに変更します。</string>
     
-    <string name="version_unsupported">Android %1$s以降向けの設定です。Android %2$sでは使用できません。</string>
     <string name="volume_title">音量ボタン</string>
     <string name="volume_timeout_title">音量パネル表示時間</string>
     <string name="volume_timeout_summary">音量ボタンで音量を変更した後のパネルの表示時間を変更します。</string>
