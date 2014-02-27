@@ -154,12 +154,20 @@ public class ScrollerMod {
 	}
 	
 	private static void hookScrollbarNoFading(final Class<?> clazz) {
-		XposedBridge.hookAllMethods(clazz, "isScrollbarFadingEnabled", new XC_MethodHook() {
+		XposedBridge.hookAllConstructors(View.class, new XC_MethodHook() {
 			@Override
-			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+				if (!(param.thisObject instanceof ScrollView) &&
+					!(param.thisObject instanceof ListView)) {
+					// If we set scrollbar for non-scrollable views, we will bootloop
+					return;
+				}
+				
 				if (!isEnabled()) return;
-				param.setResult(!mPref.getBoolean(Common.KEY_SCROLLING_NO_FADING,
-						Common.DEFAULT_SCROLLING_NO_FADING));
+				if (!mPref.getBoolean(Common.KEY_SCROLLING_NO_FADING,
+					Common.DEFAULT_SCROLLING_NO_FADING)) return;
+				
+				((View) param.thisObject).setScrollbarFadingEnabled(false);
 			}
 		});
 	}
