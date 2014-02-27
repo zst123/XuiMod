@@ -494,6 +494,11 @@
                 android:key="scrolling_enabled"
                 android:title="@string/scrolling_config_title" />
 
+            <CheckBoxPreference
+                android:key="scrolling_no_fading"
+                android:dependency="scrolling_enabled"
+                android:summary="@string/scrolling_no_fading_summary"
+                android:title="@string/scrolling_no_fading_title" />
             <com.zst.xposed.xuimod.preference.SeekBarDialog
                 defaultValue="0"
                 maximum="1500"
