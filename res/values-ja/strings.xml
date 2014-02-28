@@ -12,7 +12,8 @@
     
     <string name="systemui_restart">システムUIの再起動</string>    
     <string name="systemui_restart_summary">変更を適用するためシステムUIを再起動します。\n(SU権限が必要です)</string>
-    <string name="systemui_restart_dialog">システムUIを再起動しますか?</string>    
+    <string name="systemui_restart_dialog">システムUIを再起動しますか?</string>
+    <string name="systemui_restart_required">この機能を切り替えるにはシステムUIを再起動しないといけません。\n\nシステムUIを再起動しますか?</string> 
     
     <!-- Seconds Clock Pref-->
     <string name="seconds_title">時計設定</string>
@@ -90,6 +91,8 @@
     <string name="anim_ime_exit_summary">IMEを閉じるときのアニメーションを変更します。</string>
     <string name="anim_ime_interpolater_title">IMEアニメ動作</string>
     <string name="anim_ime_duration_title">IMEアニメ時間</string>
+    <string name="anim_ime_delay_title">IMEアニメの遅延</string>
+    <string name="anim_ime_delay_summary">表示アニメを遅らせます。(ラグ改善のため)</string>
     <string name="anim_ime_test_title">IMEアニメのテスト</string>
     
     <!-- Toast Animation -->
@@ -103,6 +106,22 @@
     <string name="anim_toast_test_title">トーストアニメのテスト</string>
     <string name="anim_toast_entries_none">アニメなし</string>
     
+    <!-- Ticker Animation -->
+    <string name="anim_ticker_main_title">ティッカーアニメーション</string>
+    <string name="anim_ticker_main_enter_title">ティッカー表示アニメ</string>
+    <string name="anim_ticker_main_enter_summary">最初の通知が出た時のアニメを変更します。</string>
+    <string name="anim_ticker_main_exit_title">ティッカー表示終了アニメ</string>
+    <string name="anim_ticker_main_exit_summary">最後の通知が出た時のアニメを変更します。</string>
+    <string name="anim_ticker_main_interpolater_title">ティッカーアニメ動作</string>
+    <string name="anim_ticker_switcher_enter_title">ティッカー切り替えアニメ</string>
+    <string name="anim_ticker_switcher_enter_summary">連続した次の通知が出た時のアニメを変更します。</string>
+    <string name="anim_ticker_switcher_exit_title">ティッカー切り替え終了アニメ</string>
+    <string name="anim_ticker_switcher_exit_summary">連続した次の通知が非表示になる時のアニメを変更します。</string>
+    <string name="anim_ticker_switcher_interpolater_title">ティッカー切り替えアニメ動作</string>
+    <string name="anim_ticker_duration_title">ティッカーアニメ時間</string>
+    <string name="anim_ticker_test_title">ティッカーアニメのテスト</string>
+    <string name="anim_ticker_test_summary">テストするため3つ通知を表示します。(スワイプで消去)</string>
+
     <!-- ListView Category in Animation Pref--> 
     <string name="anim_listview_anim">ListViewアニメーション</string>
     <string name="anim_listview_anim_summary">リストをスクロールするときのアニメーションを変更します。</string>
@@ -172,6 +191,12 @@
     <string name="batterybar_color_title">バーの色</string>
     
     <string name="batterybar_color_screen_title">色の編集</string>
+    <string name="batterybar_color_color_mode_title">色モード</string>
+    <string name="batterybar_color_color_mode_summary">バーの色を指定する方法を選んでください。</string>
+    <string name="batterybar_color_color_0">単色\n(100%の色のみ使用)</string>
+    <string name="batterybar_color_color_1">複数色\n(カラーピッカーを使用)</string>
+    <string name="batterybar_color_color_2">Tinted StatusBar Tint色 (ステータスバーアイコン)</string>
+    <string name="batterybar_color_color_3">Tinted StatusBar Tint色(ナビバーアイコン)</string>
     <string name="batterybar_color_100_title">100%時の色</string>
     <string name="batterybar_color_99_title">99%以下の時の色</string>
     <string name="batterybar_color_80_title">80%以下の時の色</string>
@@ -183,7 +208,8 @@
     
     <string name="batterybar_position_title">バッテリーバーの位置</string>
     <string name="batterybar_position_summary">バッテリーバーの表示位置を変更します。\n(要SystemUIの再起動)</string>
-    <string name="batterybar_position_sb">ステータスバー</string>
+    <string name="batterybar_position_sb">ステータスバー(上)</string>
+    <string name="batterybar_position_sbb">ステータスバー(下)</string>
     <string name="batterybar_position_nbt">ナビバー(上)</string>
     <string name="batterybar_position_nbb">ナビバー(下)</string>
     <!-- Scrolling Mods -->
@@ -191,6 +217,8 @@
     <string name="scrolling_config_title">スクロール設定</string>
     <string name="scrolling_config_summary">スクロールの動作を変更します。</string>
     <string name="scrolling_warning">起動中のアプリは終了しないとスクロール設定が反映されません。</string>
+    <string name="scrolling_no_fading_title">スクロールバーを常に表示</string>
+    <string name="scrolling_no_fading_summary">チェックするとスクロールバーが隠れないようになります。</string>
     <string name="scrolling_overscroll_title">オーバースクロール距離</string>
     <string name="scrolling_overscroll_summary">端までスクロールしたときのオーバースクロールの距離を変更します。</string>
     <string name="scrolling_overfling_title">オーバーフリック距離</string>
