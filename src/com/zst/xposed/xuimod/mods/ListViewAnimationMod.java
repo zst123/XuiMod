@@ -183,6 +183,8 @@ public class ListViewAnimationMod {
 	 */
 	private static View setAnimation(Object thisObject, View view, Context mContext) {
 		if(mAnim == ANIMATION_NONE) return view;
+		if (view == null) return view;
+		// Don't create the animation if view is null
 		
 		Animation anim = null;
 		switch (mAnim) {
@@ -289,9 +291,7 @@ public class ListViewAnimationMod {
 			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext, android.R.anim.linear_interpolator));
 			break;
 		}
-		if (view != null){
-			view.startAnimation(anim);
-		}
+		view.startAnimation(anim);
 		return view;
 	}
 }
