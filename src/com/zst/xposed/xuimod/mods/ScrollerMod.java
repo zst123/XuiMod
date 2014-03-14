@@ -41,6 +41,7 @@ import android.widget.ScrollView;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.XposedHelpers;
 
 public class ScrollerMod {
 	
@@ -170,8 +171,23 @@ public class ScrollerMod {
 				if (!mPref.getBoolean(Common.KEY_SCROLLING_NO_FADING,
 						Common.DEFAULT_SCROLLING_NO_FADING)) return;
 				
+				final View that = (View) param.thisObject;
 				
-				((View) param.thisObject).setScrollbarFadingEnabled(false);
+				final Object scroll_cache = XposedHelpers
+						.findField(that.getClass(), "mScrollCache").get(that);
+				if (scroll_cache == null) return;
+				// If null, the ScrollView/ListView is not scrollable
+				// in the first place (poorly written apps)
+				
+				final Object scroll_bar_drawable = XposedHelpers.findField(scroll_cache.getClass(),
+						"scrollBar").get(scroll_cache);
+				if (scroll_bar_drawable == null) return;
+				// If null, the ScrollView/ListView is not currently scrollable
+				// (when screen is big enough to show all contents)
+				// Don't continue, else the app will have NullPointerException.
+				// Apparently, Google didn't catch this in the first place
+				
+				that.setScrollbarFadingEnabled(false);
 			}
 		});
 		
