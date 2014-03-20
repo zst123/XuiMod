@@ -208,7 +208,7 @@
     <string name="batterybar_color_color_mode_summary">Choisissez la méthode pour déterminer la couleur de la barre</string>
     <string name="batterybar_color_color_0">Couleur unique\n(Utiliser le sélecteur de couleurs pour 100% uniquement)</string>
     <string name="batterybar_color_color_1">Couleur multiple\n(Utiliser tous les sélecteurs de couleurs)</string>
-    <string name="batterybar_color_color_2">Couleur de la barre d\'état teintée (Icône de la barre d\état)</string>
+    <string name="batterybar_color_color_2">Couleur de la barre d\'état teintée (Icône de la barre d\'état)</string>
     <string name="batterybar_color_color_3">Couleur de la barre d\'état teintée (Icône de la barre de navigation)</string>    
     <string name="batterybar_color_100_title">Couleur pour 100%</string>
     <string name="batterybar_color_99_title">Couleur pour 99% et moins</string>
@@ -218,7 +218,7 @@
     <string name="batterybar_color_20_title">Couleur pour 20% et moins</string>
     <string name="batterybar_color_charge_title">Couleur de charge</string>
     <string name="batterybar_bg_color_title">Couleur du fond</string>
-    <string name="batterybar_position_title">Position de barre de batterie</string>
+    <string name="batterybar_position_title">Position de la barre de batterie</string>
     <string name="batterybar_position_summary">Change le lieu d\'affichage de la barre de batterie\n(Nécessite un redémarrage de SystemUI)</string>
     <string name="batterybar_position_sb">Barre d\'état (haut)</string>
     <string name="batterybar_position_sbb">Barre d\'état (Bas)</string>    
