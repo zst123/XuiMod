@@ -96,6 +96,21 @@
     <string name="anim_ime_entries_fancy">Android Fancy IME</string>
     <string name="anim_ime_entries_tn">TN Fly</string>
     <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
+    
+    <!-- Toast Animation -->
+    <string name="anim_toast_main_title">Animation toast</string>
+    <string name="anim_toast_enter_title">Animation d\'entrée du toast</string>
+    <string name="anim_toast_enter_summary">S\'affiche lorsque que le toast apparaît</string>
+    <string name="anim_toast_exit_title">Animation de sortie du toast</string>
+    <string name="anim_toast_exit_summary">S\'affiche lorsque que le toast disparaît</string>
+    <string name="anim_toast_interpolater_title">Interpolateur du toast</string>
+    <string name="anim_toast_duration_title">Durée de l\'animation du toast</string>
+    <string name="anim_toast_test_title">Essai de l\'animation toast</string>
+    <string name="anim_toast_entries_none">Aucune animation</string>
+    <string name="anim_toast_entries_toko">Toast TokoROM</string>
+    <string name="anim_toast_entries_tn">Toast TN</string>
+    <string name="anim_toast_entries_xylon">Toast Xylon</string>
+    <string name="anim_toast_entries_z1">Toast Xperia Z1</string>    
 
     <!-- ListView Category in Animation Pref -->
     <string name="anim_listview_anim">Animation des listes</string>
@@ -145,33 +160,34 @@
     <string name="listview_cache_all">Animation &amp; Défilement</string>
 
     <!-- Other Pref -->
-    <string name="other_title">Divers Mods</string>
+    <string name="other_title">Divers mods</string>
     <string name="classic_recents_title">Utiliser classique Récent</string>
     <string name="classic_recents_summary">Remplace Recent Apps par Gingerbread App Switcher</string>
-    <string name="volume_title">Boutons Volume</string>
-    <string name="volume_timeout_title">Extinction Panneau Volume</string>
+    <string name="volume_title">Boutons de volume</string>
+    <string name="volume_timeout_title">Extinction du panneau volume</string>
     <string name="volume_timeout_summary">Modifier le temps d\'extinction du panneau volume</string>
     <string name="volume_timeout_dialog">Extinction du panneau volume en millisecondes. Les caractères non numériques sont ignorés.\n(1000 millisecondes = 1 seconde)</string>
-    <string name="volume_alpha_title">Tranparence Panneau Volume</string>
+    <string name="volume_alpha_title">Tranparence du panneau volume</string>
     <string name="volume_alpha_summary">Modifier la transparence du panneau volume</string>
     <string name="volume_alpha_dialog" formatted="false">Transparence du panneau volume en pourcentage. Les caractères non numériques sont ignorés.\n(Maximum 100% &amp; Minimum 25%)</string>
 
     <!-- Lockscreen Mods -->
     <string name="lockscreen_title">Mods écran de verrouillage</string>
-    <string name="lockscreen_disable_title">Désactiver les touches de volume</string>
+    <string name="lockscreen_disable_title">Désactiver les boutons de volume</string>
     <string name="lockscreen_disable_summary">Empêche de changer le mode de sonnerie.\n(désactive aussi les médias appui long)</string>
     <!-- Lockscreen Torch -->
     <string name="lockscreen_torch_title">Torche à l\'écran de verrouillage</string>
     <string name="lockscreen_torch_summary">Maintenir le bouton physique pour allumer la torche.\nRelâcher pour l\'éteindre.</string>
     <string name="lockscreen_torch_buttons_title">Boutons physiques</string>
-    <string name="lockscreen_torch_buttons_summary">Sélectionner les boutons physiques pour déclencher la torche</string>
+    <string name="lockscreen_torch_buttons_summary">Sélectionner un bouton physique pour déclencher la torche</string>
     <string name="lockscreen_torch_home_title">Bouton Accueil</string>
     <string name="lockscreen_torch_menu_title">Bouton Menu</string>
     <string name="lockscreen_torch_back_title">Bouton Retour</string>
-    <string name="lockscreen_torch_volup_title">Utiliser volume haut</string>
-    <string name="lockscreen_torch_voldown_title">Utiliser volume bas</string>
-    <string name="lockscreen_torch_torch_type">Sélectionner app torche</string>
-    <string name="lockscreen_torch_cm_torch">CM Torch</string>
+    <string name="lockscreen_torch_volup_title">Bouton volume +</string>
+    <string name="lockscreen_torch_voldown_title">Bouton volume -</string>
+    
+    <string name="lockscreen_torch_torch_type">Choisir une application torche</string>
+    <string name="lockscreen_torch_cm_torch">Torche CM</string>
     <string name="lockscreen_torch_tesla_torch">TeslaLED</string>
     <string name="lockscreen_torch_dashlight_torch">DashLight</string>
 
@@ -186,7 +202,14 @@
     <string name="batterybar_animate_title">Animation de charge</string>
     <string name="batterybar_animate_summary">Afficher l\'animation de chargement</string>
     <string name="batterybar_color_title">Couleur de la barre de batterie</string>
+    
     <string name="batterybar_color_screen_title">Personnaliser la couleur</string>
+    <string name="batterybar_color_color_mode_title">Mode de couleur</string>
+    <string name="batterybar_color_color_mode_summary">Choisissez la méthode pour déterminer la couleur de la barre</string>
+    <string name="batterybar_color_color_0">Couleur unique\n(Utiliser le sélecteur de couleurs pour 100% uniquement)</string>
+    <string name="batterybar_color_color_1">Couleur multiple\n(Utiliser tous les sélecteurs de couleurs)</string>
+    <string name="batterybar_color_color_2">Couleur de la barre d\'état teintée (Icône de la barre d\'état)</string>
+    <string name="batterybar_color_color_3">Couleur de la barre d\'état teintée (Icône de la barre de navigation)</string>    
     <string name="batterybar_color_100_title">Couleur pour 100%</string>
     <string name="batterybar_color_99_title">Couleur pour 99% et moins</string>
     <string name="batterybar_color_80_title">Couleur pour 80% et moins</string>
@@ -195,9 +218,10 @@
     <string name="batterybar_color_20_title">Couleur pour 20% et moins</string>
     <string name="batterybar_color_charge_title">Couleur de charge</string>
     <string name="batterybar_bg_color_title">Couleur du fond</string>
-    <string name="batterybar_position_title">Position de barre de batterie</string>
+    <string name="batterybar_position_title">Position de la barre de batterie</string>
     <string name="batterybar_position_summary">Change le lieu d\'affichage de la barre de batterie\n(Nécessite un redémarrage de SystemUI)</string>
-    <string name="batterybar_position_sb">Barre d\'état</string>
+    <string name="batterybar_position_sb">Barre d\'état (haut)</string>
+    <string name="batterybar_position_sbb">Barre d\'état (Bas)</string>    
     <string name="batterybar_position_nbt">Barre de navigation (Haut)</string>
     <string name="batterybar_position_nbb">Barre de navigation (Bas)</string>
     <!-- Scrolling Mods -->
