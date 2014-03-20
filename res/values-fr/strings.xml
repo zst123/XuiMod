@@ -179,7 +179,7 @@
     <string name="lockscreen_torch_title">Torche à l\'écran de verrouillage</string>
     <string name="lockscreen_torch_summary">Maintenir le bouton physique pour allumer la torche.\nRelâcher pour l\'éteindre.</string>
     <string name="lockscreen_torch_buttons_title">Boutons physiques</string>
-    <string name="lockscreen_torch_buttons_summary">Sélectionner les boutons physiques pour déclencher la torche</string>
+    <string name="lockscreen_torch_buttons_summary">Sélectionner un bouton physique pour déclencher la torche</string>
     <string name="lockscreen_torch_home_title">Bouton Accueil</string>
     <string name="lockscreen_torch_menu_title">Bouton Menu</string>
     <string name="lockscreen_torch_back_title">Bouton Retour</string>
