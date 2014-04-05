@@ -134,6 +134,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             filter.addAction(Intent.ACTION_CONFIGURATION_CHANGED);
             filter.addAction(Common.ACTION_SETTINGS_CHANGED);
             filter.addAction(Common.ACTION_TINTED_STATUSBAR_COLOR_CHANGE);
+            filter.addAction(Common.ACTION_TINTED_NAVBAR_COLOR_CHANGE);
             getContext().registerReceiver(mIntentReceiver, filter, null, getHandler());
             updateSettings();
         }
@@ -168,17 +169,17 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
                 }
             } else if (Common.ACTION_SETTINGS_CHANGED.equals(action)) {
 				updateSettings();
-            } else if (Common.ACTION_TINTED_STATUSBAR_COLOR_CHANGE.equals(action)) {
-            	int color = -1;
-				if (mBatteryColorMode == MODE_COLOR_TSB_SB) {
-					color = intent.getExtras().getInt("status_bar_icons_color");
-				}
-				if (mBatteryColorMode == MODE_COLOR_TSB_NB) {
-					color = intent.getExtras().getInt("navigation_bar_icon_tint");
-				}
-				if (color != -1) {
-					fadeBarColor(color, mBatteryBar);
-					mCharger.setBackgroundColor(color);
+			} else if (Common.ACTION_TINTED_STATUSBAR_COLOR_CHANGE.equals(action)) {
+				if (mBatteryColorMode == MODE_COLOR_TSB_SB) { 
+					int stausbar_color = intent.getIntExtra("iconColor", -1);
+					fadeBarColor(stausbar_color, mBatteryBar);
+					fadeBarColor(stausbar_color, mCharger);
+				} 
+			} else if (Common.ACTION_TINTED_NAVBAR_COLOR_CHANGE.equals(action)) {
+				if (mBatteryColorMode == MODE_COLOR_TSB_NB) { 
+					int navbar_color = intent.getIntExtra("navbarBgColor", -1);
+					fadeBarColor(navbar_color, mBatteryBar);
+					fadeBarColor(navbar_color, mCharger);
 				}
 			}
         }

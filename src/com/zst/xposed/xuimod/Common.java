@@ -30,7 +30,9 @@ public class Common {
 	public static final String ANIM_CONTROLS_PREFERENCE_FILENAME = "animation_controls";
 	public static final String RANDOM_COLOR_PREFERENCE_FILENAME = "random_color";
 	
-	public static final String ACTION_TINTED_STATUSBAR_COLOR_CHANGE = "com.mohammadag.colouredstatusbar.ChangeStatusBarColor";
+	public static final String ACTION_TINTED_STATUSBAR_COLOR_CHANGE = "gravitybox.intent.action.STATUSBAR_COLOR_CHANGED";
+	public static final String ACTION_TINTED_NAVBAR_COLOR_CHANGE = "gravitybox.intent.action.ACTION_NAVBAR_CHANGED";
+	// Use GravityBox's intents as the main intent is for internal use.
 	public static final String ACTION_SETTINGS_CHANGED = "com.zst.xposed.xuimod.SETTINGS_CHANGED";
 	
 	public static final String COLOR_HOLO_BLUE = "FF33B5E5";
