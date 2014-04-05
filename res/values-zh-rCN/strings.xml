@@ -10,6 +10,9 @@
     <string name="systemui_restart_summary">"如果更改的内容没有实现请重启系统用户界面(SystemUI)
 (需授予ROOT权限)"</string>
     <string name="systemui_restart_dialog">确定重启系统用户界面？</string>
+    <string name="systemui_restart_required">"切换它需要重启系统用户界面来生效。
+
+重启系统用户界面？"</string>
     <string name="seconds_title">时钟插件</string>
     <string name="seconds_enable_title">开启秒数</string>
     <string name="seconds_enable_summary">状态栏的时钟将精确到秒</string>
@@ -21,10 +24,10 @@
     <string name="seconds_lettercase_summary">在指定的情况下覆盖所有的字母</string>
     <string name="seconds_lettercase_default">默认</string>
     <string name="seconds_lettercase_lowercase">小写</string>
-    <string name="seconds_lettercase_uppercase">小写</string>
+    <string name="seconds_lettercase_uppercase">大写</string>
     <string name="seconds_custom_title">替换为文本</string>
     <string name="seconds_custom_summary">"使用自定义文本替换状态栏时钟
-(选择默认可以撤销)"</string>
+(留空为撤销)"</string>
     <string name="notif_title">通知栏插件</string>
     <string name="notif_quick_settings_random_title">快速设置瓷块随机颜色</string>
     <string name="notif_quick_settings_random_summary">"每一块快速设置瓷砖的背景颜色将会随机化
@@ -79,6 +82,8 @@
     <string name="anim_ime_exit_summary">关闭输入法时的显示效果</string>
     <string name="anim_ime_interpolater_title">键盘选项</string>
     <string name="anim_ime_duration_title">键盘动画持续时间</string>
+    <string name="anim_ime_delay_title">键盘动画延迟</string>
+    <string name="anim_ime_delay_summary">进入动画的延迟 (可能会使动画变得缓慢)</string>
     <string name="anim_ime_test_title">在此测试键盘动画</string>
     <string name="anim_ime_entries_fancy">安卓Fancy键盘</string>
     <string name="anim_ime_entries_tn">TN Fly键盘</string>
@@ -96,6 +101,20 @@
     <string name="anim_toast_entries_tn">TN 弹出消息</string>
     <string name="anim_toast_entries_xylon">Xylon 弹出消息</string>
     <string name="anim_toast_entries_z1">Xperia Z1 弹出消息</string>
+    <string name="anim_ticker_main_title">通知文本动画</string>
+    <string name="anim_ticker_main_enter_title">主通知文本开始动画</string>
+    <string name="anim_ticker_main_enter_summary">第一条通知出现时所显示的动画</string>
+    <string name="anim_ticker_main_exit_title">主通知文本结束动画</string>
+    <string name="anim_ticker_main_exit_summary">第一条通知隐藏时所显示的动画</string>
+    <string name="anim_ticker_main_interpolater_title">主通知文本选项</string>
+    <string name="anim_ticker_switcher_enter_title">通知文本切换开始动画</string>
+    <string name="anim_ticker_switcher_enter_summary">下一条连续的通知出现时所显示的动画</string>
+    <string name="anim_ticker_switcher_exit_title">通知文本切换结束动画</string>
+    <string name="anim_ticker_switcher_exit_summary">下一条连续的通知隐藏时所显示的动画</string>
+    <string name="anim_ticker_switcher_interpolater_title">通知文本切换选项</string>
+    <string name="anim_ticker_duration_title">通知文本动画持续时间</string>
+    <string name="anim_ticker_test_title">测试通知文本动画</string>
+    <string name="anim_ticker_test_summary">发送三条通知来查看动画 (滑动来清除它)</string>
     <string name="anim_listview_anim">列表动画</string>
     <string name="anim_listview_anim_summary">滚动列表时所使用的动画特效</string>
     <string name="anim_listview_interpolator">列表选项</string>
@@ -106,12 +125,12 @@
     <string name="anim_listview_test_summary">打开一个提示框列表来测试</string>
     <string name="anim_listview_cache">保存列表缓存</string>
     <string name="anim_listview_cache_summary">"保存缓存的类型到内存中
-(没有缓存等于禁用此功能.只能通过保存来实现)"</string>
+(没有缓存等于禁用此功能。只能通过保存来实现)"</string>
     <string name="anim_listview_blacklist">应用程序黑名单</string>
     <string name="anim_listview_blacklist_summary">阻止应用程序的自带动画</string>
-    <string name="anim_listview_blacklist_help_dialog">"想要从黑名单中删除某一个应用程序,请点击此应用程序.
+    <string name="anim_listview_blacklist_help_dialog">"想要从黑名单中删除某一个应用程序,请点击此应用程序。
 
-想要添加黑名单应用程序,点击“添加”并找到想要添加的应用程序."</string>
+想要添加黑名单应用程序,点击“添加”并找到想要添加的应用程序。"</string>
     <string name="listview_off">关闭</string>
     <string name="listview_wave_left">波浪(左侧)</string>
     <string name="listview_wave_right">波浪(右侧)</string>
@@ -141,25 +160,25 @@
     <string name="listview_cache_all">动画与滚动</string>
     <string name="other_title">其他插件</string>
     <string name="classic_recents_title">使用旧式最近任务</string>
-    <string name="classic_recents_summary">取代最近任务界面为姜饼(安卓2.3)的最近任务界面</string>
+    <string name="classic_recents_summary">取代最近任务界面为姜饼(安卓2。3)的最近任务界面</string>
     <string name="volume_title">音量按钮</string>
     <string name="volume_timeout_title">音量调整板面超时</string>
     <string name="volume_timeout_summary">更改音量调整后音量调整板面的超时</string>
-    <string name="volume_timeout_dialog">"规定音量调整板面的超时时长.非数字字符将会忽略.
+    <string name="volume_timeout_dialog">"规定音量调整板面的超时时长。非数字字符将会忽略。
 (1000 毫秒 = 1 秒)"</string>
     <string name="volume_alpha_title">音量调整板面透明度</string>
     <string name="volume_alpha_summary">更改音量调整板面的背景透明度</string>
-    <string name="volume_alpha_dialog" formatted="false">"规定音量调整板面的背景透明度百分比.非数字字符将会忽略.
+    <string name="volume_alpha_dialog" formatted="false">"规定音量调整板面的背景透明度百分比。非数字字符将会忽略。
 (最大值 100% &amp; 最小值 25%)"</string>
     <string name="lockscreen_title">锁屏插件</string>
     <string name="lockscreen_disable_title">禁用音量实体键</string>
-    <string name="lockscreen_disable_summary">"在锁屏中禁止音量调整.
+    <string name="lockscreen_disable_summary">"在锁屏中禁止音量调整。
 (同时禁用长按切换媒体播放顺序)"</string>
     <string name="lockscreen_torch_title">锁屏手电筒</string>
-    <string name="lockscreen_torch_summary">"设置长按实体按键为手电筒.
-松开则是关闭."</string>
+    <string name="lockscreen_torch_summary">"设置长按实体按键为手电筒。
+松开则是关闭。"</string>
     <string name="lockscreen_torch_buttons_title">实体按键</string>
-    <string name="lockscreen_torch_buttons_summary">选择一个实体按键来触发手电筒.</string>
+    <string name="lockscreen_torch_buttons_summary">选择一个实体按键来触发手电筒。</string>
     <string name="lockscreen_torch_home_title">使用HOME键</string>
     <string name="lockscreen_torch_menu_title">使用菜单键</string>
     <string name="lockscreen_torch_back_title">使用返回键</string>
@@ -175,14 +194,20 @@
     <string name="batterybar_style_summary">如果勾选此项,电量栏将会居中显示</string>
     <string name="batterybar_height_title">高度</string>
     <string name="batterybar_height_summary">设置电量栏的高度值</string>
-    <string name="batterybar_height_dialog">"设置电量栏的高度值.
+    <string name="batterybar_height_dialog">"设置电量栏的高度值。
 (非数字字符将会忽略)"</string>
     <string name="batterybar_animate_title">充电动画</string>
     <string name="batterybar_animate_summary">充电时显示动画</string>
     <string name="batterybar_color_title">电量栏颜色</string>
     <string name="batterybar_color_screen_title">自定义电量栏的颜色</string>
-    <string name="batterybar_color_allow_multi_title">使用多种颜色</string>
-    <string name="batterybar_color_allow_multi_summary">允许电量栏在不同的电量等级下自动更换颜色</string>
+    <string name="batterybar_color_color_mode_title">颜色模式</string>
+    <string name="batterybar_color_color_mode_summary">选择决定电量栏颜色的方法</string>
+    <string name="batterybar_color_color_0">"单色
+(仅在 100% 时使用颜色)"</string>
+    <string name="batterybar_color_color_1">"多色
+(使用颜色选择器来规定)"</string>
+    <string name="batterybar_color_color_2">彩色状态栏变色 (状态栏图标)</string>
+    <string name="batterybar_color_color_3">彩色状态栏变色 (导航栏图标变色)</string>
     <string name="batterybar_color_100_title">电量100%时的颜色</string>
     <string name="batterybar_color_99_title">电量99%或以下时的颜色</string>
     <string name="batterybar_color_80_title">电量80%或以下时的颜色</string>
@@ -194,7 +219,8 @@
     <string name="batterybar_position_title">电量栏位置</string>
     <string name="batterybar_position_summary">"更改电量栏显示的地方
 (需重启系统用户界面)"</string>
-    <string name="batterybar_position_sb">状态栏</string>
+    <string name="batterybar_position_sb">状态栏(顶部)</string>
+    <string name="batterybar_position_sbb">状态栏(底部)</string>
     <string name="batterybar_position_nbt">通知栏(顶部)</string>
     <string name="batterybar_position_nbb">通知栏(底部)</string>
     <string name="scrolling_title">滚动插件</string>
@@ -206,7 +232,7 @@
     <string name="scrolling_overfling_title">结束甩动的距离</string>
     <string name="scrolling_overfling_summary">甩动到尽头时的最大距离</string>
     <string name="scrolling_friction_title">滚动摩擦</string>
-    <string name="scrolling_friction_summary">应用于滚动/甩动时的摩擦效果.</string>
+    <string name="scrolling_friction_summary">应用于滚动/甩动时的摩擦效果。</string>
     <string name="scrolling_velocity_title">最快速度</string>
     <string name="scrolling_velocity_summary">滑动时的最快速度</string>
     <string name="scrolling_glow_title">结束滚动的效果</string>
@@ -216,7 +242,7 @@
     <string name="scrolling_glow_glow_title">发光颜色</string>
     <string name="scrolling_glow_glow_summary">结束滚动时边缘的发光颜色</string>
     <string name="scrolling_glow_effect_disable_title">禁用效果</string>
-    <string name="scrolling_glow_effect_disable_summary">禁用结束滚动时的发光与特殊颜色设置.</string>
+    <string name="scrolling_glow_effect_disable_summary">禁用结束滚动时的发光与特殊颜色设置。</string>
     <string name="random_color_1">随机颜色 #1</string>
     <string name="random_color_2">随机颜色 #2</string>
     <string name="random_color_3">随机颜色 #3</string>
@@ -228,12 +254,12 @@
     <string name="toggle_launcher_show">显示图标</string>
     <string name="toggle_launcher_hide">隐藏图标</string>
     <string name="toggle_launcher_title">切换启动器图标</string>
-    <string name="toggle_launcher_msg">"隐藏此模块之后,你可以通过Xposed安装器来启动此模块.
+    <string name="toggle_launcher_msg">"隐藏此模块之后,你可以通过Xposed安装器来启动此模块。
 
 Xposed安装器→激活应用模块→Xposed界面模块
 
-你可能需要重启桌面启动器来让它生效."</string>
-    <string name="version_unsupported">此插件仅支持安卓 %1$s 以上版本.你目前的版本为 %2$s.</string>
+你可能需要重启桌面启动器来让它生效。"</string>
+    <string name="version_unsupported">此插件仅支持安卓 %1$s 以上版本。你目前的版本为 %2$s。</string>
     <string name="settings_default">默认值</string>
     <string name="add">添加</string>
     <string name="unknown">未知</string>
@@ -243,4 +269,6 @@ Xposed安装器→激活应用模块→Xposed界面模块
     <string name="color_hex">颜色代码</string>
     <string name="test_listview_instructions">滚动来查看更改</string>
     <string name="test_listview_item">列表内的项目</string>
+    <string name="scrolling_no_fading_title">永远显示滑动栏</string>
+    <string name="scrolling_no_fading_summary">如果已勾选, 靠边的滑动栏将会永不消失</string>
 </resources>
