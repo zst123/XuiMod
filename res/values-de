@@ -22,7 +22,7 @@
     <string name="seconds_bold_title">Fett gedruckte Uhr</string>
     <string name="seconds_bold_summary">Drucke Schrift der Uhr fett</string>
     <string name="seconds_use_html_title">Verwende HTML</string>
-    <string name="seconds_use_html_summary">Verwandle HTML-Tags in benutzerdefinierte Form.</string>
+    <string name="seconds_use_html_summary">Verwandle HTML-Tags in benutzerdefinierte Form um.</string>
     <string name="seconds_lettercase_title">Groß-/Kleinschreibung</string>
     <string name="seconds_lettercase_summary">Schreibe alle Buchstaben in Groß- oder Kleinformat</string>
     <string name="seconds_lettercase_default">Voreinstellung</string>
@@ -55,13 +55,13 @@
     <!-- Animation Controls -->
     <string name="anim_controls_main_title">Animationssteuerung</string>
     <string name="anim_controls_main_summary">Steuere individuelle Systemanimationen</string>
-    <string name="anim_controls_no_override_title">Verhindere Überschreibungen von Apps</string>
+    <string name="anim_controls_no_override_title">Verhindere Überschreibungen durch Apps</string>
     <string name="anim_controls_no_override_summary">Hindere Apps daran, sich über die Animationen hinweg zu setzen.</string>
     <string name="anim_controls_duration_title">Animationsdauer</string>
     <!-- Animation List -->
-    <string name="activity_open_title">Öffne In-App Activity Animation</string>
-    <string name="activity_close_title">Schließe In-App Activity Animation</string>
-    <string name="task_open_title">Starte Aus In App Animation</string>
+    <string name="activity_open_title">Öffne In-App-Activity Animation</string>
+    <string name="activity_close_title">Schließe In-App-Activity Animation</string>
+    <string name="task_open_title">Starte Aus In-App-Animation</string>
     <string name="task_close_title">Gehe Zum Vorherigen Animation</string>
     <string name="task_move_to_front_title">Schritt Nach Vorn Animation</string>
     <string name="task_move_to_back_title">Schritt Zurück Animation</string>
@@ -87,7 +87,7 @@
     <string name="animation_random">Zufällig</string>
     
     <!-- IME Animation -->
-    <string name="anim_ime_main_title">IME Animation</string>
+    <string name="anim_ime_main_title">IME-Animation</string>
     <string name="anim_ime_enter_title">IME Erscheint Animation</string>
     <string name="anim_ime_enter_summary">Wird gezeigt, wenn Tastatur erscheint</string>
     <string name="anim_ime_exit_title">IME Verschwindet Animation</string>
@@ -95,14 +95,14 @@
     <string name="anim_ime_interpolater_title">IME Interpolator</string>
     <string name="anim_ime_duration_title">IME Animations-Dauer</string>
     <string name="anim_ime_delay_title">IME Animations-Verzögerung</string>
-    <string name="anim_ime_delay_summary">Verzögere die Öffnen Animation (Verbessert eventuell Animations-Lags)</string>
+    <string name="anim_ime_delay_summary">Verzögere die Animation beim Öffnen (Verbessert eventuell Animations-Lags)</string>
     <string name="anim_ime_test_title">Teste IME Animationen Hier</string>
     <string name="anim_ime_entries_fancy">Android Fancy IME</string>
     <string name="anim_ime_entries_tn">TN Fly</string>
     <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
     
     <!-- Toast Animation -->
-    <string name="anim_toast_main_title">Toast Animation</string>
+    <string name="anim_toast_main_title">Toast-Animation</string>
     <string name="anim_toast_enter_title">Toast Erscheint Animation</string>
     <string name="anim_toast_enter_summary">Wird gezeigt, wenn ein Toast erscheint</string>
     <string name="anim_toast_exit_title">Toast Verschwindet Animation</string>
@@ -117,7 +117,7 @@
     <string name="anim_toast_entries_z1">Xperia Z1 Toast</string>
     
     <!-- Ticker Animation -->
-    <string name="anim_ticker_main_title">Ticker Animation</string>
+    <string name="anim_ticker_main_title">Ticker-Animation</string>
     <string name="anim_ticker_main_enter_title">Haupt-Ticker Erscheint Animation</string>
     <string name="anim_ticker_main_enter_summary">Wird gezeigt, wenn die erste Benachrichtigung erscheint</string>
     <string name="anim_ticker_main_exit_title">Haupt-Ticker Verschwindet Animation</string>
@@ -130,10 +130,10 @@
     <string name="anim_ticker_switcher_interpolater_title">Ticker-Wechsel Interpolator</string>
     <string name="anim_ticker_duration_title">Ticker Animations-Dauer</string>
     <string name="anim_ticker_test_title">Teste Ticker Animationen</string>
-    <string name="anim_ticker_test_summary">Sende 3 Benachrichtigungen, um Animationen zu sehen (Entferne sie, indem du sie weg wischt)</string>
+    <string name="anim_ticker_test_summary">Sende 3 Benachrichtigungen, um Animationen zu sehen (Entferne sie, indem du sie wegwischt)</string>
     
     <!-- ListView Category in Animation Pref--> 
-    <string name="anim_listview_anim">ListView Animation</string>
+    <string name="anim_listview_anim">ListView-Animation</string>
     <string name="anim_listview_anim_summary">Verwendete Animation beim Scrollen durch ListViews</string>
     <string name="anim_listview_interpolator">ListView Interpolator</string>
     <string name="anim_listview_interpolator_summary">Verwendeter Interpolator beim Scrollen durch ListViews</string>
@@ -148,8 +148,8 @@
   	<string name="anim_listview_blacklist_help_dialog">Tippe auf eine App, um sie von der Blacklist zu entfernen.\n\nUm eine hinzuzufügen, klicke auf HINZUFÜGEN und suche nach der App.</string>
   	
     <!-- ListView animation -->  
- 	<string name="listview_off">Aus</string>
- 	<string name="listview_wave_left">Welle (Links)</string>
+    <string name="listview_off">Aus</string>
+    <string name="listview_wave_left">Welle (Links)</string>
     <string name="listview_wave_right">Welle (Rechts)</string>
     <string name="listview_alpha">Durchsichtig</string>
     <string name="listview_scale">Stufe</string>
@@ -171,9 +171,9 @@
     <string name="listview_anticipate_interpolator">Unterschwingen</string>
     <string name="listview_overshoot_interpolator">Überschwingen</string>
     <string name="listview_anticipate_overshoot_interpolator">Unterschwingen &amp; Überschwingen</string>
-    <string name="listview_bounce_interpolator">Springen</string>
+    <string name="listview_bounce_interpolator">Hüpfen</string>
     <string name="listview_cycle_interpolator">Kreisen</string>
-    <string name="listview_linear_interpolator">Gerade</string>
+    <string name="listview_linear_interpolator">Linear</string>
     <!-- ListView cache -->
 	<string name="listview_cache_none">Kein Cache</string>
  	<string name="listview_cache_anim">Animations-Cache</string>
@@ -191,7 +191,7 @@
     <string name="volume_title">Lautstärketasten</string>
     <string name="volume_timeout_title">Lautstärke-Popup Timeout</string>
     <string name="volume_timeout_summary">Verändere den Timeout für das Lautstärkeregler-Popup nach der Anpassung der Lautstärke</string>
-    <string name="volume_timeout_dialog">Gebe den Timeout für das Lautstärkeregler-Popup in Millisekunden an. Nicht numerische Zeichen werdn ignoriert.\n(1000 Millisekunden = 1 Sekunde)</string>
+    <string name="volume_timeout_dialog">Gib den Timeout für das Lautstärkeregler-Popup in Millisekunden an. Nicht numerische Zeichen werdn ignoriert.\n(1000 Millisekunden = 1 Sekunde)</string>
     <string name="volume_alpha_title">Lautstärkeregler-Popup Transparenz</string>
     <string name="volume_alpha_summary">Verändere die Transparenz des Lautstärkeregler-Popup's</string>
     <string name="volume_alpha_dialog" formatted="false">Gebe die Transparenz des Lautstärkeregler-Popup's in Prozent an.\n(Maximum 100% &amp; Minimum 25%)</string>
@@ -217,13 +217,13 @@
     <string name="lockscreen_torch_dashlight_torch">DashLight</string>
     
      <!-- BatteryBar Pref-->
-    <string name="batterybar_title">Akkuleiste Mod</string>
+    <string name="batterybar_title">Akkuleisten-Mods</string>
     <string name="batterybar_enable_title">Aktiviere Akkuleiste</string>
     <string name="batterybar_style_title">Symmetrische Leiste</string>
     <string name="batterybar_style_summary">Wenn aktiviert, wird die Akkuleiste symmetrisch sein</string>
     <string name="batterybar_height_title">Höhe der Leiste</string>
     <string name="batterybar_height_summary">Höhe der Akkuleiste in dp</string>
-    <string name="batterybar_height_dialog">Höhe der Akkuleiste in dp.\n(Nicht numerische Zeichen werdn ignoriert.)</string>
+    <string name="batterybar_height_dialog">Höhe der Akkuleiste in dp.\n(Nicht numerische Zeichen werden ignoriert.)</string>
     <string name="batterybar_animate_title">Ladeanimation</string>
     <string name="batterybar_animate_summary">Aktiviere Ladeanimation</string>
     <string name="batterybar_color_title">Farbe der Akkuleiste</string>
@@ -253,7 +253,7 @@
     <!-- Scrolling Mods -->
     <string name="scrolling_title">Scroll-Mods</string>
     <string name="scrolling_config_title">Scroll-Einstellungen</string>
-    <string name="scrolling_config_summary">Passe an, wie sich das Scrollen verhält</string>
+    <string name="scrolling_config_summary">Passe das Scroll-Verhalten an</string>
     <string name="scrolling_warning">Bereits geöffnete Apps müssen womöglich neu gestartet werden, damit die Scroll-Einstellungen übernommen werden.</string>
     <string name="scrolling_no_fading_title">Zeige Scrollbalken immer</string>
     <string name="scrolling_no_fading_summary">Wenn aktiviert, wird der Scrollbalken nie verschwinden</string>
@@ -266,11 +266,11 @@
     <string name="scrolling_velocity_title">Maximale Schleuder-Geschwindigkeit</string>
     <string name="scrolling_velocity_summary">Die maximale Geschwindigkeit das Scrollen bis zum Ende zu schleudern zu starten</string>
     
-    <string name="scrolling_glow_title">Überscroll-Effect</string>
+    <string name="scrolling_glow_title">Überscroll-Effekt</string>
     <string name="scrolling_glow_summary">Passe den Randeffekt beim Überscrollen an</string>
-    <string name="scrolling_glow_edge_title">Farbe der Kante</string>
+    <string name="scrolling_glow_edge_title">Kanten-Farbe</string>
     <string name="scrolling_glow_edge_summary">Farbe der Kante am Ende der ListView</string>
-    <string name="scrolling_glow_glow_title">Farbe vom Leuchten</string>
+    <string name="scrolling_glow_glow_title">Leucht-Farbe</string>
     <string name="scrolling_glow_glow_summary">Farbe der leuchtenden Kante beim Überscrollen</string>
     <string name="scrolling_glow_effect_disable_title">Deaktiviere den Effekt</string>
     <string name="scrolling_glow_effect_disable_summary">Deaktiviert das Leuchten beim Überscrollen &amp; ignoriert die Farbeinstellungen.</string>
@@ -288,11 +288,11 @@
     <!-- Hide Launcher Icon Dialog -->
     <string name="toggle_launcher_show">Aktiviere Symbol</string>
     <string name="toggle_launcher_hide">Deaktiviere Symbol</string>
-    <string name="toggle_launcher_title">Launcher Symbol</string>
-    <string name="toggle_launcher_msg">Nach dem Deaktivieren des Launcher-Symbols, kannst du XuiMod über den Xposed Installer öffnen.\n\nXposed Installer ➙ Module ➙ XuiMod (Fläche neben der Checkbox).\n\nDu musst eventuell den Launcher neu starten, damit diese Einstellung Wirkung zeigt.</string>
+    <string name="toggle_launcher_title">Launcher-Symbol</string>
+    <string name="toggle_launcher_msg">Nach dem Deaktivieren des Launcher-Symbols, kannst du XuiMod über den Xposed Installer öffnen.\n\nXposed Installer ➙ Module ➙ XuiMod (Fläche neben der Checkbox).\n\nDu musst womöglich den Launcher neu starten, damit diese Einstellung Wirkung zeigt.</string>
     
    <!-- Other string -->
-   <string name="version_unsupported">Diese Modul erfordert Android %1$s oder höher. Du hasr momentan Android %2$s.</string>
+   <string name="version_unsupported">Diese Modul erfordert Android %1$s oder höher. Du has momentan Android %2$s.</string>
    <string name="settings_default">Voreingestellter Wert</string>
    <string name="add">Hinzufügen</string>
    <string name="unknown">Unbekannt</string>
