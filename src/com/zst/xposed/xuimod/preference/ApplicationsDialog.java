@@ -90,8 +90,9 @@ public class ApplicationsDialog {
                                 public void run() {
                                     int index = Collections.binarySearch(mInstalledApps, item);
                                     if (index < 0) {
-                                        index = -index - 1;
-                                        mInstalledApps.add(index, item);
+                                        mInstalledApps.add(-index - 1, item);
+                                    } else {
+                                        mInstalledApps.add((index + 1), item);
                                     }
                                     notifyDataSetChanged();
                                     
