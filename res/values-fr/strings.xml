@@ -167,7 +167,7 @@
     <string name="volume_timeout_title">Extinction du panneau volume</string>
     <string name="volume_timeout_summary">Modifier le temps d\'extinction du panneau volume</string>
     <string name="volume_timeout_dialog">Extinction du panneau volume en millisecondes. Les caractères non numériques sont ignorés.\n(1000 millisecondes = 1 seconde)</string>
-    <string name="volume_alpha_title">Tranparence du panneau volume</string>
+    <string name="volume_alpha_title">Transparence du panneau volume</string>
     <string name="volume_alpha_summary">Modifier la transparence du panneau volume</string>
     <string name="volume_alpha_dialog" formatted="false">Transparence du panneau volume en pourcentage. Les caractères non numériques sont ignorés.\n(Maximum 100% &amp; Minimum 25%)</string>
 
@@ -179,7 +179,7 @@
     <string name="lockscreen_torch_title">Torche à l\'écran de verrouillage</string>
     <string name="lockscreen_torch_summary">Maintenir le bouton physique pour allumer la torche.\nRelâcher pour l\'éteindre.</string>
     <string name="lockscreen_torch_buttons_title">Boutons physiques</string>
-    <string name="lockscreen_torch_buttons_summary">Sélectionner un bouton physique pour déclencher la torche</string>
+    <string name="lockscreen_torch_buttons_summary">Sélectionner le(s) bouton(s) physique(s) pour activer la torche</string>
     <string name="lockscreen_torch_home_title">Bouton Accueil</string>
     <string name="lockscreen_torch_menu_title">Bouton Menu</string>
     <string name="lockscreen_torch_back_title">Bouton Retour</string>
@@ -259,7 +259,7 @@
     <!-- Hide Launcher Icon Dialog -->
     <string name="toggle_launcher_show">Afficher l\'icône</string>
     <string name="toggle_launcher_hide">Masquer l\'icône</string>
-    <string name="toggle_launcher_title">Interrupteur de l\'icône de lancement</string>
+    <string name="toggle_launcher_title">Icône de lancement</string>
     <string name="toggle_launcher_msg">Après avoir masqué l\'icône de lancement, vous devez accéder à XuiMod via Xposed Installer.\n\nXposed Installer ➙ Modules ➙ XuiMod (Zone à côté de la case à cocher).\n\nVous pouvez avoir besoin de redémarrer votre lanceur pour que cela prenne effet.</string>
 
     <!-- Other string -->
