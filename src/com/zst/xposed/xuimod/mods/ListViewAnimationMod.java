@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2013 XuiMod
- * This code is based on portions of The MoKee OpenSource Project source, Copyright (C) 2013.
+ * This code is based on portions of code by jkl5616, Copyright (C) 2013.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
