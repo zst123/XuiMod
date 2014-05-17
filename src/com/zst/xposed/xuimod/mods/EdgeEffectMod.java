@@ -10,6 +10,7 @@ import android.widget.EdgeEffect;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class EdgeEffectMod {
@@ -30,15 +31,15 @@ public class EdgeEffectMod {
 						Common.DEFAULT_SCROLLING_GLOW_ENABLE))
 					return;
 				
-				final Drawable edge = (Drawable) Common.getReflection(param.thisObject, "mEdge");
-				final Drawable glow = (Drawable) Common.getReflection(param.thisObject, "mGlow");
+				final Drawable edge = (Drawable) XposedHelpers.getObjectField(param.thisObject, "mEdge");
+				final Drawable glow = (Drawable) XposedHelpers.getObjectField(param.thisObject, "mGlow");
 				
 				if (mPref.getBoolean(Common.KEY_SCROLLING_GLOW_DISABLE,
 						Common.DEFAULT_SCROLLING_GLOW_DISABLE)) {
 					//Disable glow by setting transparent color
 					final Drawable transparent = new ColorDrawable(Color.TRANSPARENT);
-					Common.setReflection(param.thisObject, "mEdge", transparent);
-					Common.setReflection(param.thisObject, "mGlow", transparent);
+					XposedHelpers.setObjectField(param.thisObject, "mEdge", transparent);
+					XposedHelpers.setObjectField(param.thisObject, "mGlow", transparent);
 					return;
 				}
 				
@@ -58,8 +59,8 @@ public class EdgeEffectMod {
 				 * Also, "drawable.setAlpha" has no effect on the glow, it's probably the 
 				 * canvas drawing (??) */
 				
-				Common.setReflection(param.thisObject, "mEdge", edge);
-				Common.setReflection(param.thisObject, "mGlow", glow);
+				XposedHelpers.setObjectField(param.thisObject, "mEdge", edge);
+				XposedHelpers.setObjectField(param.thisObject, "mGlow", glow);
 			}
 		});
 	}

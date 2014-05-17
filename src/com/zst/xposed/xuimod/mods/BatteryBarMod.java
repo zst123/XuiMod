@@ -118,8 +118,7 @@ public class BatteryBarMod {
 			@Override
 			protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				final LinearLayout thizz = (LinearLayout) param.thisObject;
-				final View[] rotated_views = (View[]) param.thisObject.getClass()
-						.getDeclaredField("mRotatedViews").get(thizz);
+				final View[] rotated_views = (View[]) XposedHelpers.getObjectField(thizz, "mRotatedViews");
 				
 				final FrameLayout portrait = (FrameLayout) rotated_views[Surface.ROTATION_0];
 				final FrameLayout landscape = (FrameLayout) rotated_views[Surface.ROTATION_90];

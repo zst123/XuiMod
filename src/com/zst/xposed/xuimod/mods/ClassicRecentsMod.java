@@ -31,6 +31,7 @@ import android.content.IntentFilter;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class ClassicRecentsMod {
@@ -61,7 +62,7 @@ public class ClassicRecentsMod {
 				if (!pref.getBoolean(Common.KEY_CLASSIC_RECENTS, Common.DEFAULT_CLASSIC_RECENTS)) {
 					return;
 				}
-				final Context ctx = (Context) Common.getReflection(param.thisObject, "mContext");
+				final Context ctx = (Context) XposedHelpers.getObjectField(param.thisObject, "mContext");
 				ctx.sendBroadcast(new Intent(ACTION_SHOW_RECENT_APP_DIALOG));
 				param.setResult(null);
 			}
@@ -77,6 +78,7 @@ public class ClassicRecentsMod {
 					final Context context = (Context) param.args[0];
 					final Method showDialog = param.thisObject.getClass().getDeclaredMethod(
 							"showOrHideRecentAppsDialog", int.class);
+					showDialog.setAccessible(true);
 					final BroadcastReceiver receiver = new BroadcastReceiver() {
 						@Override
 						public void onReceive(Context context, Intent intent) {

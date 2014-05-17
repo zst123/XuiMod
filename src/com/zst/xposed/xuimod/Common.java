@@ -16,8 +16,6 @@
 
 package com.zst.xposed.xuimod;
 
-import java.lang.reflect.Field;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -240,37 +238,6 @@ public class Common {
 		/* The 1 second delay is to give enough time for system to write the
 		 * preferences. When the preference is read while it's being written,
 		 * the hooks might retrieve the wrong value. */
-	}
-	
-	/* Helper Methods */
-	public static Object getReflection(Object itemToGetObject, String objectName) {
-		try {
-			Class<?> clazz = itemToGetObject.getClass();
-			Field field;
-			field = clazz.getDeclaredField(objectName);
-			field.setAccessible(true);
-			return field.get(itemToGetObject);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	/*
-	 * @param return true when successful
-	 */
-	public static boolean setReflection(Object itemToGetObject, String objectName, Object newValue) {
-		try {
-			Class<?> clazz = itemToGetObject.getClass();
-			Field field;
-			field = clazz.getDeclaredField(objectName);
-			field.setAccessible(true);
-			field.set(itemToGetObject, newValue);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
 	}
 	
 	public static int parseColorFromString(String str, String defColorWithoutSymbols) {

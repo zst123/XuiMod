@@ -178,11 +178,9 @@ public class AnimationControlsMod {
 				WindowManager.LayoutParams.class, int.class, boolean.class, new XC_MethodHook() {
 			@Override
 			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-				boolean displayFrozen = (Boolean) cls.getDeclaredField("mDisplayFrozen")
-						.get(param.thisObject);
-				boolean displayEnabled = (Boolean) cls.getDeclaredField("mDisplayEnabled")
-						.get(param.thisObject);
-				Object policy = cls.getDeclaredField("mPolicy").get(param.thisObject);
+				boolean displayFrozen = XposedHelpers.getBooleanField(param.thisObject, "mDisplayFrozen");
+				boolean displayEnabled = XposedHelpers.getBooleanField(param.thisObject, "mDisplayEnabled");
+				Object policy = XposedHelpers.getObjectField(param.thisObject, "mPolicy");
 				boolean screenOn = (Boolean) XposedHelpers.callMethod(policy, "isScreenOnFully");
 				
 				if ((!displayFrozen && displayEnabled && screenOn) == false) {
@@ -195,8 +193,8 @@ public class AnimationControlsMod {
 				final boolean enter = (Boolean) param.args[3];
 				
 				if ((Build.VERSION.SDK_INT <= 15)) { // ICS
-					String nextAppTransitionPackage = (String) Common.getReflection(
-							param.thisObject, "mNextAppTransitionPackage");
+					String nextAppTransitionPackage = (String) XposedHelpers
+							.getObjectField(param.thisObject, "mNextAppTransitionPackage");
 					if (nextAppTransitionPackage == null) {
 						Animation anim = retrieveAnimation(lp, transit, enter);
 						if (anim != null) {
@@ -205,15 +203,14 @@ public class AnimationControlsMod {
 						}
 					}
 				} else { // JB 4.1/4.2
-					int type = (Integer) Common.getReflection(param.thisObject,
+					int type = XposedHelpers.getIntField(param.thisObject,
 							"mNextAppTransitionType");
 					if (type == AppTransitionConstants.NEXT_TRANSIT_TYPE_CUSTOM ||
 						type == AppTransitionConstants.NEXT_TRANSIT_TYPE_SCALE_UP ||
 						type == AppTransitionConstants.NEXT_TRANSIT_TYPE_SCALE_UP)
 						return;
 					Animation result = retrieveAnimation(lp, transit, enter);
-					Object appAnimator = window_token.getClass().getDeclaredField("mAppAnimator")
-							.get(window_token);
+					Object appAnimator = XposedHelpers.getObjectField(window_token, "mAppAnimator");
 					if (result != null) {
 						XposedHelpers.callMethod(appAnimator, "setAnimation",
 								applyDuration(result), false);
@@ -230,11 +227,9 @@ public class AnimationControlsMod {
 					animator = param.args[0];
 				} else { // JB
 					final Object window_token = param.args[0];
-					animator = window_token.getClass().getDeclaredField("mAppAnimator")
-							.get(window_token);
+					animator = XposedHelpers.getObjectField(window_token, "mAppAnimator");
 				}
-				Animation anim = (Animation) animator.getClass().getDeclaredField("animation")
-						.get(animator);
+				Animation anim = (Animation) XposedHelpers.getObjectField(animator, "animation");
 				if (anim != null) {
 					if ((Build.VERSION.SDK_INT <= 15)) {
 						XposedHelpers.callMethod(animator, "setAnimation", applyDuration(anim));
@@ -255,7 +250,7 @@ public class AnimationControlsMod {
 			protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
 				mIsResId = false;
 				
-				int type = (Integer) Common.getReflection (param.thisObject,
+				int type = XposedHelpers.getIntField(param.thisObject,
 						"mNextAppTransitionType");
 				if (type == AppTransitionConstants.NEXT_TRANSIT_TYPE_CUSTOM ||
 					type == AppTransitionConstants.NEXT_TRANSIT_TYPE_SCALE_UP ||
