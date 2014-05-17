@@ -32,6 +32,7 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.text.Html;
 import android.text.format.DateFormat;
+import android.util.TypedValue;
 import android.widget.TextView;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
@@ -44,6 +45,8 @@ public class SecondsClockMod {
 	public static CharSequence format = null; // Format of Clock
 	public static boolean stopForever = false; // stop until systemui restarts
 	private static boolean allowHtml = false; //Allow HTML tags to be used?
+	private static int clockSizePercentage = -1;
+	private static float clockSizeFromSystem = -1;
 	
 	private static final int LETTER_DEFAULT = 0;
 	private static final int LETTER_LOWERCASE = 1;
@@ -70,6 +73,7 @@ public class SecondsClockMod {
     			//The notification panel and lockscreen also use Clock class. But they are not visible and handler will screw up 
     			if (thix == null){
     			thix = (TextView)param.thisObject; 
+    			clockSizeFromSystem = thix.getTextSize();
     			if(init()){ //init() will return TRUE when setting is enabled.
     				start(); //Start the seconds handler
     			}
@@ -96,6 +100,7 @@ public class SecondsClockMod {
 		allowHtml = pref.getBoolean(Common.KEY_SECONDS_USE_HTML,Common.DEFAULT_SECONDS_USE_HTML);
 		letterCaseType = Integer.parseInt( pref.getString(Common.KEY_SECONDS_LETTER_CASE, 
 				Common.DEFAULT_SECONDS_LETTER_CASE) );
+		clockSizePercentage = pref.getInt(Common.KEY_SECONDS_SIZE, Common.DEFAULT_SECONDS_SIZE);
 		thix.setTypeface(null, bold ? Typeface.BOLD : Typeface.NORMAL);
 		if(!enabled){ 
 			stopForever = true; //Stop forever until systemUI reboots. Prevents reading too much off the disk(every minute which is bad)
@@ -149,11 +154,21 @@ public class SecondsClockMod {
 		} else if (letterCaseType == LETTER_UPPERCASE) {
 			time = time.toString().toUpperCase(Locale.ENGLISH);
 		}
-		CharSequence clockText = allowHtml ? (Html.fromHtml(time.toString())) : time;
+		CharSequence clockText = allowHtml ? Html.fromHtml(time.toString().replace("\\n", "<br>")) : time;
 		if (changeTextWithHandler){
 			setClockTextOnHandler(clockText);
 		}else{
 			thix.setText(clockText);
+		}
+		
+		final float newClockSize = clockSizeFromSystem * (clockSizePercentage * 0.01f);
+		if (changeTextWithHandler) {
+			setClockSizeOnHandler(newClockSize);
+		} else {
+			thix.setTextSize(TypedValue.COMPLEX_UNIT_PX, newClockSize);
+			thix.setSingleLine(false);
+			thix.setLines(4);
+			// Increase Max Lines from default 1
 		}
 	}
 	
@@ -164,6 +179,17 @@ public class SecondsClockMod {
 		mHandler.post(new Runnable() {
 	        public void run() {
 	    		thix.setText(time);
+	        }
+	    });
+	}
+	
+	private static void setClockSizeOnHandler(final float newClockSize) {
+		if (mHandler == null) {
+			mHandler = new Handler(thix.getContext().getMainLooper());
+		} 
+		mHandler.post(new Runnable() {
+	        public void run() {
+	        	thix.setTextSize(TypedValue.COMPLEX_UNIT_PX, newClockSize);
 	        }
 	    });
 	}

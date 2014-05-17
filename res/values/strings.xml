@@ -21,6 +21,8 @@
     <string name="seconds_enable_summary">Refresh Clock every second in Status Bar Clock</string>
     <string name="seconds_bold_title">Bold Clock</string>
     <string name="seconds_bold_summary">Bold the Clock Font</string>
+    <string name="seconds_size_title">Clock Size</string>
+    <string name="seconds_size_summary">Font Size of the Clock in percentage</string>
     <string name="seconds_use_html_title">Use HTML</string>
     <string name="seconds_use_html_summary">Parse HTML tags in custom format.</string>
     <string name="seconds_lettercase_title">Letter Case</string>

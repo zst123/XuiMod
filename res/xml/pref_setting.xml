@@ -35,6 +35,17 @@
             android:key="seconds_lettercase"
             android:summary="@string/seconds_lettercase_summary"
             android:title="@string/seconds_lettercase_title" />
+        
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+            defaultValue="100"
+            maximum="120"
+            minimum="10"
+            suffix="%"
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/seconds_size_title"
+            android:key="seconds_size"
+            android:summary="@string/seconds_size_summary"
+            android:title="@string/seconds_size_title" />
 
         <EditTextPreference
             android:dialogIcon="@drawable/ic_launcher"

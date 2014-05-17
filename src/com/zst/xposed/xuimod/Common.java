@@ -38,6 +38,7 @@ public class Common {
 	/* Preference keys */
 	public static final String KEY_SECONDS_ENABLE = "seconds_enable";
 	public static final String KEY_SECONDS_BOLD = "seconds_bold";
+	public static final String KEY_SECONDS_SIZE = "seconds_size";
 	public static final String KEY_SECONDS_CUSTOM = "seconds_custom";
 	public static final String KEY_SECONDS_USE_HTML = "seconds_use_html";
 	public static final String KEY_SECONDS_LETTER_CASE = "seconds_lettercase";
@@ -144,6 +145,7 @@ public class Common {
 	/* Preference default values */
 	public static final boolean DEFAULT_SECONDS_ENABLE = false;
 	public static final boolean DEFAULT_SECONDS_BOLD = false;
+	public static final int DEFAULT_SECONDS_SIZE = 100;
 	public static final String DEFAULT_SECONDS_CUSTOM = "";
 	public static final boolean DEFAULT_SECONDS_USE_HTML = false;
 	public static final String DEFAULT_SECONDS_LETTER_CASE = "0";
