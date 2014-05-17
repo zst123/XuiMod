@@ -36,6 +36,7 @@ public class Common {
 	public static final String COLOR_HOLO_BLUE = "FF33B5E5";
 	
 	/* Preference keys */
+	public static final String KEY_SECONDS_MASTER_SWITCH = "seconds_master_switch";
 	public static final String KEY_SECONDS_ENABLE = "seconds_enable";
 	public static final String KEY_SECONDS_BOLD = "seconds_bold";
 	public static final String KEY_SECONDS_SIZE = "seconds_size";
@@ -144,6 +145,7 @@ public class Common {
 	public static final String KEY_SCROLLING_GLOW_EDGE = "scrolling_glow_edge";
 
 	/* Preference default values */
+	public static final boolean DEFAULT_SECONDS_MASTER_SWITCH = false;
 	public static final boolean DEFAULT_SECONDS_ENABLE = false;
 	public static final boolean DEFAULT_SECONDS_BOLD = false;
 	public static final int DEFAULT_SECONDS_SIZE = 100;

@@ -11,18 +11,25 @@
     <PreferenceScreen
         android:key="seconds_screen"
         android:title="@string/seconds_title" >
+        <SwitchPreference
+            android:key="seconds_master_switch"
+            android:title="@string/seconds_title" />
+        
         <CheckBoxPreference
             android:key="seconds_enable"
+            android:dependency="seconds_master_switch"
             android:summary="@string/seconds_enable_summary"
             android:title="@string/seconds_enable_title" />
         
         <CheckBoxPreference
             android:key="seconds_bold"
+            android:dependency="seconds_master_switch"
             android:summary="@string/seconds_bold_summary"
             android:title="@string/seconds_bold_title" />
         
         <CheckBoxPreference
             android:key="seconds_use_html"
+            android:dependency="seconds_master_switch"
             android:summary="@string/seconds_use_html_summary"
             android:title="@string/seconds_use_html_title" />
 
@@ -33,6 +40,7 @@
             android:entries="@array/seconds_lettercase_entries"
             android:entryValues="@array/seconds_lettercase_values"
             android:key="seconds_lettercase"
+            android:dependency="seconds_master_switch"
             android:summary="@string/seconds_lettercase_summary"
             android:title="@string/seconds_lettercase_title" />
         
@@ -44,6 +52,7 @@
             android:dialogLayout="@layout/pref_seekbar"
             android:dialogTitle="@string/seconds_size_title"
             android:key="seconds_size"
+            android:dependency="seconds_master_switch"
             android:summary="@string/seconds_size_summary"
             android:title="@string/seconds_size_title" />
 
@@ -52,6 +61,7 @@
             android:dialogMessage="@string/seconds_custom_summary"
             android:dialogTitle="@string/seconds_custom_title"
             android:key="seconds_custom"
+            android:dependency="seconds_master_switch"
             android:summary="@string/seconds_custom_summary"
             android:title="@string/seconds_custom_title" />
 

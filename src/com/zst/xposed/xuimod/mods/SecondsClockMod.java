@@ -60,6 +60,12 @@ public class SecondsClockMod {
 
 	public static void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
     	if (!lpparam.packageName.equals("com.android.systemui")) return;
+    	
+    	pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+    	if (!pref.getBoolean(Common.KEY_SECONDS_MASTER_SWITCH, Common.DEFAULT_SECONDS_MASTER_SWITCH)) {
+    		return;
+    	}
+    	
 		try{
 			hookClock(lpparam);
 		}catch(Throwable t){
@@ -94,7 +100,7 @@ public class SecondsClockMod {
 	
 	private static boolean init(){ // get all the values
 		if (stopForever) return false; //Don't continue
-		pref = new XSharedPreferences(Common.MY_PACKAGE_NAME);
+		pref.reload();
 		enabled = pref.getBoolean(Common.KEY_SECONDS_ENABLE,Common.DEFAULT_SECONDS_ENABLE);
 		bold = pref.getBoolean(Common.KEY_SECONDS_BOLD,Common.DEFAULT_SECONDS_BOLD);
 		allowHtml = pref.getBoolean(Common.KEY_SECONDS_USE_HTML,Common.DEFAULT_SECONDS_USE_HTML);

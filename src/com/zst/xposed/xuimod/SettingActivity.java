@@ -70,6 +70,7 @@ public class SettingActivity extends PreferenceActivity implements
 			}
 		};
 		findPreference(Common.KEY_BATTERYBAR_ENABLE).setOnPreferenceChangeListener(sysui_restart_listener);
+		findPreference(Common.KEY_SECONDS_MASTER_SWITCH).setOnPreferenceChangeListener(sysui_restart_listener);
 		findPreference(Common.KEY_ANIMATION_TICKER_ENABLED).setOnPreferenceChangeListener(sysui_restart_listener);
 		findPreference(Common.KEY_NOTIFICATION_RANDOM_QS_TILE_COLOR).setOnPreferenceChangeListener(sysui_restart_listener);
 
