@@ -19,6 +19,8 @@
     <string name="seconds_enable_summary">Actualise l\'heure chaque seconde dans la barre d\'état</string>
     <string name="seconds_bold_title">Horloge en gras</string>
     <string name="seconds_bold_summary">Police de l\'horlorge en gras</string>
+    <string name="seconds_size_title">Taille de l\'horloge</string>
+    <string name="seconds_size_summary">Taille de la police de l\'horloge en pourcentage</string>    
     <string name="seconds_use_html_title">Utiliser HTML</string>
     <string name="seconds_use_html_summary">Analyse les balises HTML au format personnalisé</string>
     <string name="seconds_lettercase_title">Style</string>
@@ -123,6 +125,8 @@
     <string name="anim_listview_test_summary">Ouvre une fenêtre d\'essai des listes</string>
     <string name="anim_listview_cache">Cache persistant des listes</string>
     <string name="anim_listview_cache_summary">Type de cache persistant en mémoire \n(Cache non désactivé)</string>
+    <string name="anim_listview_animate_once_title">Animation unique</string>
+    <string name="anim_listview_animate_once_summary">Ne pas répéter l\'animation pour les éléments d\'une liste qui ont déjà été animés</string>    
     <string name="anim_listview_blacklist">Liste Noire des applications</string>
     <string name="anim_listview_blacklist_summary">Empêcher les applications d\'animation</string>
     <string name="anim_listview_blacklist_help_dialog">Pour supprimer une application de la liste noire, appuyez sur l\'application.\n\nPour ajouter, appuyez sur Ajouter et sélectionnez l\'application.</string>
