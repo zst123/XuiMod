@@ -17,6 +17,8 @@
 
 package com.zst.xposed.xuimod.mods;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -71,6 +73,10 @@ public class ListViewAnimationMod {
 	private static int cache;
 	private static int mAnim;
 	private static int mDuration;
+	private static boolean mOnlyAnimateOnce;
+	
+	private static ArrayList<Integer> mAnimatedList = new ArrayList<Integer>();
+	
 	private static boolean mDown = false;
 
 	public static void handleLoadPackage(XSharedPreferences pref) {
@@ -91,12 +97,14 @@ public class ListViewAnimationMod {
 					return;
 				}
 				mHeight = 0; mWidth = 0;
+				mAnimatedList.clear();
 				// Init-ing new AbsListView so we must reset static values from previous view
 				mPref.reload();
 				mInterpolator = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_INTERPOLATOR, Common.DEFAULT_LISTVIEW_INTERPOLATOR) );
 				mDuration = mPref.getInt(Common.KEY_LISTVIEW_DURATION, Common.DEFAULT_LISTVIEW_DURATION);
 				mAnim = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_ANIMATION, Common.DEFAULT_LISTVIEW_ANIMATION) );
 				cache = Integer.parseInt(mPref.getString(Common.KEY_LISTVIEW_CACHE, Common.DEFAULT_LISTVIEW_CACHE));
+				mOnlyAnimateOnce = mPref.getBoolean(Common.KEY_LISTVIEW_ANIMATE_ONCE, Common.DEFAULT_LISTVIEW_ANIMATE_ONCE);
 				item.setPersistentDrawingCache(cache);
 			}			
 		});	
@@ -161,6 +169,11 @@ public class ListViewAnimationMod {
 			@Override protected void afterHookedMethod(MethodHookParam param) throws Throwable {
 				if(mIsScrolling) {
 					AbsListView thix = (AbsListView)param.thisObject;
+					int position = (Integer) param.args[0];
+					if (mOnlyAnimateOnce && mAnimatedList.contains(position)) {
+						return;
+					}
+					mAnimatedList.add(position);
 					View newResult = setAnimation(thix, (View)param.getResult(),thix.getContext());
 					param.setResult(newResult);
 				}

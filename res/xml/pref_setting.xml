@@ -201,6 +201,11 @@
             android:key="listview_cache"
             android:summary="@string/anim_listview_cache_summary"
             android:title="@string/anim_listview_cache" />
+        
+        <CheckBoxPreference
+            android:key="listview_animate_once"
+            android:summary="@string/anim_listview_animate_once_summary"
+            android:title="@string/anim_listview_animate_once_title" />
 
         <com.zst.xposed.xuimod.preference.TestListView
             android:summary="@string/anim_listview_test_summary"

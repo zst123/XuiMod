@@ -145,6 +145,8 @@
     <string name="anim_listview_test_summary">Open Test Dialog with a ListView</string>
     <string name="anim_listview_cache">ListView Persistent Cache</string>
     <string name="anim_listview_cache_summary">Type of cache to persist in memory \n(No Cache is Disabled. Just Persisted)</string>
+    <string name="anim_listview_animate_once_title">Animate Once</string>
+    <string name="anim_listview_animate_once_summary">Do not repeat animation for ListView items that has already been animated</string>
     <string name="anim_listview_blacklist">Blacklist Apps</string>
     <string name="anim_listview_blacklist_summary">Prevent Apps from animating</string>
   	<string name="anim_listview_blacklist_help_dialog">To remove an app from the blacklist, tap on the app.\n\nTo add, tap on ADD and find the app.</string>

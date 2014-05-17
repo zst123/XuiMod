@@ -45,6 +45,7 @@ public class Common {
 	
 	public static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
 	public static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
+	public static final String KEY_LISTVIEW_ANIMATE_ONCE = "listview_animate_once";
 	public static final String KEY_LISTVIEW_CACHE = "listview_cache";
 	public static final String KEY_LISTVIEW_DURATION = "listview_duration";
 	public static final String KEY_LISTVIEW_BLACKLIST = "listview_blacklist";
@@ -152,6 +153,7 @@ public class Common {
 	
 	public static final String DEFAULT_LISTVIEW_INTERPOLATOR = "0";
 	public static final String DEFAULT_LISTVIEW_ANIMATION = "0";
+	public static final boolean DEFAULT_LISTVIEW_ANIMATE_ONCE = false;
 	public static final String DEFAULT_LISTVIEW_CACHE = "0";
 	public static final int DEFAULT_LISTVIEW_DURATION = 500;
 	
