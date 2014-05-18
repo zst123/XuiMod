@@ -193,8 +193,8 @@
     <string name="volume_timeout_summary">Verändere den Timeout für das Lautstärkeregler-Popup nach der Anpassung der Lautstärke</string>
     <string name="volume_timeout_dialog">Gib den Timeout für das Lautstärkeregler-Popup in Millisekunden an. Nicht numerische Zeichen werdn ignoriert.\n(1000 Millisekunden = 1 Sekunde)</string>
     <string name="volume_alpha_title">Lautstärkeregler-Popup Transparenz</string>
-    <string name="volume_alpha_summary">Verändere die Transparenz des Lautstärkeregler-Popup's</string>
-    <string name="volume_alpha_dialog" formatted="false">Gebe die Transparenz des Lautstärkeregler-Popup's in Prozent an.\n(Maximum 100% &amp; Minimum 25%)</string>
+    <string name="volume_alpha_summary">Verändere die Transparenz des Lautstärkeregler-Popup\'s</string>
+    <string name="volume_alpha_dialog" formatted="false">Gebe die Transparenz des Lautstärkeregler-Popup\'s in Prozent an.\n(Maximum 100% &amp; Minimum 25%)</string>
     
     <!-- Lockscreen Mods -->
     <string name="lockscreen_title">Sperrbildschirm-Mods</string>
@@ -241,7 +241,7 @@
     <string name="batterybar_color_60_title">Farbe für 60% und weniger</string>
     <string name="batterybar_color_40_title">Farbe für 40% und weniger</string>
     <string name="batterybar_color_20_title">Farbe für 20% und weniger</string>
-    <string name="batterybar_color_charge_title">Farbe für's Laden</string>
+    <string name="batterybar_color_charge_title">Farbe für\'s Laden</string>
     <string name="batterybar_bg_color_title">Hintergrundfarbe</string>
     
     <string name="batterybar_position_title">Position der Akkuleiste</string>
@@ -260,7 +260,7 @@
     <string name="scrolling_overscroll_title">Überscroll-Abstand</string>
     <string name="scrolling_overscroll_summary">Der maximale Überscroll-Abstand am Ende einer ListView</string>
     <string name="scrolling_overfling_title">Überschleuder-Abstand</string>
-    <string name="scrolling_overfling_summary">Der maximale Überscroll-Abstand wenn du durch die ListView scrollst und es bis zum Ende schleuderst/string>
+    <string name="scrolling_overfling_summary">Der maximale Überscroll-Abstand wenn du durch die ListView scrollst und es bis zum Ende schleuderst</string>
     <string name="scrolling_friction_title">Scroll-Reibung</string>
     <string name="scrolling_friction_summary">Die Menge an Reibung, die beim Scrollen verwendet wird.</string>
     <string name="scrolling_velocity_title">Maximale Schleuder-Geschwindigkeit</string>
