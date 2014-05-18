@@ -11,18 +11,20 @@
     <string name="options_title">App Optionen</string>
     
     <string name="systemui_restart">SystemUI neu starten</string>    
-    <string name="systemui_restart_summary">SystemUI neu starten, falls Veränderungen nicht angezeigt werden \n (Erfordert SU Erlaubnis)</string>
+    <string name="systemui_restart_summary">SystemUI neu starten, falls Veränderungen nicht angezeigt werden \n(Erfordert SU Erlaubnis)</string>
     <string name="systemui_restart_dialog">Fortfahren mit Neustart von SystemUI?</string>
     <string name="systemui_restart_required">SystemUI muss neu gestartet werden, damit Veränderungen angezeigt werden können.\n\nSystemUI neu starten?</string>
     
     <!-- Seconds Clock Pref-->
-    <string name="seconds_title">Uhr-Mods</string>
+    <string name="seconds_title">Uhr Mods</string>
     <string name="seconds_enable_title">Aktiviere Sekunden</string>
     <string name="seconds_enable_summary">Aktualisiere die Zeit der Uhr in der Statusleiste jede Sekunde</string>
     <string name="seconds_bold_title">Fett gedruckte Uhr</string>
     <string name="seconds_bold_summary">Drucke Schrift der Uhr fett</string>
+    <string name="seconds_size_title">Uhr Größe</string>
+    <string name="seconds_size_summary">Schriftgröße der Uhr in Prozent</string>
     <string name="seconds_use_html_title">Verwende HTML</string>
-    <string name="seconds_use_html_summary">Verwandle HTML-Tags in benutzerdefinierte Form um.</string>
+    <string name="seconds_use_html_summary">Wandle HTML-Tags in benutzerdefinierte Form um.</string>
     <string name="seconds_lettercase_title">Groß-/Kleinschreibung</string>
     <string name="seconds_lettercase_summary">Schreibe alle Buchstaben in Groß- oder Kleinformat</string>
     <string name="seconds_lettercase_default">Voreinstellung</string>
@@ -32,19 +34,19 @@
     <string name="seconds_custom_summary">Verwende benutzerdefiniertes SimpleDateFormat für die Uhr \n(Lasse Textfeld frei für Voreinstellung)</string>
     
     <!-- Notif Mods -->
-    <string name="notif_title">Benachrichtigungs-Mods</string>
+    <string name="notif_title">Benachrichtigungen Mods</string>
     <string name="notif_quick_settings_random_title">Zufällige Farbe für Schnelleinstellungs-Kacheln (Tiles)</string>
-    <string name="notif_quick_settings_random_summary">Stelle zufällige Hintergrundfarbe für jede Schnelleinstellungs-Kachel (Tiles)\n(SystemUI muss neu gestartet werden, damit Veränderungen angezeigt werden können)</string>
+    <string name="notif_quick_settings_random_summary">Stelle zufällige Hintergrundfarbe für jede Schnelleinstellungs-Kachel (Tiles) ein \n(SystemUI muss neu gestartet werden, damit Veränderungen angezeigt werden können)</string>
     <string name="notif_choose_color_title">Wähle weitere zufällige Farben</string>
     <string name="notif_choose_color_summary">SystemUI muss neu gestartet werden, damit Farben angezeigt werden können</string>
         
     <!-- Animation Pref-->
-    <string name="anim_title">Animations-Mods</string>
+    <string name="anim_title">Animationen Mods</string>
     <string name="anim_listview_title">ListView Animationen</string>
     <string name="anim_systemwide_title">System Animationen</string>
     
     <!-- System Anim Pref -->
-    <string name="window_transitions_title">Fenster-Animation</string>
+    <string name="window_transitions_title">Fenster Animation</string>
     <string name="window_transitions_summary">Wähle eine Animation für Fenster-Animationen\n(Erfordert Geräte-Neustart, um Veränderungen anzuzeigen)</string>
     <string name="window_transitions_default">Voreinstellung (in ROM)</string>
     <string name="window_transitions_xylon">Xylon ROM Animationen</string>
@@ -63,7 +65,7 @@
     <string name="activity_close_title">Schließe In-App-Activity Animation</string>
     <string name="task_open_title">Starte Aus In-App-Animation</string>
     <string name="task_close_title">Gehe Zum Vorherigen Animation</string>
-    <string name="task_move_to_front_title">Schritt Nach Vorn Animation</string>
+    <string name="task_move_to_front_title">Schritt Vor Animation</string>
     <string name="task_move_to_back_title">Schritt Zurück Animation</string>
     <string name="wallpaper_open_title">Kehre Zum Homescreen Zurück Animation</string>
     <string name="wallpaper_close_title">Starte Aus Homescreen Animation</string>
@@ -87,7 +89,7 @@
     <string name="animation_random">Zufällig</string>
     
     <!-- IME Animation -->
-    <string name="anim_ime_main_title">IME-Animation</string>
+    <string name="anim_ime_main_title">IME Animation</string>
     <string name="anim_ime_enter_title">IME Erscheint Animation</string>
     <string name="anim_ime_enter_summary">Wird gezeigt, wenn Tastatur erscheint</string>
     <string name="anim_ime_exit_title">IME Verschwindet Animation</string>
@@ -102,11 +104,11 @@
     <string name="anim_ime_entries_xylon_slide">Xylon Slide</string>
     
     <!-- Toast Animation -->
-    <string name="anim_toast_main_title">Toast-Animation</string>
+    <string name="anim_toast_main_title">Toast Animation</string>
     <string name="anim_toast_enter_title">Toast Erscheint Animation</string>
-    <string name="anim_toast_enter_summary">Wird gezeigt, wenn ein Toast erscheint</string>
+    <string name="anim_toast_enter_summary">Wird angezeigt, wenn ein Toast erscheint</string>
     <string name="anim_toast_exit_title">Toast Verschwindet Animation</string>
-    <string name="anim_toast_exit_summary">Wird gezeigt, wenn ein Toast verschwindet</string>
+    <string name="anim_toast_exit_summary">Wird angezeigt, wenn ein Toast verschwindet</string>
     <string name="anim_toast_interpolater_title">Toast Interpolator</string>
     <string name="anim_toast_duration_title">Toast Animations-Dauer</string>
     <string name="anim_toast_test_title">Teste Toast Animationen</string>
@@ -117,7 +119,7 @@
     <string name="anim_toast_entries_z1">Xperia Z1 Toast</string>
     
     <!-- Ticker Animation -->
-    <string name="anim_ticker_main_title">Ticker-Animation</string>
+    <string name="anim_ticker_main_title">Ticker Animation</string>
     <string name="anim_ticker_main_enter_title">Haupt-Ticker Erscheint Animation</string>
     <string name="anim_ticker_main_enter_summary">Wird gezeigt, wenn die erste Benachrichtigung erscheint</string>
     <string name="anim_ticker_main_exit_title">Haupt-Ticker Verschwindet Animation</string>
@@ -133,7 +135,7 @@
     <string name="anim_ticker_test_summary">Sende 3 Benachrichtigungen, um Animationen zu sehen (Entferne sie, indem du sie wegwischt)</string>
     
     <!-- ListView Category in Animation Pref--> 
-    <string name="anim_listview_anim">ListView-Animation</string>
+    <string name="anim_listview_anim">ListView Animation</string>
     <string name="anim_listview_anim_summary">Verwendete Animation beim Scrollen durch ListViews</string>
     <string name="anim_listview_interpolator">ListView Interpolator</string>
     <string name="anim_listview_interpolator_summary">Verwendeter Interpolator beim Scrollen durch ListViews</string>
@@ -143,6 +145,8 @@
     <string name="anim_listview_test_summary">Öffne Test-Fenster mit einer ListView</string>
     <string name="anim_listview_cache">Halte ListView-Cache an</string>
     <string name="anim_listview_cache_summary">Art von Cache, der im Speicher bleibt\n(Kein Cache wird deaktiviert. Nur angehalten)</string>
+    <string name="anim_listview_animate_once_title">Einmal animieren</string>
+    <string name="anim_listview_animate_once_summary">Wiederhole die Animation nicht für ListView Items, die bereits animiert wurden</string>
     <string name="anim_listview_blacklist">Blacklist Apps</string>
     <string name="anim_listview_blacklist_summary">Hindere Apps, Animationen auszuführen</string>
   	<string name="anim_listview_blacklist_help_dialog">Tippe auf eine App, um sie von der Blacklist zu entfernen.\n\nUm eine hinzuzufügen, klicke auf HINZUFÜGEN und suche nach der App.</string>
@@ -197,7 +201,7 @@
     <string name="volume_alpha_dialog" formatted="false">Gebe die Transparenz des Lautstärkeregler-Popup\'s in Prozent an.\n(Maximum 100% &amp; Minimum 25%)</string>
     
     <!-- Lockscreen Mods -->
-    <string name="lockscreen_title">Sperrbildschirm-Mods</string>
+    <string name="lockscreen_title">Sperrbildschirm Mods</string>
     <string name="lockscreen_disable_title">Deaktiviere Lautstärketasten</string>
     <string name="lockscreen_disable_summary">Hindere die Klingellautstärke daran, sich im Sperrbildschirm zu ändern.\n(Deaktiviert auch überspringen von Titeln mit Lautstärketasten)</string>
     <!-- Lockscreen Torch -->
@@ -217,16 +221,16 @@
     <string name="lockscreen_torch_dashlight_torch">DashLight</string>
     
      <!-- BatteryBar Pref-->
-    <string name="batterybar_title">Akkuleisten-Mods</string>
-    <string name="batterybar_enable_title">Aktiviere Akkuleiste</string>
+    <string name="batterybar_title">Batterieleiste Mods</string>
+    <string name="batterybar_enable_title">Aktiviere Batterieleiste</string>
     <string name="batterybar_style_title">Symmetrische Leiste</string>
-    <string name="batterybar_style_summary">Wenn aktiviert, wird die Akkuleiste symmetrisch sein</string>
+    <string name="batterybar_style_summary">Wenn aktiviert, wird die Batterieleiste symmetrisch sein</string>
     <string name="batterybar_height_title">Höhe der Leiste</string>
-    <string name="batterybar_height_summary">Höhe der Akkuleiste in dp</string>
-    <string name="batterybar_height_dialog">Höhe der Akkuleiste in dp.\n(Nicht numerische Zeichen werden ignoriert.)</string>
+    <string name="batterybar_height_summary">Höhe der Batterieleiste in dp</string>
+    <string name="batterybar_height_dialog">Höhe der Batterieleiste in dp.\n(Nicht numerische Zeichen werden ignoriert.)</string>
     <string name="batterybar_animate_title">Ladeanimation</string>
     <string name="batterybar_animate_summary">Aktiviere Ladeanimation</string>
-    <string name="batterybar_color_title">Farbe der Akkuleiste</string>
+    <string name="batterybar_color_title">Farbe der Batterieleiste</string>
     
     <string name="batterybar_color_screen_title">Passe die Farben an</string>
     <string name="batterybar_color_color_mode_title">Farbmodus</string>
@@ -244,8 +248,8 @@
     <string name="batterybar_color_charge_title">Farbe für\'s Laden</string>
     <string name="batterybar_bg_color_title">Hintergrundfarbe</string>
     
-    <string name="batterybar_position_title">Position der Akkuleiste</string>
-    <string name="batterybar_position_summary">Verändere die Stelle, wo die Akkuleiste angezeigt wird\n(Erfordert SystemUI-Neustart)</string>
+    <string name="batterybar_position_title">Position der Batterieleiste</string>
+    <string name="batterybar_position_summary">Verändere die Stelle, wo die Batterieleiste angezeigt wird\n(Erfordert SystemUI-Neustart)</string>
     <string name="batterybar_position_sb">Statusleiste (Oben)</string>
     <string name="batterybar_position_sbb">Statusleiste (Unten)</string>
     <string name="batterybar_position_nbt">Navigationsleiste (Oben)</string>
@@ -264,7 +268,7 @@
     <string name="scrolling_friction_title">Scroll-Reibung</string>
     <string name="scrolling_friction_summary">Die Menge an Reibung, die beim Scrollen verwendet wird.</string>
     <string name="scrolling_velocity_title">Maximale Schleuder-Geschwindigkeit</string>
-    <string name="scrolling_velocity_summary">Die maximale Geschwindigkeit das Scrollen bis zum Ende zu schleudern zu starten</string>
+    <string name="scrolling_velocity_summary">Die maximale Geschwindigkeit, das Scrollen bis zum Ende zu schleudern zu starten</string>
     
     <string name="scrolling_glow_title">Überscroll-Effekt</string>
     <string name="scrolling_glow_summary">Passe den Randeffekt beim Überscrollen an</string>
