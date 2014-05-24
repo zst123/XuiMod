@@ -16,18 +16,19 @@
     <string name="seconds_title">时钟插件</string>
     <string name="seconds_enable_title">开启秒数</string>
     <string name="seconds_enable_summary">状态栏的时钟将精确到秒</string>
-    <string name="seconds_bold_title">字体加粗</string>
+    <string name="seconds_bold_title">加粗字体</string>
     <string name="seconds_bold_summary">状态栏时钟的显示字体将用加粗字体显示</string>
+    <string name="seconds_size_title">时钟尺寸</string>
+	<string name="seconds_size_summary">调节时钟的字体大小</string>
     <string name="seconds_use_html_title">使用HTML</string>
     <string name="seconds_use_html_summary">在自定义格式中解析HTML标签</string>
-    <string name="seconds_lettercase_title">指定字母</string>
-    <string name="seconds_lettercase_summary">在指定的情况下覆盖所有的字母</string>
+    <string name="seconds_lettercase_title">强制大小写</string>
+    <string name="seconds_lettercase_summary">将所有英文字母转换为大写或小写</string>
     <string name="seconds_lettercase_default">默认</string>
-    <string name="seconds_lettercase_lowercase">小写</string>
-    <string name="seconds_lettercase_uppercase">大写</string>
-    <string name="seconds_custom_title">替换为文本</string>
-    <string name="seconds_custom_summary">"使用自定义文本替换状态栏时钟
-(留空为撤销)"</string>
+    <string name="seconds_lettercase_lowercase">强制小写</string>
+    <string name="seconds_lettercase_uppercase">强制大写</string>
+    <string name="seconds_custom_title">自定义格式</string>
+    <string name="seconds_custom_summary">让时钟按照自己定义的格式显示\n（不填为默认）</string>
     <string name="notif_title">通知栏插件</string>
     <string name="notif_quick_settings_random_title">快速设置瓷块随机颜色</string>
     <string name="notif_quick_settings_random_summary">"每一块快速设置瓷砖的背景颜色将会随机化
@@ -84,7 +85,7 @@
     <string name="anim_ime_duration_title">键盘动画持续时间</string>
     <string name="anim_ime_delay_title">键盘动画延迟</string>
     <string name="anim_ime_delay_summary">进入动画的延迟 (可能会使动画变得缓慢)</string>
-    <string name="anim_ime_test_title">在此测试键盘动画</string>
+    <string name="anim_ime_test_title">点击这里测试键盘动画</string>
     <string name="anim_ime_entries_fancy">安卓Fancy键盘</string>
     <string name="anim_ime_entries_tn">TN Fly键盘</string>
     <string name="anim_ime_entries_xylon_slide">Xylon滑动键盘</string>
@@ -126,6 +127,8 @@
     <string name="anim_listview_cache">保存列表缓存</string>
     <string name="anim_listview_cache_summary">"保存缓存的类型到内存中
 (没有缓存等于禁用此功能。只能通过保存来实现)"</string>
+	<string name="anim_listview_animate_once_title">只显示一次动画</string>
+	<string name="anim_listview_animate_once_summary">勾选后，已显示过动画的行将不会再显示动画。</string>
     <string name="anim_listview_blacklist">应用程序黑名单</string>
     <string name="anim_listview_blacklist_summary">阻止应用程序的自带动画</string>
     <string name="anim_listview_blacklist_help_dialog">"想要从黑名单中删除某一个应用程序,请点击此应用程序。
@@ -159,8 +162,8 @@
     <string name="listview_cache_scroll">滚动缓存</string>
     <string name="listview_cache_all">动画与滚动</string>
     <string name="other_title">其他插件</string>
-    <string name="classic_recents_title">使用旧式最近任务</string>
-    <string name="classic_recents_summary">取代最近任务界面为姜饼(安卓2。3)的最近任务界面</string>
+    <string name="classic_recents_title">使用旧版最近任务页面</string>
+    <string name="classic_recents_summary">使用 Android 2.3（姜饼人） 的最近任务界面</string>
     <string name="volume_title">音量按钮</string>
     <string name="volume_timeout_title">音量调整板面超时</string>
     <string name="volume_timeout_summary">更改音量调整后音量调整板面的超时</string>
@@ -254,11 +257,7 @@
     <string name="toggle_launcher_show">显示图标</string>
     <string name="toggle_launcher_hide">隐藏图标</string>
     <string name="toggle_launcher_title">切换启动器图标</string>
-    <string name="toggle_launcher_msg">"隐藏此模块之后,你可以通过Xposed安装器来启动此模块。
-
-Xposed安装器→激活应用模块→Xposed界面模块
-
-你可能需要重启桌面启动器来让它生效。"</string>
+    <string name="toggle_launcher_msg">隐藏此模块之后,你可以通过Xposed安装器来启动此模块：\nXposed安装器→模块→XuiMod\n\n你可能需要重启桌面启动器来让它生效。</string>
     <string name="version_unsupported">此插件仅支持安卓 %1$s 以上版本。你目前的版本为 %2$s。</string>
     <string name="settings_default">默认值</string>
     <string name="add">添加</string>
@@ -269,6 +268,6 @@ Xposed安装器→激活应用模块→Xposed界面模块
     <string name="color_hex">颜色代码</string>
     <string name="test_listview_instructions">滚动来查看更改</string>
     <string name="test_listview_item">列表内的项目</string>
-    <string name="scrolling_no_fading_title">永远显示滑动栏</string>
-    <string name="scrolling_no_fading_summary">如果已勾选, 靠边的滑动栏将会永不消失</string>
+    <string name="scrolling_no_fading_title">一直显示页面指示器</string>
+    <string name="scrolling_no_fading_summary">勾选后，右边的页面指示器将不消失</string>
 </resources>
