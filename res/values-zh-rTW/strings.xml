@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">XuiMod</string>
     <string name="title_activity_list_view_blacklist">黑名單 (列表動畫)</string>
@@ -18,6 +18,8 @@
     <string name="seconds_enable_summary">狀態欄的時鐘將精確到秒</string>
     <string name="seconds_bold_title">字體加粗</string>
     <string name="seconds_bold_summary">狀態欄時鐘的顯示字體將用加粗字體顯示</string>
+    <string name="seconds_size_title">時鐘大小</string>
+    <string name="seconds_size_summary">時鐘的字體百分比大小</string>
     <string name="seconds_use_html_title">使用HTML</string>
     <string name="seconds_use_html_summary">在自定義格式中解析HTML標簽</string>
     <string name="seconds_lettercase_title">指定字母</string>
@@ -124,8 +126,10 @@
     <string name="anim_listview_test">列表測試</string>
     <string name="anim_listview_test_summary">打開一個提示框列表來測試</string>
     <string name="anim_listview_cache">保存列表緩存</string>
-    <string name="anim_listview_cache_summary">"保存緩存的類型到內存中
-(沒有緩存等于禁用此功能。只能通過保存來實現)"</string>
+    <string name="anim_listview_cache_summary">"保存到內存中的緩存類型
+(無緩存已禁用。僅持續)"</string>
+    <string name="anim_listview_animate_once_title">一次動畫</string>
+    <string name="anim_listview_animate_once_summary">列表項目已經顯示過動畫之後將不再重復動畫</string>
     <string name="anim_listview_blacklist">應用程序黑名單</string>
     <string name="anim_listview_blacklist_summary">阻止應用程序的自帶動畫</string>
     <string name="anim_listview_blacklist_help_dialog">"想要從黑名單中刪除某一個應用程序,請點擊此應用程序。
@@ -227,6 +231,8 @@
     <string name="scrolling_config_title">滾動配置</string>
     <string name="scrolling_config_summary">自定義滑動列表時的行為和感覺</string>
     <string name="scrolling_warning">正在運行的應用程序可能需要重新啟動才能使滾動設置生效</string>
+    <string name="scrolling_no_fading_title">永遠顯示滑動欄</string>
+    <string name="scrolling_no_fading_summary">如果已勾選, 靠邊的滑動欄將會永不消失</string>
     <string name="scrolling_overscroll_title">結束滾動的距離</string>
     <string name="scrolling_overscroll_summary">滾動到盡頭時的最大距離</string>
     <string name="scrolling_overfling_title">結束甩動的距離</string>
@@ -256,9 +262,9 @@
     <string name="toggle_launcher_title">切換啟動器圖標</string>
     <string name="toggle_launcher_msg">"隱藏此模塊之後,你可以通過Xposed安裝器來啟動此模塊。
 
-Xposed安裝器→激活應用模塊→Xposed界面模塊
+Xposed安裝器→模塊→XuiMod（點擊名稱而不是勾選框）
 
-你可能需要重啟桌面啟動器來讓它生效。"</string>
+你可能需要重啟啟動器來讓它生效。"</string>
     <string name="version_unsupported">此插件僅支持安卓 %1$s 以上版本。你目前的版本為 %2$s。</string>
     <string name="settings_default">默認值</string>
     <string name="add">添加</string>
@@ -269,6 +275,4 @@ Xposed安裝器→激活應用模塊→Xposed界面模塊
     <string name="color_hex">顏色代碼</string>
     <string name="test_listview_instructions">滾動來查看更改</string>
     <string name="test_listview_item">列表內的項目</string>
-    <string name="scrolling_no_fading_title">永遠顯示滑動欄</string>
-    <string name="scrolling_no_fading_summary">如果已勾選, 靠邊的滑動欄將會永不消失</string>
 </resources>
