@@ -44,6 +44,7 @@ import android.widget.RelativeLayout;
 public class BatteryBarView extends RelativeLayout implements Animatable {
     // Total animation duration
     private static final int ANIM_DURATION = 1000; // 1 second
+    private static int ANIM_OFFSET = 0; // Time between animations in milliseconds.
     
     public static final int MODE_COLOR_SINGLE = 0;
     public static final int MODE_COLOR_MULTIPLE = 1;
@@ -302,6 +303,9 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
         Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
     			.getDefaultDisplay();
         
+        ANIM_OFFSET = mPref.getInt(Common.KEY_BATTERYBAR_ANIMATE_OFFSET,
+        		Common.DEFAULT_BATTERYBAR_ANIMATE_OFFSET);
+        
         if (vertical) {
         	int height = display.getHeight();
         	if (mSymmetric) {
@@ -312,6 +316,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
             a.setRepeatCount(Animation.INFINITE);
+            a.setStartOffset(ANIM_OFFSET);
             mChargerLayout.startAnimation(a);
             mChargerLayout.setVisibility(View.VISIBLE);
         } else {
@@ -324,6 +329,7 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
             a.setInterpolator(new AccelerateInterpolator());
             a.setDuration(ANIM_DURATION);
             a.setRepeatCount(Animation.INFINITE);
+            a.setStartOffset(ANIM_OFFSET);
             mChargerLayout.startAnimation(a);
             mChargerLayout.setVisibility(View.VISIBLE);
         }
