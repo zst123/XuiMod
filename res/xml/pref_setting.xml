@@ -95,7 +95,7 @@
             android:dependency="batterybar_animate"
             android:summary="@string/batterybar_animate_offset_summary"
             android:title="@string/batterybar_animate_offset" />
-        
+
         <CheckBoxPreference
             android:dependency="batterybar_enable"
             android:key="batterybar_style"
