@@ -195,8 +195,14 @@ public class BatteryBarView extends RelativeLayout implements Animatable {
     	mSymmetric = pref.getBoolean(Common.KEY_BATTERYBAR_STYLE,
     			Common.DEFAULT_BATTERYBAR_STYLE);
 
-        ANIM_OFFSET = pref.getInt(Common.KEY_BATTERYBAR_ANIMATE_OFFSET,
+        int tempAnimOffset = pref.getInt(Common.KEY_BATTERYBAR_ANIMATE_OFFSET,
         		Common.DEFAULT_BATTERYBAR_ANIMATE_OFFSET);
+        
+        if(tempAnimOffset != ANIM_OFFSET) {
+        	ANIM_OFFSET = tempAnimOffset;
+        	stop();
+        	start();
+        }
 
         setProgress(mBatteryLevel);
         updateBatteryColor();
