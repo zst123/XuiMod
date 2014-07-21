@@ -40,6 +40,7 @@ public class LockscreenTorchMod {
 	private static final int CM_TORCH = 0;
 	private static final int TESLA_TORCH = 1;
 	private static final int DASHLIGHT_TORCH = 2;
+	private static final int OMNIROM_TORCH = 3;
 	
 	private static final int LONGPRESS_TIMEOUT = ViewConfiguration.getLongPressTimeout();
 	private static final int VIBRATE_DURATION = 25;
@@ -202,6 +203,8 @@ public class LockscreenTorchMod {
 			toggleTeslaLedTorch(turnOn);
 		}else if(type == DASHLIGHT_TORCH){
 			toggleDashLightTorch(turnOn);
+		}else if(type == OMNIROM_TORCH){
+			toggleOmniRomTorch(turnOn);
 		}
 		
 		vibrate();
@@ -248,4 +251,9 @@ public class LockscreenTorchMod {
     	isTorchOn = !isTorchOn;	
     }
     
+    /* Sends broadcast to default torch app found in OmniROM. */
+    private static void toggleOmniRomTorch(boolean turnOn) {
+    	isTorchOn = !isTorchOn;
+    }
+
 }
