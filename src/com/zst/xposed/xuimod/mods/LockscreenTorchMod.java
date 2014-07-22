@@ -253,6 +253,8 @@ public class LockscreenTorchMod {
     
     /* Sends broadcast to default torch app found in OmniROM. */
     private static void toggleOmniRomTorch(boolean turnOn) {
+    	Intent i = new Intent("org.omnirom.torch.TOGGLE_FLASHLIGHT");  	
+    	sContext.sendBroadcast(i);
     	isTorchOn = !isTorchOn;
     }
 
