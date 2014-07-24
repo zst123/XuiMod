@@ -219,6 +219,7 @@
     <string name="lockscreen_torch_cm_torch">CM Torch</string>
     <string name="lockscreen_torch_tesla_torch">TeslaLED</string>
     <string name="lockscreen_torch_dashlight_torch">DashLight</string>
+    <string name="lockscreen_torch_omnirom_torch">OmniROM</string>
     
      <!-- BatteryBar Pref-->
     <string name="batterybar_title">BatteryBar Mod</string>
