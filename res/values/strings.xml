@@ -230,6 +230,8 @@
     <string name="batterybar_height_dialog">Height of BatteryBar in dp.\n(Non-numeric characters are ignored.)</string>
     <string name="batterybar_animate_title">Animate Charging</string>
     <string name="batterybar_animate_summary">Show Animation while Charging</string>
+    <string name="batterybar_animate_offset">Animation Offset</string>
+    <string name="batterybar_animate_offset_summary">Time between animations</string>
     <string name="batterybar_color_title">BatteryBar Color</string>
     
     <string name="batterybar_color_screen_title">Customize Color</string>

@@ -84,6 +84,18 @@
             android:summary="@string/batterybar_animate_summary"
             android:title="@string/batterybar_animate_title" />
         
+        <com.zst.xposed.xuimod.preference.SeekBarDialog
+            defaultValue="0"
+            maximum="12000"
+            minimum="0"
+            suffix="ms"
+            android:dialogLayout="@layout/pref_seekbar"
+            android:dialogTitle="@string/batterybar_animate_offset"
+            android:key="batterybar_animate_offset"
+            android:dependency="batterybar_animate"
+            android:summary="@string/batterybar_animate_offset_summary"
+            android:title="@string/batterybar_animate_offset" />
+
         <CheckBoxPreference
             android:dependency="batterybar_enable"
             android:key="batterybar_style"

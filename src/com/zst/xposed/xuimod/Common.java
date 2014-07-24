@@ -59,6 +59,7 @@ public class Common {
 	
 	public static final String KEY_BATTERYBAR_ENABLE = "batterybar_enable";
 	public static final String KEY_BATTERYBAR_ANIMATE = "batterybar_animate";
+	public static final String KEY_BATTERYBAR_ANIMATE_OFFSET = "batterybar_animate_offset";
 	public static final String KEY_BATTERYBAR_STYLE = "batterybar_style";
 	public static final String[] KEYS_BATTERYBAR_POSITION = new String[] {
 		"batterybar_position_sb",
@@ -167,6 +168,7 @@ public class Common {
 	
 	public static final boolean DEFAULT_BATTERYBAR_ENABLE = false;
 	public static final boolean DEFAULT_BATTERYBAR_ANIMATE = false;
+	public static final int DEFAULT_BATTERYBAR_ANIMATE_OFFSET = 0;
 	public static final boolean DEFAULT_BATTERYBAR_STYLE = false;
 	public static final String DEFAULT_BATTERYBAR_COLOR_MODE = "0";
 	public static final String DEFAULT_BATTERYBAR_COLOR = COLOR_HOLO_BLUE;
